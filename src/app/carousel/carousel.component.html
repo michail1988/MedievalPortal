@@ -1,0 +1,13 @@
+<p>carousel works!</p>
+<div class="carousel" style="height: 350px; width: 600px;">
+
+	<ul class="slides">
+
+		<li *ngFor="let image of images">
+			<h2>{{image.title}}</h2> <img src="{{image.url}}"
+			style="height: 350px; width: 600px;" alt="">
+		</li>
+
+
+	</ul>
+</div>
