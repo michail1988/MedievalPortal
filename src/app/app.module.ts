@@ -7,18 +7,27 @@ import { AppComponent } from './app.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { MenuComponent } from './menu/menu.component';
+import { AboutComponent } from './about/about.component';
+import { ServicesComponent } from './services/services.component';
+
+import { routes } from './app.router';
 
 @NgModule({
   declarations: [
     AppComponent,
     SiteHeaderComponent,
     ApplicationFormComponent,
-    CarouselComponent
+    CarouselComponent,
+    MenuComponent,
+    AboutComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]
