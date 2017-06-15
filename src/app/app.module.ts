@@ -13,23 +13,23 @@ import { ServicesComponent } from './services/services.component';
 
 import { routes } from './app.router';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SiteHeaderComponent,
-    ApplicationFormComponent,
-    CarouselComponent,
-    MenuComponent,
-    AboutComponent,
-    ServicesComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routes
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule( {
+    declarations: [
+        AppComponent,
+        SiteHeaderComponent,
+        ApplicationFormComponent,
+        CarouselComponent,
+        MenuComponent,
+        AboutComponent,
+        ServicesComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        routes
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+} )
 export class AppModule { }
