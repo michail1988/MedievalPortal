@@ -9,7 +9,6 @@ import { ApplicationFormComponent } from './application-form/application-form.co
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
-import { ServicesComponent } from './services/services.component';
 
 import { routes } from './app.router';
 
@@ -20,8 +19,7 @@ import { routes } from './app.router';
         ApplicationFormComponent,
         CarouselComponent,
         MenuComponent,
-        AboutComponent,
-        ServicesComponent
+        AboutComponent
     ],
     imports: [
         BrowserModule,
