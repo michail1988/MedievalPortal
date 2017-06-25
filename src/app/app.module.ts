@@ -9,6 +9,9 @@ import { ApplicationFormComponent } from './application-form/application-form.co
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
+import { EnrolmentsComponent } from './enrolments/enrolments.component';
+
+import { EnrolmentService } from './services/enrolment.service';
 
 import { routes } from './app.router';
 
@@ -19,7 +22,8 @@ import { routes } from './app.router';
         ApplicationFormComponent,
         CarouselComponent,
         MenuComponent,
-        AboutComponent
+        AboutComponent,
+        EnrolmentsComponent
     ],
     imports: [
         BrowserModule,
@@ -27,7 +31,7 @@ import { routes } from './app.router';
         HttpModule,
         routes
     ],
-    providers: [],
+    providers: [EnrolmentService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }
