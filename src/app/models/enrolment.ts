@@ -6,4 +6,8 @@ export class Enrolment {
         public date: Date,
         public email: string
     ) { }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master

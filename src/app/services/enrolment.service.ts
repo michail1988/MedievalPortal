@@ -50,6 +50,7 @@ export class EnrolmentService {
 
     // Delete a enrolment
     removeEnrolment( id: string ): Observable<Enrolment[]> {
+
         return this.http.delete( `${this.enrolmentsUrl}/${id}` ) // ...using put request
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
             .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) ); //...errors if any
