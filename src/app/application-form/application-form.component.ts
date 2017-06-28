@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Person } from './person';
+import { Enrolment } from '../models/enrolment'
+import { EnrolmentService } from '../services/enrolment.service';
+import { Observable } from 'rxjs/Rx';
+import { EmitterService } from "app/services/emitter.service";
 
 @Component( {
     selector: 'application-form',
@@ -10,17 +14,37 @@ export class ApplicationFormComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    @Input() listId: string;
+    @Input() editId: string;
 
-    powers = ['Really Smart', 'Super Flexible',
-        'Super Hot', 'Weather Changer'];
+    constructor( private enrolmentService: EnrolmentService ) {
 
-    model = new Person( 18, 'Dr IQ', 'Norris', 'norris@kickingass.com' );
+    }
 
     submitted = false;
 
-    onSubmit() { this.submitted = true; }
+
 
     // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify( this.model ); }
+    get diagnostic() { return JSON.stringify( this.enrolment ); }
 
+    enrolment = new Enrolment( '', '', '', null, '' );
+
+    submitEnrolment() {
+
+        this.enrolment.date = new Date();
+        this.enrolmentService.addEnrolment( this.enrolment ).subscribe(
+            enrolments => {
+                // Emit list event
+                EmitterService.get( this.listId ).emit( enrolments );
+                // Empty model
+
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+
+        this.submitted = true;
+    }
 }
