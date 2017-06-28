@@ -5,7 +5,7 @@
 .slides{
     list-style:none;
     position:relative;
-    width:500%; /* Number of panes * 100% */
+    width:510%; /* Number of panes * 100% */
     overflow:hidden; /* Clear floats */
         /* Slide effect Animations*/
     -moz-animation:carousel 30s infinite;
@@ -34,6 +34,7 @@
     color:#fff;
     background-color:rgba(0,0,0,0.75);
     text-transform: uppercase;
+    width: 500px;
 }
 
 @keyframes carousel{
@@ -54,5 +55,13 @@
     87.5% { left:-105%; }
     98.5% { left:-105%; }
     100%  { left:-5%; }
+}
+
+.description {
+	float: right;
+	max-width: 350px;
+	margin: 0;
+	margin-right: 20px;
+	width: 350px;
 }
   

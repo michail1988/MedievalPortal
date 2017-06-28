@@ -1,12 +1,32 @@
-<div class="carousel" style="height: 350px; width: 600px;">
+
+
+
+<div class="carousel" style="height: 350px; width: 900px;">
+
+
+
 
 	<ul class="slides">
 
+
 		<li *ngFor="let image of images">
+
+			<div class="description">
+				<p>{{image.description}}</p>
+			</div>
+
 			<h2>{{image.title}}</h2> <img src="{{image.url}}"
-			style="height: 350px; width: 600px;" alt="">
+			style="height: 350px; width: 500px;" alt="">
 		</li>
 
 
 	</ul>
 </div>
+
+
+
+
+
+
+
+
