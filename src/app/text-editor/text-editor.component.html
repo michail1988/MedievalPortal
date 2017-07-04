@@ -1,0 +1,20 @@
+
+
+
+<textarea name="editor1" [(ngModel)]="articleText" id="editor1" rows="10" cols="80">
+      {{articleText}}
+  </textarea>
+
+
+<p>Przeczytac o licencjach
+	http://www.gnu.org/licenses/why-not-lgpl.html</p>
+
+<a href="http://ckeditor.com/terms-of-use#licenses">Licencja na
+	ckeditor</a>
+
+<script type="text/ng-template" id="ckeditor.html">
+      <textarea  ckeditor="editorOptions"
+           ng-model="model[options.key]">
+</textarea>
+    </script>
+
