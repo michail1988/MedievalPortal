@@ -47,4 +47,9 @@ export class ApplicationFormComponent implements OnInit {
 
         this.submitted = true;
     }
+
+    newEnrolment() {
+        this.enrolment = new Enrolment( '', '', '', null, '' );
+        this.submitted = false;
+    }
 }

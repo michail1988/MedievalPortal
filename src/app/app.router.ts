@@ -10,16 +10,16 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
 import { AdminComponent } from "app/admin/admin.component";
 import { CanActivateViaAuthGuard } from "app/services/can-activate-via-auth-guard";
 import { MapComponent } from "app/map/map.component";
+import { NewsComponent } from "app/news/news.component";
 
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
-    { path: 'about', component: AboutComponent },
     { path: 'enrolments', component: EnrolmentsComponent },
     { path: 'application-form', component: ApplicationFormComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'editor', component: TextEditorComponent },
     { path: 'map', component: MapComponent },
+    { path: 'news', component: NewsComponent },
     {
         path: 'admin', component: AdminComponent, canActivate: [
             CanActivateViaAuthGuard

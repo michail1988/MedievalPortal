@@ -9,7 +9,6 @@ import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
-import { AboutComponent } from './about/about.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 
 import { EnrolmentService } from './services/enrolment.service';
@@ -21,6 +20,7 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
 import { AdminComponent } from './admin/admin.component';
 import { CanActivateViaAuthGuard } from "./services/can-activate-via-auth-guard";
 import { MapComponent } from './map/map.component';
+import { NewsComponent } from './news/news.component';
 
 
 
@@ -31,12 +31,12 @@ import { MapComponent } from './map/map.component';
         ApplicationFormComponent,
         CarouselComponent,
         MenuComponent,
-        AboutComponent,
         EnrolmentsComponent,
         LoginComponent,
         TextEditorComponent,
         AdminComponent,
-        MapComponent
+        MapComponent,
+        NewsComponent
     ],
     imports: [
         BrowserModule,
