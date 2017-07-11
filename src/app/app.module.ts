@@ -12,6 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 
 import { EnrolmentService } from './services/enrolment.service';
+import { ArticleService } from './services/article.service';
 import { AuthenticationService } from './services/authentication.service';
 
 import { routes } from './app.router';
@@ -21,8 +22,10 @@ import { AdminComponent } from './admin/admin.component';
 import { CanActivateViaAuthGuard } from "./services/can-activate-via-auth-guard";
 import { MapComponent } from './map/map.component';
 import { NewsComponent } from './news/news.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleBoxComponent } from './article-box/article-box.component';
 
-
+//PrimeNG
 
 @NgModule( {
     declarations: [
@@ -36,7 +39,9 @@ import { NewsComponent } from './news/news.component';
         TextEditorComponent,
         AdminComponent,
         MapComponent,
-        NewsComponent
+        NewsComponent,
+        ArticlesComponent,
+        ArticleBoxComponent
     ],
     imports: [
         BrowserModule,
@@ -47,7 +52,7 @@ import { NewsComponent } from './news/news.component';
             apiKey: 'AIzaSyCgJJ5A9fLh9CcSVt6jcC1wSCtXfqow9G0'
         } )
     ],
-    providers: [EnrolmentService, AuthenticationService, CanActivateViaAuthGuard],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, CanActivateViaAuthGuard],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

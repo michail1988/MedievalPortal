@@ -22,7 +22,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     constructor( private enrolmentService: EnrolmentService ) { }
 
     ngOnInit() {
-        // Load comments
+        // Load enrolments
         this.loadEnrolments()
     }
 

@@ -2,7 +2,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { LoginComponent } from './login/login.component';
