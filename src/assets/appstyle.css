@@ -1,21 +1,25 @@
-div.container {
-	width: 100%;
-	border: 1px solid gray;
+
+
+header {
+	padding: 1em;
+	height: 100px;
 }
 
-header, footer {
+footer {
 	padding: 1em;
 	color: white;
-	background-color: black;
+	background-color: #322f30;
 	clear: left;
 	text-align: center;
 }
 
+
 nav {
 	float: left;
-	max-width: 160px;
+	max-width: 200px;
 	margin: 0;
 	padding: 1em;
+	margin-left: -40px;
 }
 
 nav ul {
@@ -28,7 +32,7 @@ nav ul a {
 }
 
 article {
-	margin-left: 170px;
+	margin-left: 220px;
 	border-left: 1px solid gray;
 	padding: 1em;
 	overflow: hidden;

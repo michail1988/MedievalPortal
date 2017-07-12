@@ -24,6 +24,8 @@ import { MapComponent } from './map/map.component';
 import { NewsComponent } from './news/news.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleBoxComponent } from './article-box/article-box.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 //PrimeNG
 
@@ -41,7 +43,9 @@ import { ArticleBoxComponent } from './article-box/article-box.component';
         MapComponent,
         NewsComponent,
         ArticlesComponent,
-        ArticleBoxComponent
+        ArticleBoxComponent,
+        FooterComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,

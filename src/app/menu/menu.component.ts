@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+//http://cssmenumaker.com/menu/modern-accordion-menu#
 export class MenuComponent implements OnInit {
 
   constructor() { }
