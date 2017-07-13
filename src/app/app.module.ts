@@ -27,6 +27,12 @@ import { ArticleBoxComponent } from './article-box/article-box.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
+//internationalization
+import { TranslateService } from "app/translations/translate.service";
+import { TRANSLATION_PROVIDERS } from "app/translations/translations";
+import { TranslatePipe } from "app/translations/translate.pipe";
+import { LanguagesComponent } from './languages/languages.component';
+
 //PrimeNG
 
 @NgModule( {
@@ -45,7 +51,9 @@ import { HeaderComponent } from './header/header.component';
         ArticlesComponent,
         ArticleBoxComponent,
         FooterComponent,
-        HeaderComponent
+        HeaderComponent,
+        TranslatePipe,
+        LanguagesComponent 
     ],
     imports: [
         BrowserModule,
@@ -56,7 +64,8 @@ import { HeaderComponent } from './header/header.component';
             apiKey: 'AIzaSyCgJJ5A9fLh9CcSVt6jcC1wSCtXfqow9G0'
         } )
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, CanActivateViaAuthGuard],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, CanActivateViaAuthGuard,
+                TRANSLATION_PROVIDERS, TranslateService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }
