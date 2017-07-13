@@ -14,6 +14,7 @@ import { EnrolmentsComponent } from './enrolments/enrolments.component';
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
 import { AuthenticationService } from './services/authentication.service';
+import { UniversityService } from './services/university.service';
 
 import { routes } from './app.router';
 import { LoginComponent } from './login/login.component';
@@ -34,6 +35,7 @@ import { TranslatePipe } from "app/translations/translate.pipe";
 import { LanguagesComponent } from './languages/languages.component';
 
 //PrimeNG
+import {AutoCompleteModule} from 'primeng/primeng';
 
 @NgModule( {
     declarations: [
@@ -62,10 +64,10 @@ import { LanguagesComponent } from './languages/languages.component';
         routes,
         AgmCoreModule.forRoot( {
             apiKey: 'AIzaSyCgJJ5A9fLh9CcSVt6jcC1wSCtXfqow9G0'
-        } )
+        } ),
+        AutoCompleteModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, CanActivateViaAuthGuard,
-                TRANSLATION_PROVIDERS, TranslateService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

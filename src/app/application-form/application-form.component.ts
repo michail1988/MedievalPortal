@@ -5,6 +5,10 @@ import { EnrolmentService } from '../services/enrolment.service';
 import { Observable } from 'rxjs/Rx';
 import { EmitterService } from "app/services/emitter.service";
 
+import { AutoCompleteModule } from 'primeng/primeng';
+import { University } from "../models/university";
+import { UniversityService } from "app/services/university.service";
+
 @Component( {
     selector: 'application-form',
     templateUrl: './application-form.component.html',
@@ -17,8 +21,9 @@ export class ApplicationFormComponent implements OnInit {
     @Input() listId: string;
     @Input() editId: string;
 
-    constructor( private enrolmentService: EnrolmentService ) {
+    universities: University[];
 
+    constructor( private enrolmentService: EnrolmentService, private universityService: UniversityService ) {
     }
 
     submitted = false;
@@ -28,7 +33,8 @@ export class ApplicationFormComponent implements OnInit {
     // TODO: Remove this when we're done
     get diagnostic() { return JSON.stringify( this.enrolment ); }
 
-    enrolment = new Enrolment( '', '', '', null, '' );
+    enrolment = new Enrolment( '', '', '', null, '', '' );
+
 
     submitEnrolment() {
 
@@ -49,7 +55,44 @@ export class ApplicationFormComponent implements OnInit {
     }
 
     newEnrolment() {
-        this.enrolment = new Enrolment( '', '', '', null, '' );
+        this.enrolment = new Enrolment( '', '', '', null, '', '' );
         this.submitted = false;
+    }
+
+    text: string;
+
+    results: string[];
+
+    loadUniversities() {
+        // Get all enrolments
+        this.universityService.getUniversities(this.enrolment.university)
+            .subscribe(
+            universities => this.universities = universities, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+
+        console.log( this.universities );
+    }
+
+    search( event ) {
+//        EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
+
+                this.loadUniversities();
+//todo dziala wolno, jakby co drugi znak
+        if ( this.universities ) {
+
+
+            console.log( 'Pracuje' );
+            
+
+            this.results = this.universities.map( function( uni ) {
+                return uni.name;
+            } )
+            
+            console.log( 'To znalazlem' + this.results );
+        }
+        ;
     }
 }

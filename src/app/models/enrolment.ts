@@ -4,7 +4,8 @@ export class Enrolment {
         public name: string,
         public surname: string,
         public date: Date,
-        public email: string
+        public email: string,
+        public university: string
     ) { }
 }
 

@@ -22,6 +22,14 @@
 				required name="email">
 		</div>
 
+		<div class="form-group">
+			<label for="university">Afiliacja</label> <br />
+			<p-autoComplete [(ngModel)]="enrolment.university"
+				[suggestions]="results" (completeMethod)="search($event)"
+				required name="university"></p-autoComplete>
+
+		</div>
+
 		<button class="btn btn-success">Wyslij zgloszenie</button>
 
 
