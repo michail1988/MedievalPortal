@@ -11,17 +11,17 @@ import { EmitterService } from '../services/emitter.service';
 export class ArticlesComponent implements OnInit {
 
     articles: Article[];
-    constructor(private articleService: ArticleService) { }
+    constructor( private articleService: ArticleService ) { }
 
     ngOnInit() {
-     // Load enrolments
+        // Load articles
         this.loadArticles()
     }
-    
+
     loadArticles() {
         this.articleService.getArticles()
             .subscribe(
-                    articles => this.articles = articles, //Bind to view
+            articles => this.articles = articles, //Bind to view
             err => {
                 // Log errors if any
                 console.log( err );

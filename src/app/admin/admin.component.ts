@@ -20,5 +20,7 @@ export class AdminComponent {
             () => this.router.navigate( ['login'] ),
         );
     }
+    
+    text: string;
 
 }

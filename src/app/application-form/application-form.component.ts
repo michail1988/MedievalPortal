@@ -14,6 +14,7 @@ import { UniversityService } from "app/services/university.service";
     templateUrl: './application-form.component.html',
     styleUrls: ['./application-form.component.css']
 } )
+//https://www.primefaces.org/primeng/#/autocomplete
 export class ApplicationFormComponent implements OnInit {
     ngOnInit(): void {
     }
@@ -78,6 +79,7 @@ export class ApplicationFormComponent implements OnInit {
 
     search( event ) {
 //        EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
+
 
                 this.loadUniversities();
 //todo dziala wolno, jakby co drugi znak

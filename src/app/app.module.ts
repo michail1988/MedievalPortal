@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AgmCoreModule } from '@agm/core';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 import { AppComponent } from './app.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
@@ -27,6 +29,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticleBoxComponent } from './article-box/article-box.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -35,7 +38,10 @@ import { TranslatePipe } from "app/translations/translate.pipe";
 import { LanguagesComponent } from './languages/languages.component';
 
 //PrimeNG
-import {AutoCompleteModule} from 'primeng/primeng';
+import { AutoCompleteModule } from 'primeng/primeng';
+import { EditorModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/primeng';
+
 
 @NgModule( {
     declarations: [
@@ -55,7 +61,8 @@ import {AutoCompleteModule} from 'primeng/primeng';
         FooterComponent,
         HeaderComponent,
         TranslatePipe,
-        LanguagesComponent 
+        LanguagesComponent,
+        AdminArticlesComponent
     ],
     imports: [
         BrowserModule,
@@ -65,7 +72,10 @@ import {AutoCompleteModule} from 'primeng/primeng';
         AgmCoreModule.forRoot( {
             apiKey: 'AIzaSyCgJJ5A9fLh9CcSVt6jcC1wSCtXfqow9G0'
         } ),
-        AutoCompleteModule
+        AutoCompleteModule,
+        EditorModule,
+        ButtonModule,
+        Ng2SmartTableModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService],
     bootstrap: [AppComponent]

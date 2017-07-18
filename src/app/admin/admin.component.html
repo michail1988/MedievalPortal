@@ -1,6 +1,15 @@
-<p>
-  admin works!
-</p>
+<p>Edytor tekstowy:</p>
 
 
-<app-text-editor></app-text-editor>
+<p-editor [(ngModel)]="text" [style]="{'height':'320px'}">  </p-editor>
+
+<br/>
+<button pButton type="button" label="{{ 'Clear' | translate}}"
+	icon="fa-close" (click)="text=null"></button>
+
+
+{{text}}
+
+
+
+<admin-articles>Loading...</admin-articles>
