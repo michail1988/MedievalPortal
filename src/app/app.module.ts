@@ -46,6 +46,7 @@ import { ArticleComponent } from './article/article.component';
 import { InputMaskModule } from 'primeng/primeng';
 import { RadioButtonModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/primeng';
+import { PrintComponent } from './print/print.component';
 
 @NgModule( {
     declarations: [
@@ -67,7 +68,8 @@ import { InputTextModule } from 'primeng/primeng';
         TranslatePipe,
         LanguagesComponent,
         AdminArticlesComponent,
-        ArticleComponent
+        ArticleComponent,
+        PrintComponent
     ],
     imports: [
         BrowserModule,
