@@ -60,6 +60,9 @@ export class ApplicationFormComponent implements OnInit {
         this.submitted = false;
     }
 
+    //TODO Michal usun to
+    val1 :string;
+    abstrakt: string;
     text: string;
 
     results: string[];

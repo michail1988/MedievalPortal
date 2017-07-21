@@ -17,6 +17,7 @@ import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UniversityService } from './services/university.service';
+import { ArticleResolver } from './services/article-resolver.service';
 
 import { routes } from './app.router';
 import { LoginComponent } from './login/login.component';
@@ -41,7 +42,10 @@ import { LanguagesComponent } from './languages/languages.component';
 import { AutoCompleteModule } from 'primeng/primeng';
 import { EditorModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
-
+import { ArticleComponent } from './article/article.component';
+import { InputMaskModule } from 'primeng/primeng';
+import { RadioButtonModule } from 'primeng/primeng';
+import { InputTextModule } from 'primeng/primeng';
 
 @NgModule( {
     declarations: [
@@ -62,7 +66,8 @@ import { ButtonModule } from 'primeng/primeng';
         HeaderComponent,
         TranslatePipe,
         LanguagesComponent,
-        AdminArticlesComponent
+        AdminArticlesComponent,
+        ArticleComponent
     ],
     imports: [
         BrowserModule,
@@ -75,9 +80,12 @@ import { ButtonModule } from 'primeng/primeng';
         AutoCompleteModule,
         EditorModule,
         ButtonModule,
+        InputMaskModule,
+        RadioButtonModule,
+        InputTextModule,
         Ng2SmartTableModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

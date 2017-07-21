@@ -10,7 +10,9 @@ import { AdminComponent } from "app/admin/admin.component";
 import { CanActivateViaAuthGuard } from "app/services/can-activate-via-auth-guard";
 import { MapComponent } from "app/map/map.component";
 import { NewsComponent } from "app/news/news.component";
+import { ArticleComponent } from "app/article/article.component";
 
+import {ArticleResolver} from './services/article-resolver.service';
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -23,6 +25,13 @@ export const router: Routes = [
         path: 'admin', component: AdminComponent, canActivate: [
             CanActivateViaAuthGuard
         ],
+    },
+    {
+        path: 'article/:id',
+        component: ArticleComponent,
+        resolve: {
+            article: ArticleResolver
+        }
     }
 
 

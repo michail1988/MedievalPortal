@@ -8,8 +8,8 @@
 		<button class="btn btn-danger">
 			<span class="glyphicon glyphicon-remove"></span>
 		</button>
-		<a class="comment-author" >
-      {{ article.title }}
+		<a class="comment-author" [routerLink]="['/article', article.id]">
+      {{ article.title }} {{ article.id }} 
     </a>
 	</div>
 </div>

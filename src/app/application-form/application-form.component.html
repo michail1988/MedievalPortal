@@ -25,10 +25,42 @@
 		<div class="form-group">
 			<label for="university">Afiliacja</label> <br />
 			<p-autoComplete [(ngModel)]="enrolment.university"
-				[suggestions]="results" (completeMethod)="search($event)"
-				required name="university"></p-autoComplete>
+				[suggestions]="results" (completeMethod)="search($event)" required
+				name="university"></p-autoComplete>
 
 		</div>
+
+		<div class="form-group">
+			<label for="phone">Telefon</label> <br />
+			<p-inputMask mask="999-999-999" name="phone"></p-inputMask>
+		</div>
+
+		<h3 class="first">Basic</h3>
+		<div class="ui-g" style="width: 250px; margin-bottom: 10px">
+			<div class="ui-g-12">
+				<p-radioButton name="group1" value="Option 1" label="Option 1"
+					[(ngModel)]="val1"></p-radioButton>
+			</div>
+			<div class="ui-g-12">
+				<p-radioButton name="group1" value="Option 2" label="Option 2"
+					[(ngModel)]="val1"></p-radioButton>
+			</div>
+			<div class="ui-g-12">
+				<p-radioButton name="group1" value="Option 3" label="Option 3"
+					[(ngModel)]="val1"></p-radioButton>
+			</div>
+			
+			
+			Selected Value = {{val1||'none'}}
+
+
+<div class="form-group">
+		<input  type="text" size="30" pInputText name="abstract" [(ngModel)]="abstrakt">
+
+			</div>
+			
+		</div>
+		
 
 		<button class="btn btn-success">Wyslij zgloszenie</button>
 
