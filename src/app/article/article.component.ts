@@ -8,7 +8,8 @@ import { Article } from "app/models/article";
     styleUrls: ['./article.component.css']
 } )
 
-//https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/editor/editor.component.ts
+//Nawigacja: https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/editor/editor.component.ts
+//Layout: https://startbootstrap.com/template-overviews/blog-post/
 export class ArticleComponent implements OnInit {
 
     article: Article;
