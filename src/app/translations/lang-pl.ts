@@ -9,7 +9,8 @@ export const LANG_PL_TRANS = {
     'Save': 'Zapisz',
     'Cancel': 'Anuluj',
     'Delete': 'Usuń',
-    'show-history': 'Pokaż historię'
-    
-    
+    'show-history': 'Pokaż historię',
+    'Create New': 'Utwórz',
+    'Author': 'Autor',
+    'Title': 'Tytuł',
 };

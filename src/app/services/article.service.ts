@@ -75,15 +75,13 @@ export class ArticleService {
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
             .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
     }
-
-    updateArticle( body: Object ): Observable<Article[]> {
-        let bodyString = JSON.stringify( body ); // Stringify payload
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
-        let options = new RequestOptions( { headers: headers } ); // Create a request option
-
-        return this.http.put( `${this.articlesUrl}/${body['id']}`, body, options ) // ...using put request
+    
+    updateArticle( body: Article ): Observable<Article[]> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.put( this.articlesUrl, JSON.stringify( body ), options )
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
-            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) ); //...errors if any
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
     }
 
     // Delete a enrolment

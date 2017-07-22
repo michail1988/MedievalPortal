@@ -4,10 +4,14 @@
 
 <br />
 
-<button pButton type="button" (click)="count()" icon="fa-check"
+		
+<button pButton type="button"  (click)="saveNew()" icon="fa-check" *ngIf="isNew()"
 	class="ui-button-success" label="{{ 'Save' | translate}}"></button>
 
-<button pButton type="button" (click)="count()" icon="fa-close"
+<button pButton type="button" (click)="save()" icon="fa-check" *ngIf="!isNew()"
+	class="ui-button-success" label="{{ 'Save' | translate}}"></button>
+	
+<button pButton type="button" (click)="cancel()" icon="fa-close"
 	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
 
 <button pButton type="button" (click)="confirmDelete()"
@@ -17,16 +21,23 @@
 <br />
 <br />
 
+<h1>TODO Walidacja, niektore pola nie moga byc puste</h1>
+
 <p-tabView> <p-tabPanel header="Info"
-	leftIcon="fa-drivers-license-o"> Tresc Autor </p-tabPanel> <p-tabPanel
+	leftIcon="fa-drivers-license-o">
+	
+	<label for="author">{{ 'Author' | translate}}</label> <br />
+	<input  type="text" size="30" pInputText name="author" required [(ngModel)]="article.author">
+	<br/>
+	<label for="title">{{ 'Title' | translate}}</label> <br />
+	<input  type="text" size="100" pInputText name="title" required [(ngModel)]="article.title">
+	
+	 </p-tabPanel> <p-tabPanel
 	header="{{ 'Description' | translate}}" leftIcon="fa-header">
 <p-editor [(ngModel)]="article.headline" [style]="{'height':'320px'}">
 </p-editor> </p-tabPanel> <p-tabPanel header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o">
 <p-editor [(ngModel)]="article.content" [style]="{'height':'320px'}">
 </p-editor> </p-tabPanel> </p-tabView>
-
-
-
 
 
 <br />

@@ -14,6 +14,7 @@ import { ArticleComponent } from "app/article/article.component";
 
 import { ArticleResolver } from './services/article-resolver.service';
 import { AdminArticleComponent } from "app/admin-article/admin-article.component";
+import { ArticleNewResolver } from "app/services/article-new-resolver.service";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -42,7 +43,15 @@ export const router: Routes = [
         resolve: {
             article: ArticleResolver
         }
+    },
+    {
+        path: 'admin-article-new',
+        component: AdminArticleComponent,
+        resolve: {
+            article: ArticleNewResolver
+        }
     }
+    
 
 
 ];

@@ -9,5 +9,8 @@ export const LANG_EN_TRANS = {
     'Save': 'Save',
     'Cancel': 'Cancel',
     'Delete': 'Delete',
-    'show-history': 'Show history'
+    'show-history': 'Show history',
+    'Create New': 'Create New',
+    'Author': 'Author',
+    'Title': 'Title',
 };

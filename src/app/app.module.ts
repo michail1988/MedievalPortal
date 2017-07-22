@@ -53,6 +53,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 import { BreadcrumbModule } from 'primeng/primeng';
 import { AccordionModule } from 'primeng/primeng';
+import { ArticleNewResolver } from "app/services/article-new-resolver.service";
 
 
 
@@ -101,7 +102,7 @@ import { AccordionModule } from 'primeng/primeng';
         BreadcrumbModule,
         AccordionModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ConfirmationService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

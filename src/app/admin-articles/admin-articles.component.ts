@@ -3,6 +3,7 @@ import { Article } from "app/models/article";
 import { ArticleService } from '../services/article.service';
 import { EmitterService } from '../services/emitter.service';
 import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
+import { Router } from "@angular/router";
 
 @Component( {
     selector: 'admin-articles',
@@ -16,7 +17,7 @@ export class AdminArticlesComponent implements OnInit {
     articles: Article[];
     source: LocalDataSource;
 
-    constructor( private articleService: ArticleService ) {
+    constructor( private articleService: ArticleService, private router: Router ) {
 
         this.source = new LocalDataSource();
 
@@ -29,7 +30,7 @@ export class AdminArticlesComponent implements OnInit {
 
     ngOnInit() {
         // Load articles
-                this.loadArticles()
+        this.loadArticles()
     }
 
     loadArticles() {
@@ -63,10 +64,14 @@ export class AdminArticlesComponent implements OnInit {
             link: {
                 title: 'Link',
                 type: 'html',
-                valuePrepareFunction:(cell,row)=>{
-                    return '<a href="/admin-article/'+row.id +'">Edytuj</a>'
-                    }
+                valuePrepareFunction: ( cell, row ) => {
+                    return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
+                }
             }
         },
     };
+
+    createNew() {
+        this.router.navigate( ['admin-article-new/'] );
+    }
 }

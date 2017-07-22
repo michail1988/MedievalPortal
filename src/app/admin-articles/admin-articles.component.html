@@ -1,3 +1,10 @@
 <h1>{{ 'articles-list' | translate}}</h1>
 
+
+<button pButton type="button" (click)="createNew()" 
+	label="{{ 'Create New' | translate}}"></button>
+	
+	<br/>
+	<br/>
+	
 <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

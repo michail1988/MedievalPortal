@@ -4,6 +4,8 @@ export class Article {
             public author: string,
             public title: string,
             public content: string,
-            public headline: string
+            public headline: string,
         ) { }
+    
+    public fk_editor: string
 }
