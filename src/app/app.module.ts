@@ -33,6 +33,7 @@ import { HeaderComponent } from './header/header.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
 import { PrintComponent } from './print/print.component';
 import { AdminArticleComponent } from './admin-article/admin-article.component';
+import { AdminArticleHistoryComponent } from './admin-article-history/admin-article-history.component';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -49,6 +50,9 @@ import { InputMaskModule } from 'primeng/primeng';
 import { RadioButtonModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/primeng';
 import { TabViewModule } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
+import { BreadcrumbModule } from 'primeng/primeng';
+import { AccordionModule } from 'primeng/primeng';
 
 
 
@@ -74,7 +78,8 @@ import { TabViewModule } from 'primeng/primeng';
         AdminArticlesComponent,
         ArticleComponent,
         PrintComponent,
-        AdminArticleComponent
+        AdminArticleComponent,
+        AdminArticleHistoryComponent
     ],
     imports: [
         BrowserModule,
@@ -91,9 +96,12 @@ import { TabViewModule } from 'primeng/primeng';
         RadioButtonModule,
         InputTextModule,
         TabViewModule,
-        Ng2SmartTableModule
+        Ng2SmartTableModule,
+        ConfirmDialogModule,
+        BreadcrumbModule,
+        AccordionModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ConfirmationService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

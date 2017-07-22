@@ -8,7 +8,8 @@ export const LANG_PL_TRANS = {
     'Description': 'Opis',
     'Save': 'Zapisz',
     'Cancel': 'Anuluj',
-    'Delete': 'Usuń'
+    'Delete': 'Usuń',
+    'show-history': 'Pokaż historię'
     
     
 };

@@ -8,5 +8,6 @@ export const LANG_EN_TRANS = {
     'Description': 'Description',
     'Save': 'Save',
     'Cancel': 'Cancel',
-    'Delete': 'Delete'
+    'Delete': 'Delete',
+    'show-history': 'Show history'
 };
