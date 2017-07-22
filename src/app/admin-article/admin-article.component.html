@@ -1,0 +1,32 @@
+
+
+<button pButton type="button" (click)="count()" icon="fa-check" class="ui-button-success" label="{{ 'Save' | translate}}"></button>
+
+<button pButton type="button" (click)="count()" icon="fa-close" class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
+
+<button pButton type="button" (click)="count()" icon="fa-trash-o" class="ui-button-danger" label="{{ 'Delete' | translate}}"></button>
+
+
+<p-tabView>
+    <p-tabPanel header="Info" leftIcon="fa-drivers-license-o">
+        Tresc Autor
+    </p-tabPanel>
+    <p-tabPanel header="{{ 'Description' | translate}}" leftIcon="fa-header">
+        <p-editor [(ngModel)]="article.content" [style]="{'height':'320px'}">  </p-editor>    </p-tabPanel>
+    <p-tabPanel header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o" >
+        <p-editor [(ngModel)]="article.headline" [style]="{'height':'320px'}">  </p-editor>    </p-tabPanel>
+</p-tabView>
+
+
+
+
+
+<br/>
+<button pButton type="button" label="{{ 'Clear' | translate}}"
+	icon="fa-close" (click)="article.content=null"></button>
+
+<br/>
+<br/>
+<br/>
+<br/>
+Testowo: {{article.content}}

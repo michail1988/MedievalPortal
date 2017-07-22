@@ -31,6 +31,8 @@ import { ArticleBoxComponent } from './article-box/article-box.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
+import { PrintComponent } from './print/print.component';
+import { AdminArticleComponent } from './admin-article/admin-article.component';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -46,7 +48,9 @@ import { ArticleComponent } from './article/article.component';
 import { InputMaskModule } from 'primeng/primeng';
 import { RadioButtonModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/primeng';
-import { PrintComponent } from './print/print.component';
+import { TabViewModule } from 'primeng/primeng';
+
+
 
 @NgModule( {
     declarations: [
@@ -69,7 +73,8 @@ import { PrintComponent } from './print/print.component';
         LanguagesComponent,
         AdminArticlesComponent,
         ArticleComponent,
-        PrintComponent
+        PrintComponent,
+        AdminArticleComponent
     ],
     imports: [
         BrowserModule,
@@ -85,6 +90,7 @@ import { PrintComponent } from './print/print.component';
         InputMaskModule,
         RadioButtonModule,
         InputTextModule,
+        TabViewModule,
         Ng2SmartTableModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver],

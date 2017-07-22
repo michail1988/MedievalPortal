@@ -14,20 +14,22 @@ import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 export class AdminArticlesComponent implements OnInit {
 
     articles: Article[];
-source: LocalDataSource;
+    source: LocalDataSource;
 
-    constructor( private articleService: ArticleService ) { 
-        
+    constructor( private articleService: ArticleService ) {
+
         this.source = new LocalDataSource();
 
-        this.articleService.getArticles().toPromise().then((data) => {
-          this.source.load(data);
-    });
+
+        this.articleService.getArticles().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+
     }
 
     ngOnInit() {
         // Load articles
-        this.loadArticles()
+                this.loadArticles()
     }
 
     loadArticles() {
@@ -39,93 +41,32 @@ source: LocalDataSource;
                 console.log( err );
             } );
     }
-    
+
     //TODO Michal translacja przez serwis
     settings = {
-            columns: {
-              author: {
+        columns: {
+            author: {
                 title: 'Autor'
-              },
-              title: {
+            },
+            title: {
                 title: 'Tytul'
-              },
-              headline: {
+            },
+            headline: {
                 title: 'Opis - usunac'
-              },
-              edited: {
-                  title: 'Edytowal'
-                },
-                editdate: {
-                    title: 'Data edycji'
-                  }
+            },
+            edited: {
+                title: 'Edytowal'
+            },
+            editdate: {
+                title: 'Data edycji'
+            },
+            link: {
+                title: 'Link',
+                type: 'html',
+                valuePrepareFunction:(cell,row)=>{
+                    return '<a href="/admin-article/'+row.id +'">Edytuj</a>'
+                    }
             }
-          };
-
-    data = [
-            {
-              author: "Leanne Graham",
-              title: "Bret",
-              description: "Sincere@april.biz"
-            },
-            {
-              author: "Ervin Howell",
-              title: "Antonette",
-              description: "Shanna@melissa.tv"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-            {
-                author: "Nicholas DuBuque",
-                title: "Nicholas.Stanton",
-                description: "Rey.Padberg@rosamond.biz"
-            },
-          ];
+        },
+    };
 }

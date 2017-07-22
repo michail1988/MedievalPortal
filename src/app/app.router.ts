@@ -12,7 +12,8 @@ import { MapComponent } from "app/map/map.component";
 import { NewsComponent } from "app/news/news.component";
 import { ArticleComponent } from "app/article/article.component";
 
-import {ArticleResolver} from './services/article-resolver.service';
+import { ArticleResolver } from './services/article-resolver.service';
+import { AdminArticleComponent } from "app/admin-article/admin-article.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -29,6 +30,15 @@ export const router: Routes = [
     {
         path: 'article/:id',
         component: ArticleComponent,
+        resolve: {
+            article: ArticleResolver
+        }, canActivate: [
+            CanActivateViaAuthGuard
+        ],
+    },
+    {
+        path: 'admin-article/:id',
+        component: AdminArticleComponent,
         resolve: {
             article: ArticleResolver
         }
