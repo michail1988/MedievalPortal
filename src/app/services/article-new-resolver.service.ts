@@ -18,7 +18,7 @@ export class ArticleNewResolver implements Resolve<Article> {
     ): Observable<Article> {
 
         return Observable.create( observer => {
-            observer.next( new Article( '', '', '', '', '' ) );
+            observer.next( new Article( '', '', '', '', '', 'A' ) );
             observer.complete();
         } );
 

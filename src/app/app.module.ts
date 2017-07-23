@@ -54,7 +54,8 @@ import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 import { BreadcrumbModule } from 'primeng/primeng';
 import { AccordionModule } from 'primeng/primeng';
 import { ArticleNewResolver } from "app/services/article-new-resolver.service";
-
+import { LoginRegisterComponent } from './login-register/login-register.component';
+import {SelectButtonModule} from 'primeng/primeng';
 
 
 @NgModule( {
@@ -80,7 +81,8 @@ import { ArticleNewResolver } from "app/services/article-new-resolver.service";
         ArticleComponent,
         PrintComponent,
         AdminArticleComponent,
-        AdminArticleHistoryComponent
+        AdminArticleHistoryComponent,
+        LoginRegisterComponent
     ],
     imports: [
         BrowserModule,
@@ -100,7 +102,8 @@ import { ArticleNewResolver } from "app/services/article-new-resolver.service";
         Ng2SmartTableModule,
         ConfirmDialogModule,
         BreadcrumbModule,
-        AccordionModule
+        AccordionModule,
+        SelectButtonModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
     bootstrap: [AppComponent]

@@ -15,12 +15,14 @@ import { ArticleComponent } from "app/article/article.component";
 import { ArticleResolver } from './services/article-resolver.service';
 import { AdminArticleComponent } from "app/admin-article/admin-article.component";
 import { ArticleNewResolver } from "app/services/article-new-resolver.service";
+import { LoginRegisterComponent } from "app/login-register/login-register.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
     { path: 'enrolments', component: EnrolmentsComponent },
     { path: 'application-form', component: ApplicationFormComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'login-register', component: LoginRegisterComponent },
     { path: 'map', component: MapComponent },
     { path: 'news', component: NewsComponent },
     {
