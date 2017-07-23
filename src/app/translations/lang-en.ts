@@ -13,4 +13,11 @@ export const LANG_EN_TRANS = {
     'Create New': 'Create New',
     'Author': 'Author',
     'Title': 'Title',
+    'First name': 'First name',
+    'Surname': 'Surname',
+    'E-mail':'E-mail',
+    'Enrolment form': 'Enrolment form',
+    'Phone': 'Phone',
+    'Show deleted articles': 'Show deleted articles',
+    'Show articles': 'Show active articles'
 };

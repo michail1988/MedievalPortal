@@ -15,6 +15,11 @@ export class ArticleService {
 
     private articlesUrl = 'http://localhost:3000/articles';
     private articleUrl = 'http://localhost:3000/article';
+    private deletedArticlesUrl = 'http://localhost:3000/deletedArticles';
+    private deleteArticleUrl = 'http://localhost:3000/deleteArticle';
+    private activateArticleUrl = 'http://localhost:3000/activateArticle';
+    
+    
     
     private articleHistoryUrl = 'http://localhost:3000/articleHistory';
 
@@ -22,6 +27,14 @@ export class ArticleService {
 
         // ...using get request
         return this.http.get( this.articlesUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+    }
+    
+    getDeletedArticles(): Observable<Article[]> {
+        return this.http.get( this.deletedArticlesUrl )
             // ...and calling .json() on the response to return data
             .map(( res: Response ) => res.json() )
             //...errors if any
@@ -84,12 +97,20 @@ export class ArticleService {
             .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
     }
 
-    // Delete a enrolment
-    removeArticle( id: string ): Observable<Article[]> {
-
-        return this.http.delete( `${this.articlesUrl}/${id}` ) // ...using put request
+    deleteArticle( body: Article ): Observable<Article[]> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post( this.deleteArticleUrl, JSON.stringify( body ), options )
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
-            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) ); //...errors if any
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
     }
 
+    activateArticle( body: Article ): Observable<Article[]> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post( this.activateArticleUrl, JSON.stringify( body ), options )
+            .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+    }
+    
 }

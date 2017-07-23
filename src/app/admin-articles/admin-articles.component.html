@@ -1,10 +1,16 @@
 <h1>{{ 'articles-list' | translate}}</h1>
 
 
-<button pButton type="button" (click)="createNew()" 
+<button pButton type="button" (click)="createNew()"
 	label="{{ 'Create New' | translate}}"></button>
-	
-	<br/>
-	<br/>
-	
+
+<button pButton type="button" (click)="showDeletedArticles()" icon="fa-trash-o" *ngIf="isShowActive()"
+	label="{{ 'Show deleted articles' | translate}}"></button>
+
+<button pButton type="button" (click)="showActiveArticles()" *ngIf="!isShowActive()"
+	label="{{ 'Show articles' | translate}}"></button>
+
+<br />
+<br />
+
 <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

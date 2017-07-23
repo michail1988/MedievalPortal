@@ -14,10 +14,14 @@
 <button pButton type="button" (click)="cancel()" icon="fa-close"
 	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
 
-<button pButton type="button" (click)="confirmDelete()"
+<button pButton type="button" (click)="confirmDelete()" *ngIf="!isDeleted()"
 	icon="fa-trash-o" class="ui-button-danger"
 	label="{{ 'Delete' | translate}}"></button>
 
+<button pButton type="button" (click)="activateArticle()" *ngIf="isDeleted()"
+	icon="fa-trash-o" class="ui-button-danger"
+	label="{{ 'Recover translate this' | translate}}"></button>
+	
 <br />
 <br />
 

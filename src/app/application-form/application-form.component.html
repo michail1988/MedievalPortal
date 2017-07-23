@@ -3,23 +3,23 @@
 
 	<form (ngSubmit)="submitEnrolment()" [hidden]="submitted"
 		#heroForm="ngForm">
-		<h1>Formularz zgloszenia</h1>
+		<h1>{{ 'Enrolment form' | translate}}</h1>
 		<div class="form-group">
-			<label for="name">Imie</label> <input type="text"
-				class="form-control" id="name" required [(ngModel)]="enrolment.name"
-				name="name">
+			<label for="name">{{ 'First name' | translate }}</label> <input
+				type="text" class="form-control" id="name" required
+				[(ngModel)]="enrolment.name" name="name">
 		</div>
 
 		<div class="form-group">
-			<label for="surname">Nazwisko</label> <input type="text"
-				class="form-control" id="surname" required
+			<label for="surname">{{ 'Surname' | translate }}</label> <input
+				type="text" class="form-control" id="surname" required
 				[(ngModel)]="enrolment.surname" name="surname">
 		</div>
 
 		<div class="form-group">
-			<label for="email">Email</label> <input type="text"
-				class="form-control" [(ngModel)]="enrolment.email" id="email"
-				required name="email">
+			<label for="email">{{ 'E-mail' | translate }}</label> <input
+				type="text" class="form-control" [(ngModel)]="enrolment.email"
+				id="email" required name="email">
 		</div>
 
 		<div class="form-group">
@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="phone">Telefon</label> <br />
+			<label for="phone">{{ 'Phone' | translate }}</label> <br />
 			<p-inputMask mask="999-999-999" name="phone"></p-inputMask>
 		</div>
 
@@ -49,18 +49,19 @@
 				<p-radioButton name="group1" value="Option 3" label="Option 3"
 					[(ngModel)]="val1"></p-radioButton>
 			</div>
-			
-			
+
+
 			Selected Value = {{val1||'none'}}
 
 
-<div class="form-group">
-		<input  type="text" size="30" pInputText name="abstract" [(ngModel)]="abstrakt">
+			<div class="form-group">
+				<input type="text" size="30" pInputText name="abstract"
+					[(ngModel)]="abstrakt">
 
 			</div>
-			
+
 		</div>
-		
+
 
 		<button class="btn btn-success">Wyslij zgloszenie</button>
 

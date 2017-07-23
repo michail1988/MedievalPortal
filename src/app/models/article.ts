@@ -5,7 +5,9 @@ export class Article {
             public title: string,
             public content: string,
             public headline: string,
+            public status: string
         ) { }
     
     public fk_editor: string
+    
 }

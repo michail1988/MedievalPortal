@@ -13,4 +13,11 @@ export const LANG_PL_TRANS = {
     'Create New': 'Utwórz',
     'Author': 'Autor',
     'Title': 'Tytuł',
+    'First name': 'Imię',
+    'Surname': 'Nazwisko',
+    'E-mail':'E-mail',
+    'Enrolment form':'Formularz zgłoszenia',
+    'Phone': 'Telefon',
+    'Show deleted articles': 'Pokaż usunięte',
+    'Show articles': 'Pokaż aktywne artykuły'
 };

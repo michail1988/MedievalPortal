@@ -16,31 +16,34 @@ export class AdminArticlesComponent implements OnInit {
 
     articles: Article[];
     source: LocalDataSource;
+    activeArticleView: boolean;
 
     constructor( private articleService: ArticleService, private router: Router ) {
 
         this.source = new LocalDataSource();
 
-
         this.articleService.getArticles().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-
+        
+        this.activeArticleView = true;
     }
 
     ngOnInit() {
         // Load articles
-        this.loadArticles()
+//        this.loadArticles()
     }
 
     loadArticles() {
-        this.articleService.getArticles()
-            .subscribe(
-            articles => this.articles = articles, //Bind to view
-            err => {
-                // Log errors if any
-                console.log( err );
-            } );
+        this.articleService.getArticles().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+    }
+    
+    loadDeletedArticles() {
+        this.articleService.getDeletedArticles().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
     }
 
     //TODO Michal translacja przez serwis
@@ -69,9 +72,27 @@ export class AdminArticlesComponent implements OnInit {
                 }
             }
         },
+        actions: false
     };
 
     createNew() {
         this.router.navigate( ['admin-article-new/'] );
     }
+    
+    isShowActive() {
+        return this.activeArticleView;
+    }
+    
+    showDeletedArticles() {
+        this.loadDeletedArticles();
+        
+        this.activeArticleView = false;
+    }
+    
+    showActiveArticles() {
+        this.loadArticles();
+        
+        this.activeArticleView = true;
+    }
+    
 }

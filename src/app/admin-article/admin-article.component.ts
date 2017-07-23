@@ -47,14 +47,14 @@ export class AdminArticleComponent implements OnInit {
     saveNew() {
         //todo get from localStorage.getItem( 'token' )
         this.article.fk_editor = '1';
-        
+
         this.articleService.addArticle( this.article ).subscribe(
             articles => {
                 // Emit list event
                 //                //navigate
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
-                
+
                 this.router.navigate( ['admin'] );
 
             },
@@ -62,21 +62,21 @@ export class AdminArticleComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
-        
+
         this.router.navigate( ['admin'] );
     }
-    
+
     save() {
         //todo get from localStorage.getItem( 'token' )
         this.article.fk_editor = '1';
-        
+
         this.articleService.updateArticle( this.article ).subscribe(
             articles => {
                 // Emit list event
                 //                //navigate
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
-                
+
                 this.router.navigate( ['admin'] );
 
             },
@@ -84,7 +84,7 @@ export class AdminArticleComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
-        
+
         //TODO odpowiedz i bledy
         this.router.navigate( ['admin'] );
     }
@@ -92,11 +92,15 @@ export class AdminArticleComponent implements OnInit {
     cancel() {
         this.router.navigate( ['admin'] );
     }
-    
+
     isNew() {
-        return (!this.article.id || 0 === this.article.id.length);
+        return ( !this.article.id || 0 === this.article.id.length );
     }
     
+    isDeleted() {
+        return 'D' === this.article.status
+    }
+
     getArticlesHistory() {
         this.articleService.getArticleHistory( this.article.id )
             .subscribe(
@@ -114,11 +118,47 @@ export class AdminArticleComponent implements OnInit {
             icon: 'fa fa-trash',
             accept: () => {
                 this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
+                
+                this.deleteArticle();
             },
             reject: () => {
                 this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
             }
         } );
+    }
+    
+    deleteArticle() {            
+        this.articleService.deleteArticle( this.article ).subscribe(
+                articles => {
+                    // Emit list event
+                    //                //navigate
+                    //                EmitterService.get( this.listId ).emit( enrolments );
+                    // Empty model
+
+                    this.router.navigate( ['admin'] );
+
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+    }
+    
+    activateArticle() {            
+        this.articleService.activateArticle( this.article ).subscribe(
+                articles => {
+                    // Emit list event
+                    //                //navigate
+                    //                EmitterService.get( this.listId ).emit( enrolments );
+                    // Empty model
+
+                    this.router.navigate( ['admin'] );
+
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
 }
