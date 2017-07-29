@@ -6,41 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-import { AppComponent } from './app.component';
-import { SiteHeaderComponent } from './site-header/site-header.component';
-import { ApplicationFormComponent } from './application-form/application-form.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { MenuComponent } from './menu/menu.component';
-import { EnrolmentsComponent } from './enrolments/enrolments.component';
-
-import { EnrolmentService } from './services/enrolment.service';
-import { ArticleService } from './services/article.service';
-import { AuthenticationService } from './services/authentication.service';
-import { UniversityService } from './services/university.service';
-import { ArticleResolver } from './services/article-resolver.service';
-
-import { routes } from './app.router';
-import { LoginComponent } from './login/login.component';
-import { TextEditorComponent } from './text-editor/text-editor.component';
-import { AdminComponent } from './admin/admin.component';
-import { CanActivateViaAuthGuard } from "./services/can-activate-via-auth-guard";
-import { MapComponent } from './map/map.component';
-import { NewsComponent } from './news/news.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { ArticleBoxComponent } from './article-box/article-box.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
-import { PrintComponent } from './print/print.component';
-import { AdminArticleComponent } from './admin-article/admin-article.component';
-import { AdminArticleHistoryComponent } from './admin-article-history/admin-article-history.component';
-
-//internationalization
-import { TranslateService } from "app/translations/translate.service";
-import { TRANSLATION_PROVIDERS } from "app/translations/translations";
-import { TranslatePipe } from "app/translations/translate.pipe";
-import { LanguagesComponent } from './languages/languages.component';
-
 //PrimeNG
 import { AutoCompleteModule } from 'primeng/primeng';
 import { EditorModule } from 'primeng/primeng';
@@ -55,7 +20,46 @@ import { BreadcrumbModule } from 'primeng/primeng';
 import { AccordionModule } from 'primeng/primeng';
 import { ArticleNewResolver } from "app/services/article-new-resolver.service";
 import { LoginRegisterComponent } from './login-register/login-register.component';
-import {SelectButtonModule} from 'primeng/primeng';
+import { SelectButtonModule } from 'primeng/primeng';
+
+import { EnrolmentService } from './services/enrolment.service';
+import { ArticleService } from './services/article.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UniversityService } from './services/university.service';
+import { ArticleResolver } from './services/article-resolver.service';
+
+//internationalization
+import { TranslateService } from "app/translations/translate.service";
+import { TRANSLATION_PROVIDERS } from "app/translations/translations";
+import { TranslatePipe } from "app/translations/translate.pipe";
+import { LanguagesComponent } from './languages/languages.component';
+
+//guards
+import { CanActivateAdminGuard } from "app/services/can-activate-admin-guard";
+import { CanActivateUserGuard } from "app/services/can-activate-user-guard";
+
+import { routes } from './app.router';
+import { LoginComponent } from './login/login.component';
+import { TextEditorComponent } from './text-editor/text-editor.component';
+import { AdminComponent } from './admin/admin.component';
+import { MapComponent } from './map/map.component';
+import { NewsComponent } from './news/news.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleBoxComponent } from './article-box/article-box.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
+import { PrintComponent } from './print/print.component';
+import { AdminArticleComponent } from './admin-article/admin-article.component';
+import { AdminArticleHistoryComponent } from './admin-article-history/admin-article-history.component';
+import { UserLoggedComponent } from './user-logged/user-logged.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AppComponent } from './app.component';
+import { SiteHeaderComponent } from './site-header/site-header.component';
+import { ApplicationFormComponent } from './application-form/application-form.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { MenuComponent } from './menu/menu.component';
+import { EnrolmentsComponent } from './enrolments/enrolments.component';
 
 
 @NgModule( {
@@ -82,7 +86,9 @@ import {SelectButtonModule} from 'primeng/primeng';
         PrintComponent,
         AdminArticleComponent,
         AdminArticleHistoryComponent,
-        LoginRegisterComponent
+        LoginRegisterComponent,
+        UserLoggedComponent,
+        UserProfileComponent
     ],
     imports: [
         BrowserModule,
@@ -105,7 +111,7 @@ import {SelectButtonModule} from 'primeng/primeng';
         AccordionModule,
         SelectButtonModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateViaAuthGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

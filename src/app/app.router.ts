@@ -7,7 +7,6 @@ import { ApplicationFormComponent } from './application-form/application-form.co
 import { LoginComponent } from './login/login.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { AdminComponent } from "app/admin/admin.component";
-import { CanActivateViaAuthGuard } from "app/services/can-activate-via-auth-guard";
 import { MapComponent } from "app/map/map.component";
 import { NewsComponent } from "app/news/news.component";
 import { ArticleComponent } from "app/article/article.component";
@@ -16,6 +15,10 @@ import { ArticleResolver } from './services/article-resolver.service';
 import { AdminArticleComponent } from "app/admin-article/admin-article.component";
 import { ArticleNewResolver } from "app/services/article-new-resolver.service";
 import { LoginRegisterComponent } from "app/login-register/login-register.component";
+import { CanActivateAdminGuard } from "app/services/can-activate-admin-guard";
+import { UserLoggedComponent } from "app/user-logged/user-logged.component";
+import { CanActivateUserGuard } from "app/services/can-activate-user-guard";
+import { UserProfileComponent } from "app/user-profile/user-profile.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -27,7 +30,7 @@ export const router: Routes = [
     { path: 'news', component: NewsComponent },
     {
         path: 'admin', component: AdminComponent, canActivate: [
-            CanActivateViaAuthGuard
+            CanActivateAdminGuard
         ],
     },
     {
@@ -36,7 +39,7 @@ export const router: Routes = [
         resolve: {
             article: ArticleResolver
         }, canActivate: [
-            CanActivateViaAuthGuard
+            CanActivateAdminGuard
         ],
     },
     {
@@ -44,16 +47,33 @@ export const router: Routes = [
         component: AdminArticleComponent,
         resolve: {
             article: ArticleResolver
-        }
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
     },
     {
         path: 'admin-article-new',
         component: AdminArticleComponent,
         resolve: {
             article: ArticleNewResolver
-        }
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'user-profile',
+        component: UserProfileComponent,
+        resolve: {
+            article: ArticleNewResolver
+        }, canActivate: [
+            CanActivateUserGuard
+        ],
     }
-    
+
+
+
+
+
 
 
 ];

@@ -88,15 +88,9 @@ export class ApplicationFormComponent implements OnInit {
 //todo dziala wolno, jakby co drugi znak
         if ( this.universities ) {
 
-
-            console.log( 'Pracuje' );
-            
-
             this.results = this.universities.map( function( uni ) {
                 return uni.name;
             } )
-            
-            console.log( 'To znalazlem' + this.results );
         }
         ;
     }
