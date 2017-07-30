@@ -15,6 +15,8 @@ import { Image } from './image.interface';
 export class CarouselComponent {
     //images data to be bound to the template
     public images = IMAGES;
+    
+    
 }
 
 //IMAGES array implementing Image interface

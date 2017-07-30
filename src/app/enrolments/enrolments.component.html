@@ -9,12 +9,12 @@
 		<th>Data zgloszenia</th>
 	</tr>
 
-	<tr *ngFor="let enrolment of enrolments; let i = index">
+	<tr *ngFor="let user of users let i = index">
 		<td>{{i + 1}}</td>
-		<td>{{enrolment.name}}</td>
-		<td>{{enrolment.surname}}</td>
-		<td>{{enrolment.email}}</td>
-		<td>{{enrolment.date | date:'dd-MM-yyyy'}}</td>
+		<td>{{user.name}}</td>
+		<td>{{user.surname}}</td>
+		<td>{{user.email}}</td>
+		<td>{{user.registerdate | date:'dd-MM-yyyy'}}</td>
 	</tr>
 
 </table>

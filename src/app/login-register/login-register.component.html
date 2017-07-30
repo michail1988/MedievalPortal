@@ -19,67 +19,77 @@
 		</span>
 	</div>
 	<div class="logmod__form">
-		<form accept-charset="utf-8" action="#" class="simform">
+		<form (ngSubmit)="submitUser()" accept-charset="utf-8"
+			#heroForm="ngForm" class="simform">
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-name">Email*</label> <input
-						class="string optional" maxlength="255" id="user-email"
-						placeholder="Email" type="email" size="50" />
+					<label class="string optional" for="user-email">Email*</label> <input
+						[(ngModel)]="user.email" class="string optional" name="email"
+						maxlength="255" id="user-email" placeholder="Email" type="email"
+						size="50" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div class="input string optional">
 					<label class="string optional" for="user-pw">Password *</label> <input
 						class="string optional" maxlength="255" id="user-pw"
-						placeholder="Password" type="text" size="50" />
+						[(ngModel)]="user.password" name="password" placeholder="Password"
+						type="password" size="50" />
 				</div>
 				<div class="input string optional">
 					<label class="string optional" for="user-pw-repeat">Repeat
 						password *</label> <input class="string optional" maxlength="255"
-						id="user-pw-repeat" placeholder="Repeat password" type="text"
+						[(ngModel)]="repeatPassword" name="passwordRepeat"
+						id="user-pw-repeat" placeholder="Repeat password" type="password"
 						size="50" />
 				</div>
 			</div>
 
 			<div class="sminputs">
 				<div class="input string optional">
-					<label class="string optional" for="user-pw">First name *</label> <input
-						class="string optional" maxlength="255" id="user-pw"
-						placeholder="Firstname" type="text" size="50" />
+					<label class="string optional" for="user-name">First name *</label>
+					<input class="string optional" maxlength="255" id="user-name"
+						[(ngModel)]="user.name" name="name" placeholder="Firstname"
+						type="text" size="50" />
 				</div>
 				<div class="input string optional">
-					<label class="string optional" for="user-pw-repeat">Surname
-						*</label> <input class="string optional" maxlength="255"
-						id="user-pw-repeat" placeholder="Surname" type="text" size="50" />
+					<label class="string optional" for="user-surname">Surname *</label>
+					<input class="string optional" maxlength="255"
+						[(ngModel)]="user.surname" name="surname" id="user-surname"
+						placeholder="Surname" type="text" size="50" />
 				</div>
 			</div>
-
-
 
 
 			<div class="sminputs">
 				<div class="input string optional">
-					<label class="string optional" for="university">Afiliacja
+					<label class="string optional" for="user-university">Afiliacja
 						(ang)</label>
 
-						<p-autoComplete placeholder="University"
-							[(ngModel)]="enrolment.university" [suggestions]="results"
-							(completeMethod)="search($event)"  required name="university"></p-autoComplete>
-					
-					<input class="string optional" maxlength="255" 
-						placeholder="Afiliacja" type="text" size="50" />
-
+					<p-autoComplete placeholder="University"
+						[(ngModel)]="user.university" [suggestions]="results"
+						(completeMethod)="search($event)" required name="university"
+						id="user-university"></p-autoComplete>
 
 
 				</div>
 				<div class="input string optional">
-					<label class="string optional" for="user-pw">Phone</label> <input
-						class="string optional" maxlength="255" id="user-pw"
-						placeholder="Phone" type="text" size="50" />
+					<label class="string optional" for="user-phone">Phone</label> <input
+						[(ngModel)]="user.phone" name="phone" class="string optional"
+						maxlength="255" id="user-phone" placeholder="Phone" type="text"
+						size="50" />
 				</div>
 
 			</div>
 
+			<div class="sminputs">
+				<div class="input full">
+					<label class="string optional" for="user-contactComments">Uwagi</label>
+					<input class="string optional" maxlength="2000"
+						id="user-contactComments" [(ngModel)]="user.contactcomments"
+						name="comments" placeholder="Uwagi" type="text" size="2000" />
+				</div>
+			</div>
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="character-role">W jakim
@@ -93,9 +103,11 @@
 
 			<div class="sminputs" [hidden]="!isSpeakerPartsVisible()">
 				<div class="input full">
-					<label class="string optional" for="user-name">Abstrakt</label> <input
-						class="string optional" maxlength="255" id="user-email"
-						placeholder="Abstrakt" type="email" size="50" />
+					<label class="string optional" for="user-subjectDescription">Abstrakt</label>
+					<input class="string optional" maxlength="255"
+						id="user-subjectDescription" [(ngModel)]="user.subjectdescription"
+						name="subjectDescription" placeholder="Abstrakt" type="text"
+						size="50" />
 				</div>
 			</div>
 
@@ -120,17 +132,18 @@
 		<form accept-charset="utf-8" action="#" class="simform">
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-name">Email*</label> <input
+					<label class="string optional" for="user-email">Email*</label> <input
 						class="string optional" maxlength="255" id="user-email"
-						placeholder="Email" type="email" size="50" />
+						[(ngModel)]="user.email" name="email" placeholder="Email"
+						type="email" size="50" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="user-pw">Password *</label> <input
 						class="string optional" maxlength="255" id="user-pw"
-						placeholder="Password" type="password" size="50" /> <span
-						class="hide-password">Show</span>
+						[(ngModel)]="user.password" name="password" placeholder="Password"
+						type="password" size="50" /> <span class="hide-password">Show</span>
 				</div>
 			</div>
 			<div class="simform__actions">
@@ -142,3 +155,5 @@
 		</form>
 	</div>
 </div>
+
+{{diagnostic}} 

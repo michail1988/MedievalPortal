@@ -23,6 +23,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { SelectButtonModule } from 'primeng/primeng';
 import { FileUploadModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
+import { CarouselModule } from 'primeng/primeng';
 
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
@@ -62,6 +63,7 @@ import { ApplicationFormComponent } from './application-form/application-form.co
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
+import { UserService } from "app/services/user.service";
 
 
 @NgModule( {
@@ -113,9 +115,10 @@ import { EnrolmentsComponent } from './enrolments/enrolments.component';
         AccordionModule,
         SelectButtonModule,
         FileUploadModule,
-        GrowlModule
+        GrowlModule,
+        CarouselModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

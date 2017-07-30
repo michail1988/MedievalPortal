@@ -3,6 +3,9 @@ import { SelectItem } from "primeng/primeng";
 import { UniversityService } from "app/services/university.service";
 import { University } from "app/models/university";
 import { Enrolment } from "app/models/enrolment";
+import { User } from "app/models/user";
+import { UserService } from "app/services/user.service";
+import { EmitterService } from "app/services/emitter.service";
 
 @Component( {
     selector: 'app-login-register',
@@ -20,10 +23,15 @@ export class LoginRegisterComponent implements OnInit {
     universities: University[];
     results: string[];
 
-    //todo zmienic na user
-    enrolment = new Enrolment( '', '', '', null, '', '' );
-    
-    constructor( private universityService: UniversityService ) {
+    submitted = false;
+
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify( this.user ); }
+
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '' );
+    repeatPassword: string; //TODO dodac walidacje
+
+    constructor( private userService: UserService, private universityService: UniversityService ) {
         this.loginTabVisible = false;
         this.speakerPartsVisible = false;
 
@@ -50,9 +58,30 @@ export class LoginRegisterComponent implements OnInit {
         return this.selectedType === 'Speaker';
     }
 
+  //TODO koniecznie jakas odpowiedz serwera
+    submitUser() {
+
+        this.user.registerdate = new Date();
+        this.user.congressrole = this.selectedType.charAt(0)
+        this.userService.addUser( this.user ).subscribe(
+            enrolments => {
+                //                // Emit list event
+                //                EmitterService.get( this.listId ).emit( enrolments );
+                //                // Empty model
+                //TODO success
+
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+
+        this.submitted = true;
+    }
+
     loadUniversities() {
         // Get all enrolments
-        this.universityService.getUniversities( this.enrolment.university )
+        this.universityService.getUniversities( this.user.university )
             .subscribe(
             universities => this.universities = universities, //Bind to view
             err => {
@@ -62,6 +91,7 @@ export class LoginRegisterComponent implements OnInit {
 
         console.log( this.universities );
     }
+
     search( event ) {
         //      EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
 

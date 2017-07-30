@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Enrolment } from '../models/enrolment'
-import { EnrolmentService } from '../services/enrolment.service';
+import { User } from "app/models/user";
+import { UserService } from '../services/user.service';
 import { EmitterService } from '../services/emitter.service';
 
 
 import { Observable } from "rxjs";
+
 
 @Component( {
     selector: 'app-enrolments',
@@ -13,13 +14,13 @@ import { Observable } from "rxjs";
 } )
 export class EnrolmentsComponent implements OnInit, OnChanges {
     // Local properties
-    enrolments: Enrolment[];
+    users: User[];
     // Input properties
     @Input() listId: string;
     @Input() editId: string;
 
     // Constructor with injected service
-    constructor( private enrolmentService: EnrolmentService ) { }
+    constructor( private userService: UserService ) { }
 
     ngOnInit() {
         // Load enrolments
@@ -28,21 +29,19 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
     loadEnrolments() {
         // Get all enrolments
-        this.enrolmentService.getEnrolments()
+        this.userService.getUsers()
             .subscribe(
-            enrolments => this.enrolments = enrolments, //Bind to view
+            enrolments => this.users = enrolments, //Bind to view
             err => {
                 // Log errors if any
                 console.log( err );
             } );
-
-        console.log( this.enrolments );
     }
 
     ngOnChanges( changes: any ) {
         // Listen to the 'list'emitted event so as populate the model
         // with the event payload
-        EmitterService.get( this.listId ).subscribe(( enrolments: Enrolment[] ) => { this.loadEnrolments() } );
+        EmitterService.get( this.listId ).subscribe(( enrolments: User[] ) => { this.loadEnrolments() } );
 
     }
 }
