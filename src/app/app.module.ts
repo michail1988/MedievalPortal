@@ -21,6 +21,8 @@ import { AccordionModule } from 'primeng/primeng';
 import { ArticleNewResolver } from "app/services/article-new-resolver.service";
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { SelectButtonModule } from 'primeng/primeng';
+import { FileUploadModule } from 'primeng/primeng';
+import { GrowlModule } from 'primeng/primeng';
 
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
@@ -109,7 +111,9 @@ import { EnrolmentsComponent } from './enrolments/enrolments.component';
         ConfirmDialogModule,
         BreadcrumbModule,
         AccordionModule,
-        SelectButtonModule
+        SelectButtonModule,
+        FileUploadModule,
+        GrowlModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
     bootstrap: [AppComponent]

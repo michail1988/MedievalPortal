@@ -1,3 +1,11 @@
-<p>
-  user-profile works!
-</p>
+<p-growl [value]="msgs"></p-growl>
+
+<h3 class="first">Profile photo</h3>
+
+<p-fileUpload name="file" url="{{uploadUrl}}"
+	(onUpload)="onUpload($event)" accept="image/*" maxFileSize="1000000">
+<template pTemplate type="content">
+<ul *ngIf="uploadedFiles.length">
+	<li *ngFor="let file of uploadedFiles">{{file.name}}</li>
+</ul>
+</template> </p-fileUpload>
