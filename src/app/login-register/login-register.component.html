@@ -129,12 +129,12 @@
 		</span>
 	</div>
 	<div class="logmod__form">
-		<form accept-charset="utf-8" action="#" class="simform">
+		<form accept-charset="utf-8" action="#" class="simform" (submit)="login($event, username.value, password.value)">
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="user-email">Email*</label> <input
 						class="string optional" maxlength="255" id="user-email"
-						[(ngModel)]="user.email" name="email" placeholder="Email"
+						#username name="email" placeholder="Email"
 						type="email" size="50" />
 				</div>
 			</div>
@@ -142,12 +142,12 @@
 				<div class="input full">
 					<label class="string optional" for="user-pw">Password *</label> <input
 						class="string optional" maxlength="255" id="user-pw"
-						[(ngModel)]="user.password" name="password" placeholder="Password"
+						#password name="password" placeholder="Password"
 						type="password" size="50" /> <span class="hide-password">Show</span>
 				</div>
 			</div>
 			<div class="simform__actions">
-				<input class="submit" name="commit" type="submit" value="Log In" />
+				<input class="submit" type="submit" name="commit" type="submit" value="Log In" />
 				<span class="simform__actions-sidetext"><a class="special"
 					role="link" href="#">Forgot your password?<br>Click here
 				</a></span>
@@ -157,3 +157,5 @@
 </div>
 
 {{diagnostic}} 
+
+{{diagnosticLogin}} 

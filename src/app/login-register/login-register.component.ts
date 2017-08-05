@@ -6,6 +6,8 @@ import { Enrolment } from "app/models/enrolment";
 import { User } from "app/models/user";
 import { UserService } from "app/services/user.service";
 import { EmitterService } from "app/services/emitter.service";
+import { AuthenticationService } from "app/services/authentication.service";
+import { Router } from "@angular/router";
 
 @Component( {
     selector: 'app-login-register',
@@ -31,7 +33,8 @@ export class LoginRegisterComponent implements OnInit {
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '' );
     repeatPassword: string; //TODO dodac walidacje
 
-    constructor( private userService: UserService, private universityService: UniversityService ) {
+    constructor( private userService: UserService, private universityService: UniversityService,
+        private authenticationService: AuthenticationService, public router: Router ) {
         this.loginTabVisible = false;
         this.speakerPartsVisible = false;
 
@@ -58,11 +61,11 @@ export class LoginRegisterComponent implements OnInit {
         return this.selectedType === 'Speaker';
     }
 
-  //TODO koniecznie jakas odpowiedz serwera
+    //TODO koniecznie jakas odpowiedz serwera
     submitUser() {
 
         this.user.registerdate = new Date();
-        this.user.congressrole = this.selectedType.charAt(0)
+        this.user.congressrole = this.selectedType.charAt( 0 )
         this.userService.addUser( this.user ).subscribe(
             enrolments => {
                 //                // Emit list event
@@ -78,6 +81,7 @@ export class LoginRegisterComponent implements OnInit {
 
         this.submitted = true;
     }
+    
 
     loadUniversities() {
         // Get all enrolments
@@ -105,5 +109,57 @@ export class LoginRegisterComponent implements OnInit {
             } )
         }
         ;
+    }
+
+    //TODO do porzadnej poprawy
+    login( event, username, password ) {
+
+        //co to jest?
+        event.preventDefault();
+        
+
+        this.authenticationService.getUser( username, password ).subscribe(
+              enrolments => this.user = enrolments, //Bind to view
+              err => {
+                  // Log errors if any
+                  console.log( "Error na poziomie authenticationService.getUser=" + err);
+                  console.log( "Error na poziomie err.message=" + err.message);
+              } );
+        
+        localStorage.setItem('logged', JSON.stringify(this.user))
+        var item = localStorage.getItem( 'logged' );
+        
+        this.user = JSON.parse(item)
+        console.log("this.item=" +  item)
+        console.log("this.user=" +  this.user)
+        console.log("s=" +  JSON.stringify(this.user))
+        
+        
+        var currentUser = localStorage.getItem( 'currentUser' );
+        console.log("Pobieram current user")
+        console.log("currentUser stringify=" +  JSON.stringify(currentUser))
+        console.log("currentUser=" +  currentUser)
+        
+        
+        //zaloguj
+        localStorage.setItem('token', JSON.stringify(this.user))
+        
+    }
+
+    get diagnosticLogin() {
+        var item = localStorage.getItem( 'token' );
+
+        return 'Zalogowany= ' + item;
+    }
+
+    get diagnosticUser() {
+        var item = localStorage.getItem( 'token' );
+
+        return 'Zalogowany= ' + item;
+    }
+
+    
+    logout() {
+        this.authenticationService.logout();
     }
 }
