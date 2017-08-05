@@ -64,6 +64,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 import { UserService } from "app/services/user.service";
+import { SlideComponent } from './slide/slide.component';
 
 
 @NgModule( {
@@ -92,7 +93,8 @@ import { UserService } from "app/services/user.service";
         AdminArticleHistoryComponent,
         LoginRegisterComponent,
         UserLoggedComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        SlideComponent
     ],
     imports: [
         BrowserModule,

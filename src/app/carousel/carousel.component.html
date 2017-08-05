@@ -1,24 +1,16 @@
-
-
-
-<div class="carousel" style="height: 350px; width: 900px;">
-
-
-
-
-	<ul class="slides">
-
-
-		<li *ngFor="let image of images">
-
-			<div class="description">
-				<p>{{image.description}}</p>
-			</div>
-
-			<h2>{{image.title}}</h2> <img src="{{image.url}}"
-			style="height: 350px; width: 500px;" alt="">
-		</li>
-
-
-	</ul>
-</div>
+<div style="width: 600px; float: left;" (mouseenter)="pause()" (mouseleave)="play()" class="carousel slide">
+      <ol class="carousel-indicators" [hidden]="slides.length <= 1">
+         <li *ngFor="let slidez of slides" [class.active]="slidez.active === true" (click)="select(slidez)"></li>
+         
+      </ol>
+      
+      <div class="carousel-inner"><ng-content></ng-content></div>
+                  <a class="left carousel-control" (click)="prev()" [hidden]="!slides.length">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" (click)="next()" [hidden]="!slides.length">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                 </a>
+                 
+                 
+    </div>
