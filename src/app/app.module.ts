@@ -65,6 +65,9 @@ import { MenuComponent } from './menu/menu.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 import { UserService } from "app/services/user.service";
 import { SlideComponent } from './slide/slide.component';
+import { Art1Component } from './art1/art1.component';
+import { Art2Component } from './art2/art2.component';
+import { Art3Component } from './art3/art3.component';
 
 
 @NgModule( {
@@ -94,7 +97,10 @@ import { SlideComponent } from './slide/slide.component';
         LoginRegisterComponent,
         UserLoggedComponent,
         UserProfileComponent,
-        SlideComponent
+        SlideComponent,
+        Art1Component,
+        Art2Component,
+        Art3Component
     ],
     imports: [
         BrowserModule,
