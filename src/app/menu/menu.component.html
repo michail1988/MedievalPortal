@@ -2,28 +2,15 @@
 <div id='cssmenu'>
 	<ul>
 		<li><a href='#'><span>Home</span></a></li>
-		<li class='active has-sub'><a routerLink="news"><span>Aktualnosci</span></a>
-			<ul>
-				<li class='has-sub'><a href='#'><span>Product 1</span></a>
-					<ul>
-						<li><a href='#'><span>Sub Product</span></a></li>
-						<li class='last'><a href='#'><span>Sub Product</span></a></li>
-					</ul></li>
-				<li class='has-sub'><a href='#'><span>Product 2</span></a>
-					<ul>
-						<li><a href='#'><span>Sub Product</span></a></li>
-						<li class='last'><a href='#'><span>Sub Product</span></a></li>
-					</ul></li>
-			</ul></li>
+		<li class='active has-sub'><a routerLink="news"><span>{{ 'News' | translate}}</span></a>
 		<li><a routerLink="application-form"><span>Formularz
 					rejestracji</span></a></li>
-		<li><a routerLink="enrolments"><span>Lista zgloszen</span></a></li>
 		<li><a routerLink="login"><span>Tymczasowo tutaj login</span></a></li>
 		<li><a routerLink="login-register"><span>Login
 					register</span></a></li>
-		<li><a routerLink="map"><span>Dojazd</span></a></li>
+		<li><a routerLink="map"><span>{{ 'Address' | translate}}</span></a></li>
 		<li><a routerLink="admin"><span>Panel admina</span></a></li>
-		<li class='active has-sub'><a routerLink="news"><span>Artykuly</span></a>
+		<li class='active has-sub'><a routerLink="news"><span>{{ 'Articles' | translate}}</span></a>
 			<ul>
 				<li class='has-sub'><a href='#'><span>Wczesne
 							sredniowiecze</span></a>
@@ -42,6 +29,6 @@
 		<li><a routerLink="art1"><span>Szablon 1</span></a></li>
 		<li><a routerLink="art2"><span>Szablon 2</span></a></li>
 		<li><a routerLink="art3"><span>Szablon 3</span></a></li>
-		<li><a routerLink="contact"><span>Kontakt</span></a></li>
+		<li><a routerLink="contact"><span>{{ 'Contact' | translate}}</span></a></li>
 	</ul>
 </div>

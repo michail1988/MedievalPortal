@@ -69,6 +69,7 @@ import { Art1Component } from './art1/art1.component';
 import { Art2Component } from './art2/art2.component';
 import { Art3Component } from './art3/art3.component';
 import { ContactComponent } from './contact/contact.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 
 
 
@@ -102,7 +103,8 @@ import { ContactComponent } from './contact/contact.component';
         Art1Component,
         Art2Component,
         Art3Component,
-        ContactComponent
+        ContactComponent,
+        AdminMenuComponent
     ],
     imports: [
         BrowserModule,

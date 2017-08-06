@@ -19,5 +19,9 @@ export const LANG_EN_TRANS = {
     'Enrolment form': 'Enrolment form',
     'Phone': 'Phone',
     'Show deleted articles': 'Show deleted articles',
-    'Show articles': 'Show active articles'
+    'Show articles': 'Show active articles',
+    'News':'News',
+    'Articles':'Articles',
+    'Contact':'Contact',
+    'Address':'Address'
 };

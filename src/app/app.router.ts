@@ -23,6 +23,7 @@ import { Art1Component } from "app/art1/art1.component";
 import { Art2Component } from "app/art2/art2.component";
 import { Art3Component } from "app/art3/art3.component";
 import { ContactComponent } from "app/contact/contact.component";
+import { AdminArticlesComponent } from "app/admin-articles/admin-articles.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -36,6 +37,28 @@ export const router: Routes = [
         path: 'admin', component: AdminComponent, canActivate: [
             CanActivateAdminGuard
         ],
+        children: [
+            {
+                path: '',
+                component: AdminArticlesComponent,
+                outlet: 'adminRouting'
+            },
+            {
+                path: 'admin-articles',
+                component: AdminArticlesComponent,
+                outlet: 'adminRouting'
+            },
+            {
+                path: 'admin-news',
+                component: NewsComponent,
+                outlet: 'adminRouting'
+            },
+            {
+                path: 'enrolments',
+                component: EnrolmentsComponent,
+                outlet: 'adminRouting'
+            }
+        ]
     },
     {
         path: 'article/:id',
