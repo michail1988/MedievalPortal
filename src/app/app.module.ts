@@ -30,6 +30,7 @@ import { ArticleService } from './services/article.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UniversityService } from './services/university.service';
 import { ArticleResolver } from './services/article-resolver.service';
+import { ContactService } from "app/services/contact.service";
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -68,6 +69,8 @@ import { SlideComponent } from './slide/slide.component';
 import { Art1Component } from './art1/art1.component';
 import { Art2Component } from './art2/art2.component';
 import { Art3Component } from './art3/art3.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 
 @NgModule( {
@@ -100,7 +103,8 @@ import { Art3Component } from './art3/art3.component';
         SlideComponent,
         Art1Component,
         Art2Component,
-        Art3Component
+        Art3Component,
+        ContactComponent
     ],
     imports: [
         BrowserModule,
@@ -126,7 +130,7 @@ import { Art3Component } from './art3/art3.component';
         GrowlModule,
         CarouselModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService, ContactService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

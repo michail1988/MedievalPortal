@@ -22,6 +22,7 @@ import { UserProfileComponent } from "app/user-profile/user-profile.component";
 import { Art1Component } from "app/art1/art1.component";
 import { Art2Component } from "app/art2/art2.component";
 import { Art3Component } from "app/art3/art3.component";
+import { ContactComponent } from "app/contact/contact.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'application-form', pathMatch: 'full' },
@@ -74,11 +75,8 @@ export const router: Routes = [
     },
     { path: 'art1', component: Art1Component },
     { path: 'art2', component: Art2Component },
-    { path: 'art3', component: Art3Component }
-
-
-
-
+    { path: 'art3', component: Art3Component },
+    { path: 'contact', component: ContactComponent }
 
 
 
