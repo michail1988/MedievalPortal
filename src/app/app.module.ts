@@ -59,7 +59,6 @@ import { AdminArticleHistoryComponent } from './admin-article-history/admin-arti
 import { UserLoggedComponent } from './user-logged/user-logged.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AppComponent } from './app.component';
-import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuComponent } from './menu/menu.component';
@@ -76,7 +75,6 @@ import { ContactComponent } from './contact/contact.component';
 @NgModule( {
     declarations: [
         AppComponent,
-        SiteHeaderComponent,
         ApplicationFormComponent,
         CarouselComponent,
         MenuComponent,
