@@ -1,16 +1,28 @@
-<div style="width: 600px; float: left;" (mouseenter)="pause()" (mouseleave)="play()" class="carousel slide">
-      <ol class="carousel-indicators" [hidden]="slides.length <= 1">
-         <li *ngFor="let slidez of slides" [class.active]="slidez.active === true" (click)="select(slidez)"></li>
-         
-      </ol>
-      
-      <div class="carousel-inner"><ng-content></ng-content></div>
-                  <a class="left carousel-control" (click)="prev()" [hidden]="!slides.length">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                  </a>
-                  <a class="right carousel-control" (click)="next()" [hidden]="!slides.length">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                 </a>
-                 
-                 
-    </div>
+
+
+<div style="width: 600px; float: left;" (mouseenter)="pause()"
+	(mouseleave)="play()" class="carousel slide">
+	<ol class="carousel-indicators" [hidden]="slides.length <= 1">
+		<li *ngFor="let slidez of slides" (indexSlide)="slidez"
+			[class.active]="slidez.active === true" (click)="select(slidez)"></li>
+
+	</ol>
+
+	<div class="carousel-inner">
+		<ng-content></ng-content>
+	</div>
+	<a class="left carousel-control" (click)="prev()"
+		[hidden]="!slides.length"> <span
+		class="glyphicon glyphicon-chevron-left"></span>
+	</a> <a class="right carousel-control" (click)="next()"
+		[hidden]="!slides.length"> <span
+		class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+
+
+</div>
+
+
+<div
+	style="width: 290px; height: 375px; float: right; background: lightgrey;">
+	{{currentSlide.description}}</div>

@@ -2,8 +2,8 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<carousel [interval]="NextPhotoInterval" [noWrap]="noLoopSlides">
-		<slide *ngFor="let slidez of slides" [active]="slidez.active">
+		<carousel [interval]="NextPhotoInterval" [noWrap]="noLoopSlides" >
+		<slide *ngFor="let slidez of slides" [active]="slidez.active" [description]="slidez.description">
 		<img [src]="slidez.image" style="margin: auto;">
 
 		<div class="carousel-caption">

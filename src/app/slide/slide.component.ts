@@ -17,8 +17,11 @@ export class SlideComponent implements OnInit, OnDestroy {
     @HostBinding( 'class.item' )
     @HostBinding( 'class.carousel-item' )
     private addClass: boolean = true;
+    
+    @Input() public description: string;
 
     constructor( private carousel: CarouselComponent ) {
+        
     }
 
     public ngOnInit() {
