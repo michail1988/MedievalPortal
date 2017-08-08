@@ -17,9 +17,9 @@ export class LanguagesComponent implements OnInit {
     ngOnInit() {
         // standing data
         this.supportedLanguages = [
-            { display: 'English', value: 'en' },
-            { display: 'Deutsch', value: 'de' },
-            { display: 'Polski', value: 'pl' },
+            { display: 'Polski', value: 'pl', flag: 'pl' },
+            { display: 'English', value: 'en', flag: 'gb' },
+            { display: 'Deutsch', value: 'de', flag: 'de' }
         ];
 
         // set current langage
