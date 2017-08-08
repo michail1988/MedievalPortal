@@ -31,6 +31,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UniversityService } from './services/university.service';
 import { ArticleResolver } from './services/article-resolver.service';
 import { ContactService } from "app/services/contact.service";
+import { CommentService } from './services/comment.service';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -70,6 +71,7 @@ import { Art2Component } from './art2/art2.component';
 import { Art3Component } from './art3/art3.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 
 
 
@@ -104,7 +106,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
         Art2Component,
         Art3Component,
         ContactComponent,
-        AdminMenuComponent
+        AdminMenuComponent,
+        CommentBoxComponent
     ],
     imports: [
         BrowserModule,
@@ -130,7 +133,9 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
         GrowlModule,
         CarouselModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, ArticleResolver, ArticleNewResolver, ConfirmationService, ContactService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, 
+                CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, 
+                ArticleResolver, ArticleNewResolver, ConfirmationService, ContactService, CommentService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }
