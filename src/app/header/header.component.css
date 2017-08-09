@@ -1,5 +1,5 @@
 .app-header-content {
-	width: 1130px;
+	width:100%;
 	position: fixed;
 	top: 0px;
 	height: 110px;
@@ -15,7 +15,7 @@
 }
 
 .app-header-login {
-	float: right;
+	text-align: right;
 }
 
 .app-header-lang {
