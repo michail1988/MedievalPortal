@@ -64,6 +64,7 @@ export class AdminArticlesComponent implements OnInit {
             editdate: {
                 title: 'Data edycji'
             },
+            //TODO wpasowac w routingAdmin
             link: {
                 title: 'Link',
                 type: 'html',

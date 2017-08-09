@@ -1,11 +1,12 @@
 import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { Article } from "app/models/article";
+import { EventService } from "app/services/event.service";
+import { Event } from "app/models/event";
 
 
 @Injectable()
-export class ArticleNewResolver implements Resolve<Article> {
+export class EventNewResolver implements Resolve<Event> {
     constructor(
         private router: Router,
     ) { }
@@ -13,10 +14,10 @@ export class ArticleNewResolver implements Resolve<Article> {
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): Observable<Article> {
+    ): Observable<Event> {
 
         return Observable.create( observer => {
-            observer.next( new Article( '', '', '', '', '', 'A' ) );
+            observer.next( new Event( '', null, null, '', '', '' ) );
             observer.complete();
         } );
 

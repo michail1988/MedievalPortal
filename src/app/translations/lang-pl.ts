@@ -23,5 +23,8 @@ export const LANG_PL_TRANS = {
     'News':'Aktualności',
     'Articles':'Artykuły',
     'Contact':'Kontakt',
-    'Address':'Dojazd'
+    'Address':'Dojazd',
+    'Schedules':'Harmonogram',
+    'Events':'Eventy'
+    
 };

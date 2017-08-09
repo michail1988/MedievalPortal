@@ -2,10 +2,10 @@
 	<ul>
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-articles']}}]">{{ 'Articles' | translate}}</a></li>
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['enrolments']}}]">{{ 'enrolments-list' | translate}}</a></li>
-		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-news']}}]">{{ 'News' | translate}}</a></li>
-		
-		
-		
+		<li><a >{{ 'News' | translate}}</a></li>
+		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-schedules']}}]">{{ 'Schedules' | translate}}</a></li>
+		<li><a >Inne</a></li>
+		<li><a >Uzytkownicy</a></li>
 		
 	</ul>
 </div>

@@ -1,0 +1,38 @@
+<p-confirmDialog></p-confirmDialog>
+
+<br />
+
+<button pButton type="button" (click)="saveNew()" icon="fa-check"
+	*ngIf="isNew()" class="ui-button-success"
+	label="{{ 'Save' | translate}}"></button>
+
+<button pButton type="button" (click)="save()" icon="fa-check"
+	*ngIf="!isNew()" class="ui-button-success"
+	label="{{ 'Save' | translate}}"></button>
+
+<button pButton type="button" (click)="cancel()" icon="fa-close"
+	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
+
+<button pButton type="button" (click)="confirmDelete()"
+	icon="fa-trash-o" class="ui-button-danger"
+	label="{{ 'Delete' | translate}}"></button>
+
+<br />
+<br />
+
+<h3>TODO Walidacja, niektore pola nie moga byc puste</h3>
+
+<input type="text" size="30" pInputText name="title" required
+	[(ngModel)]="schedule.title">
+
+<br />
+<br />
+
+<button pButton type="button" (click)="createNew()"
+	label="{{ 'Create New' | translate}}"></button>
+
+<br />
+<br />
+
+
+<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

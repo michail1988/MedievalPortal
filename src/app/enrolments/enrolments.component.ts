@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { User } from "app/models/user";
 import { UserService } from '../services/user.service';
 import { EmitterService } from '../services/emitter.service';
-
+import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 
 import { Observable } from "rxjs";
 
@@ -19,12 +19,19 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     @Input() listId: string;
     @Input() editId: string;
 
+    source: LocalDataSource;
+
     // Constructor with injected service
     constructor( private userService: UserService ) { }
 
     ngOnInit() {
         // Load enrolments
-        this.loadEnrolments()
+
+        this.source = new LocalDataSource();
+
+        this.userService.getUsers().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
     }
 
     loadEnrolments() {
@@ -44,4 +51,30 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         EmitterService.get( this.listId ).subscribe(( enrolments: User[] ) => { this.loadEnrolments() } );
 
     }
+
+    settings = {
+        columns: {
+            name: {
+                title: 'Imie'
+            },
+            surname: {
+                title: 'Nazwisko'
+            },
+            email: {
+                title: 'Email'
+            },
+            registerdate: {
+                title: 'Data zgloszenia'
+            },
+            action: {
+                title: 'Akcja',
+                type: 'html',
+                valuePrepareFunction: ( cell, row ) => {
+                    return '<a href="/admin-user/' + row.id + '">Edytuj</a>' + '<p> </p>' +
+                        '<a href="/admin-user/' + row.id + '">Zatwierdz</a>'
+                }
+            }
+        },
+        actions: false
+    };
 }

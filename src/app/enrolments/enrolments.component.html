@@ -1,20 +1,6 @@
-	
 
-<table class="table">
-	<tr>
-		<th>#</th>
-		<th>Imie</th>
-		<th>Nazwisko</th>
-		<th>Email</th>
-		<th>Data zgloszenia</th>
-	</tr>
+<br />
+<br />
 
-	<tr *ngFor="let user of users let i = index">
-		<td>{{i + 1}}</td>
-		<td>{{user.name}}</td>
-		<td>{{user.surname}}</td>
-		<td>{{user.email}}</td>
-		<td>{{user.registerdate | date:'dd-MM-yyyy'}}</td>
-	</tr>
 
-</table>
+<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

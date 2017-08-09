@@ -1,11 +1,11 @@
 import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { Article } from "app/models/article";
+import { Schedule } from "app/models/schedule";
 
 
 @Injectable()
-export class ArticleNewResolver implements Resolve<Article> {
+export class ScheduleNewResolver implements Resolve<Schedule> {
     constructor(
         private router: Router,
     ) { }
@@ -13,10 +13,11 @@ export class ArticleNewResolver implements Resolve<Article> {
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): Observable<Article> {
+    ): Observable<Schedule> {
 
+        console.log('wywolano schedule new resolver')
         return Observable.create( observer => {
-            observer.next( new Article( '', '', '', '', '', 'A' ) );
+            observer.next( new Schedule( '', '' ) );
             observer.complete();
         } );
 

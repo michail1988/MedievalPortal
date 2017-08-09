@@ -24,6 +24,7 @@ import { SelectButtonModule } from 'primeng/primeng';
 import { FileUploadModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 import { CarouselModule } from 'primeng/primeng';
+import { CalendarModule } from 'primeng/primeng';
 
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
@@ -72,6 +73,17 @@ import { Art3Component } from './art3/art3.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
+import { SchedulesComponent } from './schedules/schedules.component';
+import { AdminSchedulesComponent } from './admin-schedules/admin-schedules.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { AdminScheduleComponent } from './admin-schedule/admin-schedule.component';
+import { AdminEventComponent } from './admin-event/admin-event.component';
+import { ScheduleResolver } from "app/services/schedule-resolver.service";
+import { ScheduleNewResolver } from "app/services/schedule-new-resolver.service";
+import { ScheduleService } from "app/services/schedule.service";
+import { EventService } from "app/services/event.service";
+import { EventResolver } from "app/services/event-resolver.service";
+import { EventNewResolver } from "app/services/event-new-resolver.service";
 
 
 
@@ -107,7 +119,12 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
         Art3Component,
         ContactComponent,
         AdminMenuComponent,
-        CommentBoxComponent
+        CommentBoxComponent,
+        SchedulesComponent,
+        AdminSchedulesComponent,
+        ScheduleComponent,
+        AdminScheduleComponent,
+        AdminEventComponent
     ],
     imports: [
         BrowserModule,
@@ -131,11 +148,15 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
         SelectButtonModule,
         FileUploadModule,
         GrowlModule,
-        CarouselModule
+        CarouselModule,
+        CalendarModule
     ],
-    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService, 
-                CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService, 
-                ArticleResolver, ArticleNewResolver, ConfirmationService, ContactService, CommentService],
+    providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService,
+        CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,
+        ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
+        EventNewResolver,
+        ConfirmationService,
+        ContactService, CommentService, ScheduleService, EventService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

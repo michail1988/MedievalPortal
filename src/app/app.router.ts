@@ -24,9 +24,17 @@ import { Art2Component } from "app/art2/art2.component";
 import { Art3Component } from "app/art3/art3.component";
 import { ContactComponent } from "app/contact/contact.component";
 import { AdminArticlesComponent } from "app/admin-articles/admin-articles.component";
+import { ScheduleComponent } from "app/schedule/schedule.component";
+import { AdminSchedulesComponent } from "app/admin-schedules/admin-schedules.component";
+import { ScheduleResolver } from "app/services/schedule-resolver.service";
+import { AdminScheduleComponent } from "app/admin-schedule/admin-schedule.component";
+import { ScheduleNewResolver } from "app/services/schedule-new-resolver.service";
+import { AdminEventComponent } from "app/admin-event/admin-event.component";
+import { EventResolver } from "app/services/event-resolver.service";
+import { EventNewResolver } from "app/services/event-new-resolver.service";
 
 export const router: Routes = [
-    { path: '', redirectTo: 'application-form', pathMatch: 'full' },
+    { path: '', redirectTo: 'login-register', pathMatch: 'full' },
     { path: 'enrolments', component: EnrolmentsComponent },
     { path: 'application-form', component: ApplicationFormComponent },
     { path: 'login', component: LoginComponent },
@@ -54,10 +62,35 @@ export const router: Routes = [
                 outlet: 'adminRouting'
             },
             {
+                path: 'admin-schedules',
+                component: AdminSchedulesComponent,
+                outlet: 'adminRouting'
+            },
+            {
                 path: 'enrolments',
                 component: EnrolmentsComponent,
                 outlet: 'adminRouting'
-            }
+            },
+            {
+                path: 'admin-article/:id',
+                component: AdminArticleComponent,
+                resolve: {
+                    article: ArticleResolver
+                }, canActivate: [
+                    CanActivateAdminGuard
+                ],
+                
+            },
+            {
+                path: 'admin-schedule-new',
+                component: AdminScheduleComponent,
+                resolve: {
+                    schedule: ScheduleNewResolver
+                }, canActivate: [
+                    CanActivateAdminGuard
+                ],
+                outlet: 'adminRouting'
+            },
         ]
     },
     {
@@ -79,10 +112,46 @@ export const router: Routes = [
         ],
     },
     {
+        path: 'admin-schedule/:id',
+        component: AdminScheduleComponent,
+        resolve: {
+            schedule: ScheduleResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'admin-event/:id',
+        component: AdminEventComponent,
+        resolve: {
+            event: EventResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
         path: 'admin-article-new',
         component: AdminArticleComponent,
         resolve: {
             article: ArticleNewResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'admin-schedule-new',
+        component: AdminScheduleComponent,
+        resolve: {
+            schedule: ScheduleNewResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'admin-event-new',
+        component: AdminEventComponent,
+        resolve: {
+            event: EventNewResolver
         }, canActivate: [
             CanActivateAdminGuard
         ],
@@ -99,6 +168,7 @@ export const router: Routes = [
     { path: 'art1', component: Art1Component },
     { path: 'art2', component: Art2Component },
     { path: 'art3', component: Art3Component },
+    { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent }
 
 
