@@ -35,3 +35,53 @@ article {
 	margin-top:15px;
 }
 
+/* ADMIN TABLE */
+/***********************************************/
+table.ng2-smart-table {
+	width: 100%;
+	max-width: 600px;
+	height: 320px;
+	border-collapse: collapse;
+	border: 1px solid #38678f;
+	margin: 50px auto;
+	background: white;
+	font-family: "Open Sans", arial;
+}
+
+/*naglowek w tabeli*/
+.ng2-smart-titles {
+	background: steelblue !important;
+	height: 38px;
+	width: 25%;
+	font-weight: lighter;
+	text-shadow: 0 1px 0 #38678f;
+	color: white;
+	border: 1px solid #38678f;
+	box-shadow: inset 0px 1px 2px #568ebd;
+	transition: all 0.2s;
+	font-size: 14px;
+	color: white;
+	
+	
+}
+
+/*tekst w naglowku*/
+.ng2-smart-titles > th > ng2-st-column-title:nth-child(1) > div:nth-child(1) > ng2-smart-table-title:nth-child(1) > a:nth-child(1) {
+	font-size: 14px;
+	color: white;
+	font-weight: lighter;
+	font-family: "Open Sans", arial;
+}
+
+.ng2-smart-titles > th > ng2-st-column-title:nth-child(1) > div:nth-child(1) {
+    text-align: center;
+}
+
+/*content*/
+tr.ng2-smart-row > td > ng2-smart-table-cell:nth-child(1) > table-cell-view-mode:nth-child(1) {
+	font-size: 10px;
+	color: black;
+	font-family: "Open Sans", arial;
+}
+
+
