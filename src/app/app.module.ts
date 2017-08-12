@@ -33,6 +33,7 @@ import { UniversityService } from './services/university.service';
 import { ArticleResolver } from './services/article-resolver.service';
 import { ContactService } from "app/services/contact.service";
 import { CommentService } from './services/comment.service';
+import { ImageService } from './services/image.service';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -155,7 +156,7 @@ import { EventNewResolver } from "app/services/event-new-resolver.service";
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,
         ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
         EventNewResolver,
-        ConfirmationService,
+        ConfirmationService, ImageService,
         ContactService, CommentService, ScheduleService, EventService],
     bootstrap: [AppComponent]
 } )

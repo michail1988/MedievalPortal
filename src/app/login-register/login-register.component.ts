@@ -10,7 +10,7 @@ import { AuthenticationService } from "app/services/authentication.service";
 import { Router } from "@angular/router";
 
 @Component( {
-    selector: 'app-login-register',
+    selector: 'login-register',
     templateUrl: './login-register.component.html',
     styleUrls: ['./login-register.component.css']
 } )
@@ -142,6 +142,8 @@ export class LoginRegisterComponent implements OnInit {
         
         
         //zaloguj
+        localStorage.setItem('userid', this.user.id)
+        //todo admin token
         localStorage.setItem('token', JSON.stringify(this.user))
         
     }

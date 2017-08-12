@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Rx';
 
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 export class UserService {
 
     private usersUrl = 'http://localhost:3000/users';
+    private userUrl = 'http://localhost:3000/user';
 
     constructor( private http: Http ) { }
 
@@ -30,4 +31,28 @@ export class UserService {
 
     }
 
+    getLoggedUserId() {
+        return localStorage.getItem( 'userid' );
+    }
+
+    getUser( id: string ): Observable<User> {
+
+        let params: URLSearchParams = new URLSearchParams();
+        params.set( 'id', id );
+
+        var options = new RequestOptions( { headers: new Headers( { 'Content-Type': 'application/json' } ) } );
+        options.search = params;
+
+        // ...using get request
+        return this.http.get( this.userUrl, options )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+    }
+    
+    get(id: string): Observable<User> {
+        return this.getUser(id)
+               .map(data => data);
+    }
 }
