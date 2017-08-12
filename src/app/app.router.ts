@@ -24,6 +24,7 @@ import { Art2Component } from "app/art2/art2.component";
 import { Art3Component } from "app/art3/art3.component";
 import { ContactComponent } from "app/contact/contact.component";
 import { AdminArticlesComponent } from "app/admin-articles/admin-articles.component";
+import { AdminNewsComponent } from "app/admin-news/admin-news.component";
 import { ScheduleComponent } from "app/schedule/schedule.component";
 import { AdminSchedulesComponent } from "app/admin-schedules/admin-schedules.component";
 import { ScheduleResolver } from "app/services/schedule-resolver.service";
@@ -32,6 +33,9 @@ import { ScheduleNewResolver } from "app/services/schedule-new-resolver.service"
 import { AdminEventComponent } from "app/admin-event/admin-event.component";
 import { EventResolver } from "app/services/event-resolver.service";
 import { EventNewResolver } from "app/services/event-new-resolver.service";
+import { NewsNewResolver } from "app/services/news-new-resolver.service";
+import { NewsResolver } from "app/services/news-resolver.service";
+import { AdminSingleNewsComponent } from "app/admin-single-news/admin-single-news.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -58,7 +62,7 @@ export const router: Routes = [
             },
             {
                 path: 'admin-news',
-                component: NewsComponent,
+                component: AdminNewsComponent,
                 outlet: 'adminRouting'
             },
             {
@@ -112,6 +116,15 @@ export const router: Routes = [
         ],
     },
     {
+        path: 'admin-single-news/:id',
+        component: AdminSingleNewsComponent,
+        resolve: {
+            news: NewsResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
         path: 'admin-schedule/:id',
         component: AdminScheduleComponent,
         resolve: {
@@ -152,6 +165,15 @@ export const router: Routes = [
         component: AdminEventComponent,
         resolve: {
             event: EventNewResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'admin-news-new',
+        component: AdminSingleNewsComponent,
+        resolve: {
+            news: NewsNewResolver
         }, canActivate: [
             CanActivateAdminGuard
         ],

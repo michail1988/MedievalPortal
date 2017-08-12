@@ -34,6 +34,7 @@ import { ArticleResolver } from './services/article-resolver.service';
 import { ContactService } from "app/services/contact.service";
 import { CommentService } from './services/comment.service';
 import { ImageService } from './services/image.service';
+import { NewsService } from './services/news.service';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -81,10 +82,14 @@ import { AdminScheduleComponent } from './admin-schedule/admin-schedule.componen
 import { AdminEventComponent } from './admin-event/admin-event.component';
 import { ScheduleResolver } from "app/services/schedule-resolver.service";
 import { ScheduleNewResolver } from "app/services/schedule-new-resolver.service";
+import { NewsResolver } from "app/services/news-resolver.service";
+import { NewsNewResolver } from "app/services/news-new-resolver.service";
 import { ScheduleService } from "app/services/schedule.service";
 import { EventService } from "app/services/event.service";
 import { EventResolver } from "app/services/event-resolver.service";
 import { EventNewResolver } from "app/services/event-new-resolver.service";
+import { AdminNewsComponent } from './admin-news/admin-news.component';
+import { AdminSingleNewsComponent } from './admin-single-news/admin-single-news.component';
 
 
 
@@ -125,7 +130,9 @@ import { EventNewResolver } from "app/services/event-new-resolver.service";
         AdminSchedulesComponent,
         ScheduleComponent,
         AdminScheduleComponent,
-        AdminEventComponent
+        AdminEventComponent,
+        AdminNewsComponent,
+        AdminSingleNewsComponent
     ],
     imports: [
         BrowserModule,
@@ -156,7 +163,8 @@ import { EventNewResolver } from "app/services/event-new-resolver.service";
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,
         ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
         EventNewResolver,
-        ConfirmationService, ImageService,
+        ConfirmationService, ImageService, NewsService,
+        NewsResolver, NewsNewResolver,
         ContactService, CommentService, ScheduleService, EventService],
     bootstrap: [AppComponent]
 } )

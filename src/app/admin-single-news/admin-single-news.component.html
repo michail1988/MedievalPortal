@@ -1,0 +1,59 @@
+<p-confirmDialog></p-confirmDialog>
+
+<p-breadcrumb [model]="navigationItems"></p-breadcrumb>
+
+<br />
+
+
+<button pButton type="button" (click)="saveNew()" icon="fa-check"
+	*ngIf="isNew()" class="ui-button-success"
+	label="{{ 'Save' | translate}}"></button>
+
+<button pButton type="button" (click)="save()" icon="fa-check"
+	*ngIf="!isNew()" class="ui-button-success"
+	label="{{ 'Save' | translate}}"></button>
+
+<button pButton type="button" (click)="cancel()" icon="fa-close"
+	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
+
+<button pButton type="button" (click)="confirmDelete()"
+	*ngIf="!isDeleted()" icon="fa-trash-o" class="ui-button-danger"
+	label="{{ 'Delete' | translate}}"></button>
+
+<button pButton type="button" (click)="activateNews()"
+	*ngIf="isDeleted()" icon="fa-trash-o" class="ui-button-danger"
+	label="{{ 'Recover translate this' | translate}}"></button>
+
+<br />
+<br />
+
+<h1>TODO Walidacja, niektore pola nie moga byc puste</h1>
+
+<p-tabView> <p-tabPanel header="Info"
+	leftIcon="fa-drivers-license-o"> <label for="author">{{
+	'Author' | translate}}</label> <br />
+<input type="text" size="30" pInputText name="author" required
+	[(ngModel)]="news.author"> <br />
+<label for="title">{{ 'Title' | translate}}</label> <br />
+<input type="text" size="100" pInputText name="title" required
+	[(ngModel)]="news.title"> </p-tabPanel> <p-tabPanel
+	header="{{ 'Description' | translate}}" leftIcon="fa-header">
+<p-editor [(ngModel)]="news.headline" [style]="{'height':'320px'}">
+</p-editor> </p-tabPanel> <p-tabPanel header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o">
+<p-editor [(ngModel)]="news.content" [style]="{'height':'320px'}">
+</p-editor> </p-tabPanel> </p-tabView>
+
+
+<br />
+<button pButton type="button" label="{{ 'Clear' | translate}}"
+	icon="fa-close" (click)="article.content=null"></button>
+
+<button pButton type="button" label="{{ 'show-history' | translate}}"
+	(click)="getNewsHistory()"></button>
+
+<br />
+<br />
+
+
+<admin-article-history [articlesHistory]="newsHistory">Loading...</admin-article-history>
+

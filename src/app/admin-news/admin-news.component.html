@@ -1,0 +1,14 @@
+<button pButton type="button" (click)="createNew()"
+	label="{{ 'Create New' | translate}}"></button>
+
+<button pButton type="button" (click)="showDeletedNews()" icon="fa-trash-o" *ngIf="isShowActive()"
+	label="{{ 'Show deleted articles' | translate}}"></button>
+
+<button pButton type="button" (click)="showActiveNews()" *ngIf="!isShowActive()"
+	label="{{ 'Show articles' | translate}}"></button>
+
+<br />
+<br />
+
+
+<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
