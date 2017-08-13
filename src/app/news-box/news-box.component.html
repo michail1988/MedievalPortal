@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-heading">{{ article.title }} {{article.author}}</div>
+	<div class="panel-body" [innerHTML]="article.headline"></div>
+	<div class="panel-footer" style="float: right;">
+		<a class="comment-author" [routerLink]="['/news', article.id]">
+       Read more
+    </a>
+	</div>
+	<br/>
+</div>
+
+<br/>
+

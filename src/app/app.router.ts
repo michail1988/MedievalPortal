@@ -36,6 +36,8 @@ import { EventNewResolver } from "app/services/event-new-resolver.service";
 import { NewsNewResolver } from "app/services/news-new-resolver.service";
 import { NewsResolver } from "app/services/news-resolver.service";
 import { AdminSingleNewsComponent } from "app/admin-single-news/admin-single-news.component";
+import { NewsSingleComponent } from "app/news-single/news-single.component";
+import { ArticlesComponent } from "app/articles/articles.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -102,6 +104,15 @@ export const router: Routes = [
         component: ArticleComponent,
         resolve: {
             article: ArticleResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    {
+        path: 'news/:id',
+        component: NewsSingleComponent,
+        resolve: {
+            news: NewsResolver
         }, canActivate: [
             CanActivateAdminGuard
         ],
@@ -187,7 +198,7 @@ export const router: Routes = [
             CanActivateUserGuard
         ],
     },
-    { path: 'art1', component: Art1Component },
+    { path: 'articles', component: ArticlesComponent },
     { path: 'art2', component: Art2Component },
     { path: 'art3', component: Art3Component },
     { path: 'schedules', component: ScheduleComponent },

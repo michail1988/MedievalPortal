@@ -8,12 +8,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class CommentService {
+export class CommentNewsService {
 
     constructor( private http: Http ) { }
 
-    private allCommentsUrl = 'http://localhost:3000/allArticleComments';
-    private confirmedCommentsUrl = 'http://localhost:3000/confirmedArticleComments';
+    private allCommentsUrl = 'http://localhost:3000/allNewsComments';
+    private confirmedCommentsUrl = 'http://localhost:3000/confirmedNewsComments';
 
     getAllComments( id: string ): Observable<Comment[]> {
         let params: URLSearchParams = new URLSearchParams();

@@ -1,0 +1,76 @@
+
+<print [section]="printSection">Print</print>
+
+<!-- Page Content -->
+<div class="container">
+
+	<div class="row">
+
+		<!-- Blog Post Content Column -->
+		<div class="col-lg-8">
+
+			<div id="printSection">
+				<h1>{{article.title}}</h1>
+
+				<!-- Author -->
+				<p class="lead">
+					Autor <a href="#">{{article.author}}</a>
+				</p>
+
+				<hr>
+
+				<!-- Date/Time -->
+				<p>
+					<span class="glyphicon glyphicon-time"></span> Posted on August 24,
+					2013 at 9:00 PM
+				</p>
+
+				<hr>
+
+				<!-- Preview Image -->
+				<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+				<hr>
+
+				<!-- Post Content -->
+				<div class="lead">
+					<div [innerHTML]="article.headline"></div>
+				</div>
+
+				<div [innerHTML]="article.content"></div>
+
+			</div>
+
+			<hr>
+
+			<!-- Blog Comments -->
+
+			<!-- Comments Form -->
+			<div class="well">
+				<h4>Leave a Comment:</h4>
+				<form role="form">
+					<div class="form-group">
+						<textarea class="form-control" name="comment"
+							[(ngModel)]="comment.comment" rows="3"></textarea>
+					</div>
+					<button (click)="addNewComment()" type="submit"
+						class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+			<hr>
+
+
+
+			<comment-box *ngFor="let comment of comments" [comment]="comment">
+			</comment-box>
+
+
+
+
+
+
+
+
+
+		</div>

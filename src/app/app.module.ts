@@ -90,6 +90,9 @@ import { EventResolver } from "app/services/event-resolver.service";
 import { EventNewResolver } from "app/services/event-new-resolver.service";
 import { AdminNewsComponent } from './admin-news/admin-news.component';
 import { AdminSingleNewsComponent } from './admin-single-news/admin-single-news.component';
+import { NewsBoxComponent } from './news-box/news-box.component';
+import { NewsSingleComponent } from './news-single/news-single.component';
+import { CommentNewsService } from "app/services/comment-news.service";
 
 
 
@@ -132,7 +135,9 @@ import { AdminSingleNewsComponent } from './admin-single-news/admin-single-news.
         AdminScheduleComponent,
         AdminEventComponent,
         AdminNewsComponent,
-        AdminSingleNewsComponent
+        AdminSingleNewsComponent,
+        NewsBoxComponent,
+        NewsSingleComponent
     ],
     imports: [
         BrowserModule,
@@ -165,7 +170,7 @@ import { AdminSingleNewsComponent } from './admin-single-news/admin-single-news.
         EventNewResolver,
         ConfirmationService, ImageService, NewsService,
         NewsResolver, NewsNewResolver,
-        ContactService, CommentService, ScheduleService, EventService],
+        ContactService, CommentService, CommentNewsService, ScheduleService, EventService],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

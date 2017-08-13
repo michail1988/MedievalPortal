@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { News } from "app/models/news";
+import { NewsService } from "app/services/news.service";
 
 @Component( {
     selector: 'news',
@@ -14,7 +16,9 @@ export class NewsComponent implements OnInit {
     //Photos
     private slides: Array<any> = [];
 
-    constructor() {
+    news: News[];
+
+    constructor(private newsService: NewsService) {
         this.addNewSlide();
     }
 
@@ -32,7 +36,19 @@ export class NewsComponent implements OnInit {
     private removeLastSlide() {
         this.slides.pop();
     }
+
     ngOnInit() {
+        this.loadNews()
+    }
+
+    loadNews() {
+        this.newsService.getNews()
+            .subscribe(
+            n => this.news = n, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
     }
 
 }
