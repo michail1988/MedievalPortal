@@ -1,18 +1,4 @@
-<div class="panel panel-default">
-	<div class="panel-heading">{{ article.title }} {{article.author}}</div>
-	<div class="panel-body" [innerHTML]="article.headline"></div>
-	<div class="panel-footer" style="float: right;">
-		<a class="comment-author" [routerLink]="['/article', article.id]">
-			Read more </a>
-	</div>
-	<br />
-</div>
-
-<br />
-
-
-
-<article
+<article style="width: 283px;"
 	class="post hentry uncustomized-post-template post type-post status-publish format-standard has-post-thumbnail hentry category-nature tag-creative tag-perspective tag-vintage span_1_of_3 masonry-entry col- loop-entry col clr">
 	<meta
 		content="http://wallpaper.pickywallpapers.com/1920x1080/hugh-laurie-classic-portrait.jpg"
@@ -20,7 +6,7 @@
 
 
 
-	<div class="post-body entry-content" id="post-body-2338925941270206824"
+	<div class="post-body entry-content" id="post-body-2338925941270206824" style="height: 600px;"
 		itemprop="description articleBody">
 		<div id="summary2338925941270206824">
 			<div class="loop-entry-thumbnail">
@@ -34,18 +20,18 @@
 			<div class="loop-entry-content clr">
 				<header style="overflow: hidden; height: 24px; margin-bottom: 13px;">
 					<h2 class="loop-entry-title">
-						<a title=""
-							href="https://fabulous-soratemplates.blogspot.in/2014/03/fighting-alone-in-field.html">Fighting
-							Alone in the field</a>
+						<a title="" [routerLink]="['/article', article.id]">{{
+							article.title }}</a>
 					</h2>
 				</header>
-				<div class="loop-entry-excerpt entry clr">
+				<div class="loop-entry-excerpt entry clr" >
 
+<div innerHTML="{{ article.headline }}" style="max-height: 150px;"></div>
+					
 
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-					dolor quam, pretium eu... <span class="wpex-readmore"><a
-						href="https://fabulous-soratemplates.blogspot.in/2014/03/fighting-alone-in-field.html"
-						title="" rel="bookmark">Read more</a></span>
+					<span class="wpex-readmore"><a
+						[routerLink]="['/article', article.id]" title="" rel="bookmark">Read
+							more</a></span>
 				</div>
 			</div>
 		</div>
