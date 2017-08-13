@@ -81,7 +81,7 @@ export class AdminScheduleComponent implements OnInit {
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
 
-                this.router.navigate( ['admin-schedules'] );
+                this.navigateBack();
 
             },
             err => {
@@ -101,7 +101,7 @@ export class AdminScheduleComponent implements OnInit {
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
 
-                this.router.navigate( ['admin-schedules'] );
+                this.navigateBack();
 
             },
             err => {
@@ -109,12 +109,10 @@ export class AdminScheduleComponent implements OnInit {
                 console.log( err );
             } );
 
-        //TODO odpowiedz i bledy
-        this.router.navigate( ['admin-schedules'] );
     }
 
     cancel() {
-        this.router.navigate( ['admin-schedules'] );
+        this.navigateBack();
     }
 
     isNew() {
@@ -145,7 +143,7 @@ export class AdminScheduleComponent implements OnInit {
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
 
-                this.router.navigate( ['admin'] );
+                this.navigateBack();
 
             },
             err => {
@@ -155,7 +153,12 @@ export class AdminScheduleComponent implements OnInit {
     }
     
     createNew() {
-        this.router.navigate( ['admin-event-new/'] );
+        //todo nie dziala
+        this.router.navigate(['/admin', {outlets: {adminRouting: ['admin-event-new']}}])
+    }
+    
+    navigateBack() {
+        this.router.navigate(['/admin', {outlets: {adminRouting: ['admin-schedules']}}])
     }
 
 }

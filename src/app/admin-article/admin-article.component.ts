@@ -12,6 +12,8 @@ import { ArticleHistory } from "app/models/article-history";
     styleUrls: ['./admin-article.component.css'],
     providers: [ConfirmationService]
 } )
+
+//TODO pomyslny response
 export class AdminArticleComponent implements OnInit {
 
     text: string;
@@ -55,15 +57,13 @@ export class AdminArticleComponent implements OnInit {
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
 
-                this.router.navigate( ['admin'] );
+                this.navigateBack();
 
             },
             err => {
                 // Log errors if any
                 console.log( err );
             } );
-
-        this.router.navigate( ['admin'] );
     }
 
     save() {
@@ -77,7 +77,7 @@ export class AdminArticleComponent implements OnInit {
                 //                EmitterService.get( this.listId ).emit( enrolments );
                 // Empty model
 
-                this.router.navigate( ['admin'] );
+                this.navigateBack();
 
             },
             err => {
@@ -85,12 +85,10 @@ export class AdminArticleComponent implements OnInit {
                 console.log( err );
             } );
 
-        //TODO odpowiedz i bledy
-        this.router.navigate( ['admin'] );
     }
 
     cancel() {
-        this.router.navigate( ['admin'] );
+        this.navigateBack();
     }
 
     isNew() {
@@ -135,7 +133,7 @@ export class AdminArticleComponent implements OnInit {
                     //                EmitterService.get( this.listId ).emit( enrolments );
                     // Empty model
 
-                    this.router.navigate( ['admin'] );
+                    this.navigateBack();
 
                 },
                 err => {
@@ -143,6 +141,8 @@ export class AdminArticleComponent implements OnInit {
                     console.log( err );
                 } );
     }
+    
+    
     
     activateArticle() {            
         this.articleService.activateArticle( this.article ).subscribe(
@@ -152,7 +152,7 @@ export class AdminArticleComponent implements OnInit {
                     //                EmitterService.get( this.listId ).emit( enrolments );
                     // Empty model
 
-                    this.router.navigate( ['admin'] );
+                    this.navigateBack();
 
                 },
                 err => {
@@ -160,5 +160,11 @@ export class AdminArticleComponent implements OnInit {
                     console.log( err );
                 } );
     }
+    
+    navigateBack() {
+        this.router.navigate(['/admin', {outlets: {adminRouting: ['admin-articles']}}])
+    }
+    
+    
 
 }

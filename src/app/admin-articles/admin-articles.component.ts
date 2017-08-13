@@ -4,6 +4,7 @@ import { ArticleService } from '../services/article.service';
 import { EmitterService } from '../services/emitter.service';
 import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 import { Router } from "@angular/router";
+import { AdminTableButtonComponent } from "app/admin-table-button/admin-table-button.component";
 
 @Component( {
     selector: 'admin-articles',
@@ -64,14 +65,27 @@ export class AdminArticlesComponent implements OnInit {
             editdate: {
                 title: 'Data edycji'
             },
-            //TODO wpasowac w routingAdmin
+            //TODO wpasowac w routingAdmin admin/(adminRouting:admin-articles)
+            //return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
             link: {
                 title: 'Link',
                 type: 'html',
                 valuePrepareFunction: ( cell, row ) => {
                     return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
                 }
-            }
+            },
+//            button: {
+//                title: 'Button',
+//                type: 'custom',
+//                renderComponent: AdminTableButtonComponent,
+//                onComponentInitFunction(instance) {
+//                  instance.save.subscribe(row => {
+//                    alert(`${row.name} saved!`)
+//                  });
+//                }
+//        }
+            
+            
         },
         actions: false
     };

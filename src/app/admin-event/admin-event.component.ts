@@ -116,5 +116,11 @@ export class AdminEventComponent implements OnInit {
                 console.log( err );
             } );
     }
+    
+    
+    //todo opracowac przejscie z parametrem
+    navigateBack() {
+        this.router.navigate(['/admin', {outlets: {adminRouting: ['admin-schedule']}}])
+    }
 
 }

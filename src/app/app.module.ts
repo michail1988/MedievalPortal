@@ -93,6 +93,7 @@ import { AdminSingleNewsComponent } from './admin-single-news/admin-single-news.
 import { NewsBoxComponent } from './news-box/news-box.component';
 import { NewsSingleComponent } from './news-single/news-single.component';
 import { CommentNewsService } from "app/services/comment-news.service";
+import { AdminTableButtonComponent } from './admin-table-button/admin-table-button.component';
 
 
 
@@ -137,7 +138,8 @@ import { CommentNewsService } from "app/services/comment-news.service";
         AdminNewsComponent,
         AdminSingleNewsComponent,
         NewsBoxComponent,
-        NewsSingleComponent
+        NewsSingleComponent,
+        AdminTableButtonComponent
     ],
     imports: [
         BrowserModule,

@@ -88,6 +88,15 @@ export const router: Routes = [
                 
             },
             {
+                path: 'admin-schedule/:id',
+                component: AdminScheduleComponent,
+                resolve: {
+                    schedule: ScheduleResolver
+                }, canActivate: [
+                    CanActivateAdminGuard
+                ],
+            },
+            {
                 path: 'admin-schedule-new',
                 component: AdminScheduleComponent,
                 resolve: {

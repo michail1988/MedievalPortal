@@ -64,7 +64,19 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 title: 'Email'
             },
             registerdate: {
-                title: 'Data zgloszenia'
+                title: 'Data zgloszenia',
+                    type: 'html',
+                    valuePrepareFunction: (value) => {                  
+                        return value }
+            },
+            congressrole: {
+                title: 'Rola',
+                type: 'html',
+                valuePrepareFunction: (value) => { 
+                    if (value === 'P') return 'Uczestnik'; 
+                    if (value === 'S') return 'Referant';
+                    if (value === 'O') return 'Organizator';                    
+                    return '' }
             },
             action: {
                 title: 'Akcja',
