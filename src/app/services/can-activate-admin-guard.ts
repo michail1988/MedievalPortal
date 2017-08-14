@@ -10,6 +10,6 @@ export class CanActivateAdminGuard {
     constructor() { }
 
     canActivate() {
-        return !!localStorage.getItem( 'token' );
+        return !!localStorage.getItem( 'admintoken' );
     }
 }

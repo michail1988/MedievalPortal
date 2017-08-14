@@ -25,5 +25,7 @@ export const LANG_EN_TRANS = {
     'Contact':'Contact',
     'Address':'Address',
     'Schedules':'Schedules',
-    'Events':'Events'
+    'Events':'Events',
+    'Log out': 'Log out',
+    'Welcome': 'Welcome'
 };

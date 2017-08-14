@@ -5,6 +5,8 @@ import { Observable } from "rxjs/Observable";
 import { ImageService } from "app/services/image.service";
 import { UserService } from "app/services/user.service";
 import { User } from "app/models/user";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "app/services/authentication.service";
 
 @Component( {
     selector: 'user-profile',
@@ -20,7 +22,8 @@ export class UserProfileComponent implements OnInit {
 
     private user: User;
 
-    constructor( private imageService: ImageService, private userService: UserService ) {
+    constructor( private imageService: ImageService, private userService: UserService,
+            private authenticationService: AuthenticationService, public router: Router) {
         this.userId = this.userService.getLoggedUserId();
         
         //todo tylko dla testow, poprawic logowanie
@@ -55,7 +58,10 @@ export class UserProfileComponent implements OnInit {
         this.msgs.push( { severity: 'success', summary: 'File Uploaded', detail: '' } );
     }
 
-
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate( ['login-register'] );
+    }
     
     get diagnostic() { return JSON.stringify( this.user ); }
     

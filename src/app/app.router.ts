@@ -51,6 +51,7 @@ export const router: Routes = [
         path: 'admin', component: AdminComponent, canActivate: [
             CanActivateAdminGuard
         ],
+        //dodac guard
         children: [
             {
                 path: '',
@@ -113,18 +114,14 @@ export const router: Routes = [
         component: ArticleComponent,
         resolve: {
             article: ArticleResolver
-        }, canActivate: [
-            CanActivateAdminGuard
-        ],
+        }, 
     },
     {
         path: 'news/:id',
         component: NewsSingleComponent,
         resolve: {
             news: NewsResolver
-        }, canActivate: [
-            CanActivateAdminGuard
-        ],
+        }, 
     },
     {
         path: 'admin-article/:id',

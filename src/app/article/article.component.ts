@@ -18,6 +18,8 @@ export class ArticleComponent implements OnInit {
     comments: Comment[];
 
     comment = new Comment( '', null, '', '', '', '', null, '', '', '' );
+    
+    userid: string;
 
     constructor( private route: ActivatedRoute,
         private router: Router,
@@ -67,7 +69,7 @@ export class ArticleComponent implements OnInit {
 
         //rozroznienie na tworzenie parent comment i comment
 
-        this.comment.fk_user = '1';
+        this.comment.fk_user = this.userid;
         this.comment.fk_post = this.article.id;
 
         //todo if uprawnienia
@@ -86,6 +88,11 @@ export class ArticleComponent implements OnInit {
             } );
         
         this.comment = new Comment( '', null, '', '', '', '', null, '', '', '' );
+    }
+    
+    isLogged() {
+        this.userid = localStorage.getItem( 'userid' );
+        return ( this.userid );
     }
 
 }

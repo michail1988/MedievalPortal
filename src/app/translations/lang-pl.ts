@@ -25,6 +25,8 @@ export const LANG_PL_TRANS = {
     'Contact':'Kontakt',
     'Address':'Dojazd',
     'Schedules':'Harmonogram',
-    'Events':'Eventy'
+    'Events':'Eventy',
+    'Log out': 'Wyloguj',
+    'Welcome': 'Witaj'
     
 };

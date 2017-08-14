@@ -1,5 +1,9 @@
 <p-growl [value]="msgs"></p-growl>
 
+<button pButton type="button" icon="fa-sign-out" (click)="logout()"
+	label="{{ 'Log out' | translate}}"></button>
+	
+
 <h3 class="first">Profile photo</h3>
 
 <p-fileUpload name="file" url="{{uploadUrl}}"
@@ -30,6 +34,6 @@
 <img [src]="html" [hidden]="!imageLoaded">
 
 
-{{diagnostic}} 
+{{diagnostic}}
 <br>
 {{diagnosticUserId}}

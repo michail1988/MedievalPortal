@@ -1,1 +1,5 @@
-<a routerLink="user-profile">Witaj Michal!</a>
+<a routerLink="user-profile" *ngIf="isLogged()">{{ 'Welcome' |
+	translate}} {{username}}</a>
+
+<a routerLink="login-register" *ngIf="!isLogged()">{{ 'Log in' |
+	translate}}</a>

@@ -62,6 +62,7 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     //TODO koniecznie jakas odpowiedz serwera
+    //automatyczny login???
     submitUser() {
 
         this.user.registerdate = new Date();
@@ -118,46 +119,29 @@ export class LoginRegisterComponent implements OnInit {
         event.preventDefault();
         
 
-        this.authenticationService.getUser( username, password ).subscribe(
-              enrolments => this.user = enrolments, //Bind to view
+        this.authenticationService.login( username, password ).subscribe(
+              u => this.user = u, //Bind to view
               err => {
                   // Log errors if any
                   console.log( "Error na poziomie authenticationService.getUser=" + err);
                   console.log( "Error na poziomie err.message=" + err.message);
               } );
         
-        localStorage.setItem('logged', JSON.stringify(this.user))
-        var item = localStorage.getItem( 'logged' );
-        
-        this.user = JSON.parse(item)
-        console.log("this.item=" +  item)
-        console.log("this.user=" +  this.user)
-        console.log("s=" +  JSON.stringify(this.user))
-        
-        
-        var currentUser = localStorage.getItem( 'currentUser' );
-        console.log("Pobieram current user")
-        console.log("currentUser stringify=" +  JSON.stringify(currentUser))
-        console.log("currentUser=" +  currentUser)
-        
-        
-        //zaloguj
-        localStorage.setItem('userid', this.user.id)
-        //todo admin token
-        localStorage.setItem('token', JSON.stringify(this.user))
-        
     }
 
+    get diagnosticAdmin() {
+        var item = localStorage.getItem( 'admintoken' );
+
+        return 'Admin= ' + item;
+    }
+    
     get diagnosticLogin() {
-        var item = localStorage.getItem( 'token' );
+        
+        var userid = localStorage.getItem('userid')
+        var username = localStorage.getItem('username')
+        
 
-        return 'Zalogowany= ' + item;
-    }
-
-    get diagnosticUser() {
-        var item = localStorage.getItem( 'token' );
-
-        return 'Zalogowany= ' + item;
+        return 'Zalogowany  userid=' + userid + ' username=' + username;
     }
 
     

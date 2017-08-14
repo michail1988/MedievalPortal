@@ -6,10 +6,10 @@ import { isLoggedin } from '../services/is-loggedin';
 //TODO user obiekt
 @Injectable()
 export class CanActivateUserGuard {
-    
+
     constructor() { }
 
     canActivate() {
-        return !!localStorage.getItem( 'token' );
+        return ( !!localStorage.getItem( 'userid' ) ) && ( !!localStorage.getItem( 'username' ) );
     }
 }

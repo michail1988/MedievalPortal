@@ -46,7 +46,7 @@
 			<!-- Blog Comments -->
 
 			<!-- Comments Form -->
-			<div class="well">
+			<div class="well" *ngIf="isLogged()">
 				<h4>Leave a Comment:</h4>
 				<form role="form">
 					<div class="form-group">
@@ -56,9 +56,11 @@
 					<button (click)="addNewComment()" type="submit"
 						class="btn btn-primary">Submit</button>
 				</form>
+				
+				
 			</div>
 
-			<hr>
+			<hr *ngIf="isLogged()">
 
 
 

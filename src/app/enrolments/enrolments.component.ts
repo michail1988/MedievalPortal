@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 
 
 @Component( {
-    selector: 'app-enrolments',
+    selector: 'enrolments',
     templateUrl: './enrolments.component.html',
     styleUrls: ['./enrolments.component.css']
 } )
