@@ -69,9 +69,6 @@ import { MenuComponent } from './menu/menu.component';
 import { EnrolmentsComponent } from './enrolments/enrolments.component';
 import { UserService } from "app/services/user.service";
 import { SlideComponent } from './slide/slide.component';
-import { Art1Component } from './art1/art1.component';
-import { Art2Component } from './art2/art2.component';
-import { Art3Component } from './art3/art3.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
@@ -125,9 +122,6 @@ import { TermsComponent } from './terms/terms.component';
         UserLoggedComponent,
         UserProfileComponent,
         SlideComponent,
-        Art1Component,
-        Art2Component,
-        Art3Component,
         ContactComponent,
         AdminMenuComponent,
         CommentBoxComponent,

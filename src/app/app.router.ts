@@ -19,9 +19,6 @@ import { CanActivateAdminGuard } from "app/services/can-activate-admin-guard";
 import { UserLoggedComponent } from "app/user-logged/user-logged.component";
 import { CanActivateUserGuard } from "app/services/can-activate-user-guard";
 import { UserProfileComponent } from "app/user-profile/user-profile.component";
-import { Art1Component } from "app/art1/art1.component";
-import { Art2Component } from "app/art2/art2.component";
-import { Art3Component } from "app/art3/art3.component";
 import { ContactComponent } from "app/contact/contact.component";
 import { AdminArticlesComponent } from "app/admin-articles/admin-articles.component";
 import { AdminNewsComponent } from "app/admin-news/admin-news.component";
@@ -208,16 +205,9 @@ export const router: Routes = [
         ],
     },
     { path: 'articles', component: ArticlesComponent },
-    { path: 'art2', component: Art2Component },
-    { path: 'art3', component: Art3Component },
     { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent }
     
-
-    
-    
-
-
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot( router );
