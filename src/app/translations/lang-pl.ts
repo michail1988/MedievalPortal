@@ -27,6 +27,7 @@ export const LANG_PL_TRANS = {
     'Schedules':'Harmonogram',
     'Events':'Eventy',
     'Log out': 'Wyloguj',
-    'Welcome': 'Witaj'
+    'Welcome': 'Witaj',
+    'Terms' : 'Regulamin'
     
 };

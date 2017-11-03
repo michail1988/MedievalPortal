@@ -38,6 +38,7 @@ import { NewsResolver } from "app/services/news-resolver.service";
 import { AdminSingleNewsComponent } from "app/admin-single-news/admin-single-news.component";
 import { NewsSingleComponent } from "app/news-single/news-single.component";
 import { ArticlesComponent } from "app/articles/articles.component";
+import { TermsComponent } from "app/terms/terms.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -46,6 +47,8 @@ export const router: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'login-register', component: LoginRegisterComponent },
     { path: 'map', component: MapComponent },
+    { path: 'terms', component: TermsComponent },
+    { path: 'login-register/terms', component: TermsComponent },
     { path: 'news', component: NewsComponent },
     {
         path: 'admin', component: AdminComponent, canActivate: [
@@ -209,7 +212,10 @@ export const router: Routes = [
     { path: 'art3', component: Art3Component },
     { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent }
+    
 
+    
+    
 
 
 ];
