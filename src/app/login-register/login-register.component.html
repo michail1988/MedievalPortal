@@ -2,9 +2,9 @@
 <div class="logmod__container">
 	<ul class="logmod__tabs">
 		<li data-tabtar="lgm-1" (click)="changeToRegister()"
-			[class.current]="!loginTabVisible">Sign Up</li>
+			[class.current]="!loginTabVisible">{{ 'Sign Up' | translate }}</li>
 		<li data-tabtar="lgm-2" (click)="changeToLogin()"
-			[class.current]="loginTabVisible">Login</li>
+			[class.current]="loginTabVisible">{{ 'Login' | translate }}</li>
 	</ul>
 
 </div>
@@ -14,8 +14,7 @@
 
 <div [hidden]="loginTabVisible">
 	<div class="logmod__heading">
-		<span class="logmod__heading-subtitle">Enter your personal
-			details <strong>to create an acount</strong>
+		<span class="logmod__heading-subtitle">{{ 'Enter your details' | translate }} <strong>{{ 'to create an account' | translate }}</strong>
 		</span>
 	</div>
 	<div class="logmod__form">
@@ -23,50 +22,48 @@
 			#heroForm="ngForm" class="simform">
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-email">Email*</label> <input
+					<label class="string optional" for="user-email">{{ 'Email' | translate }}*</label> <input
 						[(ngModel)]="user.email" class="string optional" name="email"
-						maxlength="255" id="user-email" placeholder="Email" type="email"
+						maxlength="255" id="user-email" placeholder="{{ 'Email' | translate }}" type="email"
 						size="50" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div class="input string optional">
-					<label class="string optional" for="user-pw">Password *</label> <input
+					<label class="string optional" for="user-pw">{{ 'Password' | translate }} *</label> <input
 						class="string optional" maxlength="255" id="user-pw"
-						[(ngModel)]="user.password" name="password" placeholder="Password"
+						[(ngModel)]="user.password" name="password" placeholder="{{ 'Password' | translate }}"
 						type="password" size="50" />
 				</div>
 				<div class="input string optional">
-					<label class="string optional" for="user-pw-repeat">Repeat
-						password *</label> <input class="string optional" maxlength="255"
+					<label class="string optional" for="user-pw-repeat">{{ 'Repeat password' | translate }} *</label> <input class="string optional" maxlength="255"
 						[(ngModel)]="repeatPassword" name="passwordRepeat"
-						id="user-pw-repeat" placeholder="Repeat password" type="password"
+						id="user-pw-repeat" placeholder="{{ 'Repeat password' | translate }}" type="password"
 						size="50" />
 				</div>
 			</div>
 
 			<div class="sminputs">
 				<div class="input string optional">
-					<label class="string optional" for="user-name">First name *</label>
+					<label class="string optional" for="user-name">{{ 'First name' | translate }} *</label>
 					<input class="string optional" maxlength="255" id="user-name"
-						[(ngModel)]="user.name" name="name" placeholder="Firstname"
+						[(ngModel)]="user.name" name="name" placeholder="{{ 'First name' | translate }}"
 						type="text" size="50" />
 				</div>
 				<div class="input string optional">
-					<label class="string optional" for="user-surname">Surname *</label>
+					<label class="string optional" for="user-surname">{{ 'Surname' | translate }} *</label>
 					<input class="string optional" maxlength="255"
 						[(ngModel)]="user.surname" name="surname" id="user-surname"
-						placeholder="Surname" type="text" size="50" />
+						placeholder="{{ 'Surname' | translate }}" type="text" size="50" />
 				</div>
 			</div>
 
 
 			<div class="sminputs">
 				<div class="input string optional">
-					<label class="string optional" for="user-university">Afiliacja
-						(ang)</label>
+					<label class="string optional" for="user-university">{{ 'University' | translate }}</label>
 
-					<p-autoComplete placeholder="University"
+					<p-autoComplete placeholder="{{ 'University' | translate }}"
 						[(ngModel)]="user.university" [suggestions]="results"
 						(completeMethod)="search($event)" required name="university"
 						id="user-university"></p-autoComplete>
@@ -74,9 +71,9 @@
 
 				</div>
 				<div class="input string optional">
-					<label class="string optional" for="user-phone">Phone</label> <input
+					<label class="string optional" for="user-phone">{{ 'Phone' | translate }}</label> <input
 						[(ngModel)]="user.phone" name="phone" class="string optional"
-						maxlength="255" id="user-phone" placeholder="Phone" type="text"
+						maxlength="255" id="user-phone" placeholder="{{ 'Phone' | translate }}" type="text"
 						size="50" />
 				</div>
 
@@ -84,16 +81,15 @@
 
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-contactComments">Uwagi</label>
+					<label class="string optional" for="user-contactComments">{{ 'Remarks' | translate }}</label>
 					<input class="string optional" maxlength="2000"
 						id="user-contactComments" [(ngModel)]="user.contactcomments"
-						name="comments" placeholder="Uwagi" type="text" size="2000" />
+						name="comments" placeholder="{{ 'Remarks' | translate }}" type="text" size="2000" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="character-role">W jakim
-						charakterze?</label>
+					<label class="string optional" for="character-role">{{ 'In what capacity?' | translate }}</label>
 
 					<p-selectButton [options]="types" [(ngModel)]="selectedType"
 						id="character-role" name="character"></p-selectButton>
@@ -103,18 +99,18 @@
 
 			<div class="sminputs" [hidden]="!isSpeakerPartsVisible()">
 				<div class="input full">
-					<label class="string optional" for="user-subjectDescription">Abstrakt</label>
+					<label class="string optional" for="user-subjectDescription">{{ 'Topic' | translate }}</label>
 					<input class="string optional" maxlength="255"
 						id="user-subjectDescription" [(ngModel)]="user.subjectdescription"
-						name="subjectDescription" placeholder="Abstrakt" type="text"
+						name="subjectDescription" placeholder="{{ 'Topic' | translate }}" type="text"
 						size="50" />
 				</div>
 			</div>
 
 			<div class="simform__actions">
 				<input class="submit" name="commit" type="submit"
-					value="Create Account" /> <span class="simform__actions-sidetext">By
-					creating an account you agree to our 
+					value="Create Account" /> <span class="simform__actions-sidetext">
+					{{ 'Agree rules info' | translate }} 
 					<a [routerLink]="['terms']"><span>{{ 'Terms' | translate}}</span></a>
 				</span>
 			</div>
@@ -124,38 +120,34 @@
 
 <div [hidden]="!loginTabVisible">
 	<div class="logmod__heading">
-		<span class="logmod__heading-subtitle">Enter your email and
-			password <strong>to sign in</strong>
+		<span class="logmod__heading-subtitle">{{ 'Enter your email and	password' | translate }} <strong>{{ 'to sign in' | translate }}</strong>
 		</span>
 	</div>
 	<div class="logmod__form">
 		<form accept-charset="utf-8" action="#" class="simform" (submit)="login($event, username.value, password.value)">
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-email">Email*</label> <input
+					<label class="string optional" for="user-email">{{ 'Email' | translate }} *</label> <input
 						class="string optional" maxlength="255" id="user-email"
-						#username name="email" placeholder="Email"
+						#username name="email" placeholder="{{ 'Email' | translate }}"
 						type="email" size="50" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="user-pw">Password *</label> <input
+					<label class="string optional" for="user-pw">{{ 'Password' | translate }} *</label> <input
 						class="string optional" maxlength="255" id="user-pw"
-						#password name="password" placeholder="Password"
-						type="password" size="50" /> <span class="hide-password">Show</span>
+						#password name="password" placeholder="{{ 'Password' | translate }}"
+						type="password" size="50" /> <span class="hide-password">{{ 'Show' | translate }}</span>
 				</div>
 			</div>
 			<div class="simform__actions">
 				<input class="submit" type="submit" name="commit" type="submit" value="Log In" />
 				<span class="simform__actions-sidetext"><a class="special"
-					role="link" href="#">Forgot your password?<br>Click here
+					role="link" href="#">{{ 'Forgot your password?' | translate }}?<br>{{ 'Click here' | translate }}
 				</a></span>
 			</div>
 		</form>
 	</div>
 </div>
 
-{{diagnosticLogin}} 
-<br/>
-{{diagnosticAdmin}}
