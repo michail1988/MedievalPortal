@@ -62,8 +62,5 @@ export const LANG_PL_TRANS = {
     'Subject' : 'Temat',
     'Message' : 'Wiadomość',
     'Thank You!' : 'Dziękujemy!',
-    'EmailSentInfo' : 'Twoja wiadomość została wysłana.',
-    'About the university' : 'O uniwersytecie',
-    'Submit' : 'Wyślij',
-    'Leave a comment:' : 'Skomentuj:'
+    'EmailSentInfo' : 'Twoja wiadomość została wysłana.'
 };

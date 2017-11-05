@@ -63,6 +63,8 @@ export const LANG_EN_TRANS = {
     'Message' : 'Message',
     'Thank You!' : 'Thank You!',
     'EmailSentInfo' : 'Your email has been delivered.',
-    'About the university' : 'About the university'
+    'About the university' : 'About the university',
+    'Submit' : 'Submit',
+    'Leave a comment:' : 'Leave a comment:'
     
 };

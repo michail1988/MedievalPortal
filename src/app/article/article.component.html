@@ -1,5 +1,5 @@
 
-<print [section]="printSection">Print</print>
+<print [section]="printSection">{{ 'Print' | translate }}</print>
 
 <!-- Page Content -->
 <div class="container">
@@ -14,7 +14,7 @@
 
 				<!-- Author -->
 				<p class="lead">
-					Autor <a href="#">{{article.author}}</a>
+					{{ 'Author' | translate }} <a href="#">{{article.author}}</a>
 				</p>
 
 				<hr>
@@ -47,14 +47,14 @@
 
 			<!-- Comments Form -->
 			<div class="well" *ngIf="isLogged()">
-				<h4>Leave a Comment:</h4>
+				<h4>{{ 'Leave a comment:' | translate }}</h4>
 				<form role="form">
 					<div class="form-group">
 						<textarea class="form-control" name="comment"
 							[(ngModel)]="comment.comment" rows="3"></textarea>
 					</div>
 					<button (click)="addNewComment()" type="submit"
-						class="btn btn-primary">Submit</button>
+						class="btn btn-primary">{{ 'Submit' | translate }}</button>
 				</form>
 				
 				
