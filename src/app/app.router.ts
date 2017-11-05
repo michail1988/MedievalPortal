@@ -36,6 +36,8 @@ import { AdminSingleNewsComponent } from "app/admin-single-news/admin-single-new
 import { NewsSingleComponent } from "app/news-single/news-single.component";
 import { ArticlesComponent } from "app/articles/articles.component";
 import { TermsComponent } from "app/terms/terms.component";
+import { ForgotPasswordComponent } from "app/forgot-password/forgot-password.component";
+import { SponsorsComponent } from "app/sponsors/sponsors.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -206,7 +208,9 @@ export const router: Routes = [
     },
     { path: 'articles', component: ArticlesComponent },
     { path: 'schedules', component: ScheduleComponent },
-    { path: 'contact', component: ContactComponent }
+    { path: 'contact', component: ContactComponent },
+    { path: 'login-register/forgot-password', component: ForgotPasswordComponent },
+    { path: 'sponsors', component: SponsorsComponent },
     
 ];
 

@@ -62,5 +62,7 @@ export const LANG_PL_TRANS = {
     'Subject' : 'Temat',
     'Message' : 'Wiadomość',
     'Thank You!' : 'Dziękujemy!',
-    'EmailSentInfo' : 'Twoja wiadomość została wysłana.'
+    'EmailSentInfo' : 'Twoja wiadomość została wysłana.',
+    'Log In' : 'Zaloguj się',
+    'Create account' : 'Utwórz konto'
 };

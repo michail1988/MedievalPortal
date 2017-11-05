@@ -39,9 +39,9 @@ export class LoginRegisterComponent implements OnInit {
         this.speakerPartsVisible = false;
 
         this.types = [];
-        this.types.push( { label: 'Participant', value: 'Uczestnik' } );
-        this.types.push( { label: 'Speaker', value: 'Referent' } );
-        this.types.push( { label: 'Organizer', value: 'Organizator' } );
+        this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
+        this.types.push( { label: 'Referent', value: 'Referent' } );
+        this.types.push( { label: 'Organizator', value: 'Organizator' } );
 
         this.selectedType = 'Uczestnik';
     }

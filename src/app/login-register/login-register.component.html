@@ -109,7 +109,7 @@
 
 			<div class="simform__actions">
 				<input class="submit" name="commit" type="submit"
-					value="Create Account" /> <span class="simform__actions-sidetext">
+					value="{{ 'Create account' | translate }}" /> <span class="simform__actions-sidetext">
 					{{ 'Agree rules info' | translate }} 
 					<a [routerLink]="['terms']"><span>{{ 'Terms' | translate}}</span></a>
 				</span>
@@ -142,9 +142,9 @@
 				</div>
 			</div>
 			<div class="simform__actions">
-				<input class="submit" type="submit" name="commit" type="submit" value="Log In" />
+				<input class="submit" type="submit" name="commit" type="submit" value="{{ 'Log In' | translate }}" />
 				<span class="simform__actions-sidetext"><a class="special"
-					role="link" href="#">{{ 'Forgot your password?' | translate }}?<br>{{ 'Click here' | translate }}
+					role="link" [routerLink]="['forgot-password']">{{ 'Forgot your password?' | translate }}?<br>{{ 'Click here' | translate }}
 				</a></span>
 			</div>
 		</form>

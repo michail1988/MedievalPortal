@@ -92,6 +92,9 @@ import { NewsSingleComponent } from './news-single/news-single.component';
 import { CommentNewsService } from "app/services/comment-news.service";
 import { AdminTableButtonComponent } from './admin-table-button/admin-table-button.component';
 import { TermsComponent } from './terms/terms.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SponsorsComponent } from './sponsors/sponsors.component';
+import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.component';
 
 
 
@@ -135,7 +138,10 @@ import { TermsComponent } from './terms/terms.component';
         NewsBoxComponent,
         NewsSingleComponent,
         AdminTableButtonComponent,
-        TermsComponent
+        TermsComponent,
+        ForgotPasswordComponent,
+        SponsorsComponent,
+        AdminEnrolmentComponent
     ],
     imports: [
         BrowserModule,
