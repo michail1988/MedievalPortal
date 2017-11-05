@@ -1,8 +1,7 @@
 
 <div id='cssmenu'>
 	<ul>
-		<li><a routerLink="news"><span>Home</span></a></li>
-		<li><a routerLink="admin" *ngIf="isAdmin()"><span>Panel admina</span></a></li>
+		<li><a routerLink="admin" *ngIf="isAdmin()"><span>{{ 'Admin panel' | translate }}</span></a></li>
 		<li><a routerLink="news"><span>{{ 'News' | translate}}</span></a>
 		<!-- <li><a routerLink="application-form"><span>Formularz
 					rejestracji</span></a></li>
@@ -10,8 +9,7 @@
 					 -->
 		
 		
-		<li><a routerLink="login-register"><span>Formularz
-					rejestracji</span></a></li>
+		<li><a routerLink="login-register"><span>{{ 'Registration' | translate }}</span></a></li>
 		<li><a routerLink="map"><span>{{ 'Address' | translate}}</span></a></li>
 		<li><a routerLink="articles"><span>{{ 'Articles' | translate}}</span></a></li>
 		<li class='active has-sub'><a routerLink="art2"><span>Szablon menu</span></a>

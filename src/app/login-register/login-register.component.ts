@@ -39,11 +39,11 @@ export class LoginRegisterComponent implements OnInit {
         this.speakerPartsVisible = false;
 
         this.types = [];
-        this.types.push( { label: 'Participant', value: 'Participant' } );
-        this.types.push( { label: 'Speaker', value: 'Speaker' } );
-        this.types.push( { label: 'Organizer', value: 'Organizer' } );
+        this.types.push( { label: 'Participant', value: 'Uczestnik' } );
+        this.types.push( { label: 'Speaker', value: 'Referent' } );
+        this.types.push( { label: 'Organizer', value: 'Organizator' } );
 
-        this.selectedType = 'Participant';
+        this.selectedType = 'Uczestnik';
     }
 
     ngOnInit() {
@@ -58,7 +58,7 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     isSpeakerPartsVisible() {
-        return this.selectedType === 'Speaker';
+        return this.selectedType === 'Referent';
     }
 
     //TODO koniecznie jakas odpowiedz serwera
