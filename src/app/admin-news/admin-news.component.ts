@@ -53,9 +53,6 @@ export class AdminNewsComponent implements OnInit {
             title: {
                 title: 'Tytul'
             },
-            headline: {
-                title: 'Opis - usunac'
-            },
             edited: {
                 title: 'Edytowal'
             },
