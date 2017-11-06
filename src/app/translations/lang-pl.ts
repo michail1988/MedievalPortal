@@ -73,5 +73,7 @@ export const LANG_PL_TRANS = {
     'Additional Info' : 'Dodatkowe',
     'Paper' : 'Referat',
     'Summary' : 'Streszczenie',
-    'Content' : 'Abstrakt'
+    'Content' : 'Abstrakt',
+    'Mailbox' : 'Poczta',
+    'Recover' : 'Przywróć'
 };

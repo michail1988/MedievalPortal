@@ -4,8 +4,7 @@
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['enrolments']}}]">{{ 'enrolments-list' | translate}}</a></li>
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-news']}}]">{{ 'News' | translate}}</a></li>
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-schedules']}}]">{{ 'Schedules' | translate}}</a></li>
-		<li><a >Inne</a></li>
-		<li><a >Uzytkownicy</a></li>
+		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-mailbox']}}]">{{ 'Mailbox' | translate}}</a></li>
 		
 	</ul>
 </div>

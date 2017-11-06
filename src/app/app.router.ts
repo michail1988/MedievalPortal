@@ -41,6 +41,7 @@ import { SponsorsComponent } from "app/sponsors/sponsors.component";
 import { AdminEnrolmentComponent } from "app/admin-enrolment/admin-enrolment.component";
 import { UserResolver } from "app/services/user-resolver.service";
 import { EnrolmentCreatedComponent } from "app/enrolment-created/enrolment-created.component";
+import { AdminMailboxComponent } from "app/admin-mailbox/admin-mailbox.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -66,6 +67,11 @@ export const router: Routes = [
             {
                 path: 'admin-articles',
                 component: AdminArticlesComponent,
+                outlet: 'adminRouting'
+            },
+            {
+                path: 'admin-mailbox',
+                component: AdminMailboxComponent,
                 outlet: 'adminRouting'
             },
             {

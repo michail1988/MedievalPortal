@@ -75,6 +75,8 @@ export const LANG_EN_TRANS = {
     'Additional Info' : 'Additional Info',
     'Paper' : 'Paper',
     'Summary' : 'Summary',
-    'Content' : 'Content'
+    'Content' : 'Content',
+    'Mailbox' : 'Mailbox',
+    'Recover' : 'Recover'
     
 };

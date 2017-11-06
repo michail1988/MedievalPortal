@@ -97,6 +97,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.component';
 import { EnrolmentCreatedComponent } from './enrolment-created/enrolment-created.component';
 import { UserResolver } from "app/services/user-resolver.service";
+import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
 
 
 
@@ -144,7 +145,8 @@ import { UserResolver } from "app/services/user-resolver.service";
         ForgotPasswordComponent,
         SponsorsComponent,
         AdminEnrolmentComponent,
-        EnrolmentCreatedComponent
+        EnrolmentCreatedComponent,
+        AdminMailboxComponent
     ],
     imports: [
         BrowserModule,
