@@ -40,6 +40,7 @@ import { ForgotPasswordComponent } from "app/forgot-password/forgot-password.com
 import { SponsorsComponent } from "app/sponsors/sponsors.component";
 import { AdminEnrolmentComponent } from "app/admin-enrolment/admin-enrolment.component";
 import { UserResolver } from "app/services/user-resolver.service";
+import { EnrolmentCreatedComponent } from "app/enrolment-created/enrolment-created.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -222,6 +223,7 @@ export const router: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'login-register/forgot-password', component: ForgotPasswordComponent },
     { path: 'sponsors', component: SponsorsComponent },
+    { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },    
     
 ];
 

@@ -67,6 +67,14 @@ export const LANG_EN_TRANS = {
     'Submit' : 'Submit',
     'Leave a comment:' : 'Leave a comment:',
     'Log In' : 'Log In',
-    'Create account' : 'Create account'
+    'Create account' : 'Create account',
+    'Profile photo' : 'Profile photo',
+    'Send for acceptation' : 'Send for acceptation',
+    'Personal data' : 'Personal data',
+    'Degree' : 'Degree',
+    'Additional Info' : 'Additional Info',
+    'Paper' : 'Paper',
+    'Summary' : 'Summary',
+    'Content' : 'Content'
     
 };

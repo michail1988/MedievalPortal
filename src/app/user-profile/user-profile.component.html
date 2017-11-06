@@ -2,38 +2,259 @@
 
 <button pButton type="button" icon="fa-sign-out" (click)="logout()"
 	label="{{ 'Log out' | translate}}"></button>
-	
 
-<h3 class="first">Profile photo</h3>
+<br />
+<br />
 
-<p-fileUpload name="file" url="{{uploadUrl}}"
-	(onUpload)="onUpload($event)" accept="image/*" maxFileSize="1000000">
-<template pTemplate type="content">
-<ul *ngIf="uploadedFiles.length">
-	<li *ngFor="let file of uploadedFiles">{{file.name}}</li>
-</ul>
-</template> </p-fileUpload>
+<div class="panel panel-primary dialog-panel">
+	<div class="panel-heading">
+		<h5>{{ 'Personal data' | translate}}</h5>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" (ngSubmit)="save()"
+			accept-charset="utf-8">
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="id_title">{{
+					'Name' | translate }}</label>
+				<div class="col-md-8">
+					<div class="col-md-2">
+						<div class="form-group internal">
+							<select class="form-control" id="id_title">
+								<option>Pani</option>
+								<option>Pan</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-3 indent-small">
+						<div class="form-group internal">
+							<input class="form-control" id="id_first_name"
+								placeholder="{{ 'First name' | translate }}" name="firstName"
+								[(ngModel)]="user.name" type="text">
+						</div>
+					</div>
+					<div class="col-md-3 indent-small">
+						<div class="form-group internal">
+							<input class="form-control" id="id_last_name"
+								placeholder="{{ 'Surname' | translate }}" name="surname"
+								[(ngModel)]="user.surname" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="id_email">{{
+					'Contact' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<input class="form-control" id="id_email"
+								placeholder="{{ 'Email' | translate }}" type="text"
+								[(ngModel)]="user.email" name="email">
+						</div>
+					</div>
+					<div class="form-group internal">
 
+						<div class="col-md-11">
+							<input class="form-control" id="id_phone"
+								[(ngModel)]="user.phone" name="phone"
+								placeholder="{{ 'Phone' | translate }}" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'In what capacity?' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-selectButton [options]="types" [(ngModel)]="selectedType"
+								id="character-role" name="character"></p-selectButton>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="university">{{ 'University' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+			<p-autoComplete placeholder="{{ 'University' | translate }}"
+						[(ngModel)]="user.university" [suggestions]="results"
+						(completeMethod)="search($event)" required name="university"
+						id="university"></p-autoComplete>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<div class="download">
-	<a class="button" href="https://github.com/victordarras/HeavyTable.js">
-		heavyTable.js on Github</a>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="id_checkin">Od</label>
+				<div class="col-md-8">
+					<div class="col-md-3">
+						<div class="form-group internal input-group">
+							<input class="form-control datepicker" id="id_checkin"> <span
+								class="input-group-addon"> <i
+								class="glyphicon glyphicon-calendar"></i>
+							</span>
+						</div>
+					</div>
+					<label class="control-label col-md-2" for="id_checkout">Do</label>
+					<div class="col-md-3">
+						<div class="form-group internal input-group">
+							<input class="form-control datepicker" id="id_checkout">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="id_equipment">Inne dane</label>
+				<div class="col-md-8">
+					<div class="col-md-3">
+						<div class="form-group internal">
+							<select class="form-control" id="id_equipment">
+								<option>Opcja 1</option>
+								<option>Opcja 2</option>
+								<option>Opcja 3</option>
+								<option>Opcja 4</option>
+								<option>Opcja 5</option>
+								<option>Opcja 6</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="form-group internal">
+							<label class="control-label col-md-3" for="id_slide">Inne
+								2</label>
+							<div class="make-switch has-switch" data-off-label="NO"
+								data-on-label="YES" id="id_slide_switch">
+								<div class="switch-animate switch-off">
+									<input id="id_slide" value="chk_hydro" type="checkbox"><span
+										class="switch-left">TAK</span><label for="id_slide">&nbsp;</label><span
+										class="switch-right">NIE</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="id_service">Inne dane 3</label>
+				<div class="col-md-8">
+					<select class="multiselect" id="id_service" multiple="multiple">
+						<option value="hydro">Opcja 1</option>
+						<option value="water">Opcja 2</option>
+						<option value="sewer">Opcja 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="id_comments">{{ 'Remarks' | translate }}</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="id_comments"
+						[(ngModel)]="user.contactcomments" name="comments"
+						placeholder="{{ 'Remarks' | translate }}" rows="3"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-3">
+					<button class="btn-lg btn-primary" type="submit">{{ 'Save'
+						| translate }}</button>
+				</div>
+				<div class="col-md-3">
+					<button class="btn-lg btn-danger" style="float: right"
+						type="submit">{{ 'Cancel' | translate }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 
-<section class="content">
-	<div class="download">
-		<a class="button" href="https://github.com/victordarras/HeavyTable.js">
-			heavyTable.js on Github</a>
+<div class="panel panel-primary dialog-panel">
+	<div class="panel-heading">
+		<h5>{{ 'Additional Info' | translate}}</h5>
 	</div>
-	<br>
-</section>
+	<div class="panel-body">
+		<form class="form-horizontal" (ngSubmit)="save()"
+			accept-charset="utf-8">
+
+			<h3 class="first">{{ 'Profile photo' | translate}}</h3>
+
+			<p-fileUpload name="file" url="{{uploadUrl}}"
+				(onUpload)="onUpload($event)" accept="image/*" maxFileSize="1000000">
+			<template pTemplate type="content">
+			<ul *ngIf="uploadedFiles.length">
+				<li *ngFor="let file of uploadedFiles">{{file.name}}</li>
+			</ul>
+			</template> </p-fileUpload>
 
 
-<img [src]="html" [hidden]="!imageLoaded">
+		</form>
+		
+		<img [src]="html" [hidden]="!imageLoaded">
+	</div>
+</div>
+
+<div class="panel panel-primary dialog-panel">
+	<div class="panel-heading">
+		<h5>{{ 'Paper' | translate}}</h5>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" (ngSubmit)="save()"
+			accept-charset="utf-8">
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="subjectDescripiton">{{ 'Subject' | translate }}</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="subjectDescripiton"
+						[(ngModel)]="user.subjectdescription" name="topic"
+						placeholder="{{ 'Subject' | translate }}" rows="2"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="summary">{{
+					'Summary' | translate }}</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="summary" name="summary"
+						placeholder="{{ 'Summary' | translate }}" rows="5"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="content">{{
+					'Content' | translate }}</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="content" name="content"
+						placeholder="{{ 'Content' | translate }}" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="download">
+				<a class="button" href="#"> {{ 'Send for acceptation' |
+					translate}}</a>
+			</div>
+
+		</form>
+	</div>
+</div>
 
 
-{{diagnostic}}
-<br>
-{{diagnosticUserId}}
+
+
+
+
+
+
+
+
+
+

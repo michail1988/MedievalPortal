@@ -65,5 +65,13 @@ export const LANG_PL_TRANS = {
     'EmailSentInfo' : 'Twoja wiadomość została wysłana.',
     'About the university' : 'O uniwersytecie',
     'Log In' : 'Zaloguj się',
-    'Create account' : 'Utwórz konto'
+    'Create account' : 'Utwórz konto',
+    'Profile photo' : 'Zdjęcie użytkownika',
+    'Send for acceptation' : 'Wyślij do akceptacji',
+    'Personal data' : 'Dane osobiste',
+    'Degree' : 'Tytuł naukowy',
+    'Additional Info' : 'Dodatkowe',
+    'Paper' : 'Referat',
+    'Summary' : 'Streszczenie',
+    'Content' : 'Abstrakt'
 };

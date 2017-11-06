@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from "primeng/primeng";
+import { Message, SelectItem } from "primeng/primeng";
 import { RequestOptions, Http, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { ImageService } from "app/services/image.service";
@@ -7,6 +7,8 @@ import { UserService } from "app/services/user.service";
 import { User } from "app/models/user";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "app/services/authentication.service";
+import { UniversityService } from "app/services/university.service";
+import { University } from "app/models/university";
 
 @Component( {
     selector: 'user-profile',
@@ -20,14 +22,29 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    private user: User;
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '' );
+    
+    selectedType: string;
+    
+    types: SelectItem[];
 
-    constructor( private imageService: ImageService, private userService: UserService,
-            private authenticationService: AuthenticationService, public router: Router) {
+    universities: University[];
+    results: string[];
+    
+    constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
+        private authenticationService: AuthenticationService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
+
+        this.types = [];
+        this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
+        this.types.push( { label: 'Referent', value: 'Referent' } );
+        this.types.push( { label: 'Organizator', value: 'Organizator' } );
         
         //todo tylko dla testow, poprawic logowanie
-        this.userId = '1';
+//        this.userId = '1';
+        //TODO Michal 
+        
+        this.selectedType = 'Uczestnik';
     }
 
     ngOnInit() {
@@ -36,13 +53,13 @@ export class UserProfileComponent implements OnInit {
             this.html = this.imageService.getUserImage( this.userId );
             this.imageLoaded = true;
         }
-        
-        this.userService.get(this.userId).subscribe(
-                u => this.user = u, //Bind to view
-                err => {
-                    // Log errors if any
-                    console.log( err );
-                } );
+
+        this.userService.get( this.userId ).subscribe(
+            u => this.user = u, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
     }
 
     msgs: Message[];
@@ -63,9 +80,43 @@ export class UserProfileComponent implements OnInit {
         this.router.navigate( ['login-register'] );
     }
     
-    get diagnostic() { return JSON.stringify( this.user ); }
+    search( event ) {
+        //      EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
+
+
+        this.loadUniversities();
+        //todo dziala wolno, jakby co drugi znak
+        if ( this.universities ) {
+
+            this.results = this.universities.map( function( uni ) {
+                return uni.name;
+            } )
+        }
+        ;
+    }
     
+    loadUniversities() {
+        // Get all enrolments
+        this.universityService.getUniversities( this.user.university )
+            .subscribe(
+            universities => this.universities = universities, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+
+        console.log( this.universities );
+    }
+
+    get diagnostic() { return JSON.stringify( this.user ); }
+
     get diagnosticUserId() { return this.userId; }
+
+    get userData() { return this.user; }
+
+
+    save() {
+    }
 
 
 }

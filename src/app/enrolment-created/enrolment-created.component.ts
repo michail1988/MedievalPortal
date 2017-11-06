@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-enrolment-created',
+  selector: 'enrolment-created',
   templateUrl: './enrolment-created.component.html',
   styleUrls: ['./enrolment-created.component.css']
 })
