@@ -38,6 +38,8 @@ import { ArticlesComponent } from "app/articles/articles.component";
 import { TermsComponent } from "app/terms/terms.component";
 import { ForgotPasswordComponent } from "app/forgot-password/forgot-password.component";
 import { SponsorsComponent } from "app/sponsors/sponsors.component";
+import { AdminEnrolmentComponent } from "app/admin-enrolment/admin-enrolment.component";
+import { UserResolver } from "app/services/user-resolver.service";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -117,6 +119,15 @@ export const router: Routes = [
         resolve: {
             article: ArticleResolver
         }, 
+    },
+    {
+        path: 'admin-user/:id',
+        component: AdminEnrolmentComponent,
+        resolve: {
+            schedule: UserResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
     },
     {
         path: 'news/:id',

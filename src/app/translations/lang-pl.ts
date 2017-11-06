@@ -63,6 +63,7 @@ export const LANG_PL_TRANS = {
     'Message' : 'Wiadomość',
     'Thank You!' : 'Dziękujemy!',
     'EmailSentInfo' : 'Twoja wiadomość została wysłana.',
+    'About the university' : 'O uniwersytecie',
     'Log In' : 'Zaloguj się',
     'Create account' : 'Utwórz konto'
 };

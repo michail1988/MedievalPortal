@@ -95,6 +95,8 @@ import { TermsComponent } from './terms/terms.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.component';
+import { EnrolmentCreatedComponent } from './enrolment-created/enrolment-created.component';
+import { UserResolver } from "app/services/user-resolver.service";
 
 
 
@@ -141,7 +143,8 @@ import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.compo
         TermsComponent,
         ForgotPasswordComponent,
         SponsorsComponent,
-        AdminEnrolmentComponent
+        AdminEnrolmentComponent,
+        EnrolmentCreatedComponent
     ],
     imports: [
         BrowserModule,
@@ -174,7 +177,7 @@ import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.compo
         EventNewResolver,
         ConfirmationService, ImageService, NewsService,
         NewsResolver, NewsNewResolver,
-        ContactService, CommentService, CommentNewsService, ScheduleService, EventService],
+        ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver],
     bootstrap: [AppComponent]
 } )
 export class AppModule { }

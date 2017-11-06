@@ -1,3 +1,7 @@
-<p>
-  admin-enrolment works!
-</p>
+<p-confirmDialog></p-confirmDialog>
+
+<button pButton type="button" (click)="save()" icon="fa-check"
+	class="ui-button-success" label="{{ 'Save' | translate}}"></button>
+	
+<button pButton type="button" (click)="cancel()" icon="fa-close"
+	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
