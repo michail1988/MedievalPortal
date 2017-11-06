@@ -10,7 +10,7 @@ import { NewsService } from "app/services/news.service";
 export class NewsComponent implements OnInit {
 
     //The time to show the next photo
-    private NextPhotoInterval: number = 5000;
+    private NextPhotoInterval: number = 2000;
     //Looping or not
     private noLoopSlides: boolean = false;
     //Photos
@@ -24,12 +24,12 @@ export class NewsComponent implements OnInit {
 
     private addNewSlide() {
         this.slides.push(
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg', text: 'BMW 1', description: 'Pierwszy samochodzik' },
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg', text: 'BMW 2', description: 'Drugi samochodzik' },
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg', text: 'BMW 3', description: 'Trzeci samochodzik' },
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg', text: 'BMW 4', description: 'Czwarty samochodzik' },
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg', text: 'BMW 5', description: 'Stracilem rachube' },
-            { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg', text: 'BMW 6', description: '...' }
+            { image: '/assets/cars/car1.jpg', text: 'BMW 1', description: 'Pierwszy samochodzik' },
+            { image: '/assets/cars/car2.jpg', text: 'BMW 2', description: 'Drugi samochodzik' },
+            { image: '/assets/cars/car3.jpg', text: 'BMW 3', description: 'Trzeci samochodzik' },
+            { image: '/assets/cars/car4.jpg', text: 'BMW 4', description: 'Czwarty samochodzik' },
+            { image: '/assets/cars/car5.jpg', text: 'BMW 5', description: 'Inny opis, inny temat' },
+            { image: '/assets/cars/car6.jpg', text: 'BMW 6', description: 'Opis, naglowek' }
         );
     }
 
