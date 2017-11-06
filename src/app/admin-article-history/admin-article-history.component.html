@@ -5,6 +5,9 @@
 <p-tabView> <p-tabPanel header="Info"
 	leftIcon="fa-drivers-license-o"> Tresc Autor </p-tabPanel> <p-tabPanel
 	header="{{ 'Description' | translate}}" leftIcon="fa-header">
-{{articleHistory.headline}} </p-tabPanel> <p-tabPanel
+<div [innerHTML]="articleHistory.headline"></div> </p-tabPanel> <p-tabPanel
 	header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o">
-{{articleHistory.content}} </p-tabPanel> </p-tabView> </p-accordionTab> </p-accordion>
+	
+	<div [innerHTML]="articleHistory.content"></div>
+	
+ </p-tabPanel> </p-tabView> </p-accordionTab> </p-accordion>

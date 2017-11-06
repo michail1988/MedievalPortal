@@ -63,6 +63,9 @@ export class AdminSingleNewsComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+        
+        //TODO Michal tymczasowo bo nie ma odpowiedzi
+        this.navigateBack();
     }
 
     save() {
@@ -85,6 +88,9 @@ export class AdminSingleNewsComponent implements OnInit {
             } );
 
         //TODO odpowiedz i bledy
+        
+        //TODO Michal tymczasowo bo nie ma odpowiedzi
+        this.navigateBack();
     }
 
     cancel() {

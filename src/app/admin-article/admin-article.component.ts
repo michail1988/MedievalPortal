@@ -64,6 +64,9 @@ export class AdminArticleComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+        
+      //TODO Michal tymczasowo bo nie ma odpowiedzi
+        this.navigateBack();
     }
 
     save() {
@@ -84,6 +87,9 @@ export class AdminArticleComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+        
+        //TODO Michal tymczasowo bo nie ma odpowiedzi
+        this.navigateBack();
 
     }
 
