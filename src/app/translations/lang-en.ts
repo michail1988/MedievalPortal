@@ -77,6 +77,10 @@ export const LANG_EN_TRANS = {
     'Summary' : 'Summary',
     'Content' : 'Content',
     'Mailbox' : 'Mailbox',
-    'Recover' : 'Recover'
+    'Recover' : 'Recover',
+    'Show all applicants' : 'Show all applicants',
+    'Show accepted' : 'Show accepted',
+    'Show pending requests' : 'Pending',
+    'Show speakers' : 'Show speakers'
     
 };

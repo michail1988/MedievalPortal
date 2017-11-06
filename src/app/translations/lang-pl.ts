@@ -75,5 +75,9 @@ export const LANG_PL_TRANS = {
     'Summary' : 'Streszczenie',
     'Content' : 'Abstrakt',
     'Mailbox' : 'Poczta',
-    'Recover' : 'Przywróć'
+    'Recover' : 'Przywróć',
+    'Show all applicants' : 'Pokaż wszystkich',
+    'Show accepted' : 'Zaakceptowani',
+    'Show pending requests' : 'Oczekujący',
+    'Show speakers' : 'Referenci'
 };

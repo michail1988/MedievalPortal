@@ -1,6 +1,16 @@
 
-<br />
-<br />
+<button pButton type="button" (click)="showAll()"
+	label="{{ 'Show all applicants' | translate}}"></button>
+	
+<button pButton type="button" (click)="showAcepted()"
+ label="{{ 'Show accepted' | translate}}"></button>
 
+<button pButton type="button" (click)="showNotAccepted()"
+	label="{{ 'Show pending requests' | translate}}"></button>
+	
+<button pButton type="button" (click)="showSpeakers()"
+	label="{{ 'Show speakers' | translate}}"></button>
+
+<br />
 
 <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

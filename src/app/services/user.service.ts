@@ -8,6 +8,10 @@ export class UserService {
 
     private usersUrl = 'http://localhost:3000/users';
     private userUrl = 'http://localhost:3000/user';
+    
+    private acceptedUsersUrl = 'http://localhost:3000/acceptedUsers';
+    private notAcceptedUsersUrl = 'http://localhost:3000/notAcceptedUsers';
+    private speakersUrl = 'http://localhost:3000/speakers';
 
     constructor( private http: Http ) { }
 
@@ -24,6 +28,39 @@ export class UserService {
 
         // ...using get request
         return this.http.get( this.usersUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getAcceptedUsers(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.acceptedUsersUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getNotAcceptedUsers(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.notAcceptedUsersUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getSpeakers(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.speakersUrl )
             // ...and calling .json() on the response to return data
             .map(( res: Response ) => res.json() )
             //...errors if any
