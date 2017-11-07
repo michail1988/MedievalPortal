@@ -61,7 +61,7 @@ export class AdminNewsComponent implements OnInit {
             },
             //TODO wpasowac w routingAdmin
             link: {
-                title: 'Link',
+                title: 'Akcja',
                 type: 'html',
                 valuePrepareFunction: ( cell, row ) => {
                     return '<a href="/admin-single-news/' + row.id + '">Edytuj</a>'

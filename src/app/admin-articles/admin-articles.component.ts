@@ -65,7 +65,7 @@ export class AdminArticlesComponent implements OnInit {
             //TODO wpasowac w routingAdmin admin/(adminRouting:admin-articles)
             //return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
             link: {
-                title: 'Link',
+                title: 'Akcja',
                 type: 'html',
                 valuePrepareFunction: ( cell, row ) => {
                     return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
