@@ -79,5 +79,6 @@ export const LANG_PL_TRANS = {
     'Show all applicants' : 'Pokaż wszystkich',
     'Show accepted' : 'Zaakceptowani',
     'Show pending requests' : 'Oczekujący',
-    'Show speakers' : 'Referenci'
+    'Show speakers' : 'Referenci',
+    'Receivers' : 'Odbiorcy'
 };

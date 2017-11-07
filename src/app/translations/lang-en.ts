@@ -81,6 +81,7 @@ export const LANG_EN_TRANS = {
     'Show all applicants' : 'Show all applicants',
     'Show accepted' : 'Show accepted',
     'Show pending requests' : 'Pending',
-    'Show speakers' : 'Show speakers'
+    'Show speakers' : 'Show speakers',
+    'Receivers' : 'Receivers'
     
 };

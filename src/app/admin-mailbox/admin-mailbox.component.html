@@ -1,3 +1,36 @@
-<p>
-  Tu bedzie skrzynka pocztowa.
-</p>
+<p-growl [value]="msgs"></p-growl>
+
+<button pButton type="button" (click)="showAll()"
+	label="{{ 'Show all applicants' | translate}}"></button>
+
+<button pButton type="button" (click)="showAcepted()"
+	label="{{ 'Show accepted' | translate}}"></button>
+
+<button pButton type="button" (click)="showNotAccepted()"
+	label="{{ 'Show pending requests' | translate}}"></button>
+
+<button pButton type="button" (click)="showSpeakers()"
+	label="{{ 'Show speakers' | translate}}"></button>
+
+<br />
+<br />
+
+
+
+
+
+<form class="form-style-9" (ngSubmit)="submitMessage()">
+	<ul>
+		<li><p-multiSelect [options]="addressees"
+				[(ngModel)]="selectedAddresses" name="addresses"
+				defaultLabel="{{ 'Receivers' | translate }}"></p-multiSelect></li>
+		<li><input type="text" name="subject"
+			class="field-style field-full align-none"
+			[(ngModel)]="contactMessage.subject"
+			placeholder="{{ 'Subject' | translate }}" /></li>
+		<li><textarea name="message" class="field-style"
+				[(ngModel)]="contactMessage.message"
+				placeholder="{{ 'Message' | translate }}"></textarea></li>
+		<li><input type="submit" value="{{ 'Send Message' | translate }}" /></li>
+	</ul>
+</form>

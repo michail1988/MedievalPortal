@@ -4,11 +4,12 @@ import { ContactMessage } from "app/models/contact-message";
 import { Message } from "primeng/primeng";
 
 @Component( {
-    selector: 'app-contact',
+    selector: 'contact',
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.css']
 } )
 //todo dymek potwierdzajacy, message z pelnym html z textarea
+
 export class ContactComponent implements OnInit {
 
     contactMessage = new ContactMessage( '', '', '', '', null );
@@ -26,10 +27,10 @@ export class ContactComponent implements OnInit {
 
         this.contactMessage.date = new Date();
         this.contactService.addMessage( this.contactMessage ).subscribe(
-            enrolments => {
+            res => {
 
                 this.msgs = [];
-                this.msgs.push( { severity: 'success', summary: 'Email sent', detail: '' } );
+                this.msgs.push( { severity: 'success', summary: 'Email dostarczony.', detail: '' } );
                 
                 this.submitted = true;
             },

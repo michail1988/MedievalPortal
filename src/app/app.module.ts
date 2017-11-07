@@ -25,6 +25,7 @@ import { FileUploadModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 import { CarouselModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
+import { MultiSelectModule } from 'primeng/primeng';
 
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
@@ -171,7 +172,8 @@ import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
         FileUploadModule,
         GrowlModule,
         CarouselModule,
-        CalendarModule
+        CalendarModule,
+        MultiSelectModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService,
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,

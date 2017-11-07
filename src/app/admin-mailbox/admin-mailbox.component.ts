@@ -1,15 +1,149 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactMessage } from "app/models/contact-message";
+import { ContactService } from "app/services/contact.service";
+import { Message } from "primeng/primeng";
 
-@Component({
-  selector: 'app-admin-mailbox',
-  templateUrl: './admin-mailbox.component.html',
-  styleUrls: ['./admin-mailbox.component.css']
-})
+import { SelectItem } from 'primeng/primeng';
+import { UserService } from "app/services/user.service";
+import { User } from "app/models/user";
+
+interface Address {
+    name: string,
+    code: string
+}
+
+@Component( {
+    selector: 'admin-mailbox',
+    templateUrl: './admin-mailbox.component.html',
+    styleUrls: ['./admin-mailbox.component.css']
+} )
+// css: https://www.sanwebe.com/2014/08/css-html-forms-designs/comment-page-1#comments
 export class AdminMailboxComponent implements OnInit {
 
-  constructor() { }
+    contactMessage = new ContactMessage( '', '', '', '', null );
 
-  ngOnInit() {
-  }
+    msgs: Message[];
 
+    submitted = false;
+
+    selectedAddresses: Address[];
+
+    users: User[];
+
+    addressees: SelectItem[];
+
+    constructor( private contactService: ContactService, private userService: UserService ) {
+
+
+    }
+
+    ngOnInit() {
+        this.showAll();
+    }
+
+    submitMessage() {
+
+                this.contactMessage.date = new Date();
+                this.contactMessage.email = ''
+                    
+                for ( var i = 0; i < this.selectedAddresses.length; i++ ) {
+                    
+                    if (this.isEmpty(this.contactMessage.email)) {
+                        this.contactMessage.email = this.selectedAddresses[i].code;
+                    } else {
+                        this.contactMessage.email = this.contactMessage.email + ', ' + this.selectedAddresses[i].code;
+                    }
+                }
+                
+                console.log( 'Wysylam do ' +  this.contactMessage.email);
+                this.contactService.sendAdminMessages( this.contactMessage ).subscribe(
+                    response => {
+                        this.msgs = [];
+                        this.msgs.push( { severity: 'success', summary: 'Email dostarczony.', detail: '' } );
+        
+                        this.submitted = true;
+                    },
+                    err => {
+                        // Log errors if any
+                        console.log( err );
+                    } );
+        
+        
+    }
+
+    showAll() {
+        this.userService.getUsers()
+            .subscribe(
+            allUsers => {
+                this.users = allUsers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+    }
+
+    showAcepted() {
+        this.userService.getAcceptedUsers()
+            .subscribe(
+            acceptedUsers => {
+                this.users = acceptedUsers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+    }
+
+    showNotAccepted() {
+        this.userService.getNotAcceptedUsers()
+            .subscribe(
+            notAcceptedUsers => {
+                this.users = notAcceptedUsers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+    }
+
+    showSpeakers() {
+        this.userService.getSpeakers()
+            .subscribe(
+            speakers => {
+                this.users = speakers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+    }
+
+    setItems() {
+        this.addressees = [];
+        this.selectedAddresses = [];
+
+        if ( this.users ) {
+            for ( var i = 0; i < this.users.length; i++ ) {
+
+                let name = this.users[i].name + ' ' + this.users[i].surname;
+                this.addressees.push( { label: name, value: { id: i + 1, name: name, code: this.users[i].email } } );
+
+            }
+        }
+
+        this.addressees.sort();
+    }
+    
+    isEmpty(str) {
+        return (!str || 0 === str.length);
+    }
 }
