@@ -20,6 +20,11 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     @Input() editId: string;
 
     source: LocalDataSource;
+    
+    showAllEnabled: boolean;
+    showAcceptedEnabled: boolean;
+    showNotAcceptedEnabled: boolean;
+    showSpeakersEnabled: boolean;
 
     // Constructor with injected service
     constructor( private userService: UserService ) { }
@@ -32,6 +37,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
+        
+        this.showAllEnabled = true;
     }
 
     loadAllEnrolments() {
@@ -104,23 +111,42 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
+        
+        this.resetButtons();
+        this.showAllEnabled = true;
     }
 
     showAcepted() {
         this.userService.getAcceptedUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
+        
+        this.resetButtons();
+        this.showAcceptedEnabled = true;
     }
 
     showNotAccepted() {
         this.userService.getNotAcceptedUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
+        
+        this.resetButtons();
+        this.showNotAcceptedEnabled = true;
     }
 
     showSpeakers() {
         this.userService.getSpeakers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
+        
+        this.resetButtons();
+        this.showSpeakersEnabled = true;
+    }
+    
+    resetButtons() {
+        this.showAllEnabled = false;
+        this.showAcceptedEnabled = false;
+        this.showNotAcceptedEnabled = false;
+        this.showSpeakersEnabled = false;
     }
 }

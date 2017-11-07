@@ -1,15 +1,19 @@
 
 <button pButton type="button" (click)="showAll()"
-	label="{{ 'Show all applicants' | translate}}"></button>
-	
+	label="{{ 'Show all applicants' | translate}}"
+	[ngClass]="showAllEnabled?'ui-button-success':'btn btn-primary'"></button>
+
 <button pButton type="button" (click)="showAcepted()"
- label="{{ 'Show accepted' | translate}}"></button>
+	label="{{ 'Show accepted' | translate}}"
+	[ngClass]="showAcceptedEnabled?'ui-button-success':'btn btn-primary'"></button>
 
 <button pButton type="button" (click)="showNotAccepted()"
-	label="{{ 'Show pending requests' | translate}}"></button>
-	
+	label="{{ 'Show pending requests' | translate}}"
+	[ngClass]="showNotAcceptedEnabled?'ui-button-success':'btn btn-primary'"></button>
+
 <button pButton type="button" (click)="showSpeakers()"
-	label="{{ 'Show speakers' | translate}}"></button>
+	label="{{ 'Show speakers' | translate}}"
+	[ngClass]="showSpeakersEnabled?'ui-button-success':'btn btn-primary'"></button>
 
 <br />
 
