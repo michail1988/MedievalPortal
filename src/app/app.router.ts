@@ -229,7 +229,8 @@ export const router: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'login-register/forgot-password', component: ForgotPasswordComponent },
     { path: 'sponsors', component: SponsorsComponent },
-    { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },    
+    { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },
+    { path: 'enrolment-created', component: EnrolmentCreatedComponent },
     
 ];
 

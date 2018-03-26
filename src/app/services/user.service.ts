@@ -15,13 +15,11 @@ export class UserService {
 
     constructor( private http: Http ) { }
 
-    addUser( body: User ): Observable<User[]> {
+    addUser( body: User ): any {
 
         let headers = new Headers( { 'Content-Type': 'application/json' } );
         let options = new RequestOptions( { headers: headers } );
-        return this.http.post( this.usersUrl, JSON.stringify( body ), options )
-            .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
-            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+        return this.http.post(this.usersUrl, JSON.stringify(body), options);
     }
 
     getUsers(): Observable<User[]> {

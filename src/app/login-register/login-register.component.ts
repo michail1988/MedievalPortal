@@ -68,19 +68,20 @@ export class LoginRegisterComponent implements OnInit {
         this.user.registerdate = new Date();
         this.user.congressrole = this.selectedType.charAt( 0 )
         this.userService.addUser( this.user ).subscribe(
-            enrolments => {
-                //                // Emit list event
-                //                EmitterService.get( this.listId ).emit( enrolments );
-                //                // Empty model
-                //TODO success
+                response => {
 
-            },
-            err => {
-                // Log errors if any
-                console.log( err );
-            } );
 
-        this.submitted = true;
+                    if ( response.text() === 'OK' ) {
+                        -                    console.log( 'udalo sie haha '  + response.text());
+                        //           
+                        this.submitted = true;
+                        this.router.navigate( ['enrolment-created'] );
+                    }
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
     
 

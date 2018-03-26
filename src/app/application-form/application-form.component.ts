@@ -39,18 +39,22 @@ export class ApplicationFormComponent implements OnInit {
 
         this.enrolment.date = new Date();
         this.enrolmentService.addEnrolment( this.enrolment ).subscribe(
-            enrolments => {
-                // Emit list event
-                EmitterService.get( this.listId ).emit( enrolments );
-                // Empty model
+            response => {
 
+
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie '  + response.text());
+                    //           
+                    this.submitted = true;
+                    //                    -                    this.router.navigate( ['admin'] );
+                }
             },
             err => {
                 // Log errors if any
                 console.log( err );
             } );
 
-        this.submitted = true;
+
     }
 
     newEnrolment() {
@@ -59,7 +63,7 @@ export class ApplicationFormComponent implements OnInit {
     }
 
     //TODO Michal usun to
-    val1 :string;
+    val1: string;
     abstrakt: string;
     text: string;
 
@@ -67,7 +71,7 @@ export class ApplicationFormComponent implements OnInit {
 
     loadUniversities() {
         // Get all enrolments
-        this.universityService.getUniversities(this.enrolment.university)
+        this.universityService.getUniversities( this.enrolment.university )
             .subscribe(
             universities => this.universities = universities, //Bind to view
             err => {
@@ -79,11 +83,11 @@ export class ApplicationFormComponent implements OnInit {
     }
 
     search( event ) {
-//        EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
+        //        EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
 
 
-                this.loadUniversities();
-//todo dziala wolno, jakby co drugi znak
+        this.loadUniversities();
+        //todo dziala wolno, jakby co drugi znak
         if ( this.universities ) {
 
             this.results = this.universities.map( function( uni ) {

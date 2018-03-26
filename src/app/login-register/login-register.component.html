@@ -23,7 +23,7 @@
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="user-email">{{ 'Email' | translate }}*</label> <input
-						[(ngModel)]="user.email" class="string optional" name="email"
+						[(ngModel)]="user.email" class="string optional" name="email" required
 						maxlength="255" id="user-email" placeholder="{{ 'Email' | translate }}" type="email"
 						size="50" />
 				</div>
@@ -31,13 +31,13 @@
 			<div class="sminputs">
 				<div class="input string optional">
 					<label class="string optional" for="user-pw">{{ 'Password' | translate }} *</label> <input
-						class="string optional" maxlength="255" id="user-pw"
+						class="string optional" maxlength="255" id="user-pw" required
 						[(ngModel)]="user.password" name="password" placeholder="{{ 'Password' | translate }}"
 						type="password" size="50" />
 				</div>
 				<div class="input string optional">
 					<label class="string optional" for="user-pw-repeat">{{ 'Repeat password' | translate }} *</label> <input class="string optional" maxlength="255"
-						[(ngModel)]="repeatPassword" name="passwordRepeat"
+						[(ngModel)]="repeatPassword" name="passwordRepeat" required
 						id="user-pw-repeat" placeholder="{{ 'Repeat password' | translate }}" type="password"
 						size="50" />
 				</div>
@@ -46,13 +46,13 @@
 			<div class="sminputs">
 				<div class="input string optional">
 					<label class="string optional" for="user-name">{{ 'First name' | translate }} *</label>
-					<input class="string optional" maxlength="255" id="user-name"
+					<input class="string optional" maxlength="255" id="user-name" required
 						[(ngModel)]="user.name" name="name" placeholder="{{ 'First name' | translate }}"
 						type="text" size="50" />
 				</div>
 				<div class="input string optional">
 					<label class="string optional" for="user-surname">{{ 'Surname' | translate }} *</label>
-					<input class="string optional" maxlength="255"
+					<input class="string optional" maxlength="255" required
 						[(ngModel)]="user.surname" name="surname" id="user-surname"
 						placeholder="{{ 'Surname' | translate }}" type="text" size="50" />
 				</div>
@@ -128,7 +128,7 @@
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="user-email">{{ 'Email' | translate }} *</label> <input
-						class="string optional" maxlength="255" id="user-email"
+						class="string optional" maxlength="255" id="user-email" required
 						#username name="email" placeholder="{{ 'Email' | translate }}"
 						type="email" size="50" />
 				</div>
@@ -136,7 +136,7 @@
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="user-pw">{{ 'Password' | translate }} *</label> <input
-						class="string optional" maxlength="255" id="user-pw"
+						class="string optional" maxlength="255" id="user-pw" required
 						#password name="password" placeholder="{{ 'Password' | translate }}"
 						type="password" size="50" /> <span class="hide-password">{{ 'Show' | translate }}</span>
 				</div>
@@ -150,4 +150,5 @@
 		</form>
 	</div>
 </div>
+
 
