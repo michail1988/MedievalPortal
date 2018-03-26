@@ -32,7 +32,7 @@ export const LANG_EN_TRANS = {
     'Read more' : 'Read more',
     'Registration' : 'Registration',
     'Admin panel' : 'Admin panel',
-    'Medieval congress' : 'Medieval congress',
+    'Medieval congress' : '6th Polish Medieval Congress',
     'Wroclaw University' : 'Wroclaw University - Faculty of history',
     'Published:' : 'Published:',
     'Categories:' : 'Categories:',
@@ -43,6 +43,7 @@ export const LANG_EN_TRANS = {
     'Sign Up' : 'Sign Up',
     'Login' : 'Login',
     'Enter your details' : 'Enter your personal details',
+    'congressDatePlace' : 'Wrocław, 20–22 września 2018',
     'to create an account' : 'to create an account',
     'Email' : 'Email',
     'Password' : 'Password',
@@ -82,6 +83,7 @@ export const LANG_EN_TRANS = {
     'Show accepted' : 'Show accepted',
     'Show pending requests' : 'Pending',
     'Show speakers' : 'Show speakers',
-    'Receivers' : 'Receivers'
+    'Receivers' : 'Receivers',
+    'letter-of-intent' : 'Letter of intent'
     
 };

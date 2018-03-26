@@ -42,6 +42,7 @@ import { AdminEnrolmentComponent } from "app/admin-enrolment/admin-enrolment.com
 import { UserResolver } from "app/services/user-resolver.service";
 import { EnrolmentCreatedComponent } from "app/enrolment-created/enrolment-created.component";
 import { AdminMailboxComponent } from "app/admin-mailbox/admin-mailbox.component";
+import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -231,6 +232,7 @@ export const router: Routes = [
     { path: 'sponsors', component: SponsorsComponent },
     { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'enrolment-created', component: EnrolmentCreatedComponent },
+    { path: 'letter-of-intent', component: LetterOfIntentComponent }
     
 ];
 

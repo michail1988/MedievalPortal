@@ -99,6 +99,7 @@ import { AdminEnrolmentComponent } from './admin-enrolment/admin-enrolment.compo
 import { EnrolmentCreatedComponent } from './enrolment-created/enrolment-created.component';
 import { UserResolver } from "app/services/user-resolver.service";
 import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
+import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 
 
 
@@ -147,7 +148,8 @@ import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
         SponsorsComponent,
         AdminEnrolmentComponent,
         EnrolmentCreatedComponent,
-        AdminMailboxComponent
+        AdminMailboxComponent,
+        LetterOfIntentComponent
     ],
     imports: [
         BrowserModule,
