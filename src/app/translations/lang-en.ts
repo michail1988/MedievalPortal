@@ -81,9 +81,12 @@ export const LANG_EN_TRANS = {
     'Recover' : 'Recover',
     'Show all applicants' : 'Show all applicants',
     'Show accepted' : 'Show accepted',
+    'Show rejected' : 'Show rejected',
     'Show pending requests' : 'Pending',
     'Show speakers' : 'Show speakers',
     'Receivers' : 'Receivers',
+    'Accept' : 'Accept',
+    'Reject' : 'Reject',
     'letter-of-intent' : 'Letter of intent'
     
 };

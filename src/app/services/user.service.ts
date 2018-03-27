@@ -10,9 +10,15 @@ export class UserService {
     private userUrl = 'http://localhost:3000/user';
     
     private acceptedUsersUrl = 'http://localhost:3000/acceptedUsers';
-    private notAcceptedUsersUrl = 'http://localhost:3000/notAcceptedUsers';
+    private pendingUsersUrl = 'http://localhost:3000/pendingUsers';
+    private rejectedUsersUrl = 'http://localhost:3000/rejectedUsers';
+    
     private speakersUrl = 'http://localhost:3000/speakers';
+    
 
+    private acceptUserUrl = 'http://localhost:3000/acceptUser';
+    private rejectUserUrl = 'http://localhost:3000/rejectUser';
+    
     constructor( private http: Http ) { }
 
     addUser( body: User ): any {
@@ -44,10 +50,21 @@ export class UserService {
 
     }
     
-    getNotAcceptedUsers(): Observable<User[]> {
+    getPendingUsers(): Observable<User[]> {
 
         // ...using get request
-        return this.http.get( this.notAcceptedUsersUrl )
+        return this.http.get( this.pendingUsersUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getRejectedUsers(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.rejectedUsersUrl )
             // ...and calling .json() on the response to return data
             .map(( res: Response ) => res.json() )
             //...errors if any
@@ -89,5 +106,19 @@ export class UserService {
     get(id: string): Observable<User> {
         return this.getUser(id)
                .map(data => data);
+    }
+    
+    acceptUser( body: User ): any {
+
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post(this.acceptUserUrl, JSON.stringify(body), options);
+    }
+    
+    rejectUser( body: User ): any {
+
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post(this.rejectUserUrl, JSON.stringify(body), options);
     }
 }

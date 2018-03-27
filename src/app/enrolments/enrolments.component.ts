@@ -6,6 +6,7 @@ import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 
 import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";
+import { ActionAdminEnrolmentComponent } from "app/action-admin-enrolment/action-admin-enrolment.component";
 
 
 @Component( {
@@ -24,8 +25,9 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     
     showAllEnabled: boolean;
     showAcceptedEnabled: boolean;
-    showNotAcceptedEnabled: boolean;
+    showPendingEnabled: boolean;
     showSpeakersEnabled: boolean;
+    showRejectedEnabled: boolean;
 
     // Constructor with injected service
     constructor( private userService: UserService ) { }
@@ -94,15 +96,16 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 type: 'html',
                 valuePrepareFunction: ( value ) => {
                     if ( value === 'Y' ) return 'Tak';
-                    return 'Nie'
+                    if ( value === 'N' ) return 'Nie';
+                    return 'Oczekuje'
                 }
             },
             action: {
                 title: 'Akcja',
-                type: 'html',
+                type: 'custom',
+                renderComponent: ActionAdminEnrolmentComponent,
                 valuePrepareFunction: ( cell, row ) => {
-                    return '<a href="/admin-user/' + row.id + '">Edytuj</a>' + '<p> </p>' +
-                        '<a href="/admin-user/' + row.id + '">Zatwierdz</a>'
+                    return row 
                 }
             }
         },
@@ -127,13 +130,22 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showAcceptedEnabled = true;
     }
 
-    showNotAccepted() {
-        this.userService.getNotAcceptedUsers().toPromise().then(( data ) => {
+    showPending() {
+        this.userService.getPendingUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
         
         this.resetButtons();
-        this.showNotAcceptedEnabled = true;
+        this.showPendingEnabled = true;
+    }
+    
+    showRejected() {
+        this.userService.getRejectedUsers().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+        
+        this.resetButtons();
+        this.showRejectedEnabled = true;
     }
 
     showSpeakers() {
@@ -148,7 +160,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     resetButtons() {
         this.showAllEnabled = false;
         this.showAcceptedEnabled = false;
-        this.showNotAcceptedEnabled = false;
+        this.showPendingEnabled = false;
         this.showSpeakersEnabled = false;
+        this.showRejectedEnabled = false;
     }
 }

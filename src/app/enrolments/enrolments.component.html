@@ -7,9 +7,13 @@
 	label="{{ 'Show accepted' | translate}}"
 	[ngClass]="showAcceptedEnabled?'ui-button-success':'btn btn-primary'"></button>
 
-<button pButton type="button" (click)="showNotAccepted()"
+<button pButton type="button" (click)="showPending()"
 	label="{{ 'Show pending requests' | translate}}"
-	[ngClass]="showNotAcceptedEnabled?'ui-button-success':'btn btn-primary'"></button>
+	[ngClass]="showPendingEnabled?'ui-button-success':'btn btn-primary'"></button>
+
+<button pButton type="button" (click)="showRejected()"
+	label="{{ 'Show rejected' | translate}}"
+	[ngClass]="showRejectedEnabled?'ui-button-success':'btn btn-primary'"></button>
 
 <button pButton type="button" (click)="showSpeakers()"
 	label="{{ 'Show speakers' | translate}}"

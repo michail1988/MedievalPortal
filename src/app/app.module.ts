@@ -100,6 +100,7 @@ import { EnrolmentCreatedComponent } from './enrolment-created/enrolment-created
 import { UserResolver } from "app/services/user-resolver.service";
 import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
+import { ActionAdminEnrolmentComponent } from './action-admin-enrolment/action-admin-enrolment.component';
 
 
 
@@ -149,7 +150,8 @@ import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.com
         AdminEnrolmentComponent,
         EnrolmentCreatedComponent,
         AdminMailboxComponent,
-        LetterOfIntentComponent
+        LetterOfIntentComponent,
+        ActionAdminEnrolmentComponent
     ],
     imports: [
         BrowserModule,
@@ -184,6 +186,7 @@ import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.com
         ConfirmationService, ImageService, NewsService,
         NewsResolver, NewsNewResolver,
         ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver],
-    bootstrap: [AppComponent]
+    entryComponents: [ActionAdminEnrolmentComponent],
+    bootstrap: [AppComponent],
 } )
 export class AppModule { }
