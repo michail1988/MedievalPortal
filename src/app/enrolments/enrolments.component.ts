@@ -5,6 +5,7 @@ import { EmitterService } from '../services/emitter.service';
 import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 
 import { Observable } from "rxjs";
+import { DatePipe } from "@angular/common";
 
 
 @Component( {
@@ -74,7 +75,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 title: 'Data zgloszenia',
                 type: 'html',
                 valuePrepareFunction: ( value ) => {
-                    return value
+                    var datePipe = new DatePipe('pl-PL');
+                    return datePipe.transform(value, 'dd.MM.yyyy');
                 }
             },
             congressrole: {

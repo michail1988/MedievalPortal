@@ -5,6 +5,7 @@ import { EmitterService } from '../services/emitter.service';
 import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 import { Router } from "@angular/router";
 import { AdminTableButtonComponent } from "app/admin-table-button/admin-table-button.component";
+import { DatePipe } from "@angular/common";
 
 @Component( {
     selector: 'admin-articles',
@@ -26,13 +27,13 @@ export class AdminArticlesComponent implements OnInit {
         this.articleService.getArticles().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.activeArticleView = true;
     }
 
     ngOnInit() {
         // Load articles
-//        this.loadArticles()
+        //        this.loadArticles()
     }
 
     loadArticles() {
@@ -40,7 +41,7 @@ export class AdminArticlesComponent implements OnInit {
             this.source.load( data );
         } );
     }
-    
+
     loadDeletedArticles() {
         this.articleService.getDeletedArticles().toPromise().then(( data ) => {
             this.source.load( data );
@@ -60,7 +61,12 @@ export class AdminArticlesComponent implements OnInit {
                 title: 'Edytowal'
             },
             editdate: {
-                title: 'Data edycji'
+                title: 'Data edycji',
+                type: 'html',
+                valuePrepareFunction: ( value ) => {
+                    var datePipe = new DatePipe( 'pl-PL' );
+                    return datePipe.transform( value, 'dd.MM.yyyy' );
+                }
             },
             //TODO wpasowac w routingAdmin admin/(adminRouting:admin-articles)
             //return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
@@ -71,18 +77,18 @@ export class AdminArticlesComponent implements OnInit {
                     return '<a href="/admin-article/' + row.id + '">Edytuj</a>'
                 }
             },
-//            button: {
-//                title: 'Button',
-//                type: 'custom',
-//                renderComponent: AdminTableButtonComponent,
-//                onComponentInitFunction(instance) {
-//                  instance.save.subscribe(row => {
-//                    alert(`${row.name} saved!`)
-//                  });
-//                }
-//        }
-            
-            
+            //            button: {
+            //                title: 'Button',
+            //                type: 'custom',
+            //                renderComponent: AdminTableButtonComponent,
+            //                onComponentInitFunction(instance) {
+            //                  instance.save.subscribe(row => {
+            //                    alert(`${row.name} saved!`)
+            //                  });
+            //                }
+            //        }
+
+
         },
         actions: false
     };
@@ -90,21 +96,21 @@ export class AdminArticlesComponent implements OnInit {
     createNew() {
         this.router.navigate( ['admin-article-new/'] );
     }
-    
+
     isShowActive() {
         return this.activeArticleView;
     }
-    
+
     showDeletedArticles() {
         this.loadDeletedArticles();
-        
+
         this.activeArticleView = false;
     }
-    
+
     showActiveArticles() {
         this.loadArticles();
-        
+
         this.activeArticleView = true;
     }
-    
+
 }

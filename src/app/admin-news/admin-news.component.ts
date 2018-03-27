@@ -4,6 +4,7 @@ import { NewsService } from '../services/news.service';
 import { EmitterService } from '../services/emitter.service';
 import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 import { Router } from "@angular/router";
+import { DatePipe } from "@angular/common";
 
 @Component( {
     selector: 'admin-news',
@@ -57,7 +58,12 @@ export class AdminNewsComponent implements OnInit {
                 title: 'Edytowal'
             },
             editdate: {
-                title: 'Data edycji'
+                title: 'Data edycji',
+                type: 'html',
+                valuePrepareFunction: ( value ) => {
+                    var datePipe = new DatePipe( 'pl-PL' );
+                    return datePipe.transform( value, 'dd.MM.yyyy' );
+                }
             },
             //TODO wpasowac w routingAdmin
             link: {
