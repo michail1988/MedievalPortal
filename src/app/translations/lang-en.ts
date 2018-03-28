@@ -50,7 +50,7 @@ export const LANG_EN_TRANS = {
     'Repeat password': 'Repeat password',
     'University': 'University',
     'Remarks': 'Remarks',
-    'In what capacity?': 'In what capacity?',
+    'Capacity': 'In what capacity?',
     'Topic': 'Topic',
     'Show': 'Show',
     'Hide': 'Hide',

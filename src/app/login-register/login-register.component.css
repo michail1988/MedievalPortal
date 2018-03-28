@@ -750,3 +750,8 @@ html {
 	background-color: red !important;
 	background: pink;
 }
+
+.validationError {
+	background-color: #ff9999 !important;
+
+}

@@ -26,6 +26,7 @@ import { GrowlModule } from 'primeng/primeng';
 import { CarouselModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
 import { MultiSelectModule } from 'primeng/primeng';
+import {CheckboxModule} from 'primeng/primeng';
 
 import { EnrolmentService } from './services/enrolment.service';
 import { ArticleService } from './services/article.service';
@@ -177,7 +178,8 @@ import { ActionAdminEnrolmentComponent } from './action-admin-enrolment/action-a
         GrowlModule,
         CarouselModule,
         CalendarModule,
-        MultiSelectModule
+        MultiSelectModule,
+        CheckboxModule
     ],
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService,
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,

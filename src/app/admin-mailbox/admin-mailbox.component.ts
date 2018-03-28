@@ -112,7 +112,7 @@ export class AdminMailboxComponent implements OnInit {
     }
 
     showNotAccepted() {
-        this.userService.getNotAcceptedUsers()
+        this.userService.getPendingUsers()
             .subscribe(
             notAcceptedUsers => {
                 this.users = notAcceptedUsers;

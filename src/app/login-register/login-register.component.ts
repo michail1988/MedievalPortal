@@ -34,12 +34,20 @@ export class LoginRegisterComponent implements OnInit {
 
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '' );
     repeatPassword: string; //TODO dodac walidacje
+    termsAcceptation: boolean;
+
+    loginForm;
+    registerForm;
+
+    //logowanie:
+    loginEmail: string;
+    password: string;
 
     constructor( private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
         this.loginTabVisible = false;
         this.speakerPartsVisible = false;
-
+        
         this.types = [];
         this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
         this.types.push( { label: 'Referent', value: 'Referent' } );
@@ -48,6 +56,21 @@ export class LoginRegisterComponent implements OnInit {
         this.selectedType = 'Uczestnik';
 
         this.passwordType = 'password'
+
+        this.loginForm = [];
+        this.loginForm.email = 'input full';
+        this.loginForm.password = 'input full';
+
+        this.registerForm = [];
+        this.registerForm.email = 'input full';
+
+        this.registerForm.password = 'input string optional';
+        this.registerForm.repeatPassword = 'input string optional';
+
+        this.registerForm.username = 'input string optional';
+        this.registerForm.usersurname = 'input string optional';
+
+        this.registerForm.terms = 'simform__actions-sidetext';
     }
 
     ngOnInit() {
@@ -67,7 +90,7 @@ export class LoginRegisterComponent implements OnInit {
 
     //TODO koniecznie jakas odpowiedz serwera
     //automatyczny login???
-    submitUser() {
+    registerUser() {
 
         this.user.registerdate = new Date();
         this.user.congressrole = this.selectedType.charAt( 0 )
@@ -86,8 +109,87 @@ export class LoginRegisterComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+
+
     }
 
+
+    validateRegisterForm() {
+        var result = true;
+
+        if ( this.isEmpty( this.user.email ) ) {
+            result = false;
+            this.registerForm.email = 'input full validationError';
+        } else {
+            this.registerForm.email = 'input full';
+        }
+
+        if ( this.isEmpty( this.user.password ) ) {
+            result = false;
+            this.registerForm.password = 'input string optional validationError';
+        } else {
+            this.registerForm.password = 'input string optional';
+        }
+
+        if ( this.isEmpty( this.repeatPassword ) ) {
+            result = false;
+            this.registerForm.repeatPassword = 'input string optional validationError';
+        } else {
+            this.registerForm.repeatPassword = 'input string optional';
+        }
+
+        if ( this.repeatPassword != this.user.password ) {
+            result = false;
+            this.registerForm.repeatPassword = 'input string optional validationError';
+            this.registerForm.password = 'input string optional validationError';
+        } 
+
+        if ( this.isEmpty( this.user.name ) ) {
+            result = false;
+            this.registerForm.username = 'input string optional validationError';
+        } else {
+            this.registerForm.username = 'input string optional';
+        }
+
+        if ( this.isEmpty( this.user.surname ) ) {
+            result = false;
+            this.registerForm.usersurname = 'input string optional validationError';
+        } else {
+            this.registerForm.usersurname = 'input string optional';
+        }
+        
+
+        if ( this.termsAcceptation != true ) {
+            result = false;
+            this.registerForm.terms = 'simform__actions-sidetext validationError';
+        } else {
+            this.registerForm.terms = 'simform__actions-sidetext';
+        }
+
+        return result;
+    }
+    
+    validateLoginForm() {
+        var result = true;
+        
+        if ( this.isEmpty( this.loginEmail ) ) {
+            result = false;
+            this.loginForm.email = 'input full validationError';
+        } else {
+            this.loginForm.email = 'input full';
+        }
+        
+        if ( this.isEmpty( this.password ) ) {
+            result = false;
+            this.loginForm.password = 'input full validationError';
+        } else {
+            this.loginForm.password = 'input full';
+        }
+        
+        
+        
+        return result;
+    }
 
     loadUniversities() {
         // Get all enrolments
@@ -118,13 +220,13 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     //TODO do porzadnej poprawy
-    login( event, username, password ) {
+    login() {
 
         //co to jest?
         event.preventDefault();
 
 
-        this.authenticationService.login( username, password ).subscribe(
+        this.authenticationService.login( this.loginEmail, this.password ).subscribe(
             u => this.user = u, //Bind to view
             err => {
                 // Log errors if any
@@ -157,17 +259,20 @@ export class LoginRegisterComponent implements OnInit {
     showPassword() {
         this.passwordType = 'text'
     }
-    
+
     hidePassword() {
         this.passwordType = 'password'
     }
-    
+
     isPasswordVisible() {
         return 'text' === this.passwordType
     }
-    
+
     isPasswordHidden() {
         return 'password' === this.passwordType
     }
 
+    isEmpty( str ) {
+        return ( !str || 0 === str.length );
+    }
 }

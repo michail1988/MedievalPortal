@@ -50,7 +50,7 @@ export const LANG_PL_TRANS = {
     'Repeat password': 'Powtórz hasło',
     'University': 'Afiliacja',
     'Remarks': 'Uwagi',
-    'In what capacity?': 'W jakim charakterze?',
+    'Capacity': 'W jakim charakterze?',
     'Topic': 'Abstrakt',
     'Show': 'Pokaż',
     'Hide': 'Ukryj',
