@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { ForgotPasswordMessage } from "app/models/forgot-password-message";
 
 
 
@@ -16,6 +17,8 @@ export class ContactService {
     // private instance variable to hold base url
     private contactUrl = 'http://localhost:3000/contactMessage';
     private contactsUrl = 'http://localhost:3000/adminMessages';
+    
+    private forgotPasswordUrl = 'http://localhost:3000/forgotPassword';
 
     addMessage( body: ContactMessage ): any {
         let headers = new Headers( { 'Content-Type': 'application/json' } );
@@ -32,6 +35,17 @@ export class ContactService {
         let headers = new Headers( { 'Content-Type': 'application/json' } );
         let options = new RequestOptions( { headers: headers } );
         return this.http.post( this.contactsUrl, JSON.stringify( body ), options )
+            .map(( res: Response ) => {
+                
+                return true;
+            })
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+    }
+    
+    sendPassword( body: ForgotPasswordMessage ): any {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post( this.forgotPasswordUrl, JSON.stringify( body ), options )
             .map(( res: Response ) => {
                 
                 return true;
