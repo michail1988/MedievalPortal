@@ -55,8 +55,8 @@ export const LANG_PL_TRANS = {
     'Show': 'Pokaż',
     'Hide': 'Ukryj',
     'Click here': 'Kliknij tutaj',
-    'Forgot your password?': 'Zapomniałeś/aś hasła?',
-    'Enter your email and password': 'Wprowadź swój email i hasło',
+    'ForgotPassword': 'Zapomniałeś/aś hasła?',
+    'EnterYourEmail': 'Wprowadź swój email i hasło',
     'to sign in': 'aby zalogować się',
     'Agree rules info': 'Tworząc konto akceptuję',
     'Send Message': 'Wyślij wiadomość',
@@ -101,6 +101,8 @@ export const LANG_PL_TRANS = {
     'letter-regards': 'Z serdecznym zaproszeniem do Wrocławia, mocą pozdrowień i wyrazami szacunku!',
     'letter-author': 'Stanisław Rosik',
     'letter-author-role': 'Przewodniczący SKMP',
-    'letter-date': 'Wrocław, 22.12.2017'
+    'letter-date': 'Wrocław, 22.12.2017',
+    'noConfirmationInfo': 'Twoje zgłoszenie nie zostało jeszcze zaakceptowane przez organizatora. Niebawem otrzyma Pan/Pani informację mailową.',
+    'incorrectLoginDataInfo' : 'Nieprawidłowe dane logowania.'
 
 };

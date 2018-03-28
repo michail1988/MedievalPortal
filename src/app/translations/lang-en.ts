@@ -55,8 +55,8 @@ export const LANG_EN_TRANS = {
     'Show': 'Show',
     'Hide': 'Hide',
     'Click here': 'Click here',
-    'Forgot your password?': 'Forgot your password?',
-    'Enter your email and password': 'Enter your email and password',
+    'ForgotPassword': 'Forgot your password?',
+    'EnterYourEmail': 'Enter your email and password',
     'to sign in': 'to sign in',
     'Agree rules info': 'By creating an account you agree to our',
     'Send Message': 'Send Message',
@@ -88,6 +88,8 @@ export const LANG_EN_TRANS = {
     'Receivers': 'Receivers',
     'Accept': 'Accept',
     'Reject': 'Reject',
-    'letter-of-intent': 'Letter of intent'
+    'letter-of-intent': 'Letter of intent',
+    'noConfirmationInfo': 'Your enrolment is not confirmed yet. Please wait for the admin confirmation. You will receive it soon by email.',
+    'incorrectLoginDataInfo' : 'Incorrect login data.'
 
 };

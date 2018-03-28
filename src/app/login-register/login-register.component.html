@@ -101,7 +101,8 @@
 			</div>
 			<div class="sminputs">
 				<div class="input full">
-					<label class="string optional" for="character-role">{{ 'Capacity' | translate }}</label>
+					<label class="string optional" for="character-role">{{
+						'Capacity' | translate }}</label>
 
 					<p-selectButton [options]="types" [(ngModel)]="selectedType"
 						id="character-role" name="character"></p-selectButton>
@@ -135,9 +136,8 @@
 
 <div [hidden]="!loginTabVisible">
 	<div class="logmod__heading">
-		<span class="logmod__heading-subtitle">{{ 'Enter your email and
-			password' | translate }} <strong>{{ 'to sign in' | translate
-				}}</strong>
+		<span class="logmod__heading-subtitle">{{ 'EnterYourEmail' |
+			translate }} <strong>{{ 'to sign in' | translate }}</strong>
 		</span>
 	</div>
 	<div class="logmod__form">
@@ -147,34 +147,46 @@
 				<div [class]="loginForm.email">
 					<label class="string optional" for="user-email">{{ 'Email'
 						| translate }} *</label> <input class="string optional"
-						[(ngModel)]="loginEmail" maxlength="255" id="user-email"
-						required name="email"
-						placeholder="{{ 'Email' | translate }}" type="email" size="50" />
+						[(ngModel)]="loginEmail" maxlength="255" id="user-email" required
+						name="email" placeholder="{{ 'Email' | translate }}" type="email"
+						size="50" />
 				</div>
 			</div>
 			<div class="sminputs">
 				<div [class]="loginForm.password">
 					<label class="string optional" for="user-pw">{{ 'Password'
 						| translate }} *</label> <input class="string optional"
-						[(ngModel)]="password" maxlength="255" id="user-pw"
-						required name="password"
-						placeholder="{{ 'Password' | translate }}" [type]="passwordType"
-						size="50" /> <span *ngIf="isPasswordHidden()"
-						class="hide-password" (click)="showPassword()">{{ 'Show' |
-						translate }}</span><span *ngIf="isPasswordVisible()"
-						class="hide-password" (click)="hidePassword()">{{ 'Hide' |
-						translate }}</span>
+						[(ngModel)]="password" maxlength="255" id="user-pw" required
+						name="password" placeholder="{{ 'Password' | translate }}"
+						[type]="passwordType" size="50" /> <span
+						*ngIf="isPasswordHidden()" class="hide-password"
+						(click)="showPassword()">{{ 'Show' | translate }}</span><span
+						*ngIf="isPasswordVisible()" class="hide-password"
+						(click)="hidePassword()">{{ 'Hide' | translate }}</span>
 				</div>
 			</div>
 			<div class="simform__actions">
 				<input class="submit" type="submit" name="commit" type="submit"
 					(click)="validateLoginForm()" value="{{ 'Log In' | translate }}" />
 				<span class="simform__actions-sidetext"><a class="special"
-					role="link" [routerLink]="['forgot-password']">{{ 'Forgot your
-						password?' | translate }}?<br>{{ 'Click here' | translate }}
+					role="link" [routerLink]="['forgot-password']">{{
+						'ForgotPassword' | translate }}?<br>{{ 'Click here' |
+						translate }}
 				</a></span>
 			</div>
 		</form>
+
+		<div class="redAlert" *ngIf="incorrectLoginDataAlertVisible()">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> {{
+			'incorrectLoginDataInfo' | translate }}
+		</div>
+
+		<div class="yellowAlert" *ngIf="noLoginRightsAlertVisible()">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> {{
+			'noConfirmationInfo' | translate }}
+		</div>
 	</div>
 </div>
 

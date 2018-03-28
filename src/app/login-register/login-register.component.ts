@@ -18,6 +18,10 @@ export class LoginRegisterComponent implements OnInit {
 
     loginTabVisible: boolean;
     speakerPartsVisible: boolean;
+
+    incorrectLoginDataAlert : boolean;
+    noLoginRightsAlert: boolean;
+
     types: SelectItem[];
 
     selectedType: string;
@@ -222,16 +226,25 @@ export class LoginRegisterComponent implements OnInit {
     //TODO do porzadnej poprawy
     login() {
 
-        //co to jest?
-        event.preventDefault();
-
-
+        this.incorrectLoginDataAlert = false;
+        this.noLoginRightsAlert = false;
+        
         this.authenticationService.login( this.loginEmail, this.password ).subscribe(
             u => this.user = u, //Bind to view
             err => {
                 // Log errors if any
+                
                 console.log( "Error na poziomie authenticationService.getUser=" + err );
-                console.log( "Error na poziomie err.message=" + err.message );
+                if (err.status === 400) {
+                    console.log( "400 User not found" + err );
+                    this.incorrectLoginDataAlert = true;
+                }
+                
+                if (err.status === 401) {
+                    console.log( "401 User not confirmed" + err );
+                    
+                    this.noLoginRightsAlert = true;
+                }
             } );
 
     }
@@ -274,5 +287,13 @@ export class LoginRegisterComponent implements OnInit {
 
     isEmpty( str ) {
         return ( !str || 0 === str.length );
+    }
+    
+    incorrectLoginDataAlertVisible() {
+        return this.incorrectLoginDataAlert;
+    }
+    
+    noLoginRightsAlertVisible() {
+        return this.noLoginRightsAlert;
     }
 }
