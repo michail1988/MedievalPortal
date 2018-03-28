@@ -27,6 +27,8 @@ export class LoginRegisterComponent implements OnInit {
 
     submitted = false;
 
+    passwordType: string;
+
     // TODO: Remove this when we're done
     get diagnostic() { return JSON.stringify( this.user ); }
 
@@ -44,6 +46,8 @@ export class LoginRegisterComponent implements OnInit {
         this.types.push( { label: 'Organizator', value: 'Organizator' } );
 
         this.selectedType = 'Uczestnik';
+
+        this.passwordType = 'password'
     }
 
     ngOnInit() {
@@ -68,22 +72,22 @@ export class LoginRegisterComponent implements OnInit {
         this.user.registerdate = new Date();
         this.user.congressrole = this.selectedType.charAt( 0 )
         this.userService.addUser( this.user ).subscribe(
-                response => {
+            response => {
 
 
-                    if ( response.text() === 'OK' ) {
-                        -                    console.log( 'udalo sie haha '  + response.text());
-                        //           
-                        this.submitted = true;
-                        this.router.navigate( ['enrolment-created'] );
-                    }
-                },
-                err => {
-                    // Log errors if any
-                    console.log( err );
-                } );
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie haha ' + response.text() );
+                    //           
+                    this.submitted = true;
+                    this.router.navigate( ['enrolment-created'] );
+                }
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
     }
-    
+
 
     loadUniversities() {
         // Get all enrolments
@@ -118,16 +122,16 @@ export class LoginRegisterComponent implements OnInit {
 
         //co to jest?
         event.preventDefault();
-        
+
 
         this.authenticationService.login( username, password ).subscribe(
-              u => this.user = u, //Bind to view
-              err => {
-                  // Log errors if any
-                  console.log( "Error na poziomie authenticationService.getUser=" + err);
-                  console.log( "Error na poziomie err.message=" + err.message);
-              } );
-        
+            u => this.user = u, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( "Error na poziomie authenticationService.getUser=" + err );
+                console.log( "Error na poziomie err.message=" + err.message );
+            } );
+
     }
 
     get diagnosticAdmin() {
@@ -135,18 +139,35 @@ export class LoginRegisterComponent implements OnInit {
 
         return 'Admin= ' + item;
     }
-    
+
     get diagnosticLogin() {
-        
-        var userid = localStorage.getItem('userid')
-        var username = localStorage.getItem('username')
-        
+
+        var userid = localStorage.getItem( 'userid' )
+        var username = localStorage.getItem( 'username' )
+
 
         return 'Zalogowany  userid=' + userid + ' username=' + username;
     }
 
-    
+
     logout() {
         this.authenticationService.logout();
     }
+
+    showPassword() {
+        this.passwordType = 'text'
+    }
+    
+    hidePassword() {
+        this.passwordType = 'password'
+    }
+    
+    isPasswordVisible() {
+        return 'text' === this.passwordType
+    }
+    
+    isPasswordHidden() {
+        return 'password' === this.passwordType
+    }
+
 }

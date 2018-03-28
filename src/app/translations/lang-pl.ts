@@ -53,6 +53,7 @@ export const LANG_PL_TRANS = {
     'In what capacity?': 'W jakim charakterze?',
     'Topic': 'Abstrakt',
     'Show': 'Pokaż',
+    'Hide': 'Ukryj',
     'Click here': 'Kliknij tutaj',
     'Forgot your password?': 'Zapomniałeś/aś hasła?',
     'Enter your email and password': 'Wprowadź swój email i hasło',
