@@ -12,6 +12,13 @@ export class User {
         public subjectdescription: string,
         public contactcomments: string,
         public confirmation: string,
-        public privileges: string
+        public privileges: string,
+        public summary: string,
+        public abstract: string,
+        public paper_acceptation: string,
+        public payment: string,
+        public academic_title: string
     ) { }
+    
+    public fk_editor: string
 }

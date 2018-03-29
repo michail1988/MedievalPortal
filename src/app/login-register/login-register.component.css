@@ -745,52 +745,55 @@ html {
 	background-color: red !important;
 	background: pink;
 }
+.ui-widget-header .ui-state-default, .ui-widget-content .ui-state-default, .ui-state-default {
 
-.inputTest {
-	background-color: red !important;
-	background: pink;
+    border: 1px solid transparent;
+
+}
+
+.ui-autocomplete-input .ui-inputtext .ui-corner-all .ui-state-default .ui-widget {
+	border: transparent ;
 }
 
 .validationError {
 	background-color: #ff9999 !important;
 }
 
- /* The alert message box */
+/* The alert message box */
 .redAlert {
-    padding: 20px;
-    background-color: #f44336; /* Red */
-    color: white;
-    margin-bottom: 15px;
+	padding: 20px;
+	background-color: #f44336; /* Red */
+	color: white;
+	margin-bottom: 15px;
 }
 
 .yellowAlert {
 	padding: 20px;
-    background-color: #ff9800;
-    color: white;
-    margin-bottom: 15px;
+	background-color: #ff9800;
+	color: white;
+	margin-bottom: 15px;
 }
 
 .blueAlert {
 	padding: 20px;
-    background-color: #2196F3; 
-    color: white;
-    margin-bottom: 15px;
+	background-color: #2196F3;
+	color: white;
+	margin-bottom: 15px;
 }
 
 /* The close button */
 .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
 }
 
 /* When moving the mouse over the close button */
 .closebtn:hover {
-    color: black;
-} 
-
+	color: black;
+}

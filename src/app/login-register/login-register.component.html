@@ -74,7 +74,7 @@
 						'University' | translate }}</label>
 
 					<p-autoComplete placeholder="{{ 'University' | translate }}"
-						inputStyleClass="inputTest" class="inputTest"
+					    
 						[(ngModel)]="user.university" [suggestions]="results"
 						(completeMethod)="search($event)" required name="university"
 						id="user-university"></p-autoComplete>

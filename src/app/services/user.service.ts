@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Rx';
+import { UserHistory } from "app/models/user-history";
 
 @Injectable()
 export class UserService {
@@ -18,6 +19,11 @@ export class UserService {
 
     private acceptUserUrl = 'http://localhost:3000/acceptUser';
     private rejectUserUrl = 'http://localhost:3000/rejectUser';
+    
+    
+    
+    //TODO
+    private userHistoryUrl = 'http://localhost:3000/articleHistory';
     
     constructor( private http: Http ) { }
 
@@ -103,6 +109,14 @@ export class UserService {
             .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
     }
     
+    updateUser( body: User ): Observable<User[]> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.put( this.usersUrl, JSON.stringify( body ), options )
+            .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+    }
+    
     get(id: string): Observable<User> {
         return this.getUser(id)
                .map(data => data);
@@ -120,5 +134,22 @@ export class UserService {
         let headers = new Headers( { 'Content-Type': 'application/json' } );
         let options = new RequestOptions( { headers: headers } );
         return this.http.post(this.rejectUserUrl, JSON.stringify(body), options);
+    }
+    
+    getUserHistory( id: string ): Observable<UserHistory[]> {
+
+        let params: URLSearchParams = new URLSearchParams();
+        params.set( 'id', id );
+
+        var options = new RequestOptions( { headers: new Headers( { 'Content-Type': 'application/json' } ) } );
+        options.search = params;
+
+        // ...using get request
+        return this.http.get( this.userHistoryUrl, options )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+        
     }
 }

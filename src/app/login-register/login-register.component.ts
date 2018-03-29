@@ -36,7 +36,7 @@ export class LoginRegisterComponent implements OnInit {
     // TODO: Remove this when we're done
     get diagnostic() { return JSON.stringify( this.user ); }
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
     repeatPassword: string; //TODO dodac walidacje
     termsAcceptation: boolean;
 
