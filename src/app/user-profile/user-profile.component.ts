@@ -23,18 +23,18 @@ export class UserProfileComponent implements OnInit {
     private imageLoaded: boolean;
 
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
-    
+
     selectedCongressRole: string;
     selectedAcademicTitle: string;
-    
+
     types: SelectItem[];
     academicTitles: SelectItem[];
 
     universities: University[];
     results: string[];
-    
+
     userForm;
-    
+
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
@@ -43,16 +43,15 @@ export class UserProfileComponent implements OnInit {
         this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
         this.types.push( { label: 'Referent', value: 'Referent' } );
         this.types.push( { label: 'Organizator', value: 'Organizator' } );
-        
+
         this.academicTitles = [];
         this.academicTitles.push( { label: 'mgr', value: 'mgr' } );
         this.academicTitles.push( { label: 'Doktorant', value: 'Doktorant' } );
         this.academicTitles.push( { label: 'dr', value: 'dr' } );
         this.academicTitles.push( { label: 'dr hab.', value: 'dr hab.' } );
         this.academicTitles.push( { label: 'Profesor', value: 'Profesor' } );
-        
-        this.selectedCongressRole = 'Uczestnik';
-        
+
+
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
@@ -67,16 +66,21 @@ export class UserProfileComponent implements OnInit {
         }
 
         this.userService.get( this.userId ).subscribe(
-            u => this.user = u, //Bind to view
+            u => {
+            this.user = u;
+
+                if ( this.user ) {
+                    this.selectAcademicTitle( this.user );
+                    this.selectCongressRole( this.user );
+                }
+            }, //Bind to view
             err => {
                 // Log errors if any
                 console.log( err );
             } );
-        
-        if (this.user) {
-            this.selectAcademicTitle(this.user);
-        }
-        
+
+
+
     }
 
     msgs: Message[];
@@ -96,7 +100,7 @@ export class UserProfileComponent implements OnInit {
         this.authenticationService.logout();
         this.router.navigate( ['login-register'] );
     }
-    
+
     search( event ) {
         //      EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
 
@@ -111,7 +115,7 @@ export class UserProfileComponent implements OnInit {
         }
         ;
     }
-    
+
     loadUniversities() {
         // Get all enrolments
         this.universityService.getUniversities( this.user.university )
@@ -133,9 +137,9 @@ export class UserProfileComponent implements OnInit {
 
 
     save() {
-        
-        if (this.validateUserForm()) {
-          //TODO
+
+        if ( this.validateUserForm() ) {
+            //TODO
             this.user.fk_editor = this.user.id;
             this.setAcademicTitle();
             this.setCongressRole();
@@ -155,81 +159,81 @@ export class UserProfileComponent implements OnInit {
                     console.log( err );
                 } );
         }
-        
+
     }
 
-    selectAcademicTitle(user: User) {
-        if (this.user.academic_title === '1') {
+    selectAcademicTitle( user: User ) {
+        if ( this.user.academic_title === '1' ) {
             this.selectedAcademicTitle = 'mgr'
         }
-        
-        if (this.user.academic_title === '2') {
+
+        if ( this.user.academic_title === '2' ) {
             this.selectedAcademicTitle = 'Doktorant'
         }
-        
-        if (this.user.academic_title === '3') {
+
+        if ( this.user.academic_title === '3' ) {
             this.selectedAcademicTitle = 'dr'
         }
-        
-        if (this.user.academic_title === '4') {
+
+        if ( this.user.academic_title === '4' ) {
             this.selectedAcademicTitle = 'dr hab.'
         }
-        
-        if (this.user.academic_title === '5') {
+
+        if ( this.user.academic_title === '5' ) {
             this.selectedAcademicTitle = 'Profesor'
         }
     }
-    
-    selectCongressRole(user: User) {
-        if (this.user.congressrole === 'U') {
+
+    selectCongressRole( user: User ) {
+        if ( this.user.congressrole === 'U' ) {
             this.selectedCongressRole = 'Uczestnik'
         }
-        
-        if (this.user.congressrole === 'R') {
+
+        if ( this.user.congressrole === 'R' ) {
             this.selectedCongressRole = 'Referent'
         }
-        
-        if (this.user.congressrole === 'O') {
+
+        if ( this.user.congressrole === 'O' ) {
             this.selectedCongressRole = 'Organizator'
         }
     }
-    
+
     setAcademicTitle() {
-        if (this.selectedAcademicTitle === 'mgr') {
+        if ( this.selectedAcademicTitle === 'mgr' ) {
             this.user.academic_title = '1'
         }
-        
-        if (this.selectedAcademicTitle === 'Doktorant') {
+
+        if ( this.selectedAcademicTitle === 'Doktorant' ) {
             this.user.academic_title = '2'
         }
-        
-        if (this.selectedAcademicTitle === 'dr') {
+
+        if ( this.selectedAcademicTitle === 'dr' ) {
             this.user.academic_title = '3'
         }
-        
-        if (this.selectedAcademicTitle === 'dr hab.') {
+
+        if ( this.selectedAcademicTitle === 'dr hab.' ) {
             this.user.academic_title = '4'
         }
-        
-        if (this.selectedAcademicTitle === 'Profesor') {
+
+        if ( this.selectedAcademicTitle === 'Profesor' ) {
             this.user.academic_title = '5'
         }
     }
-    
+
     setCongressRole() {
-        if (this.selectedCongressRole === 'Uczestnik') {
+        if ( this.selectedCongressRole === 'Uczestnik' ) {
             this.user.congressrole = 'U'
         }
-        
-        if (this.selectedCongressRole === 'Referent') {
+
+        if ( this.selectedCongressRole === 'Referent' ) {
             this.user.congressrole = 'R'
         }
-        
-        if (this.selectedCongressRole === 'Organizator') {
+
+        if ( this.selectedCongressRole === 'Organizator' ) {
             this.user.congressrole = 'O'
         }
     }
-    
+
     resetChanges() {
         if ( this.userId ) {
             this.html = this.imageService.getUserImage( this.userId );
@@ -242,18 +246,18 @@ export class UserProfileComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
-        
-        if (this.user) {
-            this.selectAcademicTitle(this.user);
-            this.selectCongressRole(this.user);
+
+        if ( this.user ) {
+            this.selectAcademicTitle( this.user );
+            this.selectCongressRole( this.user );
         }
-        
+
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
         this.userForm.email = 'form-control';
     }
-    
+
     validateUserForm() {
         var result = true;
 
@@ -263,24 +267,24 @@ export class UserProfileComponent implements OnInit {
         } else {
             this.userForm.name = 'form-control';
         }
-        
+
         if ( this.isEmpty( this.user.surname ) ) {
             result = false;
             this.userForm.surname = 'form-control validationError';
         } else {
             this.userForm.surname = 'form-control';
         }
-        
+
         if ( this.isEmpty( this.user.email ) ) {
             result = false;
             this.userForm.email = 'form-control validationError';
         } else {
             this.userForm.email = 'form-control';
         }
-        
+
         return result;
     }
-        
+
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }
