@@ -19,7 +19,7 @@ export class LoginRegisterComponent implements OnInit {
     loginTabVisible: boolean;
     speakerPartsVisible: boolean;
 
-    incorrectLoginDataAlert : boolean;
+    incorrectLoginDataAlert: boolean;
     noLoginRightsAlert: boolean;
 
     types: SelectItem[];
@@ -51,7 +51,7 @@ export class LoginRegisterComponent implements OnInit {
         private authenticationService: AuthenticationService, public router: Router ) {
         this.loginTabVisible = false;
         this.speakerPartsVisible = false;
-        
+
         this.types = [];
         this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
         this.types.push( { label: 'Referent', value: 'Referent' } );
@@ -146,7 +146,7 @@ export class LoginRegisterComponent implements OnInit {
             result = false;
             this.registerForm.repeatPassword = 'input string optional validationError';
             this.registerForm.password = 'input string optional validationError';
-        } 
+        }
 
         if ( this.isEmpty( this.user.name ) ) {
             result = false;
@@ -161,7 +161,7 @@ export class LoginRegisterComponent implements OnInit {
         } else {
             this.registerForm.usersurname = 'input string optional';
         }
-        
+
 
         if ( this.termsAcceptation != true ) {
             result = false;
@@ -172,26 +172,26 @@ export class LoginRegisterComponent implements OnInit {
 
         return result;
     }
-    
+
     validateLoginForm() {
         var result = true;
-        
+
         if ( this.isEmpty( this.loginEmail ) ) {
             result = false;
             this.loginForm.email = 'input full validationError';
         } else {
             this.loginForm.email = 'input full';
         }
-        
+
         if ( this.isEmpty( this.password ) ) {
             result = false;
             this.loginForm.password = 'input full validationError';
         } else {
             this.loginForm.password = 'input full';
         }
-        
-        
-        
+
+
+
         return result;
     }
 
@@ -228,21 +228,25 @@ export class LoginRegisterComponent implements OnInit {
 
         this.incorrectLoginDataAlert = false;
         this.noLoginRightsAlert = false;
-        
+
         this.authenticationService.login( this.loginEmail, this.password ).subscribe(
-            u => this.user = u, //Bind to view
+            u => {
+                this.user = u;
+                this.navigateUser( this.user.id )
+            }
+            , //Bind to view
             err => {
                 // Log errors if any
-                
+
                 console.log( "Error na poziomie authenticationService.getUser=" + err );
-                if (err.status === 400) {
+                if ( err.status === 400 ) {
                     console.log( "400 User not found" + err );
                     this.incorrectLoginDataAlert = true;
                 }
-                
-                if (err.status === 401) {
+
+                if ( err.status === 401 ) {
                     console.log( "401 User not confirmed" + err );
-                    
+
                     this.noLoginRightsAlert = true;
                 }
             } );
@@ -288,12 +292,16 @@ export class LoginRegisterComponent implements OnInit {
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }
-    
+
     incorrectLoginDataAlertVisible() {
         return this.incorrectLoginDataAlert;
     }
-    
+
     noLoginRightsAlertVisible() {
         return this.noLoginRightsAlert;
+    }
+
+    navigateUser( id ) {
+        this.router.navigate( ['user-profile/'] );
     }
 }
