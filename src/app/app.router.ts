@@ -62,7 +62,7 @@ export const router: Routes = [
         children: [
             {
                 path: '',
-                component: AdminArticlesComponent,
+                component: EnrolmentsComponent,
                 outlet: 'adminRouting'
             },
             {
