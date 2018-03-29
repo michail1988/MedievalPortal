@@ -13,4 +13,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  isAdmin() {
+      let admintoken = localStorage.getItem( 'admintoken' );
+      return ( admintoken );
+  }
 }

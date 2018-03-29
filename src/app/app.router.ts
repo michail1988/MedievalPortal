@@ -43,6 +43,7 @@ import { UserResolver } from "app/services/user-resolver.service";
 import { EnrolmentCreatedComponent } from "app/enrolment-created/enrolment-created.component";
 import { AdminMailboxComponent } from "app/admin-mailbox/admin-mailbox.component";
 import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.component";
+import { WelcomePageComponent } from "app/welcome-page/welcome-page.component";
 
 export const router: Routes = [
     { path: '', redirectTo: 'login-register', pathMatch: 'full' },
@@ -54,6 +55,7 @@ export const router: Routes = [
     { path: 'terms', component: TermsComponent },
     { path: 'login-register/terms', component: TermsComponent },
     { path: 'news', component: NewsComponent },
+    { path: 'welcome', component: WelcomePageComponent },
     {
         path: 'admin', component: AdminComponent, canActivate: [
             CanActivateAdminGuard

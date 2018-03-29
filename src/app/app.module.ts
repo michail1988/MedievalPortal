@@ -102,6 +102,9 @@ import { UserResolver } from "app/services/user-resolver.service";
 import { AdminMailboxComponent } from './admin-mailbox/admin-mailbox.component';
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { ActionAdminEnrolmentComponent } from './action-admin-enrolment/action-admin-enrolment.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { Footer2Component } from './footer2/footer2.component';
+import { RegistrationInfoComponent } from './registration-info/registration-info.component';
 
 
 
@@ -152,7 +155,10 @@ import { ActionAdminEnrolmentComponent } from './action-admin-enrolment/action-a
         EnrolmentCreatedComponent,
         AdminMailboxComponent,
         LetterOfIntentComponent,
-        ActionAdminEnrolmentComponent
+        ActionAdminEnrolmentComponent,
+        WelcomePageComponent,
+        Footer2Component,
+        RegistrationInfoComponent
     ],
     imports: [
         BrowserModule,
