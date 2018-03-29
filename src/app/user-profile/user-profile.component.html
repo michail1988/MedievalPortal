@@ -11,7 +11,7 @@
 		<h5>{{ 'Personal data' | translate}}</h5>
 	</div>
 	<div class="panel-body">
-		<form class="form-horizontal" (ngSubmit)="save()"
+		<form class="form-horizontal" 
 			accept-charset="utf-8">
 			<div class="form-group">
 				<label class="control-label col-md-2 col-md-offset-2" for="id_title">{{
@@ -19,14 +19,14 @@
 				<div class="col-md-8">
 					<div class="col-md-4">
 						<div class="form-group internal">
-							<input class="form-control" id="id_first_name"
+							<input [class]="userForm.name" id="id_first_name"
 								placeholder="{{ 'First name' | translate }}" name="firstName"
 								[(ngModel)]="user.name" type="text">
 						</div>
 					</div>
 					<div class="col-md-4 ">
 						<div class="form-group internal">
-							<input class="form-control" id="id_last_name"
+							<input [class]="userForm.surname" id="id_last_name"
 								placeholder="{{ 'Surname' | translate }}" name="surname"
 								[(ngModel)]="user.surname" type="text">
 						</div>
@@ -55,7 +55,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<div class="col-md-11">
-							<input class="form-control" id="id_email"
+							<input [class]="userForm.email" id="id_email"
 								placeholder="{{ 'Email' | translate }}" type="text"
 								[(ngModel)]="user.email" name="email">
 						</div>
@@ -119,7 +119,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-offset-4 col-md-3">
-					<button class="btn-lg btn-primary" type="submit">{{ 'Save'
+					<button class="btn-lg btn-primary" (click)="save()" >{{ 'Save'
 						| translate }}</button>
 				</div>
 				<div class="col-md-3">
@@ -136,7 +136,7 @@
 		<h5>{{ 'Additional Info' | translate}}</h5>
 	</div>
 	<div class="panel-body">
-		<form class="form-horizontal" (ngSubmit)="save()"
+		<form class="form-horizontal"
 			accept-charset="utf-8">
 
 			<h3 class="first">{{ 'Profile photo' | translate}}</h3>
@@ -161,7 +161,7 @@
 		<h5>{{ 'Paper' | translate}}</h5>
 	</div>
 	<div class="panel-body">
-		<form class="form-horizontal" (ngSubmit)="save()"
+		<form class="form-horizontal"
 			accept-charset="utf-8">
 
 			<div class="form-group">

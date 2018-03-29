@@ -33,6 +33,8 @@ export class UserProfileComponent implements OnInit {
     universities: University[];
     results: string[];
     
+    userForm;
+    
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
@@ -49,11 +51,12 @@ export class UserProfileComponent implements OnInit {
         this.academicTitles.push( { label: 'dr hab.', value: 'dr hab.' } );
         this.academicTitles.push( { label: 'Profesor', value: 'Profesor' } );
         
-        //todo tylko dla testow, poprawic logowanie
-//        this.userId = '1';
-        //TODO Michal 
-        
         this.selectedCongressRole = 'Uczestnik';
+        
+        this.userForm = [];
+        this.userForm.name = 'form-control';
+        this.userForm.surname = 'form-control';
+        this.userForm.email = 'form-control';
     }
 
     ngOnInit() {
@@ -131,25 +134,28 @@ export class UserProfileComponent implements OnInit {
 
     save() {
         
-        //TODO
-        this.user.fk_editor = this.user.id;
-        this.setAcademicTitle();
-        this.setCongressRole();
+        if (this.validateUserForm()) {
+          //TODO
+            this.user.fk_editor = this.user.id;
+            this.setAcademicTitle();
+            this.setCongressRole();
 
-        this.userService.updateUser( this.user ).subscribe(
-            users => {
-                // Emit list event
-                //                //navigate
-                //                EmitterService.get( this.listId ).emit( enrolments );
-                // Empty model
+            this.userService.updateUser( this.user ).subscribe(
+                users => {
+                    // Emit list event
+                    //                //navigate
+                    //                EmitterService.get( this.listId ).emit( enrolments );
+                    // Empty model
 
-                //TODO Info
+                    //TODO Info
 
-            },
-            err => {
-                // Log errors if any
-                console.log( err );
-            } );
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+        }
+        
     }
 
     selectAcademicTitle(user: User) {
@@ -241,5 +247,41 @@ export class UserProfileComponent implements OnInit {
             this.selectAcademicTitle(this.user);
             this.selectCongressRole(this.user);
         }
+        
+        this.userForm = [];
+        this.userForm.name = 'form-control';
+        this.userForm.surname = 'form-control';
+        this.userForm.email = 'form-control';
+    }
+    
+    validateUserForm() {
+        var result = true;
+
+        if ( this.isEmpty( this.user.name ) ) {
+            result = false;
+            this.userForm.name = 'form-control validationError';
+        } else {
+            this.userForm.name = 'form-control';
+        }
+        
+        if ( this.isEmpty( this.user.surname ) ) {
+            result = false;
+            this.userForm.surname = 'form-control validationError';
+        } else {
+            this.userForm.surname = 'form-control';
+        }
+        
+        if ( this.isEmpty( this.user.email ) ) {
+            result = false;
+            this.userForm.email = 'form-control validationError';
+        } else {
+            this.userForm.email = 'form-control';
+        }
+        
+        return result;
+    }
+        
+    isEmpty( str ) {
+        return ( !str || 0 === str.length );
     }
 }

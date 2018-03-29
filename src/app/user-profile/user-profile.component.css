@@ -94,3 +94,7 @@ label.control-label {
   border-radius: 12em;
   margin-bottom: 2em;
 }
+
+.validationError {
+	background-color: #ff9999 !important;
+}
