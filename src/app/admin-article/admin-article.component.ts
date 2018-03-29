@@ -70,7 +70,7 @@ export class AdminArticleComponent implements OnInit {
     }
 
     save() {
-        //todo get from localStorage.getItem( 'token' )
+        //TODO get from localStorage.getItem( 'token' )
         this.article.fk_editor = '1';
 
         this.articleService.updateArticle( this.article ).subscribe(

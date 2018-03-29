@@ -132,7 +132,7 @@ export const router: Routes = [
         path: 'admin-user/:id',
         component: AdminEnrolmentComponent,
         resolve: {
-            schedule: UserResolver
+            user: UserResolver
         }, canActivate: [
             CanActivateAdminGuard
         ],
