@@ -105,6 +105,7 @@ export const LANG_PL_TRANS = {
     'noConfirmationInfo': 'Twoje zgłoszenie nie zostało jeszcze zaakceptowane przez organizatora. Niebawem otrzyma Pan/Pani informację mailową.',
     'incorrectLoginDataInfo' : 'Nieprawidłowe dane logowania.',
     'Academic title' : 'Tytuł naukowy',
-    'Reset' : 'Resetuj zmiany'
+    'Reset' : 'Resetuj zmiany',
+    'Change password': 'Zmień hasło'
 
 };

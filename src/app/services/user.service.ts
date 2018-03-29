@@ -20,7 +20,7 @@ export class UserService {
     private acceptUserUrl = 'http://localhost:3000/acceptUser';
     private rejectUserUrl = 'http://localhost:3000/rejectUser';
     
-    
+    private userPasswordUrl = 'http://localhost:3000/userPassword';
     
     //TODO
     private userHistoryUrl = 'http://localhost:3000/articleHistory';
@@ -113,6 +113,14 @@ export class UserService {
         let headers = new Headers( { 'Content-Type': 'application/json' } );
         let options = new RequestOptions( { headers: headers } );
         return this.http.put( this.usersUrl, JSON.stringify( body ), options )
+            .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
+            .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+    }
+    
+    updatePassword ( body: User ): Observable<User[]> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.put( this.userPasswordUrl, JSON.stringify( body ), options )
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
             .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
     }

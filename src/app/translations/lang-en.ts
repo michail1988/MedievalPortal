@@ -92,6 +92,7 @@ export const LANG_EN_TRANS = {
     'noConfirmationInfo': 'Your enrolment is not confirmed yet. Please wait for the admin confirmation. You will receive it soon by email.',
     'incorrectLoginDataInfo' : 'Incorrect login data.',
     'Academic title' : 'Academic title',
-    'Reset' : 'Reset changes'
+    'Reset' : 'Reset changes',
+    'Change password' : 'Change password'
 
 };

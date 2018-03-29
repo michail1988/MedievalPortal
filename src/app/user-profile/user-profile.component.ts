@@ -33,6 +33,9 @@ export class UserProfileComponent implements OnInit {
     universities: University[];
     results: string[];
 
+    password1: string;
+    password2: string;
+    
     userForm;
 
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
@@ -56,6 +59,9 @@ export class UserProfileComponent implements OnInit {
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
         this.userForm.email = 'form-control';
+        
+        this.userForm.password1 = 'form-control';
+        this.userForm.password2 = 'form-control';
     }
 
     ngOnInit() {
@@ -153,6 +159,8 @@ export class UserProfileComponent implements OnInit {
 
                     //TODO Info
 
+                    this.msgs = [];
+                    this.msgs.push( { severity: 'success', summary: 'Zapis zakonczony powodzeniem.', detail: '' } );
                 },
                 err => {
                     // Log errors if any
@@ -256,6 +264,12 @@ export class UserProfileComponent implements OnInit {
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
         this.userForm.email = 'form-control';
+        
+        this.userForm.password1 = 'form-control';
+        this.userForm.password2 = 'form-control';
+        
+        this.password1 = null;
+        this.password2 = null;
     }
 
     validateUserForm() {
@@ -282,6 +296,50 @@ export class UserProfileComponent implements OnInit {
             this.userForm.email = 'form-control';
         }
 
+        return result;
+    }
+    
+    changePassword() {
+        if (this.validatePasswordForm()) {
+            this.user.fk_editor = this.user.id;
+            this.user.password = this.password1;
+
+            this.userService.updatePassword( this.user ).subscribe(
+                users => {
+                    this.msgs = [];
+                    this.msgs.push( { severity: 'success', summary: 'Haslo zmienione.', detail: '' } );
+
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+        }
+    }
+    
+    validatePasswordForm() {
+        var result = true;
+
+        if ( this.isEmpty( this.password1 ) ) {
+            result = false;
+            this.userForm.password1 = 'form-control validationError';
+        } else {
+            this.userForm.password1 = 'form-control';
+        }
+
+        if ( this.isEmpty( this.password2 ) ) {
+            result = false;
+            this.userForm.password2 = 'form-control validationError';
+        } else {
+            this.userForm.password2 = 'form-control';
+        }
+        
+        if ( this.password1 != this.password2 ) {
+            result = false;
+            this.userForm.password1 = 'form-control validationError';
+            this.userForm.password2 = 'form-control validationError';
+        } 
+        
         return result;
     }
 
