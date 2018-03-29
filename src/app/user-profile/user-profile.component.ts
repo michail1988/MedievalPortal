@@ -24,9 +24,11 @@ export class UserProfileComponent implements OnInit {
 
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
     
-    selectedType: string;
+    selectedCongressRole: string;
+    selectedAcademicTitle: string;
     
     types: SelectItem[];
+    academicTitles: SelectItem[];
 
     universities: University[];
     results: string[];
@@ -40,11 +42,18 @@ export class UserProfileComponent implements OnInit {
         this.types.push( { label: 'Referent', value: 'Referent' } );
         this.types.push( { label: 'Organizator', value: 'Organizator' } );
         
+        this.academicTitles = [];
+        this.academicTitles.push( { label: 'mgr', value: 'mgr' } );
+        this.academicTitles.push( { label: 'Doktorant', value: 'Doktorant' } );
+        this.academicTitles.push( { label: 'dr', value: 'dr' } );
+        this.academicTitles.push( { label: 'dr hab.', value: 'dr hab.' } );
+        this.academicTitles.push( { label: 'Profesor', value: 'Profesor' } );
+        
         //todo tylko dla testow, poprawic logowanie
 //        this.userId = '1';
         //TODO Michal 
         
-        this.selectedType = 'Uczestnik';
+        this.selectedCongressRole = 'Uczestnik';
     }
 
     ngOnInit() {
@@ -60,6 +69,11 @@ export class UserProfileComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+        
+        if (this.user) {
+            this.selectAcademicTitle(this.user);
+        }
+        
     }
 
     msgs: Message[];
@@ -116,7 +130,116 @@ export class UserProfileComponent implements OnInit {
 
 
     save() {
+        
+        //TODO
+        this.user.fk_editor = this.user.id;
+        this.setAcademicTitle();
+        this.setCongressRole();
+
+        this.userService.updateUser( this.user ).subscribe(
+            users => {
+                // Emit list event
+                //                //navigate
+                //                EmitterService.get( this.listId ).emit( enrolments );
+                // Empty model
+
+                //TODO Info
+
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
     }
 
+    selectAcademicTitle(user: User) {
+        if (this.user.academic_title === '1') {
+            this.selectedAcademicTitle = 'mgr'
+        }
+        
+        if (this.user.academic_title === '2') {
+            this.selectedAcademicTitle = 'Doktorant'
+        }
+        
+        if (this.user.academic_title === '3') {
+            this.selectedAcademicTitle = 'dr'
+        }
+        
+        if (this.user.academic_title === '4') {
+            this.selectedAcademicTitle = 'dr hab.'
+        }
+        
+        if (this.user.academic_title === '5') {
+            this.selectedAcademicTitle = 'Profesor'
+        }
+    }
+    
+    selectCongressRole(user: User) {
+        if (this.user.congressrole === 'U') {
+            this.selectedCongressRole = 'Uczestnik'
+        }
+        
+        if (this.user.congressrole === 'R') {
+            this.selectedCongressRole = 'Referent'
+        }
+        
+        if (this.user.congressrole === 'O') {
+            this.selectedCongressRole = 'Organizator'
+        }
+    }
+    
+    setAcademicTitle() {
+        if (this.selectedAcademicTitle === 'mgr') {
+            this.user.academic_title = '1'
+        }
+        
+        if (this.selectedAcademicTitle === 'Doktorant') {
+            this.user.academic_title = '2'
+        }
+        
+        if (this.selectedAcademicTitle === 'dr') {
+            this.user.academic_title = '3'
+        }
+        
+        if (this.selectedAcademicTitle === 'dr hab.') {
+            this.user.academic_title = '4'
+        }
+        
+        if (this.selectedAcademicTitle === 'Profesor') {
+            this.user.academic_title = '5'
+        }
+    }
+    
+    setCongressRole() {
+        if (this.selectedCongressRole === 'Uczestnik') {
+            this.user.congressrole = 'U'
+        }
+        
+        if (this.selectedCongressRole === 'Referent') {
+            this.user.congressrole = 'R'
+        }
+        
+        if (this.selectedCongressRole === 'Organizator') {
+            this.user.congressrole = 'O'
+        }
+    }
+    
+    resetChanges() {
+        if ( this.userId ) {
+            this.html = this.imageService.getUserImage( this.userId );
+            this.imageLoaded = true;
+        }
 
+        this.userService.get( this.userId ).subscribe(
+            u => this.user = u, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+        
+        if (this.user) {
+            this.selectAcademicTitle(this.user);
+            this.selectCongressRole(this.user);
+        }
+    }
 }

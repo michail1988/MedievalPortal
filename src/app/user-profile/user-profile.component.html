@@ -17,22 +17,14 @@
 				<label class="control-label col-md-2 col-md-offset-2" for="id_title">{{
 					'Name' | translate }}</label>
 				<div class="col-md-8">
-					<div class="col-md-2">
-						<div class="form-group internal">
-							<select class="form-control" id="id_title">
-								<option>Pan</option>
-								<option>Pani</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-3 indent-small">
+					<div class="col-md-4">
 						<div class="form-group internal">
 							<input class="form-control" id="id_first_name"
 								placeholder="{{ 'First name' | translate }}" name="firstName"
 								[(ngModel)]="user.name" type="text">
 						</div>
 					</div>
-					<div class="col-md-3 indent-small">
+					<div class="col-md-4 ">
 						<div class="form-group internal">
 							<input class="form-control" id="id_last_name"
 								placeholder="{{ 'Surname' | translate }}" name="surname"
@@ -42,9 +34,24 @@
 				</div>
 			</div>
 
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'Academic title' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-selectButton [options]="academicTitles"
+								[(ngModel)]="selectedAcademicTitle" id="academic-title"
+								name="academic"></p-selectButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<label class="control-label col-md-2 col-md-offset-2" for="id_email">{{
-					'Contact' | translate }}</label>
+					'Email' | translate }} *</label>
 				<div class="col-md-6">
 					<div class="form-group">
 						<div class="col-md-11">
@@ -53,8 +60,15 @@
 								[(ngModel)]="user.email" name="email">
 						</div>
 					</div>
-					<div class="form-group internal">
+				</div>
+			</div>
 
+			<div class="form-group">
+
+				<label class="control-label col-md-2 col-md-offset-2" for="id_phone">{{
+					'Phone' | translate }}</label> <
+				<div class="col-md-6">
+					<div class="form-group">
 						<div class="col-md-11">
 							<input class="form-control" id="id_phone"
 								[(ngModel)]="user.phone" name="phone"
@@ -64,28 +78,15 @@
 				</div>
 			</div>
 
+
 			<div class="form-group">
 				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
-					'Capacity?' | translate }}</label>
+					'Capacity' | translate }}</label>
 				<div class="col-md-6">
 					<div class="form-group">
 						<div class="col-md-11">
-							<p-selectButton [options]="types" [(ngModel)]="selectedType"
+							<p-selectButton [options]="types" [(ngModel)]="selectedCongressRole"
 								id="character-role" name="character"></p-selectButton>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-md-2 col-md-offset-2" for="university">{{ 'University' | translate }}</label>
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-md-11">
-			<p-autoComplete placeholder="{{ 'University' | translate }}"
-						[(ngModel)]="user.university" [suggestions]="results"
-						(completeMethod)="search($event)" required name="university"
-						id="university"></p-autoComplete>
 						</div>
 					</div>
 				</div>
@@ -93,70 +94,20 @@
 
 			<div class="form-group">
 				<label class="control-label col-md-2 col-md-offset-2"
-					for="id_checkin">Od</label>
-				<div class="col-md-8">
-					<div class="col-md-3">
-						<div class="form-group internal input-group">
-							<input class="form-control datepicker" id="id_checkin"> <span
-								class="input-group-addon"> <i
-								class="glyphicon glyphicon-calendar"></i>
-							</span>
-						</div>
-					</div>
-					<label class="control-label col-md-2" for="id_checkout">Do</label>
-					<div class="col-md-3">
-						<div class="form-group internal input-group">
-							<input class="form-control datepicker" id="id_checkout">
-							<span class="input-group-addon"> <i
-								class="glyphicon glyphicon-calendar"></i>
-							</span>
+					for="university">{{ 'University' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-autoComplete placeholder="{{ 'University' | translate }}"
+								[(ngModel)]="user.university" [suggestions]="results"
+								(completeMethod)="search($event)" required name="university"
+								id="university"></p-autoComplete>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2 col-md-offset-2"
-					for="id_equipment">Inne dane</label>
-				<div class="col-md-8">
-					<div class="col-md-3">
-						<div class="form-group internal">
-							<select class="form-control" id="id_equipment">
-								<option>Opcja 1</option>
-								<option>Opcja 2</option>
-								<option>Opcja 3</option>
-								<option>Opcja 4</option>
-								<option>Opcja 5</option>
-								<option>Opcja 6</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-9">
-						<div class="form-group internal">
-							<label class="control-label col-md-3" for="id_slide">Inne
-								2</label>
-							<div class="make-switch has-switch" data-off-label="NO"
-								data-on-label="YES" id="id_slide_switch">
-								<div class="switch-animate switch-off">
-									<input id="id_slide" value="chk_hydro" type="checkbox"><span
-										class="switch-left">TAK</span><label for="id_slide">&nbsp;</label><span
-										class="switch-right">NIE</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2 col-md-offset-2"
-					for="id_service">Inne dane 3</label>
-				<div class="col-md-8">
-					<select class="multiselect" id="id_service" multiple="multiple">
-						<option value="hydro">Opcja 1</option>
-						<option value="water">Opcja 2</option>
-						<option value="sewer">Opcja 3</option>
-					</select>
-				</div>
-			</div>
+
+
 			<div class="form-group">
 				<label class="control-label col-md-2 col-md-offset-2"
 					for="id_comments">{{ 'Remarks' | translate }}</label>
@@ -173,7 +124,7 @@
 				</div>
 				<div class="col-md-3">
 					<button class="btn-lg btn-danger" style="float: right"
-						type="submit">{{ 'Cancel' | translate }}</button>
+					(click)="resetChanges()">{{ 'Reset' | translate }}</button>
 				</div>
 			</div>
 		</form>
@@ -200,7 +151,7 @@
 
 
 		</form>
-		
+
 		<img [src]="html" [hidden]="!imageLoaded">
 	</div>
 </div>
@@ -226,7 +177,8 @@
 				<label class="control-label col-md-2 col-md-offset-2" for="summary">{{
 					'Summary' | translate }}</label>
 				<div class="col-md-6">
-					<textarea class="form-control" id="summary" name="summary"
+					<textarea class="form-control" id="summary"
+						[(ngModel)]="user.summary" name="summary"
 						placeholder="{{ 'Summary' | translate }}" rows="5"></textarea>
 				</div>
 			</div>
@@ -234,7 +186,8 @@
 				<label class="control-label col-md-2 col-md-offset-2" for="content">{{
 					'Content' | translate }}</label>
 				<div class="col-md-6">
-					<textarea class="form-control" id="content" name="content"
+					<textarea class="form-control" id="content"
+						[(ngModel)]="user.abstract" name="content"
 						placeholder="{{ 'Content' | translate }}" rows="10"></textarea>
 				</div>
 			</div>

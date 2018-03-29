@@ -103,6 +103,8 @@ export const LANG_PL_TRANS = {
     'letter-author-role': 'Przewodniczący SKMP',
     'letter-date': 'Wrocław, 22.12.2017',
     'noConfirmationInfo': 'Twoje zgłoszenie nie zostało jeszcze zaakceptowane przez organizatora. Niebawem otrzyma Pan/Pani informację mailową.',
-    'incorrectLoginDataInfo' : 'Nieprawidłowe dane logowania.'
+    'incorrectLoginDataInfo' : 'Nieprawidłowe dane logowania.',
+    'Academic title' : 'Tytuł naukowy',
+    'Reset' : 'Resetuj zmiany'
 
 };

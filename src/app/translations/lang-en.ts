@@ -90,6 +90,8 @@ export const LANG_EN_TRANS = {
     'Reject': 'Reject',
     'letter-of-intent': 'Letter of intent',
     'noConfirmationInfo': 'Your enrolment is not confirmed yet. Please wait for the admin confirmation. You will receive it soon by email.',
-    'incorrectLoginDataInfo' : 'Incorrect login data.'
+    'incorrectLoginDataInfo' : 'Incorrect login data.',
+    'Academic title' : 'Academic title',
+    'Reset' : 'Reset changes'
 
 };
