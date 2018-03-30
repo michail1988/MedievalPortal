@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "app/translations/translate.service";
+import { Config } from "app/utils/config";
 
 @Component( {
     selector: 'languages',
@@ -34,6 +35,10 @@ export class LanguagesComponent implements OnInit {
     selectLang( lang: string ) {
         // set current lang;
         this._translate.use( lang );
+    }
+    
+    isShowLangs() {
+        return Config.isShowLangs();
     }
 
 }
