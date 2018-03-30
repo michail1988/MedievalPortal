@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Config } from "app/utils/config";
 
 @Component({
   selector: 'admin-menu',
@@ -12,4 +13,15 @@ export class AdminMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  isShowArticles() {
+      return Config.isShowArticles();
+  }
+  
+  isShowNews() {
+      return Config.isShowNews();
+  }
+  
+  isShowSchedules() {
+      return Config.isShowSchedule();
+  }
 }

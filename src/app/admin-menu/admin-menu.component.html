@@ -1,9 +1,9 @@
 <div id='cssmenu'>
 	<ul>
 	    <li><a [routerLink]="['/admin', {outlets: {adminRouting: ['enrolments']}}]">{{ 'enrolments-list' | translate}}</a></li>
-		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-articles']}}]">{{ 'Articles' | translate}}</a></li>
-		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-news']}}]">{{ 'News' | translate}}</a></li>
-		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-schedules']}}]">{{ 'Schedules' | translate}}</a></li>
+		<li *ngIf="isShowArticles()"><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-articles']}}]">{{ 'Articles' | translate}}</a></li>
+		<li *ngIf="isShowNews()"><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-news']}}]">{{ 'News' | translate}}</a></li>
+		<li *ngIf="isShowSchedules()"><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-schedules']}}]">{{ 'Schedules' | translate}}</a></li>
 		<li><a [routerLink]="['/admin', {outlets: {adminRouting: ['admin-mailbox']}}]">{{ 'Mailbox' | translate}}</a></li>
 		
 	</ul>

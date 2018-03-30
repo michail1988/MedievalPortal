@@ -93,6 +93,8 @@ export const LANG_EN_TRANS = {
     'incorrectLoginDataInfo' : 'Incorrect login data.',
     'Academic title' : 'Academic title',
     'Reset' : 'Reset changes',
-    'Change password' : 'Change password'
+    'Change password' : 'Change password',
+    'FooterWelcome': 'Welcome!',
+    'RegistrationOpen' : 'The registration is already open!'
 
 };

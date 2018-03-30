@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Config } from "app/utils/config";
 
 @Component({
   selector: 'app-header',
@@ -16,5 +17,9 @@ export class HeaderComponent implements OnInit {
   isAdmin() {
       let admintoken = localStorage.getItem( 'admintoken' );
       return ( admintoken );
+  }
+  
+  isShowMap() {
+      return Config.isShowMap();
   }
 }

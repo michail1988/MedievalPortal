@@ -46,7 +46,7 @@ import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.c
 import { WelcomePageComponent } from "app/welcome-page/welcome-page.component";
 
 export const router: Routes = [
-    { path: '', redirectTo: 'login-register', pathMatch: 'full' },
+    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: 'enrolments', component: EnrolmentsComponent },
     { path: 'application-form', component: ApplicationFormComponent },
     { path: 'login', component: LoginComponent },

@@ -8,3 +8,17 @@
 }
 
 /**********************************************************/
+body{
+	font-family: 'Dosis', sans-serif;
+	font-size: 14px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+    
+}
+
+a:hover, a:focus {
+    color: #23527c;
+    text-decoration: underline;
+}

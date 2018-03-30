@@ -106,6 +106,8 @@ export const LANG_PL_TRANS = {
     'incorrectLoginDataInfo' : 'Nieprawidłowe dane logowania.',
     'Academic title' : 'Tytuł naukowy',
     'Reset' : 'Resetuj zmiany',
-    'Change password': 'Zmień hasło'
+    'Change password': 'Zmień hasło',
+    'FooterWelcome': 'Zapraszamy!',
+    'RegistrationOpen' : 'Rejestracja już otwarta!'
 
 };

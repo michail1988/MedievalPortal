@@ -23,7 +23,7 @@
 							| translate }}</span></a></li>
 				<li><a routerLink="letter-of-intent"><span>{{
 							'letter-of-intent' | translate }}</span></a></li>
-				<li><a routerLink="map"><span>{{ 'Address' |
+				<li *ngIf="isShowMap()"><a routerLink="map"><span>{{ 'Address' |
 							translate}}</span></a></li>
 				<li><a routerLink="contact"><span>{{ 'Contact' |
 							translate}}</span></a></li>
