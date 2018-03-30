@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 
 @Injectable()
@@ -13,9 +14,9 @@ export class ScheduleService {
 
     constructor( private http: Http ) { }
 
-    private schedulesUrl = 'http://localhost:3000/schedules';
-    private scheduleUrl = 'http://localhost:3000/schedule';
-    private deleteScheduleUrl = 'http://localhost:3000/deleteSchedule';
+    private schedulesUrl = Config.serverAddress + '/schedules';
+    private scheduleUrl = Config.serverAddress + '/schedule';
+    private deleteScheduleUrl = Config.serverAddress + '/deleteSchedule';
 
     getSchedules(): Observable<Schedule[]> {
 

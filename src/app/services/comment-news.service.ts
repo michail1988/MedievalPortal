@@ -6,14 +6,15 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class CommentNewsService {
 
     constructor( private http: Http ) { }
 
-    private allCommentsUrl = 'http://localhost:3000/allNewsComments';
-    private confirmedCommentsUrl = 'http://localhost:3000/confirmedNewsComments';
+    private allCommentsUrl = Config.serverAddress + '/allNewsComments';
+    private confirmedCommentsUrl = Config.serverAddress + '/confirmedNewsComments';
 
     getAllComments( id: string ): Observable<Comment[]> {
         let params: URLSearchParams = new URLSearchParams();

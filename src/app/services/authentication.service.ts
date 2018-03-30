@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import { User } from 'app/models/user';
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class AuthenticationService {
@@ -12,7 +13,7 @@ export class AuthenticationService {
         this.token = localStorage.getItem( 'token' );
     }
 
-    private loginUrl = 'http://localhost:3000/login';
+    private loginUrl = Config.serverAddress + '/login';
 
     user: User;
     

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { ForgotPasswordMessage } from "app/models/forgot-password-message";
+import { Config } from "app/utils/config";
 
 
 
@@ -14,11 +15,11 @@ import { ForgotPasswordMessage } from "app/models/forgot-password-message";
 export class ContactService {
 
     constructor( private http: Http ) { }
-    // private instance variable to hold base url
-    private contactUrl = 'http://localhost:3000/contactMessage';
-    private contactsUrl = 'http://localhost:3000/adminMessages';
+
+    private contactUrl = Config.serverAddress + '/contactMessage';
+    private contactsUrl = Config.serverAddress + '/adminMessages';
     
-    private forgotPasswordUrl = 'http://localhost:3000/forgotPassword';
+    private forgotPasswordUrl = Config.serverAddress + '/forgotPassword';
 
     addMessage( body: ContactMessage ): any {
         let headers = new Headers( { 'Content-Type': 'application/json' } );

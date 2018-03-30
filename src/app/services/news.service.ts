@@ -7,21 +7,20 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class NewsService {
 
     constructor( private http: Http ) { }
 
-    private allNewsUrl = 'http://localhost:3000/allnews';
-    private newsUrl = 'http://localhost:3000/news';
-    private deletedNewsUrl = 'http://localhost:3000/deletedNews';
-    private deleteNewsUrl = 'http://localhost:3000/deleteNews';
-    private activateNewsUrl = 'http://localhost:3000/activateNews';
+    private allNewsUrl = Config.serverAddress + '/allnews';
+    private newsUrl = Config.serverAddress + '/news';
+    private deletedNewsUrl = Config.serverAddress + '/deletedNews';
+    private deleteNewsUrl = Config.serverAddress + '/deleteNews';
+    private activateNewsUrl = Config.serverAddress + '/activateNews';
     
-    
-    
-    private newsHistoryUrl = 'http://localhost:3000/newsHistory';
+    private newsHistoryUrl = Config.serverAddress + '/newsHistory';
 
     getNews(): Observable<News[]> {
 

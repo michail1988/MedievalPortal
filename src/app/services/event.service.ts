@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 
 @Injectable()
@@ -13,9 +14,9 @@ export class EventService {
 
     constructor( private http: Http ) { }
 
-    private eventsUrl = 'http://localhost:3000/events';
-    private eventUrl = 'http://localhost:3000/event';
-    private deleteEventUrl = 'http://localhost:3000/deleteEvent';
+    private eventsUrl = Config.serverAddress + '/events';
+    private eventUrl = Config.serverAddress + '/event';
+    private deleteEventUrl = Config.serverAddress + '/deleteEvent';
 
     getEvents( id: string ): Observable<Event[]> {
 

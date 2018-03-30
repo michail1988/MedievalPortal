@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class EnrolmentService {
@@ -13,7 +14,7 @@ export class EnrolmentService {
     // Resolve HTTP using the constructor
     constructor( private http: Http ) { }
     // private instance variable to hold base url
-    private enrolmentsUrl = 'http://localhost:3000/enrolments';
+    private enrolmentsUrl = Config.serverAddress + '/enrolments';
 
     getEnrolments(): Observable<Enrolment[]> {
 

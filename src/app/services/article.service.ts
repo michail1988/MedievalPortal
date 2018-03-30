@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 
 @Injectable()
@@ -14,15 +15,15 @@ export class ArticleService {
 
     constructor( private http: Http ) { }
 
-    private articlesUrl = 'http://localhost:3000/articles';
-    private articleUrl = 'http://localhost:3000/article';
-    private deletedArticlesUrl = 'http://localhost:3000/deletedArticles';
-    private deleteArticleUrl = 'http://localhost:3000/deleteArticle';
-    private activateArticleUrl = 'http://localhost:3000/activateArticle';
+    private articlesUrl = Config.serverAddress + '/articles';
+    private articleUrl = Config.serverAddress + '/article';
+    private deletedArticlesUrl = Config.serverAddress + '/deletedArticles';
+    private deleteArticleUrl = Config.serverAddress + '/deleteArticle';
+    private activateArticleUrl = Config.serverAddress + '/activateArticle';
     
     
     
-    private articleHistoryUrl = 'http://localhost:3000/articleHistory';
+    private articleHistoryUrl = Config.serverAddress + '/articleHistory';
 
     getArticles(): Observable<Article[]> {
 

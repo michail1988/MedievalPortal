@@ -3,27 +3,28 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Rx';
 import { UserHistory } from "app/models/user-history";
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class UserService {
 
-    private usersUrl = 'http://localhost:3000/users';
-    private userUrl = 'http://localhost:3000/user';
+    private usersUrl = Config.serverAddress + '/users';
+    private userUrl = Config.serverAddress + '/user';
     
-    private acceptedUsersUrl = 'http://localhost:3000/acceptedUsers';
-    private pendingUsersUrl = 'http://localhost:3000/pendingUsers';
-    private rejectedUsersUrl = 'http://localhost:3000/rejectedUsers';
+    private acceptedUsersUrl = Config.serverAddress + '/acceptedUsers';
+    private pendingUsersUrl = Config.serverAddress + '/pendingUsers';
+    private rejectedUsersUrl = Config.serverAddress + '/rejectedUsers';
     
-    private speakersUrl = 'http://localhost:3000/speakers';
+    private speakersUrl = Config.serverAddress + '/speakers';
     
 
-    private acceptUserUrl = 'http://localhost:3000/acceptUser';
-    private rejectUserUrl = 'http://localhost:3000/rejectUser';
+    private acceptUserUrl = Config.serverAddress + '/acceptUser';
+    private rejectUserUrl = Config.serverAddress + '/rejectUser';
     
-    private userPasswordUrl = 'http://localhost:3000/userPassword';
+    private userPasswordUrl = Config.serverAddress + '/userPassword';
     
     //TODO
-    private userHistoryUrl = 'http://localhost:3000/articleHistory';
+    private userHistoryUrl = Config.serverAddress + '/articleHistory';
     
     constructor( private http: Http ) { }
 

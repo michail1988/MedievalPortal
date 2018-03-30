@@ -6,13 +6,14 @@ import { Observable } from 'rxjs/Rx';
 //Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Config } from "app/utils/config";
 
 @Injectable()
 export class UniversityService {
 
     constructor( private http: Http ) { }
 
-    private universitiesUrl = 'http://localhost:3000/universities';
+    private universitiesUrl = Config.serverAddress + '/universities';
 
     getUniversities( university: string ): Observable<University[]> {
 
