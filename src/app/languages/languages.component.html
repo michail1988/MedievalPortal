@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="btn-group">
+	<div class="btn-group langButtons">
 		<button *ngFor="let lang of supportedLanguages"
 			(click)="selectLang(lang.value)" class="btn btn-default"
 			[class.btn-primary]="isCurrentLang(lang.value)" ><span  class="flag-icon-background flag-icon-{{lang.flag}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></button>
