@@ -33,9 +33,6 @@ export class LoginRegisterComponent implements OnInit {
 
     passwordType: string;
 
-    // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify( this.user ); }
-
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
     repeatPassword: string; //TODO dodac walidacje
     termsAcceptation: boolean;
@@ -252,22 +249,6 @@ export class LoginRegisterComponent implements OnInit {
             } );
 
     }
-
-    get diagnosticAdmin() {
-        var item = localStorage.getItem( 'admintoken' );
-
-        return 'Admin= ' + item;
-    }
-
-    get diagnosticLogin() {
-
-        var userid = localStorage.getItem( 'userid' )
-        var username = localStorage.getItem( 'username' )
-
-
-        return 'Zalogowany  userid=' + userid + ' username=' + username;
-    }
-
 
     logout() {
         this.authenticationService.logout();

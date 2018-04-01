@@ -36,12 +36,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate( ['signup'] );
     }
 
-    get diagnostic() {
-        var item = localStorage.getItem( 'token' );
-
-        return 'Zalogowany= ' + item;
-    }
-
     logout() {
         this.authenticationService.logout();
     }

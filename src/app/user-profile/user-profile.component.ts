@@ -135,10 +135,6 @@ export class UserProfileComponent implements OnInit {
         console.log( this.universities );
     }
 
-    get diagnostic() { return JSON.stringify( this.user ); }
-
-    get diagnosticUserId() { return this.userId; }
-
     get userData() { return this.user; }
 
 

@@ -16,8 +16,6 @@ export class TextEditorComponent implements OnInit {
     
     articleText = "To jest tresc.";
     
-    get diagnostic() { return this.articleText; }
-    
     ngOnInit(){
         window['CKEDITOR']['replace']( 'editor1' );
     }

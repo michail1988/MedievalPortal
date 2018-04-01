@@ -29,9 +29,6 @@ export class ApplicationFormComponent implements OnInit {
 
     submitted = false;
 
-    // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify( this.enrolment ); }
-
     enrolment = new Enrolment( '', '', '', null, '', '' );
 
 
