@@ -105,6 +105,8 @@ import { ActionAdminEnrolmentComponent } from './action-admin-enrolment/action-a
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { Footer2Component } from './footer2/footer2.component';
 import { RegistrationInfoComponent } from './registration-info/registration-info.component';
+import { OrganizersComponent } from './organizers/organizers.component';
+import { LogoComponent } from './logo/logo.component';
 
 
 
@@ -158,7 +160,9 @@ import { RegistrationInfoComponent } from './registration-info/registration-info
         ActionAdminEnrolmentComponent,
         WelcomePageComponent,
         Footer2Component,
-        RegistrationInfoComponent
+        RegistrationInfoComponent,
+        OrganizersComponent,
+        LogoComponent
     ],
     imports: [
         BrowserModule,

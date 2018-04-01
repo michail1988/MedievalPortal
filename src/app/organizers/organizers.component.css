@@ -1,0 +1,50 @@
+.fun_facts {
+	background: url(../../assets/img/magique.jpg);
+	background-attachment: fixed !important;
+	background-repeat: repeat;
+}
+
+.fun_facts .section_overlay {
+	background: rgba(71, 71, 71, .8);
+	padding-bottom: 30px;
+}
+
+.committee {
+	font-size: 26px;
+	color: #FFF;
+}
+
+.single_count {
+	padding-top: 60px;
+}
+
+.single_count i {
+	color: #f73b56;
+	font-size: 24px;
+}
+
+.single_count h3 {
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.single_count p {
+	font-family: 'Dosis', sans-serif;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.single_count p:before {
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 1px;
+	left: 0;
+	bottom: -4px;
+	background: #ef4251;
+}

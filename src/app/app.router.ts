@@ -53,6 +53,7 @@ export const router: Routes = [
     { path: 'login-register', component: LoginRegisterComponent },
     { path: 'map', component: MapComponent },
     { path: 'terms', component: TermsComponent },
+    { path: 'welcome/terms', component: TermsComponent },
     { path: 'login-register/terms', component: TermsComponent },
     { path: 'news', component: NewsComponent },
     { path: 'welcome', component: WelcomePageComponent },

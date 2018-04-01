@@ -1,0 +1,24 @@
+.about_us_p {
+	font-size: 14px;
+	color: #272727;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	line-height: 21px;
+	font-family: 'Dosis', sans-serif;
+}
+
+.about_title h2 {
+	font-size: 25px;
+	color: #3d3d3d;
+	text-transform: uppercase;
+	letter-spacing: 6px;
+	margin-bottom: 21px;
+	font-family: 'Dosis', sans-serif;
+}
+
+p {
+	font-family: 'Dosis', sans-serif;
+}
+.about_title img {
+	margin-bottom: 70px;
+}

@@ -88,13 +88,21 @@ export const LANG_EN_TRANS = {
     'Receivers': 'Receivers',
     'Accept': 'Accept',
     'Reject': 'Reject',
-    'letter-of-intent': 'Letter of intent',
+    'letter-of-intent': 'Announcement',
     'noConfirmationInfo': 'Your enrolment is not confirmed yet. Please wait for the admin confirmation. You will receive it soon by email.',
     'incorrectLoginDataInfo' : 'Incorrect login data.',
     'Academic title' : 'Academic title',
     'Reset' : 'Reset changes',
     'Change password' : 'Change password',
     'FooterWelcome': 'Welcome!',
-    'RegistrationOpen' : 'The registration is already open!'
+    'RegistrationOpen' : 'The registration is already open!',
+    'enrolment-created-title' : 'Thank you for your enrolment.',
+    'enrolment-created1' : 'TODO',
+    'TermsTitle': 'Terms:',
+    'Terms0': 'W celu uczestnictwa w zjeździe należy:',
+    'Terms1': 'Utworzyć konto na stronie www.vikmp.pl.',
+    'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
+    'Terms3': 'Dokonać opłaty rejestracyjnej w wysokości naukowcy 200zł doktoranci/studenci 100zł',
+    'Terms4': 'Terms4',
 
 };
