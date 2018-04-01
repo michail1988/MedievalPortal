@@ -252,7 +252,12 @@
 	</div>
 </div>
 
-
-
+<br />
+<button pButton type="button" label="{{ 'show-history' | translate}}"
+	(click)="getUserHistory()"></button>
+	
+	<br />
+	<br />
+<admin-enrolment-history [userHistory]="userHistory">Loading...</admin-enrolment-history>
 
 	

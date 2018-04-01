@@ -7,6 +7,7 @@ import { ConfirmationService, MenuItem } from "primeng/primeng";
 import { University } from "app/models/university";
 import { UniversityService } from "app/services/university.service";
 import { ImageService } from "app/services/image.service";
+import { UserHistory } from "app/models/user-history";
 
 @Component( {
     selector: 'admin-enrolment',
@@ -17,6 +18,8 @@ export class AdminEnrolmentComponent implements OnInit {
 
     text: string;
     user: User;
+
+    userHistory: UserHistory[];
 
     msgs: Message[] = [];
 
@@ -62,24 +65,24 @@ export class AdminEnrolmentComponent implements OnInit {
 
         this.userForm.password1 = 'form-control';
         this.userForm.password2 = 'form-control';
-        
-        console.log('Constructor ')
+
+        console.log( 'Constructor ' )
     }
 
     ngOnInit() {
         this.route.data.subscribe(
             ( data: { user: User } ) => {
                 if ( data.user ) {
-                    
-                    console.log('Jest '+ data.user)
+
+                    console.log( 'Jest ' + data.user )
                     this.user = data.user;
-                    
+
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                 } else {
                     //TODO Michal error and redirect
-                    
-                    console.log('Ni ma! ')
+
+                    console.log( 'Ni ma! ' )
                 }
             }
         );
@@ -143,6 +146,16 @@ export class AdminEnrolmentComponent implements OnInit {
         this.msgs.push( { severity: 'success', summary: 'File Uploaded', detail: '' } );
     }
 
+    getUserHistory() {
+        this.userService.getUserHistory( this.user.id )
+            .subscribe(
+            usersH => this.userHistory = usersH, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+    
     search( event ) {
         //      EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
 

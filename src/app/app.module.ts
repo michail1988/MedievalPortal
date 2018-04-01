@@ -107,6 +107,7 @@ import { Footer2Component } from './footer2/footer2.component';
 import { RegistrationInfoComponent } from './registration-info/registration-info.component';
 import { OrganizersComponent } from './organizers/organizers.component';
 import { LogoComponent } from './logo/logo.component';
+import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-enrolment-history.component';
 
 
 
@@ -162,7 +163,8 @@ import { LogoComponent } from './logo/logo.component';
         Footer2Component,
         RegistrationInfoComponent,
         OrganizersComponent,
-        LogoComponent
+        LogoComponent,
+        AdminEnrolmentHistoryComponent
     ],
     imports: [
         BrowserModule,

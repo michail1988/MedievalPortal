@@ -24,7 +24,7 @@ export class UserService {
     private userPasswordUrl = Config.serverAddress + '/userPassword';
     
     //TODO
-    private userHistoryUrl = Config.serverAddress + '/articleHistory';
+    private userHistoryUrl = Config.serverAddress + '/userHistory';
     
     constructor( private http: Http ) { }
 
