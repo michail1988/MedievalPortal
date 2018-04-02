@@ -122,7 +122,12 @@ export class LoginRegisterComponent implements OnInit {
             result = false;
             this.registerForm.email = 'input full validationError';
         } else {
-            this.registerForm.email = 'input full';
+            
+            if (this.validateEmail(this.user.email) === true) {
+                this.registerForm.email = 'input full';
+            } else {
+                this.registerForm.email = 'input full validationError';
+            }
         }
 
         if ( this.isEmpty( this.user.password ) ) {
@@ -170,6 +175,11 @@ export class LoginRegisterComponent implements OnInit {
         return result;
     }
 
+    validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    
     validateLoginForm() {
         var result = true;
 
@@ -177,7 +187,11 @@ export class LoginRegisterComponent implements OnInit {
             result = false;
             this.loginForm.email = 'input full validationError';
         } else {
-            this.loginForm.email = 'input full';
+            if (this.validateEmail(this.loginEmail) === true) {
+                this.loginForm.email = 'input full';
+            } else {
+                this.loginForm.email = 'input full validationError';
+            }
         }
 
         if ( this.isEmpty( this.password ) ) {
