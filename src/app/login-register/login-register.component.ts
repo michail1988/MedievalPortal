@@ -93,25 +93,25 @@ export class LoginRegisterComponent implements OnInit {
     //automatyczny login???
     registerUser() {
 
-        this.user.registerdate = new Date();
-        this.user.congressrole = this.selectedType.charAt( 0 )
-        this.userService.addUser( this.user ).subscribe(
-            response => {
+        if ( this.validateRegisterForm() === true ) {
+            this.user.registerdate = new Date();
+            this.user.congressrole = this.selectedType.charAt( 0 )
+            this.userService.addUser( this.user ).subscribe(
+                response => {
 
 
-                if ( response.text() === 'OK' ) {
-                    -                    console.log( 'udalo sie haha ' + response.text() );
-                    //           
-                    this.submitted = true;
-                    this.router.navigate( ['enrolment-created'] );
-                }
-            },
-            err => {
-                // Log errors if any
-                console.log( err );
-            } );
-
-
+                    if ( response.text() === 'OK' ) {
+                        -                    console.log( 'udalo sie haha ' + response.text() );
+                        //           
+                        this.submitted = true;
+                        this.router.navigate( ['enrolment-created'] );
+                    }
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+        }
     }
 
 
@@ -122,11 +122,12 @@ export class LoginRegisterComponent implements OnInit {
             result = false;
             this.registerForm.email = 'input full validationError';
         } else {
-            
-            if (this.validateEmail(this.user.email) === true) {
+
+            if ( this.validateEmail( this.user.email ) === true ) {
                 this.registerForm.email = 'input full';
             } else {
                 this.registerForm.email = 'input full validationError';
+                result = false;
             }
         }
 
@@ -164,7 +165,6 @@ export class LoginRegisterComponent implements OnInit {
             this.registerForm.usersurname = 'input string optional';
         }
 
-
         if ( this.termsAcceptation != true ) {
             result = false;
             this.registerForm.terms = 'simform__actions-sidetext validationError';
@@ -175,11 +175,6 @@ export class LoginRegisterComponent implements OnInit {
         return result;
     }
 
-    validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-    
     validateLoginForm() {
         var result = true;
 
@@ -187,10 +182,11 @@ export class LoginRegisterComponent implements OnInit {
             result = false;
             this.loginForm.email = 'input full validationError';
         } else {
-            if (this.validateEmail(this.loginEmail) === true) {
+            if ( this.validateEmail( this.loginEmail ) === true ) {
                 this.loginForm.email = 'input full';
             } else {
                 this.loginForm.email = 'input full validationError';
+                result = false;
             }
         }
 
@@ -240,27 +236,31 @@ export class LoginRegisterComponent implements OnInit {
         this.incorrectLoginDataAlert = false;
         this.noLoginRightsAlert = false;
 
-        this.authenticationService.login( this.loginEmail, this.password ).subscribe(
-            u => {
-                this.user = u;
-                this.navigateUser( this.user.id )
-            }
-            , //Bind to view
-            err => {
-                // Log errors if any
-
-                console.log( "Error na poziomie authenticationService.getUser=" + err );
-                if ( err.status === 400 ) {
-                    console.log( "400 User not found" + err );
-                    this.incorrectLoginDataAlert = true;
+        if ( this.validateLoginForm() === true ) {
+            this.authenticationService.login( this.loginEmail, this.password ).subscribe(
+                u => {
+                    this.user = u;
+                    this.navigateUser( this.user.id )
                 }
+                , //Bind to view
+                err => {
+                    // Log errors if any
 
-                if ( err.status === 401 ) {
-                    console.log( "401 User not confirmed" + err );
+                    console.log( "Error na poziomie authenticationService.getUser=" + err );
+                    if ( err.status === 400 ) {
+                        console.log( "400 User not found" + err );
+                        this.incorrectLoginDataAlert = true;
+                    }
 
-                    this.noLoginRightsAlert = true;
-                }
-            } );
+                    if ( err.status === 401 ) {
+                        console.log( "401 User not confirmed" + err );
+
+                        this.noLoginRightsAlert = true;
+                    }
+                } );
+        }
+
+
 
     }
 
@@ -282,6 +282,11 @@ export class LoginRegisterComponent implements OnInit {
 
     isPasswordHidden() {
         return 'password' === this.passwordType
+    }
+    
+    validateEmail( email ) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test( String( email ).toLowerCase() );
     }
 
     isEmpty( str ) {

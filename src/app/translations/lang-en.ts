@@ -104,5 +104,8 @@ export const LANG_EN_TRANS = {
     'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
     'Terms3': 'Dokonać opłaty rejestracyjnej w wysokości naukowcy 200zł doktoranci/studenci 100zł',
     'Terms4': 'Terms4',
+    'Send Password' : 'Send Password',
+    'emailNotFoundAlert' : 'User with such email not found.',
+    'emailSentAlert' : 'The password sent.'
 
 };

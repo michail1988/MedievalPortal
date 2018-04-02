@@ -121,7 +121,6 @@
 
 			<div class="simform__actions">
 				<input class="submit" name="commit" type="submit"
-					(click)="validateRegisterForm()"
 					value="{{ 'Create account' | translate }}" /> <span
 					[class]="registerForm.terms"> <p-checkbox
 						[(ngModel)]="termsAcceptation" name="checkbox" binary="true"
@@ -166,7 +165,7 @@
 			</div>
 			<div class="simform__actions">
 				<input class="submit" type="submit" name="commit" type="submit"
-					(click)="validateLoginForm()" value="{{ 'Log In' | translate }}" />
+				value="{{ 'Log In' | translate }}" />
 				<span class="simform__actions-sidetext"><a class="special"
 					role="link" [routerLink]="['forgot-password']">{{
 						'ForgotPassword' | translate }}?<br>{{ 'Click here' |
