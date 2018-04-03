@@ -119,6 +119,17 @@ export const LANG_PL_TRANS = {
     'Terms4': 'Terms4',
     'Send Password' : 'Wyślij hasło',
     'emailNotFoundAlert' : 'Nie znaleziono takiego adresu e-mail w bazie danych.',
-    'emailSentAlert' : 'Hasło zostało wysłane na podany adres email.'
+    'emailSentAlert' : 'Hasło zostało wysłane na podany adres email.',
+    'Commitee' : 'Komitet naukowy',
+    'Presidium' : 'Prezydium:',
+    'PresidiumNames' : 'Prof. dr hab. Jerzy Strzelczyk, Prof. dr hab. Leszek Słupecki, Prof. dr hab. Rościsław Żerelik',
+    'CommiteeNames1' : 'Prof. dr hab. Jan Burdukiewicz, Prof. dr hab. Przemysław Wiszewski,',
+    'CommiteeNames2' : 'Prof. dr hab. Marek Derwich, Prof. dr hab. Maciej Gołąb, Dr hab. Prof. UWr, Krzysztof Jaworski, ',
+    'CommiteeNames3' : 'Dr hab. Prof. UWr Barbara Jędrychowska, Prof. dr hab. Mirosław Kocur, ',
+    'CommiteeNames4' : 'Prof. dr hab. Jerzy Piekalski, Prof. UWr dr hab. Jacek Zieliński',
+    'OrganizersCommitee' : 'Komitet organizacyjny',
+    'OrganizersCommiteeNames1' : 'Prof. dr hab. Mateusz Goliński, Dr hab. Prof. UWr Romuald Kaczmarek,',
+    'OrganizersCommiteeNames2' : 'Prof. dr hab. Sławomir Moździoch, Dr hab. Prof. UWr Wojciech Mrozowicz,',
+    'OrganizersCommiteeNames3' : 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
 
 };

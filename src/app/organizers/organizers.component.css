@@ -10,8 +10,8 @@
 }
 
 .committee {
-	font-size: 26px;
-	color: #FFF;
+	font-size: 40px;
+	font-weight: bold;
 }
 
 .single_count {
@@ -19,13 +19,13 @@
 }
 
 .single_count i {
-	color: #f73b56;
+	color: black;
 	font-size: 24px;
+	font-weight: bold;
 }
 
 .single_count h3 {
 	font-family: 'Montserrat', sans-serif;
-	color: #fff;
 	font-size: 40px;
 	font-weight: bold;
 	margin-bottom: 0px;
@@ -33,8 +33,7 @@
 
 .single_count p {
 	font-family: 'Dosis', sans-serif;
-	color: #fff;
-	font-size: 14px;
+	font-size: 24px;
 	text-transform: uppercase;
 	position: relative;
 }
@@ -46,5 +45,17 @@
 	height: 1px;
 	left: 0;
 	bottom: -4px;
-	background: #ef4251;
+	background: black;
+}
+
+
+.photoMerian {
+	background: url(../../assets/img/breslau_merian.jpg);
+	background-size: cover;
+	background-attachment: fixed !important;
+	background-repeat: no-repeat;
+}
+
+.section_overlay {
+	background: rgba(250, 250, 250, .5);
 }
