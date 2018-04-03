@@ -21,6 +21,7 @@ export class LoginRegisterComponent implements OnInit {
 
     incorrectLoginDataAlert: boolean;
     noLoginRightsAlert: boolean;
+    emailRegisteredAlert: boolean;
 
     types: SelectItem[];
 
@@ -93,6 +94,8 @@ export class LoginRegisterComponent implements OnInit {
     //automatyczny login???
     registerUser() {
 
+        this.emailRegisteredAlert = false;
+        
         if ( this.validateRegisterForm() === true ) {
             this.user.registerdate = new Date();
             this.user.congressrole = this.selectedType.charAt( 0 )
@@ -110,6 +113,12 @@ export class LoginRegisterComponent implements OnInit {
                 err => {
                     // Log errors if any
                     console.log( err );
+                    
+                    if ( err.status === 401 ) {
+                        console.log( "401 Istnieje juz uzytkownik o podanym adresie email." );
+
+                        this.emailRegisteredAlert = true;
+                    }
                 } );
         }
     }
@@ -299,6 +308,10 @@ export class LoginRegisterComponent implements OnInit {
 
     noLoginRightsAlertVisible() {
         return this.noLoginRightsAlert;
+    }
+    
+    emailRegisteredAlertVisible() {
+        return this.emailRegisteredAlert;
     }
 
     navigateUser( id ) {

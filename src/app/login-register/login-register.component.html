@@ -126,6 +126,12 @@
 				</span>
 			</div>
 		</form>
+		
+		<div class="redAlert" *ngIf="emailRegisteredAlertVisible()">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> {{
+			'emailRegisteredAlert' | translate }}
+		</div>
 	</div>
 </div>
 
