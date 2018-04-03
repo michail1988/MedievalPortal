@@ -1,7 +1,7 @@
 
 <div class="contentUnderNewHeader">
 	<div class="container" >
-			<div class="col-md-12" style="left: 50%; transform: translate(-50%);" >
+			<div class="col-md-12" style="left: 50%; transform: translate(-50%); height: 400px;" >
 				<div class="home_text wow fadeInUp animated">
 					<h2>
 						<b>{{ 'TermsTitle' | translate }}</b>
@@ -14,7 +14,7 @@
 
 				<div class="wow fadeInLeft animated">
 					<ol>
-						<li>{{ 'Terms1' | translate }}</li>
+						<li [innerHTML]="'Terms1' | translate"></li>
 						<li>{{ 'Terms2' | translate }}</li>
 						<li>{{ 'Terms3' | translate }}</li>
 					</ol>

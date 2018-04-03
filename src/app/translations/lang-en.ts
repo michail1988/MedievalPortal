@@ -101,7 +101,7 @@ export const LANG_EN_TRANS = {
     'enrolment-created1' : 'TODO',
     'TermsTitle': 'Terms:',
     'Terms0': 'W celu uczestnictwa w zjeździe należy:',
-    'Terms1': 'Utworzyć konto na stronie www.vikmp.pl.',
+    'Terms1': 'Utworzyć konto na stronie <a href="www.vikmp.pl">www.vikmp.pl</a>',
     'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
     'Terms3': 'Dokonać opłaty rejestracyjnej w wysokości naukowcy 200zł doktoranci/studenci 100zł',
     'Terms4': 'Terms4',
