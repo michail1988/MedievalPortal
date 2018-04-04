@@ -1,5 +1,17 @@
-<a routerLink="user-profile" *ngIf="isLogged()">{{ 'Welcome' |
-	translate}} {{username}}</a>
+<div style="margin-left: 870px; padding-top: 0px;">
 
-<a routerLink="login-register" *ngIf="!isLogged()">{{ 'Log in' |
-	translate}}</a>
+
+		<div class="col-md-8" style="padding-right:5px; text-align:right;">
+			<a routerLink="user-profile" *ngIf="isLogged()">{{ 'Welcome' | translate }} {{username}}</a>
+
+		</div>
+		<div class="col-md-4 ">
+			<button pButton type="button" icon="fa-sign-out" *ngIf="isLogged()"
+				(click)="logout()" label="{{ 'Log out' | translate}}"></button>
+			<a routerLink="welcome" *ngIf="false">{{ 'Log in' | translate }}</a>
+		</div>
+	</div>
+
+
+
+

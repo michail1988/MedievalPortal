@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "app/services/authentication.service";
+import { Router } from "@angular/router";
 
 @Component( {
     selector: 'user-logged',
@@ -9,7 +11,7 @@ export class UserLoggedComponent implements OnInit {
 
     private username: string;
 
-    constructor() { }
+    constructor(private authenticationService: AuthenticationService, public router: Router) { }
     
     ngOnInit() {
         this.username = localStorage.getItem( 'username' );
@@ -18,6 +20,11 @@ export class UserLoggedComponent implements OnInit {
     isLogged() {
         this.username = localStorage.getItem( 'username' );
         return ( this.username );
+    }
+    
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate( ['welcome'] );
     }
 
 }

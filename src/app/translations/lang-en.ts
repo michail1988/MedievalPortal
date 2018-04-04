@@ -68,7 +68,7 @@ export const LANG_EN_TRANS = {
     'About the university': 'About the university',
     'Submit': 'Submit',
     'Leave a comment:': 'Leave a comment:',
-    'Log In': 'Log In',
+    'Log in': 'Zaloguj się',
     'Create account': 'Create account',
     'Profile photo': 'Profile photo',
     'Send for acceptation': 'Send for acceptation',

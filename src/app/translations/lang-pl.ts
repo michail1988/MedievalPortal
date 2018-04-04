@@ -66,7 +66,7 @@ export const LANG_PL_TRANS = {
     'Thank You!': 'Dziękujemy!',
     'EmailSentInfo': 'Twoja wiadomość została wysłana.',
     'About the university': 'O uniwersytecie',
-    'Log In': 'Zaloguj się',
+    'Log in': 'Zaloguj się',
     'Create account': 'Utwórz konto',
     'Profile photo': 'Zdjęcie użytkownika',
     'Send for acceptation': 'Wyślij do akceptacji',
