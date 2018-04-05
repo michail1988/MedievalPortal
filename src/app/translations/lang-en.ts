@@ -124,6 +124,8 @@ export const LANG_EN_TRANS = {
     'saveSuccess' : 'Changes saved.',
     'passwordChangedAlert' : 'The password is changed.',
     'cancelConfirmation' : 'Cancel confirmation',
-    'Edit' : 'Edit'
+    'Edit' : 'Edit',
+    'ShowPaymentAccepted' : 'Payment accepted',
+    'ShowPaymentPending' : 'No payment'
 
 };

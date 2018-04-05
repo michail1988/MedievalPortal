@@ -16,6 +16,14 @@
 	label="{{ 'Show speakers' | translate}}"
 	[ngClass]="showSpeakersEnabled?'ui-button-success':'btn btn-primary'"></button>
 
+<button pButton type="button" (click)="showPaymentAccepted()"
+	label="{{ 'ShowPaymentAccepted' | translate}}"
+	[ngClass]="showPaymentAcceptedEnabled?'ui-button-success':'btn btn-primary'"></button>
+
+<button pButton type="button" (click)="showPaymentPending()"
+	label="{{ 'ShowPaymentPending' | translate}}"
+	[ngClass]="showPaymentPendingEnabled?'ui-button-success':'btn btn-primary'"></button>
+
 <br />
 <br />
 

@@ -137,6 +137,8 @@ export const LANG_PL_TRANS = {
     'saveSuccess' : 'Zapis zakończony powodzeniem.',
     'passwordChangedAlert' : 'Hasło zostało zmienione.',
     'cancelConfirmation' : 'Wycofaj',
-    'Edit' : 'Edytuj'
+    'Edit' : 'Edytuj',
+    'ShowPaymentAccepted' : 'Płatność przyjęta.',
+    'ShowPaymentPending' : 'Brak opłaty'
 
 };

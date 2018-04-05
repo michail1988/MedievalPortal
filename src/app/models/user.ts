@@ -17,6 +17,7 @@ export class User {
         public abstract: string,
         public paper_acceptation: string,
         public payment: string,
+        public payment_accepted: string,
         public academic_title: string
     ) { }
     

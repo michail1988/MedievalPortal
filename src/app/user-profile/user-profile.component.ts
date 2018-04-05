@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
