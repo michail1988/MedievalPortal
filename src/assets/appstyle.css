@@ -70,7 +70,7 @@ table.ng2-smart-table {
 
 /*content*/
 tr.ng2-smart-row > td > ng2-smart-table-cell:nth-child(1) > table-cell-view-mode:nth-child(1) {
-	font-size: 10px;
+	font-size: 14px;
 	color: black;
 	font-family: "Open Sans", arial;
 }
