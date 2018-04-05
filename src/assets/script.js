@@ -38,8 +38,8 @@ $('a[href*=#]:not([href=#])').click(function() {
 });
 });
 
-
-//OWL CAROSEL TESTIMONIAL
+/*
+ * //OWL CAROSEL TESTIMONIAL
 $('.owl-carousel').owlCarousel({
   loop:true,
   margin:10,
@@ -58,6 +58,8 @@ $('.owl-carousel').owlCarousel({
       }
   }
 })
+ */
+
 
 $(document).ready(
 

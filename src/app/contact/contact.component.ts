@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
     constructor( private contactService: ContactService ) { }
 
     ngOnInit() {
+        window.scrollTo(0, 0)
     }
 
     submitMessage() {

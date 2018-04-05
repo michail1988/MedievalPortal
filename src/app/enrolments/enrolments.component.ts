@@ -42,6 +42,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         } );
         
         this.showAllEnabled = true;
+        
+        window.scrollTo(0, 0)
     }
 
     loadAllEnrolments() {
@@ -85,11 +87,43 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 title: 'Rola',
                 type: 'html',
                 valuePrepareFunction: ( value ) => {
-                    if ( value === 'P' ) return 'Uczestnik';
-                    if ( value === 'S' ) return 'Referant';
+                    if ( value === 'U' ) return 'Uczestnik';
+                    if ( value === 'R' ) return 'Referent';
                     if ( value === 'O' ) return 'Organizator';
                     return ''
-                }
+                },
+                filterFunction(cell?: any, search?: string): boolean {
+                    if (search != null) {
+                        if ("uczestnik".search(search) > 0) {
+                            if ( cell === 'U' ) {
+                                return true;
+                            }
+                            
+                            return false;
+                        }
+                        
+                        if ("referent".search(search) > 0) {
+                            if ( cell === 'R' ) {
+                                return true;
+                            }
+                            
+                            return false;
+                        }
+                        
+                        if ("organizator".search(search) > 0) {
+                            if ( cell === 'U' ) {
+                                return true;
+                            }
+                            
+                            return false;
+                        }
+                    }
+                    if (search === '') {
+                      return true;
+                    } else {
+                      return false;
+                    }          
+                  }
             },
             confirmation: {
                 title: 'Akceptacja',

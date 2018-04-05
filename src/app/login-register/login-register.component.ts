@@ -73,6 +73,7 @@ export class LoginRegisterComponent implements OnInit {
         this.registerForm.usersurname = 'input string optional';
 
         this.registerForm.terms = 'simform__actions-sidetext';
+        this.registerForm.university = 'input string optional';
     }
 
     ngOnInit() {
@@ -87,7 +88,8 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     isSpeakerPartsVisible() {
-        return this.selectedType === 'Referent';
+        return false;
+        //return this.selectedType === 'Referent';
     }
 
     //TODO koniecznie jakas odpowiedz serwera
@@ -174,6 +176,13 @@ export class LoginRegisterComponent implements OnInit {
             this.registerForm.usersurname = 'input string optional';
         }
 
+        if ( this.isEmpty( this.user.university ) ) {
+            result = false;
+            this.registerForm.university = 'input string optional validationError';
+        } else {
+            this.registerForm.university = 'input string optional';
+        }
+        
         if ( this.termsAcceptation != true ) {
             result = false;
             this.registerForm.terms = 'simform__actions-sidetext validationError';

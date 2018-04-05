@@ -85,7 +85,7 @@ export class UserProfileComponent implements OnInit {
                 console.log( err );
             } );
 
-
+        window.scrollTo(0, 0)
 
     }
 
@@ -104,7 +104,7 @@ export class UserProfileComponent implements OnInit {
 
     logout() {
         this.authenticationService.logout();
-        this.router.navigate( ['login-register'] );
+        this.router.navigate( ['welcome'] );
     }
 
     search( event ) {
