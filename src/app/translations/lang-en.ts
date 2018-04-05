@@ -119,6 +119,8 @@ export const LANG_EN_TRANS = {
     'OrganizersCommiteeNames1' : 'Prof. dr hab. Mateusz Goliński, Dr hab. Prof. UWr Romuald Kaczmarek,',
     'OrganizersCommiteeNames2' : 'Prof. dr hab. Sławomir Moździoch, Dr hab. Prof. UWr Wojciech Mrozowicz,',
     'OrganizersCommiteeNames3' : 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
-    'emailRegisteredAlert' : 'There is already an user with given email. The registration has failed.'
+    'emailRegisteredAlert' : 'There is already an user with given email. The registration has failed.',
+    'requiredFieldsAlert' : 'Please enter all required (*) fields.',
+    'saveSuccess' : 'Changes saved.'
 
 };

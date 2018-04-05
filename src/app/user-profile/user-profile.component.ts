@@ -38,6 +38,9 @@ export class UserProfileComponent implements OnInit {
     
     userForm;
 
+    requiredFieldsAlert: boolean;
+    saveSuccessAlert: boolean;
+    
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
@@ -140,6 +143,9 @@ export class UserProfileComponent implements OnInit {
 
     save() {
 
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        
         if ( this.validateUserForm() ) {
             //TODO
             this.user.fk_editor = this.user.id;
@@ -157,11 +163,22 @@ export class UserProfileComponent implements OnInit {
 
                     this.msgs = [];
                     this.msgs.push( { severity: 'success', summary: 'Zapis zakonczony powodzeniem.', detail: '' } );
+                    
+                    this.saveSuccessAlert = true;
+                    window.scrollTo(0, 0)
                 },
                 err => {
                     // Log errors if any
                     console.log( err );
+                    
+                    //TODO Michal jakis wlasciwy komunikat o errorze
+                    this.requiredFieldsAlert = false;
                 } );
+        } else {
+            this.requiredFieldsAlert = true;
+            
+            this.msgs = [];
+            this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
 
     }
@@ -338,7 +355,15 @@ export class UserProfileComponent implements OnInit {
         
         return result;
     }
-
+    
+    requiredFieldsAlertVisible() {
+        return this.requiredFieldsAlert
+    }
+    
+    saveSuccessAlertVisible() {
+        return this.saveSuccessAlert
+    }
+    
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }

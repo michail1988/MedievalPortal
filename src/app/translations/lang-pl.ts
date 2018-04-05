@@ -132,6 +132,8 @@ export const LANG_PL_TRANS = {
     'OrganizersCommiteeNames1' : 'Prof. dr hab. Mateusz Goliński, Dr hab. Prof. UWr Romuald Kaczmarek,',
     'OrganizersCommiteeNames2' : 'Prof. dr hab. Sławomir Moździoch, Dr hab. Prof. UWr Wojciech Mrozowicz,',
     'OrganizersCommiteeNames3' : 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
-    'emailRegisteredAlert' : 'Istnieje już użytkownik o podanym adresie email. Rejestracja nie powiodła się.'
+    'emailRegisteredAlert' : 'Istnieje już użytkownik o podanym adresie email. Rejestracja nie powiodła się.',
+    'requiredFieldsAlert' : 'Proszę uzupełnić wszystkie obowiązkowe (*) pola.',
+    'saveSuccess' : 'Zapis zakończony powodzeniem.'
 
 };
