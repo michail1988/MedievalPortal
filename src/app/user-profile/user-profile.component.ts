@@ -22,7 +22,11 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
+<<<<<<< HEAD
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+=======
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+>>>>>>> branch 'master' of https://github.com/michail1988/MedievalPortal.git
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
