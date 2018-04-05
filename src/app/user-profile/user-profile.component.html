@@ -1,6 +1,8 @@
 <div class="contentUnderNewHeader">
 	<p-growl [value]="msgs"></p-growl>
 
+<br /> <br />
+
 <div class="redAlert" *ngIf="requiredFieldsAlertVisible()">
 						<span class="closebtn"
 							onclick="this.parentElement.style.display='none';">&times;</span>
@@ -13,7 +15,13 @@
 						{{ 'saveSuccess' | translate }}
 					</div>
 					
-	<br /> <br />
+					<div class="greenAlert" *ngIf="passwordChangedAlertVisible()">
+						<span class="closebtn"
+							onclick="this.parentElement.style.display='none';">&times;</span>
+						{{ 'passwordChangedAlert' | translate }}
+					</div>
+					
+	
 
 	<div class="panel panel-primary dialog-panel">
 		<div class="panel-heading">

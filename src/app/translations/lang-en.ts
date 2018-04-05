@@ -121,6 +121,7 @@ export const LANG_EN_TRANS = {
     'OrganizersCommiteeNames3' : 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
     'emailRegisteredAlert' : 'There is already an user with given email. The registration has failed.',
     'requiredFieldsAlert' : 'Please enter all required (*) fields.',
-    'saveSuccess' : 'Changes saved.'
+    'saveSuccess' : 'Changes saved.',
+    'passwordChangedAlert' : 'The password is changed.'
 
 };

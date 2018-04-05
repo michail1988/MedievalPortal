@@ -40,6 +40,7 @@ export class UserProfileComponent implements OnInit {
 
     requiredFieldsAlert: boolean;
     saveSuccessAlert: boolean;
+    passwordChangedAlert: boolean;
     
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -145,6 +146,7 @@ export class UserProfileComponent implements OnInit {
 
         this.requiredFieldsAlert = false;
         this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
         
         if ( this.validateUserForm() ) {
             //TODO
@@ -256,6 +258,11 @@ export class UserProfileComponent implements OnInit {
     }
 
     resetChanges() {
+        
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
+        
         if ( this.userId ) {
             this.html = this.imageService.getUserImage( this.userId );
             this.imageLoaded = true;
@@ -313,6 +320,10 @@ export class UserProfileComponent implements OnInit {
     }
     
     changePassword() {
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
+        
         if (this.validatePasswordForm()) {
             this.user.fk_editor = this.user.id;
             this.user.password = this.password1;
@@ -322,11 +333,27 @@ export class UserProfileComponent implements OnInit {
                     this.msgs = [];
                     this.msgs.push( { severity: 'success', summary: 'Haslo zmienione.', detail: '' } );
 
+                    this.passwordChangedAlert = true;
+                    
+                    window.scrollTo(0, 0)
                 },
                 err => {
                     // Log errors if any
                     console.log( err );
+                    
+                    //TODO Michal blad
+                    this.requiredFieldsAlert = true;
+                    
+                    this.msgs = [];
+                    this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
+                    
+                    window.scrollTo(0, 0)
                 } );
+        } else {
+            this.requiredFieldsAlert = true;
+            
+            this.msgs = [];
+            this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
     }
     
@@ -362,6 +389,10 @@ export class UserProfileComponent implements OnInit {
     
     saveSuccessAlertVisible() {
         return this.saveSuccessAlert
+    }
+    
+    passwordChangedAlertVisible() {
+        return this.passwordChangedAlert
     }
     
     isEmpty( str ) {
