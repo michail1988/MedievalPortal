@@ -96,7 +96,7 @@ export const LANG_EN_TRANS = {
     'Change password' : 'Change password',
     'FooterWelcome': 'Welcome!',
     'RegistrationOpen' : 'The registration is already open!',
-    'RegistrationTime': 'We wait for your enrolment until 10th july.',
+    'RegistrationTime': 'We wait for your enrolment until 10th july. See you in Wrocław!',
     'enrolment-created-title' : 'Thank you for your enrolment.',
     'enrolment-created1' : 'TODO',
     'TermsTitle': 'Terms:',

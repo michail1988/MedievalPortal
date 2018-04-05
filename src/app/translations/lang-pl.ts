@@ -109,7 +109,7 @@ export const LANG_PL_TRANS = {
     'Change password': 'Zmień hasło',
     'FooterWelcome': 'Zapraszamy!',
     'RegistrationOpen': 'Rejestracja już otwarta!',
-    'RegistrationTime': 'Na zgłoszenia czekamy do 10 lipca.',
+    'RegistrationTime': 'Na zgłoszenia czekamy do 10 lipca. Do zobaczenia we Wrocławiu!',
     'enrolment-created-title': 'Dziękujemy za przesłanie zgłoszenia.',
     'enrolment-created1': 'O akceptacji Państwa wniosku poinformujemy drogą mailową. Po jej otrzymaniu będzie możliwe zalogowanie się za pomocą zdefiniowanego przez Państwa hasła.',
     'TermsTitle': 'Regulamin korzystania z portalu:',
