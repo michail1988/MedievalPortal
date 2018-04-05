@@ -1,4 +1,5 @@
 export class Config {
+    //public static serverAddress = 'http://77.55.218.181:3000';
     public static serverAddress = 'http://localhost:3000';
     
     public static isShowLangs() {

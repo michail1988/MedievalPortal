@@ -3,6 +3,174 @@
 	header="{{userH.editor}}: {{userH.modified_date | date:'dd-MM-yyyy HH:mm'}}">
 
 
- 
- 
- </p-accordionTab> </p-accordion>
+<div class="panel panel-primary dialog-panel">
+	<div class="panel-heading">
+		<h5>{{ 'Personal data' | translate}}</h5>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" accept-charset="utf-8">
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="id_title">{{
+					'Name' | translate }}</label>
+				<div class="col-md-8">
+					<div class="col-md-4">
+						<div class="form-group internal">
+							<input class="form-control" id="id_first_name"
+								[attr.disabled]="true"
+								placeholder="{{ 'First name' | translate }}" name="firstName"
+								[(ngModel)]="userH.name" type="text">
+						</div>
+					</div>
+					<div class="col-md-4 ">
+						<div class="form-group internal">
+							<input class="form-control" id="id_last_name"
+								[attr.disabled]="true" placeholder="{{ 'Surname' | translate }}"
+								name="surname" [(ngModel)]="userH.surname" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'academic_status' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-selectButton [options]="academicStatuses"
+								[disabled]="true" [(ngModel)]="userH.academic_status"
+								id="academic-title" name="academicStatus"></p-selectButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" *ngIf="userH.showStudentOptions">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'engineer' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-checkbox [(ngModel)]="userH.engineer" name="studentengineer"
+								[attr.disabled]="true" binary="true"></p-checkbox>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" *ngIf="userH.showStudentOptions">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'master' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-checkbox [(ngModel)]="userH.master" name="studentmaster"
+								[attr.disabled]="true" binary="true"></p-checkbox>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" *ngIf="userH.showAcademicTitle">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'Degree' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-selectButton [options]="academicTitles" [disabled]="true"
+								[(ngModel)]="userH.academic_title" id="academic-title"
+								name="academicTitle"></p-selectButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" *ngIf="userH.showAcademicTitle">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'engineer' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-checkbox [(ngModel)]="userH.engineer" name="engineer"
+								[attr.disabled]="true" binary="true"></p-checkbox>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="id_email">{{
+					'Email' | translate }} *</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<input class="form-control" id="id_email" [attr.disabled]="true"
+								placeholder="{{ 'Email' | translate }}" type="text"
+								[(ngModel)]="userH.email" name="email">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-md-2 col-md-offset-2" for="id_phone">{{
+					'Phone' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<input class="form-control" id="id_phone" [attr.disabled]="true"
+								[(ngModel)]="userH.phone" name="phone"
+								placeholder="{{ 'Phone' | translate }}" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'Capacity' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-selectButton [options]="types" [disabled]="true"
+	
+								[(ngModel)]="userH.congressrole" id="character-role"
+								name="character"></p-selectButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="university">{{ 'University' | translate }} *</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<p-autoComplete placeholder="{{ 'University' | translate }}"
+								[disabled]="true" [(ngModel)]="userH.university"
+								[suggestions]="results" (completeMethod)="search($event)"
+								required name="university" id="university"></p-autoComplete>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2"
+					for="id_comments">{{ 'Remarks' | translate }}</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="id_comments"
+						[attr.disabled]="true" [(ngModel)]="userH.contactcomments"
+						name="comments" placeholder="{{ 'Remarks' | translate }}" rows="3"></textarea>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+</p-accordionTab> </p-accordion>

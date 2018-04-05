@@ -1,25 +1,33 @@
 
 <div class="contentUnderNewHeader">
-	<div class="container" >
-			<div class="col-md-12" style="left: 50%; transform: translate(-50%); height: 380px;" >
-				<div class="home_text wow fadeInUp animated">
-					<h2>
-						<b>{{ 'TermsTitle' | translate }}</b>
-					</h2>
-				</div>
-
-				<div class="wow fadeInRight animated">
-					<p>{{ 'Terms0' | translate }}</p>
-				</div>
-
-				<div class="wow fadeInLeft animated">
-					<ol>
-						<li [innerHTML]="'Terms1' | translate"></li>
-						<li>{{ 'Terms2' | translate }}</li>
-						<li>{{ 'Terms3' | translate }}</li>
-					</ol>
-				</div>
+	<div class="container">
+		<div class="col-md-12"
+			style="left: 50%; transform: translate(-50%); height: 380px;">
+			<div class="home_text wow fadeInUp animated">
+				<h2>
+					<b>{{ 'TermsTitle' | translate }}</b>
+				</h2>
+			</div>
+			
+<br />
+			<div class="wow fadeInLeft animated">
+				<p>{{ 'Terms0-1' | translate }}</p>
 			</div>
 
+			<br /> 
+			<div class="wow fadeInRight animated">
+				<p>{{ 'Terms0' | translate }}</p>
+			</div>
+
+			<div class="wow fadeInLeft animated">
+				<ol>
+					<li [innerHTML]="'Terms1' | translate"></li>
+					<li>{{ 'Terms2' | translate }}</li>
+					<li>{{ 'Terms3' | translate }}</li>
+					<li>{{ 'Terms4' | translate }}</li>
+				</ol>
+			</div>
 		</div>
+
+	</div>
 </div>

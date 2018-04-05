@@ -28,9 +28,11 @@ export class AdminEnrolmentComponent implements OnInit {
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
+    selectedAcademicStatus: string;
 
     types: SelectItem[];
     academicTitles: SelectItem[];
+    academicStatuses: SelectItem[];
 
     universities: University[];
     results: string[];
@@ -39,6 +41,10 @@ export class AdminEnrolmentComponent implements OnInit {
     password2: string;
 
     userForm;
+
+    requiredFieldsAlert: boolean;
+    saveSuccessAlert: boolean;
+    passwordChangedAlert: boolean;
 
     constructor( private route: ActivatedRoute,
         private router: Router, private userService: UserService, private confirmationService: ConfirmationService, private universityService: UniversityService,
@@ -51,12 +57,15 @@ export class AdminEnrolmentComponent implements OnInit {
         this.types.push( { label: 'Organizator', value: 'Organizator' } );
 
         this.academicTitles = [];
-        this.academicTitles.push( { label: 'mgr', value: 'mgr' } );
-        this.academicTitles.push( { label: 'Doktorant', value: 'Doktorant' } );
-        this.academicTitles.push( { label: 'dr', value: 'dr' } );
-        this.academicTitles.push( { label: 'dr hab.', value: 'dr hab.' } );
-        this.academicTitles.push( { label: 'Profesor', value: 'Profesor' } );
+        this.academicTitles.push( { label: 'mgr', value: '1' } );
+        this.academicTitles.push( { label: 'dr', value: '2' } );
+        this.academicTitles.push( { label: 'dr hab.', value: '3' } );
+        this.academicTitles.push( { label: 'Profesor (stanowisko)', value: '4' } );
+        this.academicTitles.push( { label: 'Profesor (tytuł)', value: '5' } );
 
+        this.academicStatuses = [];
+        this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
+        this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
 
         this.userForm = [];
         this.userForm.name = 'form-control';
@@ -65,8 +74,6 @@ export class AdminEnrolmentComponent implements OnInit {
 
         this.userForm.password1 = 'form-control';
         this.userForm.password2 = 'form-control';
-
-        console.log( 'Constructor ' )
     }
 
     ngOnInit() {
@@ -77,6 +84,7 @@ export class AdminEnrolmentComponent implements OnInit {
                     console.log( 'Jest ' + data.user )
                     this.user = data.user;
 
+                    this.selectAcademicStatus( this.user );
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                 } else {
@@ -86,6 +94,8 @@ export class AdminEnrolmentComponent implements OnInit {
                 }
             }
         );
+
+        window.scrollTo( 0, 0 )
     }
 
 
@@ -155,7 +165,7 @@ export class AdminEnrolmentComponent implements OnInit {
                 console.log( err );
             } );
     }
-    
+
     search( event ) {
         //      EmitterService.get( this.listId ).subscribe(( universities: University[] ) => { this.loadUniversities() } );
 
@@ -186,10 +196,17 @@ export class AdminEnrolmentComponent implements OnInit {
 
     save() {
 
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
+
         if ( this.validateUserForm() ) {
             //TODO !!!!!!!!!!!!!!!!!!!!!!!!
-            this.user.fk_editor = this.user.id;
+            this.user.fk_editor = localStorage.getItem( 'userid' );
+
+
             this.setAcademicTitle();
+            this.setAcademicStatus();
             this.setCongressRole();
 
             this.userService.updateUser( this.user ).subscribe(
@@ -203,34 +220,67 @@ export class AdminEnrolmentComponent implements OnInit {
 
                     this.msgs = [];
                     this.msgs.push( { severity: 'success', summary: 'Zapis zakonczony powodzeniem.', detail: '' } );
+
+                    this.saveSuccessAlert = true;
+                    window.scrollTo( 0, 0 )
                 },
                 err => {
+                    //TODO Michal jakis wlasciwy komunikat o errorze
+                    this.requiredFieldsAlert = false;
                     // Log errors if any
                     console.log( err );
                 } );
+        } else {
+            this.requiredFieldsAlert = true;
+
+            this.msgs = [];
+            this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
 
     }
 
     selectAcademicTitle( user: User ) {
-        if ( this.user.academic_title === '1' ) {
-            this.selectedAcademicTitle = 'mgr'
+        this.selectedAcademicTitle = this.user.academic_title;
+
+    }
+
+    selectAcademicStatus( user ) {
+        this.selectedAcademicStatus = this.user.academic_status;
+    }
+
+    setCongressRole() {
+        if ( this.selectedCongressRole === 'Uczestnik' ) {
+            this.user.congressrole = 'U'
         }
 
-        if ( this.user.academic_title === '2' ) {
-            this.selectedAcademicTitle = 'Doktorant'
+        if ( this.selectedCongressRole === 'Referent' ) {
+            this.user.congressrole = 'R'
         }
 
-        if ( this.user.academic_title === '3' ) {
-            this.selectedAcademicTitle = 'dr'
+        if ( this.selectedCongressRole === 'Organizator' ) {
+            this.user.congressrole = 'O'
+        }
+    }
+
+    setAcademicTitle() {
+        if ( this.selectedAcademicTitle === '1' ) {
+            this.user.academic_title = '1'
         }
 
-        if ( this.user.academic_title === '4' ) {
-            this.selectedAcademicTitle = 'dr hab.'
+        if ( this.selectedAcademicTitle === '2' ) {
+            this.user.academic_title = '2'
         }
 
-        if ( this.user.academic_title === '5' ) {
-            this.selectedAcademicTitle = 'Profesor'
+        if ( this.selectedAcademicTitle === '3' ) {
+            this.user.academic_title = '3'
+        }
+
+        if ( this.selectedAcademicTitle === '4' ) {
+            this.user.academic_title = '4'
+        }
+
+        if ( this.selectedAcademicTitle === '5' ) {
+            this.user.academic_title = '5'
         }
     }
 
@@ -248,43 +298,30 @@ export class AdminEnrolmentComponent implements OnInit {
         }
     }
 
-    setAcademicTitle() {
-        if ( this.selectedAcademicTitle === 'mgr' ) {
-            this.user.academic_title = '1'
+    setAcademicStatus() {
+        if ( this.selectedAcademicStatus === '1' ) {
+            this.user.academic_status = '1'
         }
 
-        if ( this.selectedAcademicTitle === 'Doktorant' ) {
-            this.user.academic_title = '2'
-        }
-
-        if ( this.selectedAcademicTitle === 'dr' ) {
-            this.user.academic_title = '3'
-        }
-
-        if ( this.selectedAcademicTitle === 'dr hab.' ) {
-            this.user.academic_title = '4'
-        }
-
-        if ( this.selectedAcademicTitle === 'Profesor' ) {
-            this.user.academic_title = '5'
+        if ( this.selectedAcademicStatus === '2' ) {
+            this.user.academic_status = '2'
         }
     }
 
-    setCongressRole() {
-        if ( this.selectedCongressRole === 'Uczestnik' ) {
-            this.user.congressrole = 'U'
-        }
+    showAcademicTitle() {
+        return this.selectedAcademicStatus === '2'
+    }
 
-        if ( this.selectedCongressRole === 'Referent' ) {
-            this.user.congressrole = 'R'
-        }
-
-        if ( this.selectedCongressRole === 'Organizator' ) {
-            this.user.congressrole = 'O'
-        }
+    showStudentOptions() {
+        return this.selectedAcademicStatus === '1'
     }
 
     resetChanges() {
+
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
+
         if ( this.user.id ) {
             this.html = this.imageService.getUserImage( this.user.id );
             this.imageLoaded = true;
@@ -342,8 +379,12 @@ export class AdminEnrolmentComponent implements OnInit {
     }
 
     changePassword() {
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        this.passwordChangedAlert = false;
+
         if ( this.validatePasswordForm() ) {
-            this.user.fk_editor = this.user.id;
+            this.user.fk_editor = localStorage.getItem( 'userid' );
             this.user.password = this.password1;
 
             this.userService.updatePassword( this.user ).subscribe(
@@ -351,11 +392,27 @@ export class AdminEnrolmentComponent implements OnInit {
                     this.msgs = [];
                     this.msgs.push( { severity: 'success', summary: 'Haslo zmienione.', detail: '' } );
 
+                    this.passwordChangedAlert = true;
+
+                    window.scrollTo( 0, 0 )
                 },
                 err => {
                     // Log errors if any
                     console.log( err );
+
+                    //TODO Michal blad
+                    this.requiredFieldsAlert = true;
+
+                    this.msgs = [];
+                    this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
+
+                    window.scrollTo( 0, 0 )
                 } );
+        } else {
+            this.requiredFieldsAlert = true;
+
+            this.msgs = [];
+            this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
     }
 
@@ -383,6 +440,18 @@ export class AdminEnrolmentComponent implements OnInit {
         }
 
         return result;
+    }
+
+    requiredFieldsAlertVisible() {
+        return this.requiredFieldsAlert
+    }
+
+    saveSuccessAlertVisible() {
+        return this.saveSuccessAlert
+    }
+
+    passwordChangedAlertVisible() {
+        return this.passwordChangedAlert
     }
 
     isEmpty( str ) {

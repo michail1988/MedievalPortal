@@ -103,11 +103,12 @@ export const LANG_EN_TRANS = {
     'enrolment-created-title' : 'Thank you for your enrolment.',
     'enrolment-created1' : 'TODO',
     'TermsTitle': 'Terms:',
+    'Terms0-1': 'Akceptacja regulaminu oznacza wyrażenie zgody na udostępnienie swoich danych na potrzeby zjazdu i działań promocyjnych związanych z wydarzeniem.',
     'Terms0': 'W celu uczestnictwa w zjeździe należy:',
     'Terms1': 'Utworzyć konto na stronie <a href="www.vikmp.pl">www.vikmp.pl</a>',
     'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
     'Terms3': 'Dokonać opłaty rejestracyjnej w wysokości naukowcy 200zł doktoranci/studenci 100zł',
-    'Terms4': 'Terms4',
+    'Terms4': 'Dokonanie opłaty konferencyjnej. Numer konta zostanie do Państwa wysłany około 15 maja drogą mailową.',
     'Send Password' : 'Send Password',
     'emailNotFoundAlert' : 'User with such email not found.',
     'emailSentAlert' : 'The password sent.',
@@ -129,6 +130,7 @@ export const LANG_EN_TRANS = {
     'cancelConfirmation' : 'Cancel confirmation',
     'Edit' : 'Edit',
     'ShowPaymentAccepted' : 'Payment accepted',
-    'ShowPaymentPending' : 'No payment'
+    'ShowPaymentPending' : 'No payment',
+    'SeeYouInWroclaw' :'See you in Wrocław!'
 
 };
