@@ -122,6 +122,8 @@ export const LANG_EN_TRANS = {
     'emailRegisteredAlert' : 'There is already an user with given email. The registration has failed.',
     'requiredFieldsAlert' : 'Please enter all required (*) fields.',
     'saveSuccess' : 'Changes saved.',
-    'passwordChangedAlert' : 'The password is changed.'
+    'passwordChangedAlert' : 'The password is changed.',
+    'cancelConfirmation' : 'Cancel confirmation',
+    'Edit' : 'Edit'
 
 };

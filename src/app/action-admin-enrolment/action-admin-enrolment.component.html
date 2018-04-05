@@ -1,7 +1,8 @@
  <p-confirmDialog></p-confirmDialog>
  
-<a href="/admin-user/{{value.id}}">Edytuj</a>
+<a href="/admin-user/{{value.id}}">{{ 'Edit' | translate}}</a>
 
+<br />
 <br />
 <button pButton type="button" (click)="accept()" icon="fa-check"
 	*ngIf="isAcceptationPending()" style="margin-top: 5px;"
@@ -10,3 +11,13 @@
 <button pButton type="button" (click)="confirmReject()" icon="fa-close"
 	*ngIf="isAcceptationPending()" style="margin-top: 5px;"
 	class="ui-button-danger" label="{{ 'Reject' | translate}}"></button>
+	
+	
+	<button pButton type="button" (click)="confirmReject()" icon="fa-close"
+	*ngIf="isAccepted()" style="margin-top: 5px;"
+	class="ui-button-danger" label="{{ 'cancelConfirmation' | translate}}"></button>
+	
+	
+	<button pButton type="button" (click)="accept()" icon="fa-check"
+	*ngIf="isRejected()" style="margin-top: 5px;"
+	class="ui-button-success" label="{{ 'Accept' | translate}}"></button>

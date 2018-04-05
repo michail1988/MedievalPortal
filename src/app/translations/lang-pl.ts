@@ -135,6 +135,8 @@ export const LANG_PL_TRANS = {
     'emailRegisteredAlert' : 'Istnieje już użytkownik o podanym adresie email. Rejestracja nie powiodła się.',
     'requiredFieldsAlert' : 'Proszę uzupełnić wszystkie obowiązkowe (*) pola.',
     'saveSuccess' : 'Zapis zakończony powodzeniem.',
-    'passwordChangedAlert' : 'Hasło zostało zmienione.'
+    'passwordChangedAlert' : 'Hasło zostało zmienione.',
+    'cancelConfirmation' : 'Wycofaj',
+    'Edit' : 'Edytuj'
 
 };

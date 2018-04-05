@@ -32,6 +32,23 @@ export class ActionAdminEnrolmentComponent implements OnInit {
 
         return true;
     }
+    
+    isAccepted() {
+        if ( 'Y' == this.value.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    isRejected() {
+        if ( 'N' == this.value.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
+    
     accept() {
         //TODO refresh lub dymek
         this.userService.acceptUser( this.value ).subscribe(
