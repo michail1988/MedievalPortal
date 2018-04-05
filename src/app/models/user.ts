@@ -18,14 +18,10 @@ export class User {
         public paper_acceptation: string,
         public payment: string,
         public payment_accepted: string,
-<<<<<<< HEAD
         public academic_title: string,
         public academic_status: string, 
         public master: string, 
         public engineer: string
-=======
-        public academic_title: string
->>>>>>> branch 'master' of https://github.com/michail1988/MedievalPortal.git
     ) { }
     
     public fk_editor: string

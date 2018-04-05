@@ -34,11 +34,8 @@ export class LoginRegisterComponent implements OnInit {
 
     passwordType: string;
 
-<<<<<<< HEAD
     user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
-=======
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
->>>>>>> branch 'master' of https://github.com/michail1988/MedievalPortal.git
+
     repeatPassword: string; //TODO dodac walidacje
     termsAcceptation: boolean;
 
