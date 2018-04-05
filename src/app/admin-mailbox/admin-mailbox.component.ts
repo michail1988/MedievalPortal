@@ -36,6 +36,8 @@ export class AdminMailboxComponent implements OnInit {
     showAcceptedEnabled: boolean;
     showNotAcceptedEnabled: boolean;
     showSpeakersEnabled: boolean;
+    showPaymentPendingEnabled: boolean;
+    showPaymentAcceptedEnabled: boolean;
 
     constructor( private contactService: ContactService, private userService: UserService ) {
 
@@ -128,6 +130,40 @@ export class AdminMailboxComponent implements OnInit {
         this.showNotAcceptedEnabled = true;
     }
 
+    showPaymentAccepted() {
+        this.userService.getAcceptedPayment()
+            .subscribe(
+            acceptedPaymentUsers => {
+                this.users = acceptedPaymentUsers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+
+        this.resetButtons();
+        this.showPaymentAcceptedEnabled = true;
+    }
+
+    showPaymentPending() {
+        this.userService.getPendingPayment()
+            .subscribe(
+                    pendingPaymentUsers => {
+                this.users = pendingPaymentUsers;
+                this.setItems();
+            },
+            err => {
+                console.log( err );
+            } );
+
+        this.setItems();
+
+        this.resetButtons();
+        this.showPaymentPendingEnabled = true;
+    }
+
     showSpeakers() {
         this.userService.getSpeakers()
             .subscribe(
@@ -170,6 +206,8 @@ export class AdminMailboxComponent implements OnInit {
         this.showAcceptedEnabled = false;
         this.showNotAcceptedEnabled = false;
         this.showSpeakersEnabled = false;
+        this.showPaymentPendingEnabled = false;
+        this.showPaymentAcceptedEnabled = false;
 
     }
 }

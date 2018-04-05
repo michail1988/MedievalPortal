@@ -28,6 +28,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     showPendingEnabled: boolean;
     showSpeakersEnabled: boolean;
     showRejectedEnabled: boolean;
+    showPaymentPendingEnabled: boolean;
+    showPaymentAcceptedEnabled: boolean;
 
     // Constructor with injected service
     constructor( private userService: UserService ) { }
@@ -125,6 +127,14 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                     }          
                   }
             },
+            payment_accepted: {
+                title: 'Oplata',
+                type: 'html',
+                valuePrepareFunction: ( value ) => {
+                    if ( value === 'Y' ) return 'Tak';
+                    return 'Nie'
+                }
+            },
             confirmation: {
                 title: 'Akceptacja',
                 type: 'html',
@@ -191,11 +201,31 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showSpeakersEnabled = true;
     }
     
+    showPaymentAccepted() {
+        this.userService.getAcceptedPayment().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+        
+        this.resetButtons();
+        this.showPaymentAcceptedEnabled = true;
+    }
+    
+    showPaymentPending() {
+        this.userService.getPendingPayment().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+        
+        this.resetButtons();
+        this.showPaymentPendingEnabled = true;
+    }
+    
     resetButtons() {
         this.showAllEnabled = false;
         this.showAcceptedEnabled = false;
         this.showPendingEnabled = false;
         this.showSpeakersEnabled = false;
         this.showRejectedEnabled = false;
+        this.showPaymentPendingEnabled = false;
+        this.showPaymentAcceptedEnabled = false;
     }
 }

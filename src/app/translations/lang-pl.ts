@@ -72,6 +72,9 @@ export const LANG_PL_TRANS = {
     'Send for acceptation': 'Wyślij do akceptacji',
     'Personal data': 'Dane osobiste',
     'Degree': 'Tytuł naukowy',
+    'academic_status': 'Status akademicki',
+    'engineer' : 'inż.',
+    'master' : 'mgr',
     'Additional Info': 'Dodatkowe',
     'Paper': 'Referat',
     'Summary': 'Streszczenie',
@@ -137,6 +140,8 @@ export const LANG_PL_TRANS = {
     'saveSuccess' : 'Zapis zakończony powodzeniem.',
     'passwordChangedAlert' : 'Hasło zostało zmienione.',
     'cancelConfirmation' : 'Wycofaj',
-    'Edit' : 'Edytuj'
+    'Edit' : 'Edytuj',
+    'ShowPaymentAccepted' : 'Płatność przyjęta.',
+    'ShowPaymentPending' : 'Brak opłaty'
 
 };

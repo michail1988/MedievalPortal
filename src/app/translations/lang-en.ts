@@ -74,6 +74,9 @@ export const LANG_EN_TRANS = {
     'Send for acceptation': 'Send for acceptation',
     'Personal data': 'Personal data',
     'Degree': 'Degree',
+    'academic_status': 'Academic status',
+    'engineer' : 'engineer',
+    'master' : 'master',
     'Additional Info': 'Additional Info',
     'Paper': 'Paper',
     'Summary': 'Summary',
@@ -124,6 +127,8 @@ export const LANG_EN_TRANS = {
     'saveSuccess' : 'Changes saved.',
     'passwordChangedAlert' : 'The password is changed.',
     'cancelConfirmation' : 'Cancel confirmation',
-    'Edit' : 'Edit'
+    'Edit' : 'Edit',
+    'ShowPaymentAccepted' : 'Payment accepted',
+    'ShowPaymentPending' : 'No payment'
 
 };

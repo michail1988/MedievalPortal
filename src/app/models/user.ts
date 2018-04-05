@@ -17,7 +17,11 @@ export class User {
         public abstract: string,
         public paper_acceptation: string,
         public payment: string,
-        public academic_title: string
+        public payment_accepted: string,
+        public academic_title: string,
+        public academic_status: string, 
+        public master: string, 
+        public engineer: string
     ) { }
     
     public fk_editor: string

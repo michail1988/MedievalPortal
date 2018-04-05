@@ -1,27 +1,27 @@
 <div class="contentUnderNewHeader">
 	<p-growl [value]="msgs"></p-growl>
 
-<br /> <br />
+	<br /> <br />
 
-<div class="redAlert" *ngIf="requiredFieldsAlertVisible()">
-						<span class="closebtn"
-							onclick="this.parentElement.style.display='none';">&times;</span>
-						{{ 'requiredFieldsAlert' | translate }}
-					</div>
+	<div class="redAlert" *ngIf="requiredFieldsAlertVisible()">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> {{
+		'requiredFieldsAlert' | translate }}
+	</div>
 
-					<div class="greenAlert" *ngIf="saveSuccessAlertVisible()">
-						<span class="closebtn"
-							onclick="this.parentElement.style.display='none';">&times;</span>
-						{{ 'saveSuccess' | translate }}
-					</div>
-					
-					<div class="greenAlert" *ngIf="passwordChangedAlertVisible()">
-						<span class="closebtn"
-							onclick="this.parentElement.style.display='none';">&times;</span>
-						{{ 'passwordChangedAlert' | translate }}
-					</div>
-					
-	
+	<div class="greenAlert" *ngIf="saveSuccessAlertVisible()">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> {{
+		'saveSuccess' | translate }}
+	</div>
+
+	<div class="greenAlert" *ngIf="passwordChangedAlertVisible()">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> {{
+		'passwordChangedAlert' | translate }}
+	</div>
+
+
 
 	<div class="panel panel-primary dialog-panel">
 		<div class="panel-heading">
@@ -53,13 +53,65 @@
 
 				<div class="form-group">
 					<label class="control-label col-md-2 col-md-offset-2"
-						for="capacity">{{ 'Academic title' | translate }}</label>
+						for="capacity">{{ 'academic_status' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-selectButton [options]="academicStatuses"
+									[(ngModel)]="selectedAcademicStatus" id="academic-title"
+									name="academicStatus"></p-selectButton>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" *ngIf="showStudentOptions()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'engineer' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.engineer" name="studentengineer"
+									binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" *ngIf="showStudentOptions()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'master' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.master" name="studentmaster"
+									binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" *ngIf="showAcademicTitle()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'Degree' | translate }}</label>
 					<div class="col-md-6">
 						<div class="form-group">
 							<div class="col-md-11">
 								<p-selectButton [options]="academicTitles"
 									[(ngModel)]="selectedAcademicTitle" id="academic-title"
-									name="academic"></p-selectButton>
+									name="academicTitle"></p-selectButton>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" *ngIf="showAcademicTitle()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'engineer' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.engineer" name="engineer"
+									binary="true"></p-checkbox>
 							</div>
 						</div>
 					</div>

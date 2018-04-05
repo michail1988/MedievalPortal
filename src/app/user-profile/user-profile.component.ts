@@ -22,26 +22,28 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
+    selectedAcademicStatus: string;
 
     types: SelectItem[];
     academicTitles: SelectItem[];
+    academicStatuses: SelectItem[];
 
     universities: University[];
     results: string[];
 
     password1: string;
     password2: string;
-    
+
     userForm;
 
     requiredFieldsAlert: boolean;
     saveSuccessAlert: boolean;
     passwordChangedAlert: boolean;
-    
+
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
@@ -52,18 +54,21 @@ export class UserProfileComponent implements OnInit {
         this.types.push( { label: 'Organizator', value: 'Organizator' } );
 
         this.academicTitles = [];
-        this.academicTitles.push( { label: 'mgr', value: 'mgr' } );
-        this.academicTitles.push( { label: 'Doktorant', value: 'Doktorant' } );
-        this.academicTitles.push( { label: 'dr', value: 'dr' } );
-        this.academicTitles.push( { label: 'dr hab.', value: 'dr hab.' } );
-        this.academicTitles.push( { label: 'Profesor', value: 'Profesor' } );
+        this.academicTitles.push( { label: 'mgr', value: '1' } );
+        this.academicTitles.push( { label: 'dr', value: '2' } );
+        this.academicTitles.push( { label: 'dr hab.', value: '3' } );
+        this.academicTitles.push( { label: 'Profesor (stanowisko)', value: '4' } );
+        this.academicTitles.push( { label: 'Profesor (tytuł)', value: '5' } );
 
+        this.academicStatuses = [];
+        this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
+        this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
 
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
         this.userForm.email = 'form-control';
-        
+
         this.userForm.password1 = 'form-control';
         this.userForm.password2 = 'form-control';
     }
@@ -77,9 +82,10 @@ export class UserProfileComponent implements OnInit {
 
         this.userService.get( this.userId ).subscribe(
             u => {
-            this.user = u;
+                this.user = u;
 
                 if ( this.user ) {
+                    this.selectAcademicStatus( this.user );
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                 }
@@ -89,7 +95,7 @@ export class UserProfileComponent implements OnInit {
                 console.log( err );
             } );
 
-        window.scrollTo(0, 0)
+        window.scrollTo( 0, 0 )
 
     }
 
@@ -147,11 +153,12 @@ export class UserProfileComponent implements OnInit {
         this.requiredFieldsAlert = false;
         this.saveSuccessAlert = false;
         this.passwordChangedAlert = false;
-        
+
         if ( this.validateUserForm() ) {
             //TODO
             this.user.fk_editor = this.user.id;
             this.setAcademicTitle();
+            this.setAcademicStatus();
             this.setCongressRole();
 
             this.userService.updateUser( this.user ).subscribe(
@@ -165,20 +172,20 @@ export class UserProfileComponent implements OnInit {
 
                     this.msgs = [];
                     this.msgs.push( { severity: 'success', summary: 'Zapis zakonczony powodzeniem.', detail: '' } );
-                    
+
                     this.saveSuccessAlert = true;
-                    window.scrollTo(0, 0)
+                    window.scrollTo( 0, 0 )
                 },
                 err => {
                     // Log errors if any
                     console.log( err );
-                    
+
                     //TODO Michal jakis wlasciwy komunikat o errorze
                     this.requiredFieldsAlert = false;
                 } );
         } else {
             this.requiredFieldsAlert = true;
-            
+
             this.msgs = [];
             this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
@@ -186,25 +193,12 @@ export class UserProfileComponent implements OnInit {
     }
 
     selectAcademicTitle( user: User ) {
-        if ( this.user.academic_title === '1' ) {
-            this.selectedAcademicTitle = 'mgr'
-        }
+        this.selectedAcademicTitle = this.user.academic_title;
 
-        if ( this.user.academic_title === '2' ) {
-            this.selectedAcademicTitle = 'Doktorant'
-        }
+    }
 
-        if ( this.user.academic_title === '3' ) {
-            this.selectedAcademicTitle = 'dr'
-        }
-
-        if ( this.user.academic_title === '4' ) {
-            this.selectedAcademicTitle = 'dr hab.'
-        }
-
-        if ( this.user.academic_title === '5' ) {
-            this.selectedAcademicTitle = 'Profesor'
-        }
+    selectAcademicStatus( user ) {
+        this.selectedAcademicStatus = this.user.academic_status;
     }
 
     selectCongressRole( user: User ) {
@@ -222,25 +216,43 @@ export class UserProfileComponent implements OnInit {
     }
 
     setAcademicTitle() {
-        if ( this.selectedAcademicTitle === 'mgr' ) {
+        if ( this.selectedAcademicTitle === '1' ) {
             this.user.academic_title = '1'
         }
 
-        if ( this.selectedAcademicTitle === 'Doktorant' ) {
+        if ( this.selectedAcademicTitle === '2' ) {
             this.user.academic_title = '2'
         }
 
-        if ( this.selectedAcademicTitle === 'dr' ) {
+        if ( this.selectedAcademicTitle === '3' ) {
             this.user.academic_title = '3'
         }
 
-        if ( this.selectedAcademicTitle === 'dr hab.' ) {
+        if ( this.selectedAcademicTitle === '4' ) {
             this.user.academic_title = '4'
         }
 
-        if ( this.selectedAcademicTitle === 'Profesor' ) {
+        if ( this.selectedAcademicTitle === '5' ) {
             this.user.academic_title = '5'
         }
+    }
+
+    setAcademicStatus() {
+        if ( this.selectedAcademicStatus === '1' ) {
+            this.user.academic_status = '1'
+        }
+
+        if ( this.selectedAcademicStatus === '2' ) {
+            this.user.academic_status = '2'
+        }
+    }
+    
+    showAcademicTitle() {
+        return this.selectedAcademicStatus === '2'
+    }
+    
+    showStudentOptions () {
+        return this.selectedAcademicStatus === '1'
     }
 
     setCongressRole() {
@@ -258,11 +270,11 @@ export class UserProfileComponent implements OnInit {
     }
 
     resetChanges() {
-        
+
         this.requiredFieldsAlert = false;
         this.saveSuccessAlert = false;
         this.passwordChangedAlert = false;
-        
+
         if ( this.userId ) {
             this.html = this.imageService.getUserImage( this.userId );
             this.imageLoaded = true;
@@ -284,10 +296,10 @@ export class UserProfileComponent implements OnInit {
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
         this.userForm.email = 'form-control';
-        
+
         this.userForm.password1 = 'form-control';
         this.userForm.password2 = 'form-control';
-        
+
         this.password1 = null;
         this.password2 = null;
     }
@@ -318,13 +330,13 @@ export class UserProfileComponent implements OnInit {
 
         return result;
     }
-    
+
     changePassword() {
         this.requiredFieldsAlert = false;
         this.saveSuccessAlert = false;
         this.passwordChangedAlert = false;
-        
-        if (this.validatePasswordForm()) {
+
+        if ( this.validatePasswordForm() ) {
             this.user.fk_editor = this.user.id;
             this.user.password = this.password1;
 
@@ -334,29 +346,29 @@ export class UserProfileComponent implements OnInit {
                     this.msgs.push( { severity: 'success', summary: 'Haslo zmienione.', detail: '' } );
 
                     this.passwordChangedAlert = true;
-                    
-                    window.scrollTo(0, 0)
+
+                    window.scrollTo( 0, 0 )
                 },
                 err => {
                     // Log errors if any
                     console.log( err );
-                    
+
                     //TODO Michal blad
                     this.requiredFieldsAlert = true;
-                    
+
                     this.msgs = [];
                     this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
-                    
-                    window.scrollTo(0, 0)
+
+                    window.scrollTo( 0, 0 )
                 } );
         } else {
             this.requiredFieldsAlert = true;
-            
+
             this.msgs = [];
             this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
     }
-    
+
     validatePasswordForm() {
         var result = true;
 
@@ -373,28 +385,28 @@ export class UserProfileComponent implements OnInit {
         } else {
             this.userForm.password2 = 'form-control';
         }
-        
+
         if ( this.password1 != this.password2 ) {
             result = false;
             this.userForm.password1 = 'form-control validationError';
             this.userForm.password2 = 'form-control validationError';
-        } 
-        
+        }
+
         return result;
     }
-    
+
     requiredFieldsAlertVisible() {
         return this.requiredFieldsAlert
     }
-    
+
     saveSuccessAlertVisible() {
         return this.saveSuccessAlert
     }
-    
+
     passwordChangedAlertVisible() {
         return this.passwordChangedAlert
     }
-    
+
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }

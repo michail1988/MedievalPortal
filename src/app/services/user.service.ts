@@ -21,6 +21,11 @@ export class UserService {
     private acceptUserUrl = Config.serverAddress + '/acceptUser';
     private rejectUserUrl = Config.serverAddress + '/rejectUser';
     
+    private acceptPaymentUrl = Config.serverAddress + '/acceptPayment';
+    private rejectPaymentUrl = Config.serverAddress + '/rejectPayment';
+    private acceptedPaymentUrl = Config.serverAddress + '/acceptedPayment';
+    private pendingPaymentUrl = Config.serverAddress + '/pendingPayment';
+    
     private userPasswordUrl = Config.serverAddress + '/userPassword';
     
     //TODO
@@ -143,6 +148,42 @@ export class UserService {
         let headers = new Headers( { 'Content-Type': 'application/json' } );
         let options = new RequestOptions( { headers: headers } );
         return this.http.post(this.rejectUserUrl, JSON.stringify(body), options);
+    }
+    
+    acceptPayment( body: User ): any {
+
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post(this.acceptPaymentUrl, JSON.stringify(body), options);
+    }
+    
+    rejectPayment( body: User ): any {
+
+        let headers = new Headers( { 'Content-Type': 'application/json' } );
+        let options = new RequestOptions( { headers: headers } );
+        return this.http.post(this.rejectPaymentUrl, JSON.stringify(body), options);
+    }
+    
+    getAcceptedPayment(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.acceptedPaymentUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getPendingPayment(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.pendingPaymentUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
     }
     
     getUserHistory( id: string ): Observable<UserHistory[]> {
