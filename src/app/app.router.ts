@@ -44,6 +44,7 @@ import { EnrolmentCreatedComponent } from "app/enrolment-created/enrolment-creat
 import { AdminMailboxComponent } from "app/admin-mailbox/admin-mailbox.component";
 import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.component";
 import { WelcomePageComponent } from "app/welcome-page/welcome-page.component";
+import { LinksComponent } from "app/links/links.component";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -231,6 +232,7 @@ export const router: Routes = [
     { path: 'articles', component: ArticlesComponent },
     { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'links', component: LinksComponent },    
     { path: 'login-register/forgot-password', component: ForgotPasswordComponent },
     { path: 'welcome/forgot-password', component: ForgotPasswordComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },

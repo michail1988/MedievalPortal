@@ -108,6 +108,7 @@ import { RegistrationInfoComponent } from './registration-info/registration-info
 import { OrganizersComponent } from './organizers/organizers.component';
 import { LogoComponent } from './logo/logo.component';
 import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-enrolment-history.component';
+import { LinksComponent } from './links/links.component';
 
 
 
@@ -164,7 +165,8 @@ import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-
         RegistrationInfoComponent,
         OrganizersComponent,
         LogoComponent,
-        AdminEnrolmentHistoryComponent
+        AdminEnrolmentHistoryComponent,
+        LinksComponent
     ],
     imports: [
         BrowserModule,
