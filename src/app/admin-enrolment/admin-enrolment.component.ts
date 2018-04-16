@@ -457,4 +457,81 @@ export class AdminEnrolmentComponent implements OnInit {
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }
+    
+    isAcceptationPending() {
+        if ( 'Y' == this.user.confirmation || 'N' == this.user.confirmation ) {
+            return false;
+        }
+
+        return true;
+    }
+    
+    isAccepted() {
+        if ( 'Y' == this.user.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    isRejected() {
+        if ( 'N' == this.user.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    accept() {
+        //TODO refresh lub dymek
+        this.userService.acceptUser( this.user ).subscribe(
+            response => {
+
+
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie accepted ' + response.text() );
+                    //           
+                    this.user.confirmation = 'Y'
+                }
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+
+    confirmReject() {
+        this.confirmationService.confirm( {
+            message: 'Czy na pewno chcesz odrzucic zgloszenie?',
+            header: 'Potwierdz odrzucenie',
+            icon: 'fa fa-trash',
+            accept: () => {
+                this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Zgloszenie odrzucone' }];
+
+                this.reject();
+            },
+            reject: () => {
+                this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'Anulowano' }];
+            }
+        } );
+    }
+
+    reject() {
+        //TODO refresh lub dymek
+        this.userService.rejectUser( this.user ).subscribe(
+            response => {
+
+
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie rejected ' + response.text() );
+
+                    this.user.confirmation = 'N'
+                    //           
+                }
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
 }

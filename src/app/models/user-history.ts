@@ -34,4 +34,28 @@ export class UserHistory {
     get showAcademicTitle(): boolean {
         return this.academic_status === '2'
     }
+
+    get isAcceptationPending(): boolean {
+        if ( 'Y' == this.confirmation || 'N' == this.confirmation ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    get isAccepted(): boolean {
+        if ( 'Y' == this.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    get isRejected(): boolean {
+        if ( 'N' == this.confirmation ) {
+            return true;
+        }
+
+        return false;
+    }
 }

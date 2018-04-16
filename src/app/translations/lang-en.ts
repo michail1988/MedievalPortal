@@ -141,5 +141,11 @@ export const LANG_EN_TRANS = {
     'Institution4' : 'Instytut Archeologii UWr <a href="https://ww3.archeo.uni.wroc.pl">https://ww3.archeo.uni.wroc.pl</a>',
     'Institution5' : 'Instytut Archeologii i Etnologii PAN o/Wrocław <a href="http://arch.pan.wroc.pl/">http://arch.pan.wroc.pl/</a>',
     'Institution6' : 'Instytut Historii Sztuki <a href="https://uni.wroc.pl/">http://historiasztuki.uni.wroc.pl/</a>',
+    'EnrolmentAccepted' : 'Accepted',
+    'EnrolmentRejected' : 'Rejected',
+    'EnrolmentWaiting' : 'Pending',
+    'EnrolmentStatus' : 'Enrolment status',
+    'Enrolment' : 'Enrolment',
+    'Paid' : 'Paid'
 
 };

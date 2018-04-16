@@ -29,6 +29,71 @@
 		'passwordChangedAlert' | translate }}
 	</div>
 
+
+	<div class="panel panel-primary dialog-panel">
+		<div class="panel-heading">
+			<h5>{{ 'EnrolmentStatus' | translate}}</h5>
+		</div>
+
+		<div class="panel-body">
+			<div class="form-group">
+
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{		'Enrolment' | translate }}</label>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+
+							<label class="control-label"
+								*ngIf="isAccepted()" for="capacity">{{ 'EnrolmentAccepted' |	translate }}</label> <label
+								class="control-label"
+								*ngIf="isRejected()" for="capacity">{{ 'EnrolmentRejected' |
+								translate }}</label> <label
+								class="control-label"
+								*ngIf="isAcceptationPending()" for="capacity">{{
+								'EnrolmentWaiting' | translate }}</label>
+
+							<button pButton type="button" (click)="accept()" icon="fa-check"
+								*ngIf="isAcceptationPending()" style="margin-top: 5px;"
+								class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
+
+							<button pButton type="button" (click)="confirmReject()"
+								icon="fa-close" *ngIf="isAcceptationPending()"
+								style="margin-top: 5px;" class="ui-button-danger"
+								label="{{ 'Reject' | translate}}"></button>
+
+
+							<button pButton type="button" (click)="confirmReject()"
+								icon="fa-close" *ngIf="isAccepted()" style="margin-top: 5px;"
+								class="ui-button-danger"
+								label="{{ 'cancelConfirmation' | translate}}"></button>
+
+
+							<button pButton type="button" (click)="accept()" icon="fa-check"
+								*ngIf="isRejected()" style="margin-top: 5px;"
+								class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'Paid' | translate }}</label>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+
+							<input type="text" pInputText [(ngModel)]="user.payment" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
 	<div class="panel panel-primary dialog-panel">
 		<div class="panel-heading">
 			<h5>{{ 'Personal data' | translate}}</h5>
