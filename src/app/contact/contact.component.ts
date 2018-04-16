@@ -26,6 +26,9 @@ export class ContactComponent implements OnInit {
 
     submitMessage() {
 
+        this.contactMessage.message = 'Wiadomosc z formularza kontaktowego od ' + this.contactMessage.name
+        + ' ' + this.contactMessage.email + '\n\n' + this.contactMessage.message
+        
         this.contactMessage.date = new Date();
         this.contactService.addMessage( this.contactMessage ).subscribe(
             res => {

@@ -53,6 +53,8 @@ export class AdminMailboxComponent implements OnInit {
         this.contactMessage.date = new Date();
         this.contactMessage.email = ''
 
+        this.contactMessage.email = this.contactMessage.email.replace( /\n/g, "<br />" );
+
         for ( var i = 0; i < this.selectedAddresses.length; i++ ) {
 
             if ( this.isEmpty( this.contactMessage.email ) ) {
@@ -150,7 +152,7 @@ export class AdminMailboxComponent implements OnInit {
     showPaymentPending() {
         this.userService.getPendingPayment()
             .subscribe(
-                    pendingPaymentUsers => {
+            pendingPaymentUsers => {
                 this.users = pendingPaymentUsers;
                 this.setItems();
             },

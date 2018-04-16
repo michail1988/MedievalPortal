@@ -122,7 +122,7 @@ export const LANG_PL_TRANS = {
     'Terms0': 'W celu uczestnictwa w zjeździe należy:',
     'Terms1': 'Utworzyć konto na stronie <a href="www.vikmp.pl">www.vikmp.pl</a>',
     'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
-    'Terms3': 'Dokonać opłaty rejestracyjnej której wysokość zostanie oraz nr konta do wpłaty zostanie ustalona do dnia 15 maja. Okres zbierania wpłat kończy się w dniu zamknięcia rejestracji tj. 10 lipca 2018 r.',
+    'Terms3': 'Dokonać opłaty rejestracyjnej, której wysokość zostanie oraz nr konta do wpłaty zostanie ustalona do dnia 15 maja. Okres zbierania wpłat kończy się w dniu zamknięcia rejestracji tj. 10 lipca 2018 r.',
     'Send Password' : 'Wyślij hasło',
     'emailNotFoundAlert' : 'Nie znaleziono takiego adresu e-mail w bazie danych.',
     'emailSentAlert' : 'Hasło zostało wysłane na podany adres email.',
