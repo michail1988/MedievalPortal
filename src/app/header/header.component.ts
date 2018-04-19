@@ -22,4 +22,8 @@ export class HeaderComponent implements OnInit {
   isShowMap() {
       return Config.isShowMap();
   }
+  
+  isShowLinks() {
+      return Config.isShowLinks();
+  }
 }

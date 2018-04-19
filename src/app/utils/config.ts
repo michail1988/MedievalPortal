@@ -21,4 +21,8 @@ export class Config {
     public static isShowMap() {
         return false;
     }
+    
+    public static isShowLinks() {
+        return false;
+    }
 }
