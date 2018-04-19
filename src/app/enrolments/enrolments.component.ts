@@ -77,6 +77,9 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
             email: {
                 title: 'Email'
             },
+            university: {
+                title: 'Uniwersytet'
+            },
             registerdate: {
                 title: 'Data zgloszenia',
                 type: 'html',
