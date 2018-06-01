@@ -146,6 +146,10 @@ export const LANG_EN_TRANS = {
     'EnrolmentWaiting' : 'Pending',
     'EnrolmentStatus' : 'Enrolment status',
     'Enrolment' : 'Enrolment',
-    'Paid' : 'Paid'
+    'Paid' : 'Paid',
+    'Patronage' : 'Patronage',
+    'patronage-title' : 'Patronage:',
+    'rektor-title' : 'Rector of Uniwersity of Wrocław',
+    'rektor-name' : 'Prof. dr hab. Adam Jezierski'
 
 };

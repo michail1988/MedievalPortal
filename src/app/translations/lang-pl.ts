@@ -161,5 +161,9 @@ export const LANG_PL_TRANS = {
     'EnrolmentWaiting' : 'Oczekuje',
     'EnrolmentStatus' : 'Status uczestnictwa',
     'Enrolment' : 'Zgłoszenie',
-    'Paid' : 'Wpłacono'
+    'Paid' : 'Wpłacono',
+    'Patronage' : 'Patronat',
+    'patronage-title' : 'Patronat nad wydarzeniem objęli:',
+    'rektor-title' : 'Rektor Uniwersytetu Wrocławskiego',
+    'rektor-name' : 'Jego Magnificencja Prof. dr hab. Adam Jezierski'
 };

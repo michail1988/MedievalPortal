@@ -109,6 +109,7 @@ import { OrganizersComponent } from './organizers/organizers.component';
 import { LogoComponent } from './logo/logo.component';
 import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-enrolment-history.component';
 import { LinksComponent } from './links/links.component';
+import { PatronageComponent } from './patronage/patronage.component';
 
 
 
@@ -166,7 +167,8 @@ import { LinksComponent } from './links/links.component';
         OrganizersComponent,
         LogoComponent,
         AdminEnrolmentHistoryComponent,
-        LinksComponent
+        LinksComponent,
+        PatronageComponent
     ],
     imports: [
         BrowserModule,

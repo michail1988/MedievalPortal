@@ -45,6 +45,7 @@ import { AdminMailboxComponent } from "app/admin-mailbox/admin-mailbox.component
 import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.component";
 import { WelcomePageComponent } from "app/welcome-page/welcome-page.component";
 import { LinksComponent } from "app/links/links.component";
+import { PatronageComponent } from "app/patronage/patronage.component";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -239,7 +240,9 @@ export const router: Routes = [
     { path: 'sponsors', component: SponsorsComponent },
     { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'enrolment-created', component: EnrolmentCreatedComponent },
-    { path: 'letter-of-intent', component: LetterOfIntentComponent }
+    { path: 'letter-of-intent', component: LetterOfIntentComponent },
+    { path: 'patronage', component: PatronageComponent }   
+    
     
 ];
 
