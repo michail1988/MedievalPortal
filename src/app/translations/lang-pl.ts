@@ -165,5 +165,8 @@ export const LANG_PL_TRANS = {
     'Patronage' : 'Patronat',
     'patronage-title' : 'Patronat nad wydarzeniem objęli:',
     'rektor-title' : 'Rektor Uniwersytetu Wrocławskiego',
-    'rektor-name' : 'Jego Magnificencja Prof. dr hab. Adam Jezierski'
+    'rektor-name' : 'Jego Magnificencja Prof. dr hab. Adam Jezierski',
+    'Payment Status' : 'Status płatności',
+    'PaymentAccepted' : 'Zaakceptowano',
+    'PaymentWaiting' : 'Oczekuje'
 };

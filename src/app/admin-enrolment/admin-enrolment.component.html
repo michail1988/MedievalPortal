@@ -87,7 +87,37 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				
+				
+				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
+					'Payment Status' | translate }}</label>
+				
+				
+<div class="col-md-6">
+					<div class="form-group">
+						<div class="col-md-11">
+							<label class="control-label"
+								*ngIf="isPaymentAccepted()" for="capacity">{{ 'PaymentAccepted' |	translate }}</label>  <label
+								class="control-label"
+								*ngIf="isPaymentAcceptationPending()" for="capacity">{{
+								'PaymentWaiting' | translate }}</label>
+
+							<button pButton type="button" (click)="acceptPayment()" icon="fa-check"
+								*ngIf="isPaymentAcceptationPending()" style="margin-top: 5px;"
+								class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
+
+
+							<button pButton type="button" (click)="confirmPaymentReject()"
+								icon="fa-close" *ngIf="isPaymentAccepted()" style="margin-top: 5px;"
+								class="ui-button-danger"
+								label="{{ 'cancelConfirmation' | translate}}"></button>
+
+						
+				</div>
+				</div>
+				</div>
+				</div>
+				
 
 
 

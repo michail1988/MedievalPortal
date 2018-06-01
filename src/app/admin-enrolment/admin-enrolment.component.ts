@@ -457,7 +457,7 @@ export class AdminEnrolmentComponent implements OnInit {
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }
-    
+
     isAcceptationPending() {
         if ( 'Y' == this.user.confirmation || 'N' == this.user.confirmation ) {
             return false;
@@ -465,7 +465,7 @@ export class AdminEnrolmentComponent implements OnInit {
 
         return true;
     }
-    
+
     isAccepted() {
         if ( 'Y' == this.user.confirmation ) {
             return true;
@@ -473,7 +473,9 @@ export class AdminEnrolmentComponent implements OnInit {
 
         return false;
     }
-    
+
+
+
     isRejected() {
         if ( 'N' == this.user.confirmation ) {
             return true;
@@ -481,7 +483,24 @@ export class AdminEnrolmentComponent implements OnInit {
 
         return false;
     }
+
+    isPaymentAccepted() {
+        if ( 'Y' == this.user.payment_accepted ) {
+            return true;
+        }
+
+        return false;
+
+    }
     
+    isPaymentAcceptationPending() {
+        if ( 'Y' == this.user.payment_accepted ) {
+            return false;
+        }
+
+        return true;
+    }
+
     accept() {
         //TODO refresh lub dymek
         this.userService.acceptUser( this.user ).subscribe(
@@ -498,6 +517,40 @@ export class AdminEnrolmentComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+    }
+    
+    acceptPayment() {
+        //TODO refresh lub dymek
+        this.userService.acceptPayment( this.user ).subscribe(
+            response => {
+
+
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie accepted ' + response.text() );
+                    //           
+                    this.user.payment_accepted = 'Y'
+                }
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+    
+    confirmPaymentReject() {
+        this.confirmationService.confirm( {
+            message: 'Czy na pewno chcesz anulowac status platnosci?',
+            header: 'Potwierdz odrzucenie',
+            icon: 'fa fa-trash',
+            accept: () => {
+                this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Status anulowany' }];
+
+                this.rejectPayment();
+            },
+            reject: () => {
+                this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'Anulowano' }];
+            }
+        } );
     }
 
     confirmReject() {
@@ -526,6 +579,25 @@ export class AdminEnrolmentComponent implements OnInit {
                     -                    console.log( 'udalo sie rejected ' + response.text() );
 
                     this.user.confirmation = 'N'
+                    //           
+                }
+            },
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+    
+    rejectPayment() {
+        //TODO refresh lub dymek
+        this.userService.rejectPayment( this.user ).subscribe(
+            response => {
+
+
+                if ( response.text() === 'OK' ) {
+                    -                    console.log( 'udalo sie rejected ' + response.text() );
+
+                    this.user.payment_accepted = 'N'
                     //           
                 }
             },
