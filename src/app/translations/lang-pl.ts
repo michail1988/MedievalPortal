@@ -119,7 +119,7 @@ export const LANG_PL_TRANS = {
     'enrolment-created-title': 'Dziękujemy za przesłanie zgłoszenia.',
     'enrolment-created1': 'O akceptacji Państwa wniosku poinformujemy drogą mailową. Po jej otrzymaniu będzie możliwe zalogowanie się za pomocą zdefiniowanego przez Państwa hasła.',
     'TermsTitle': 'Regulamin korzystania z portalu:',
-    'Terms0-1': 'Akceptacja regulaminu oznacza wyrażenie zgody na udostępnienie swoich danych na potrzeby zjazdu i działań promocyjnych związanych z wydarzeniem.',
+    'Terms0-1': 'Akceptacja regulaminu oznacza wyrażenie zgody na przetwarzanie danych osobowych na potrzeby zjazdu i działań organizacyjnych związanych z wydarzeniem.',
     'Terms0-2': 'Rejestracja trwa od 09 kwietnia 2018 r. do 10 lipca 2018 r.',
     'Terms0': 'W celu uczestnictwa w zjeździe należy:',
     'Terms1': 'Utworzyć konto na stronie <a href="www.vikmp.pl">www.vikmp.pl</a>',
