@@ -1,4 +1,4 @@
-<br/>
+<br />
 <div class="logmod__container">
 	<ul class="logmod__tabs">
 		<li data-tabtar="lgm-1" (click)="changeToRegister()"
@@ -41,7 +41,7 @@
 					<label class="string optional" for="user-pw-repeat">{{
 						'Repeat password' | translate }} *</label> <input class="string optional"
 						maxlength="255" [(ngModel)]="repeatPassword" name="passwordRepeat"
-						 id="user-pw-repeat"
+						id="user-pw-repeat"
 						placeholder="{{ 'Repeat password' | translate }}" type="password"
 						size="50" />
 				</div>
@@ -49,15 +49,15 @@
 
 			<div class="sminputs">
 				<div [class]="registerForm.username">
-					<label class="string optional" for="user-name">{{ 'First name' | translate }} *</label> <input class="string optional"
-						maxlength="255" id="user-name"  [(ngModel)]="user.name"
-						name="name" placeholder="{{ 'First name' | translate }}"
-						type="text" size="50" />
+					<label class="string optional" for="user-name">{{ 'First
+						name' | translate }} *</label> <input class="string optional"
+						maxlength="255" id="user-name" [(ngModel)]="user.name" name="name"
+						placeholder="{{ 'First name' | translate }}" type="text" size="50" />
 				</div>
 				<div [class]="registerForm.usersurname">
 					<label class="string optional" for="user-surname">{{
 						'Surname' | translate }} *</label> <input class="string optional"
-						maxlength="255"  [(ngModel)]="user.surname" name="surname"
+						maxlength="255" [(ngModel)]="user.surname" name="surname"
 						id="user-surname" placeholder="{{ 'Surname' | translate }}"
 						type="text" size="50" />
 				</div>
@@ -94,6 +94,84 @@
 						placeholder="{{ 'Remarks' | translate }}" type="text" size="2000" />
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+			<div class="sminputs">
+				<div [class]="registerForm.academicStatus">
+					<label class="string optional" for="character-role">{{
+						'academic_status' | translate }}</label>
+					<p-selectButton [options]="academicStatuses"
+						[(ngModel)]="selectedAcademicStatus" id="academic-title"
+						name="academicStatus"></p-selectButton>
+				</div>
+			</div>
+
+			<div class="sminputs" *ngIf="showStudentOptions()">
+				<label class="control-label col-md-2" for="capacity">{{
+					'engineer' | translate }}</label>
+							<p-checkbox [(ngModel)]="user.engineer" name="studentengineer"
+								binary="true"></p-checkbox>
+			</div>
+
+			<div class="sminputs" *ngIf="showStudentOptions()">
+				<label class="control-label col-md-2" for="capacity">{{
+					'master' | translate }}</label>
+							<p-checkbox [(ngModel)]="user.master" name="studentmaster"
+								binary="true"></p-checkbox>
+			</div>
+
+
+
+
+
+
+
+
+			<div class="sminputs" *ngIf="showAcademicTitle()">
+				<div [class]="registerForm.academicTitle">
+					<label class="string optional" for="academic-title">{{
+						'Degree' | translate }}</label>
+					<p-selectButton [options]="academicTitles"
+						[(ngModel)]="selectedAcademicTitle" id="academic-title"
+						name="academicTitle"></p-selectButton>
+				</div>
+			</div>
+
+			<div class="sminputs" *ngIf="showAcademicTitle()">
+				<label class="control-label col-md-2" for="capacity">{{
+					'engineer' | translate }}</label>
+							<p-checkbox [(ngModel)]="user.engineer" name="engineer"
+								binary="true"></p-checkbox>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="sminputs">
 				<div class="input full">
 					<label class="string optional" for="character-role">{{
@@ -119,13 +197,13 @@
 				<input class="submit" name="commit" type="submit"
 					value="{{ 'Create account' | translate }}" /> <span
 					[class]="registerForm.terms"> <p-checkbox
-						[(ngModel)]="termsAcceptation" name="checkbox" binary="true"
-						></p-checkbox> {{ 'Agree rules info' | translate }} <a
-					[routerLink]="['terms']"><span>{{ 'Terms' | translate}}</span></a>
+						[(ngModel)]="termsAcceptation" name="checkbox" binary="true"></p-checkbox>
+					{{ 'Agree rules info' | translate }} <a [routerLink]="['terms']"><span>{{
+							'Terms' | translate}}</span></a>
 				</span>
 			</div>
 		</form>
-		
+
 		<div class="redAlert" *ngIf="emailRegisteredAlertVisible()">
 			<span class="closebtn"
 				onclick="this.parentElement.style.display='none';">&times;</span> {{
@@ -134,60 +212,58 @@
 	</div>
 </div>
 
-<div [hidden]="!loginTabVisible">
-	<div class="logmod__heading">
-		<span class="logmod__heading-subtitle">{{ 'EnterYourEmail' |
-			translate }} <strong>{{ 'to sign in' | translate }}</strong>
-		</span>
-	</div>
-	<div class="logmod__form">
-		<form accept-charset="utf-8" action="#" class="simform"
-			(submit)="login()">
-			<div class="sminputs">
-				<div [class]="loginForm.email">
-					<label class="string optional" for="user-email">{{ 'Email'
-						| translate }} *</label> <input class="string optional"
-						[(ngModel)]="loginEmail" maxlength="255" id="user-email" 
-						name="email" placeholder="{{ 'Email' | translate }}" type="email"
-						size="50" />
-				</div>
-			</div>
-			<div class="sminputs">
-				<div [class]="loginForm.password">
-					<label class="string optional" for="user-pw">{{ 'Password'
-						| translate }} *</label> <input class="string optional"
-						[(ngModel)]="password" maxlength="255" id="user-pw" 
-						name="password" placeholder="{{ 'Password' | translate }}"
-						[type]="passwordType" size="50" /> <span
-						*ngIf="isPasswordHidden()" class="hide-password"
-						(click)="showPassword()">{{ 'Show' | translate }}</span><span
-						*ngIf="isPasswordVisible()" class="hide-password"
-						(click)="hidePassword()">{{ 'Hide' | translate }}</span>
-				</div>
-			</div>
-			<div class="simform__actions">
-				<input class="submit" type="submit" name="commit" type="submit"
-				value="{{ 'Log in' | translate }}" />
-				<span class="simform__actions-sidetext"><a class="special"
-					role="link" [routerLink]="['forgot-password']">{{
-						'ForgotPassword' | translate }}?<br>{{ 'Click here' |
-						translate }}
-				</a></span>
-			</div>
-		</form>
-
-		<div class="redAlert" *ngIf="incorrectLoginDataAlertVisible()">
-			<span class="closebtn"
-				onclick="this.parentElement.style.display='none';">&times;</span> {{
-			'incorrectLoginDataInfo' | translate }}
+	<div [hidden]="!loginTabVisible">
+		<div class="logmod__heading">
+			<span class="logmod__heading-subtitle">{{ 'EnterYourEmail' |
+				translate }} <strong>{{ 'to sign in' | translate }}</strong>
+			</span>
 		</div>
+		<div class="logmod__form">
+			<form accept-charset="utf-8" action="#" class="simform"
+				(submit)="login()">
+				<div class="sminputs">
+					<div [class]="loginForm.email">
+						<label class="string optional" for="user-email">{{ 'Email'
+							| translate }} *</label> <input class="string optional"
+							[(ngModel)]="loginEmail" maxlength="255" id="user-email"
+							name="email" placeholder="{{ 'Email' | translate }}" type="email"
+							size="50" />
+					</div>
+				</div>
+				<div class="sminputs">
+					<div [class]="loginForm.password">
+						<label class="string optional" for="user-pw">{{ 'Password'
+							| translate }} *</label> <input class="string optional"
+							[(ngModel)]="password" maxlength="255" id="user-pw"
+							name="password" placeholder="{{ 'Password' | translate }}"
+							[type]="passwordType" size="50" /> <span
+							*ngIf="isPasswordHidden()" class="hide-password"
+							(click)="showPassword()">{{ 'Show' | translate }}</span><span
+							*ngIf="isPasswordVisible()" class="hide-password"
+							(click)="hidePassword()">{{ 'Hide' | translate }}</span>
+					</div>
+				</div>
+				<div class="simform__actions">
+					<input class="submit" type="submit" name="commit" type="submit"
+						value="{{ 'Log in' | translate }}" /> <span
+						class="simform__actions-sidetext"><a class="special"
+						role="link" [routerLink]="['forgot-password']">{{
+							'ForgotPassword' | translate }}?<br>{{ 'Click here' |
+							translate }}
+					</a></span>
+				</div>
+			</form>
 
-		<div class="yellowAlert" *ngIf="noLoginRightsAlertVisible()">
-			<span class="closebtn"
-				onclick="this.parentElement.style.display='none';">&times;</span> {{
-			'noConfirmationInfo' | translate }}
+			<div class="redAlert" *ngIf="incorrectLoginDataAlertVisible()">
+				<span class="closebtn"
+					onclick="this.parentElement.style.display='none';">&times;</span>
+				{{ 'incorrectLoginDataInfo' | translate }}
+			</div>
+
+			<div class="yellowAlert" *ngIf="noLoginRightsAlertVisible()">
+				<span class="closebtn"
+					onclick="this.parentElement.style.display='none';">&times;</span>
+				{{ 'noConfirmationInfo' | translate }}
+			</div>
 		</div>
 	</div>
-</div>
-
-

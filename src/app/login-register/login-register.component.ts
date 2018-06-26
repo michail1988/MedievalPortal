@@ -45,6 +45,12 @@ export class LoginRegisterComponent implements OnInit {
     //logowanie:
     loginEmail: string;
     password: string;
+    
+    selectedAcademicTitle: string;
+    selectedAcademicStatus: string;
+    
+    academicTitles: SelectItem[];
+    academicStatuses: SelectItem[];
 
     constructor( private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -75,6 +81,21 @@ export class LoginRegisterComponent implements OnInit {
 
         this.registerForm.terms = 'simform__actions-sidetext';
         this.registerForm.university = 'input string optional';
+        
+        this.registerForm.academicStatus = 'input full';
+        
+        this.registerForm.academicTitle = 'input full';
+        
+        this.academicTitles = [];
+        this.academicTitles.push( { label: 'mgr', value: '1' } );
+        this.academicTitles.push( { label: 'dr', value: '2' } );
+        this.academicTitles.push( { label: 'dr hab.', value: '3' } );
+        this.academicTitles.push( { label: 'Profesor (stanowisko)', value: '4' } );
+        this.academicTitles.push( { label: 'Profesor (tytuł)', value: '5' } );
+
+        this.academicStatuses = [];
+        this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
+        this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
     }
 
     ngOnInit() {
@@ -102,6 +123,11 @@ export class LoginRegisterComponent implements OnInit {
         if ( this.validateRegisterForm() === true ) {
             this.user.registerdate = new Date();
             this.user.congressrole = this.selectedType.charAt( 0 )
+            
+              this.setAcademicTitle();
+            this.setAcademicStatus();
+            
+            
             this.userService.addUser( this.user ).subscribe(
                 response => {
 
@@ -190,6 +216,26 @@ export class LoginRegisterComponent implements OnInit {
         } else {
             this.registerForm.terms = 'simform__actions-sidetext';
         }
+        
+        if (this.isEmpty(this.selectedAcademicStatus)) {
+            result = false;
+            this.registerForm.academicStatus = 'input full validationError';
+        } else {
+            this.registerForm.academicStatus = 'input full';
+            
+            
+            
+            if (this.selectedAcademicStatus === '2') {
+                if (this.isEmpty(this.selectedAcademicTitle)) {
+                    result = false;
+                    this.registerForm.academicTitle = 'input full validationError';
+                } else {
+                    this.registerForm.academicTitle = 'input full';
+                }
+            }
+            
+        }
+        
 
         return result;
     }
@@ -326,5 +372,45 @@ export class LoginRegisterComponent implements OnInit {
 
     navigateUser( id ) {
         this.router.navigate( ['user-profile/'] );
+    }
+    
+    showAcademicTitle() {
+        return this.selectedAcademicStatus === '2'
+    }
+    
+    showStudentOptions () {
+        return this.selectedAcademicStatus === '1'
+    }
+    
+    setAcademicTitle() {
+        if ( this.selectedAcademicTitle === '1' ) {
+            this.user.academic_title = '1'
+        }
+
+        if ( this.selectedAcademicTitle === '2' ) {
+            this.user.academic_title = '2'
+        }
+
+        if ( this.selectedAcademicTitle === '3' ) {
+            this.user.academic_title = '3'
+        }
+
+        if ( this.selectedAcademicTitle === '4' ) {
+            this.user.academic_title = '4'
+        }
+
+        if ( this.selectedAcademicTitle === '5' ) {
+            this.user.academic_title = '5'
+        }
+    }
+
+    setAcademicStatus() {
+        if ( this.selectedAcademicStatus === '1' ) {
+            this.user.academic_status = '1'
+        }
+
+        if ( this.selectedAcademicStatus === '2' ) {
+            this.user.academic_status = '2'
+        }
     }
 }
