@@ -46,6 +46,7 @@ import { LetterOfIntentComponent } from "app/letter-of-intent/letter-of-intent.c
 import { WelcomePageComponent } from "app/welcome-page/welcome-page.component";
 import { LinksComponent } from "app/links/links.component";
 import { PatronageComponent } from "app/patronage/patronage.component";
+import { PaymentInfoComponent } from "app/payment-info/payment-info.component";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -241,7 +242,8 @@ export const router: Routes = [
     { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'letter-of-intent', component: LetterOfIntentComponent },
-    { path: 'patronage', component: PatronageComponent }   
+    { path: 'patronage', component: PatronageComponent },
+    { path: 'paymentInfo', component: PaymentInfoComponent }
     
     
 ];

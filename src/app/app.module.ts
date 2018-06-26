@@ -110,6 +110,7 @@ import { LogoComponent } from './logo/logo.component';
 import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-enrolment-history.component';
 import { LinksComponent } from './links/links.component';
 import { PatronageComponent } from './patronage/patronage.component';
+import { PaymentInfoComponent } from './payment-info/payment-info.component';
 
 
 
@@ -168,7 +169,8 @@ import { PatronageComponent } from './patronage/patronage.component';
         LogoComponent,
         AdminEnrolmentHistoryComponent,
         LinksComponent,
-        PatronageComponent
+        PatronageComponent,
+        PaymentInfoComponent
     ],
     imports: [
         BrowserModule,
