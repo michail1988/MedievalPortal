@@ -118,15 +118,15 @@
 			<div class="sminputs" *ngIf="showStudentOptions()">
 				<label class="control-label col-md-2" for="capacity">{{
 					'engineer' | translate }}</label>
-							<p-checkbox [(ngModel)]="user.engineer" name="studentengineer"
-								binary="true"></p-checkbox>
+				<p-checkbox [(ngModel)]="user.engineer" name="studentengineer"
+					binary="true"></p-checkbox>
 			</div>
 
 			<div class="sminputs" *ngIf="showStudentOptions()">
 				<label class="control-label col-md-2" for="capacity">{{
 					'master' | translate }}</label>
-							<p-checkbox [(ngModel)]="user.master" name="studentmaster"
-								binary="true"></p-checkbox>
+				<p-checkbox [(ngModel)]="user.master" name="studentmaster"
+					binary="true"></p-checkbox>
 			</div>
 
 
@@ -149,8 +149,8 @@
 			<div class="sminputs" *ngIf="showAcademicTitle()">
 				<label class="control-label col-md-2" for="capacity">{{
 					'engineer' | translate }}</label>
-							<p-checkbox [(ngModel)]="user.engineer" name="engineer"
-								binary="true"></p-checkbox>
+				<p-checkbox [(ngModel)]="user.engineer" name="engineer"
+					binary="true"></p-checkbox>
 			</div>
 
 
@@ -193,6 +193,18 @@
 				</div>
 			</div>
 
+
+			<div class="sminputs">
+				<div [class]="registerForm.participation">
+					<label class="string optional" for="participation">{{
+						'registerParticipation' | translate }}</label>
+					<p-selectButton [options]="participationOptions"
+						multiple="multiple" [(ngModel)]="selectedParticipation"
+						id="participation" name="participation"></p-selectButton>
+				</div>
+			</div>
+
+
 			<div class="simform__actions">
 				<input class="submit" name="commit" type="submit"
 					value="{{ 'Create account' | translate }}" /> <span
@@ -212,58 +224,58 @@
 	</div>
 </div>
 
-	<div [hidden]="!loginTabVisible">
-		<div class="logmod__heading">
-			<span class="logmod__heading-subtitle">{{ 'EnterYourEmail' |
-				translate }} <strong>{{ 'to sign in' | translate }}</strong>
-			</span>
+<div [hidden]="!loginTabVisible">
+	<div class="logmod__heading">
+		<span class="logmod__heading-subtitle">{{ 'EnterYourEmail' |
+			translate }} <strong>{{ 'to sign in' | translate }}</strong>
+		</span>
+	</div>
+	<div class="logmod__form">
+		<form accept-charset="utf-8" action="#" class="simform"
+			(submit)="login()">
+			<div class="sminputs">
+				<div [class]="loginForm.email">
+					<label class="string optional" for="user-email">{{ 'Email'
+						| translate }} *</label> <input class="string optional"
+						[(ngModel)]="loginEmail" maxlength="255" id="user-email"
+						name="email" placeholder="{{ 'Email' | translate }}" type="email"
+						size="50" />
+				</div>
+			</div>
+			<div class="sminputs">
+				<div [class]="loginForm.password">
+					<label class="string optional" for="user-pw">{{ 'Password'
+						| translate }} *</label> <input class="string optional"
+						[(ngModel)]="password" maxlength="255" id="user-pw"
+						name="password" placeholder="{{ 'Password' | translate }}"
+						[type]="passwordType" size="50" /> <span
+						*ngIf="isPasswordHidden()" class="hide-password"
+						(click)="showPassword()">{{ 'Show' | translate }}</span><span
+						*ngIf="isPasswordVisible()" class="hide-password"
+						(click)="hidePassword()">{{ 'Hide' | translate }}</span>
+				</div>
+			</div>
+			<div class="simform__actions">
+				<input class="submit" type="submit" name="commit" type="submit"
+					value="{{ 'Log in' | translate }}" /> <span
+					class="simform__actions-sidetext"><a class="special"
+					role="link" [routerLink]="['forgot-password']">{{
+						'ForgotPassword' | translate }}?<br>{{ 'Click here' |
+						translate }}
+				</a></span>
+			</div>
+		</form>
+
+		<div class="redAlert" *ngIf="incorrectLoginDataAlertVisible()">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> {{
+			'incorrectLoginDataInfo' | translate }}
 		</div>
-		<div class="logmod__form">
-			<form accept-charset="utf-8" action="#" class="simform"
-				(submit)="login()">
-				<div class="sminputs">
-					<div [class]="loginForm.email">
-						<label class="string optional" for="user-email">{{ 'Email'
-							| translate }} *</label> <input class="string optional"
-							[(ngModel)]="loginEmail" maxlength="255" id="user-email"
-							name="email" placeholder="{{ 'Email' | translate }}" type="email"
-							size="50" />
-					</div>
-				</div>
-				<div class="sminputs">
-					<div [class]="loginForm.password">
-						<label class="string optional" for="user-pw">{{ 'Password'
-							| translate }} *</label> <input class="string optional"
-							[(ngModel)]="password" maxlength="255" id="user-pw"
-							name="password" placeholder="{{ 'Password' | translate }}"
-							[type]="passwordType" size="50" /> <span
-							*ngIf="isPasswordHidden()" class="hide-password"
-							(click)="showPassword()">{{ 'Show' | translate }}</span><span
-							*ngIf="isPasswordVisible()" class="hide-password"
-							(click)="hidePassword()">{{ 'Hide' | translate }}</span>
-					</div>
-				</div>
-				<div class="simform__actions">
-					<input class="submit" type="submit" name="commit" type="submit"
-						value="{{ 'Log in' | translate }}" /> <span
-						class="simform__actions-sidetext"><a class="special"
-						role="link" [routerLink]="['forgot-password']">{{
-							'ForgotPassword' | translate }}?<br>{{ 'Click here' |
-							translate }}
-					</a></span>
-				</div>
-			</form>
 
-			<div class="redAlert" *ngIf="incorrectLoginDataAlertVisible()">
-				<span class="closebtn"
-					onclick="this.parentElement.style.display='none';">&times;</span>
-				{{ 'incorrectLoginDataInfo' | translate }}
-			</div>
-
-			<div class="yellowAlert" *ngIf="noLoginRightsAlertVisible()">
-				<span class="closebtn"
-					onclick="this.parentElement.style.display='none';">&times;</span>
-				{{ 'noConfirmationInfo' | translate }}
-			</div>
+		<div class="yellowAlert" *ngIf="noLoginRightsAlertVisible()">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> {{
+			'noConfirmationInfo' | translate }}
 		</div>
 	</div>
+</div>

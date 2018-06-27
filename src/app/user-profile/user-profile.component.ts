@@ -22,15 +22,17 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
     selectedAcademicStatus: string;
+    selectedParticipation: string[] = [];
 
     types: SelectItem[];
     academicTitles: SelectItem[];
     academicStatuses: SelectItem[];
+    participationOptions: SelectItem[];
 
     universities: University[];
     results: string[];
@@ -64,6 +66,10 @@ export class UserProfileComponent implements OnInit {
         this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
         this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
 
+        this.participationOptions = [];
+        this.participationOptions.push( { label: 'Konferencja', value: '1' } );
+        this.participationOptions.push( { label: 'Warsztaty', value: '2' } );
+
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
@@ -71,6 +77,8 @@ export class UserProfileComponent implements OnInit {
 
         this.userForm.password1 = 'form-control';
         this.userForm.password2 = 'form-control';
+
+        this.userForm.participation = 'col-md-11';
     }
 
     ngOnInit() {
@@ -88,6 +96,7 @@ export class UserProfileComponent implements OnInit {
                     this.selectAcademicStatus( this.user );
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
+                    this.selectParticipation();
                 }
             }, //Bind to view
             err => {
@@ -160,6 +169,7 @@ export class UserProfileComponent implements OnInit {
             this.setAcademicTitle();
             this.setAcademicStatus();
             this.setCongressRole();
+            this.setParticipation();
 
             this.userService.updateUser( this.user ).subscribe(
                 users => {
@@ -215,6 +225,21 @@ export class UserProfileComponent implements OnInit {
         }
     }
 
+    selectParticipation() {
+        if ( this.user.participation === '1' ) {
+            this.selectedParticipation[0] = '1'
+        }
+
+        if ( this.user.participation === '2' ) {
+            this.selectedParticipation[0] = '2'
+        }
+
+        if ( this.user.participation === '3' ) {
+            this.selectedParticipation[0] = '1'
+            this.selectedParticipation[1] = '2'
+        }
+    }
+
     setAcademicTitle() {
         if ( this.selectedAcademicTitle === '1' ) {
             this.user.academic_title = '1'
@@ -247,11 +272,28 @@ export class UserProfileComponent implements OnInit {
         }
     }
     
+    setParticipation() {
+        if (this.selectedParticipation ) {
+            if ( this.selectedParticipation.length === 2 ) {
+                this.user.participation = '3';
+            } else {
+                if (this.selectedParticipation[0] === '1') {
+                    this.user.participation = '1';
+                }
+                
+                if (this.selectedParticipation[0] === '2') {
+                    this.user.participation = '2';
+                }
+            }
+        }
+       
+    }
+
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
-    
-    showStudentOptions () {
+
+    showStudentOptions() {
         return this.selectedAcademicStatus === '1'
     }
 
@@ -290,6 +332,7 @@ export class UserProfileComponent implements OnInit {
         if ( this.user ) {
             this.selectAcademicTitle( this.user );
             this.selectCongressRole( this.user );
+            this.selectParticipation();
         }
 
         this.userForm = [];
@@ -302,6 +345,8 @@ export class UserProfileComponent implements OnInit {
 
         this.password1 = null;
         this.password2 = null;
+        
+        this.userForm.participation = 'col-md-11';
     }
 
     validateUserForm() {
@@ -326,6 +371,14 @@ export class UserProfileComponent implements OnInit {
             this.userForm.email = 'form-control validationError';
         } else {
             this.userForm.email = 'form-control';
+        }
+        
+        
+        if ( this.isEmpty( this.selectedParticipation ) ) {
+            result = false;
+            this.userForm.participation = 'col-md-11 validationError';
+        } else {
+            this.userForm.participation = 'col-md-11';
         }
 
         return result;

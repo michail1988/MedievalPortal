@@ -21,7 +21,8 @@ export class User {
         public academic_title: string,
         public academic_status: string, 
         public master: string, 
-        public engineer: string
+        public engineer: string,
+        public participation: string
     ) { }
     
     public fk_editor: string

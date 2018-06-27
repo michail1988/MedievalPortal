@@ -34,7 +34,7 @@ export class LoginRegisterComponent implements OnInit {
 
     passwordType: string;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
 
     repeatPassword: string; //TODO dodac walidacje
     termsAcceptation: boolean;
@@ -45,12 +45,14 @@ export class LoginRegisterComponent implements OnInit {
     //logowanie:
     loginEmail: string;
     password: string;
-    
+
     selectedAcademicTitle: string;
     selectedAcademicStatus: string;
-    
+    selectedParticipation: string[] = [];
+
     academicTitles: SelectItem[];
     academicStatuses: SelectItem[];
+    participationOptions: SelectItem[];
 
     constructor( private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -81,11 +83,12 @@ export class LoginRegisterComponent implements OnInit {
 
         this.registerForm.terms = 'simform__actions-sidetext';
         this.registerForm.university = 'input string optional';
-        
+
         this.registerForm.academicStatus = 'input full';
-        
+
         this.registerForm.academicTitle = 'input full';
-        
+        this.registerForm.participation = 'input full';
+
         this.academicTitles = [];
         this.academicTitles.push( { label: 'mgr', value: '1' } );
         this.academicTitles.push( { label: 'dr', value: '2' } );
@@ -96,6 +99,10 @@ export class LoginRegisterComponent implements OnInit {
         this.academicStatuses = [];
         this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
         this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
+
+        this.participationOptions = [];
+        this.participationOptions.push( { label: 'Konferencja', value: '1' } );
+        this.participationOptions.push( { label: 'Warsztaty', value: '2' } );
     }
 
     ngOnInit() {
@@ -119,15 +126,16 @@ export class LoginRegisterComponent implements OnInit {
     registerUser() {
 
         this.emailRegisteredAlert = false;
-        
+
         if ( this.validateRegisterForm() === true ) {
             this.user.registerdate = new Date();
             this.user.congressrole = this.selectedType.charAt( 0 )
-            
-              this.setAcademicTitle();
+
+            this.setAcademicTitle();
             this.setAcademicStatus();
-            
-            
+            this.setParticipation();
+
+
             this.userService.addUser( this.user ).subscribe(
                 response => {
 
@@ -142,7 +150,7 @@ export class LoginRegisterComponent implements OnInit {
                 err => {
                     // Log errors if any
                     console.log( err );
-                    
+
                     if ( err.status === 401 ) {
                         console.log( "401 Istnieje juz uzytkownik o podanym adresie email." );
 
@@ -209,33 +217,40 @@ export class LoginRegisterComponent implements OnInit {
         } else {
             this.registerForm.university = 'input string optional';
         }
-        
+
         if ( this.termsAcceptation != true ) {
             result = false;
             this.registerForm.terms = 'simform__actions-sidetext validationError';
         } else {
             this.registerForm.terms = 'simform__actions-sidetext';
         }
-        
-        if (this.isEmpty(this.selectedAcademicStatus)) {
+
+        if ( this.isEmpty( this.selectedAcademicStatus ) ) {
             result = false;
             this.registerForm.academicStatus = 'input full validationError';
         } else {
             this.registerForm.academicStatus = 'input full';
-            
-            
-            
-            if (this.selectedAcademicStatus === '2') {
-                if (this.isEmpty(this.selectedAcademicTitle)) {
+
+
+
+            if ( this.selectedAcademicStatus === '2' ) {
+                if ( this.isEmpty( this.selectedAcademicTitle ) ) {
                     result = false;
                     this.registerForm.academicTitle = 'input full validationError';
                 } else {
                     this.registerForm.academicTitle = 'input full';
                 }
             }
-            
+
         }
-        
+
+        if ( this.isEmpty( this.selectedParticipation ) ) {
+            result = false;
+            this.registerForm.participation = 'input full validationError';
+        } else {
+            this.registerForm.participation = 'input full';
+        }
+
 
         return result;
     }
@@ -348,7 +363,7 @@ export class LoginRegisterComponent implements OnInit {
     isPasswordHidden() {
         return 'password' === this.passwordType
     }
-    
+
     validateEmail( email ) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test( String( email ).toLowerCase() );
@@ -365,7 +380,7 @@ export class LoginRegisterComponent implements OnInit {
     noLoginRightsAlertVisible() {
         return this.noLoginRightsAlert;
     }
-    
+
     emailRegisteredAlertVisible() {
         return this.emailRegisteredAlert;
     }
@@ -373,15 +388,15 @@ export class LoginRegisterComponent implements OnInit {
     navigateUser( id ) {
         this.router.navigate( ['user-profile/'] );
     }
-    
+
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
-    
-    showStudentOptions () {
+
+    showStudentOptions() {
         return this.selectedAcademicStatus === '1'
     }
-    
+
     setAcademicTitle() {
         if ( this.selectedAcademicTitle === '1' ) {
             this.user.academic_title = '1'
@@ -412,5 +427,22 @@ export class LoginRegisterComponent implements OnInit {
         if ( this.selectedAcademicStatus === '2' ) {
             this.user.academic_status = '2'
         }
+    }
+    
+    setParticipation() {
+        if (this.selectedParticipation ) {
+            if ( this.selectedParticipation.length === 2 ) {
+                this.user.participation = '3';
+            } else {
+                if (this.selectedParticipation[0] === '1') {
+                    this.user.participation = '1';
+                }
+                
+                if (this.selectedParticipation[0] === '2') {
+                    this.user.participation = '2';
+                }
+            }
+        }
+       
     }
 }
