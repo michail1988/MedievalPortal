@@ -185,5 +185,6 @@ export const LANG_PL_TRANS = {
     'Conference':'Konferencja',
     'wantInvoice':'Potrzebna faktura',
     'footerUniversity':'Uniwersystet Wrocławski',
-    'footerInstitute':'Instytut historyczny'
+    'footerInstitute':'Instytut historyczny',
+    'ShowWorkhopEnrolments' : 'Udział w warsztatach'
 };

@@ -30,6 +30,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     showRejectedEnabled: boolean;
     showPaymentPendingEnabled: boolean;
     showPaymentAcceptedEnabled: boolean;
+    showWorkhopEnabled: boolean;
 
     // Constructor with injected service
     constructor( private userService: UserService ) { }
@@ -222,6 +223,15 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showPaymentPendingEnabled = true;
     }
     
+    showWorkshop() {
+        this.userService.getWorkshop().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+        
+        this.resetButtons();
+        this.showWorkhopEnabled = true;
+    }
+    
     resetButtons() {
         this.showAllEnabled = false;
         this.showAcceptedEnabled = false;
@@ -230,5 +240,6 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showRejectedEnabled = false;
         this.showPaymentPendingEnabled = false;
         this.showPaymentAcceptedEnabled = false;
+        this.showWorkhopEnabled = false;
     }
 }
