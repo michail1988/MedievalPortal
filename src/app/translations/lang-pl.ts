@@ -187,5 +187,15 @@ export const LANG_PL_TRANS = {
     'footerUniversity':'Uniwersystet Wrocławski',
     'footerInstitute':'Instytut historyczny',
     'ShowWorkhopEnrolments' : 'Udział w warsztatach',
-    'noPayment':'Brak opłaty'
+    'noPayment':'Brak opłaty',
+    'Workshops':'Warsztaty',
+    'workshop1-title':'WARSZTAT KODYKOLOGICZNY:  OFERTA nie tylko DLA DOKTORANTÓW!',
+    'workshop1-content':'Szanowni Państwo, <br/> <br/> serdecznie zapraszamy do zgłaszania udziału w warsztacie organizowanym przez Prof. dra hab. Wojciecha Mrozowicza (Instytut Historyczny UWr) <b>„Kodykologia jako narzędzie w warsztacie historyka-mediewisty”</b>',
+    'workshop1-date':'Planowany termin: 21 września br., godz. 9.00',
+    'workshop1-place':'Miejsce: Biblioteka Uniwersytecka, ul. F. Joliot-Curie 12',
+    'workshop1-contact':'Kontakt w sprawach organizacyjnych: <a href="mailto:wojciech.mrozowicz@gmail.com"><u>wojciech.mrozowicz@gmail.com</u></a>, <a href="mailto:stanislaw.rosik@uwr.edu.pl"><u>stanislaw.rosik@uwr.edu.pl</u></a>',
+    'workshop2-title':'WARSZTAT FILMOWY:  OFERTA nie tylko DLA DOKTORANTÓW!',
+    'workshop2-content':'Szanowni Państwo, <br/> <br/> serdecznie zapraszamy do zgłaszania udziału w warsztacie <b>„Historyk przed kamerą”</b> prowadzonym przez Pana Zdzisława Cozaca, scenarzystę i reżysera, twórcę m.in. cyklu „Tajemnice początków Polski” realizowanego od 2010 r. w koprodukcji z TVP Historia ',
+    'workshop2-date':'Planowany termin: 23 września br., godz. 9.00',
+    'workshop2-contact': 'Kontakt w sprawach organizacyjnych: <a href="mailto:stanislaw.rosik@uwr.edu.pl"><u>stanislaw.rosik@uwr.edu.pl</u></a>'
 };

@@ -112,6 +112,7 @@ import { LinksComponent } from './links/links.component';
 import { PatronageComponent } from './patronage/patronage.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import { ActionAdminPaymentComponent } from './action-admin-payment/action-admin-payment.component';
+import { WorkshopsComponent } from './workshops/workshops.component';
 
 
 
@@ -172,7 +173,8 @@ import { ActionAdminPaymentComponent } from './action-admin-payment/action-admin
         LinksComponent,
         PatronageComponent,
         PaymentInfoComponent,
-        ActionAdminPaymentComponent
+        ActionAdminPaymentComponent,
+        WorkshopsComponent
     ],
     imports: [
         BrowserModule,

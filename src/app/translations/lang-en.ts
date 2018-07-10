@@ -161,6 +161,7 @@ export const LANG_EN_TRANS = {
     'footerUniversity':'Uniwersystet Wrocławski',
     'footerInstitute':'Instytut historyczny',
     'ShowWorkhopEnrolments' : 'Workshops',
-    'noPayment':'No'
+    'noPayment':'No',
+    'Workshops':'Workshops'
 
 };
