@@ -131,6 +131,18 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                     }          
                   }
             },
+            academic_title:{
+                title: 'Tytul',
+                type: 'html',
+                valuePrepareFunction: ( value ) => {
+                    if ( value === '1' ) return 'mgr';
+                    if ( value === '2' ) return 'dr';
+                    if ( value === '3' ) return 'dr hab.';
+                    if ( value === '4' ) return 'Prof. (stan.)';
+                    if ( value === '5' ) return 'Prof.';
+                    return ''
+                }
+            },
             payment_accepted: {
                 title: 'Oplata',
                 type: 'html',
