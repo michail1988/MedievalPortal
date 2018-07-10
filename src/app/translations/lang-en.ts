@@ -155,6 +155,10 @@ export const LANG_EN_TRANS = {
     'rektor-name' : 'Prof. dr hab. Adam Jezierski',
     'Payment Status' : 'Payment status',
     'PaymentAccepted' : 'Accepted',
-    'PaymentWaiting' : 'Pending'
+    'PaymentWaiting' : 'Pending',
+    'Conference':'Conference',
+    'wantInvoice':'The invoice is needed',
+    'footerUniversity':'Uniwersystet Wrocławski',
+    'footerInstitute':'Instytut historyczny'
 
 };

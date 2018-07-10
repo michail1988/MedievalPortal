@@ -181,5 +181,9 @@ export const LANG_PL_TRANS = {
     'paymentInfo-6': 'Informacja: Osobom wpłacającym opłatę normalną i ulgową Organizatorzy zapewniają hotel, posiłki w trakcie obrad oraz komplet materiałów konferencyjnych, natomiast w wypadku opłaty „wrocławskiej” posiłki w trakcie obrad oraz komplet materiałów konferencyjnych. Fundacja dla Uniwersytetu Wrocławskiego na życzenie opłacającego wystawi fakturę potwierdzającą wniesienie opłaty konferencyjnej. W tym celu prosimy po zalogowaniu o wypełnienie odpowiedniego formularza, który pojawi się niedługo na stronie, bądź też o kontakt drogą mailową.',
     'registerParticipation' : 'Zaznacz udział:',
     'participateConference' : 'Konferencja',
-    'participateWorkshop': 'Warsztaty'
+    'participateWorkshop': 'Warsztaty',
+    'Conference':'Konferencja',
+    'wantInvoice':'Potrzebna faktura',
+    'footerUniversity':'Uniwersystet Wrocławski',
+    'footerInstitute':'Instytut historyczny'
 };

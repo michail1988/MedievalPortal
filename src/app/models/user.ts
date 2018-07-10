@@ -22,7 +22,8 @@ export class User {
         public academic_status: string, 
         public master: string, 
         public engineer: string,
-        public participation: string
+        public participation: string,
+        public invoice: string
     ) { }
     
     public fk_editor: string

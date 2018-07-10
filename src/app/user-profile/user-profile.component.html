@@ -20,7 +20,7 @@
 			onclick="this.parentElement.style.display='none';">&times;</span> {{
 		'passwordChangedAlert' | translate }}
 	</div>
-
+<form class="form-horizontal" accept-charset="utf-8">
 
 
 	<div class="panel panel-primary dialog-panel">
@@ -28,7 +28,7 @@
 			<h5>{{ 'Personal data' | translate}}</h5>
 		</div>
 		<div class="panel-body">
-			<form class="form-horizontal" accept-charset="utf-8">
+			
 				<div class="form-group">
 					<label class="control-label col-md-2 col-md-offset-2"
 						for="id_title">{{ 'Name' | translate }}</label>
@@ -214,10 +214,36 @@
 							(click)="resetChanges()">{{ 'Reset' | translate }}</button>
 					</div>
 				</div>
-			</form>
+			
 		</div>
 	</div>
 
+<div class="panel panel-primary dialog-panel">
+		<div class="panel-heading">
+			<h5>{{ 'Conference' | translate}}</h5>
+		</div>
+		
+		<div class="panel-body">
+			
+			<div class="form-group">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'wantInvoice' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.invoice" name="invoice"
+									binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+	</div>
+	
+	</form>
 	<div class="panel panel-primary dialog-panel">
 		<div class="panel-heading">
 			<h5>{{ 'Change password' | translate}}</h5>
@@ -267,6 +293,7 @@
 		</div>
 	</div>
 
+	
 
 </div>
 
