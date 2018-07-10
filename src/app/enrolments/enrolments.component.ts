@@ -7,6 +7,7 @@ import { LocalDataSource } from "ng2-smart-table/ng2-smart-table";
 import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";
 import { ActionAdminEnrolmentComponent } from "app/action-admin-enrolment/action-admin-enrolment.component";
+import { ActionAdminPaymentComponent } from "app/action-admin-payment/action-admin-payment.component";
 
 
 @Component( {
@@ -143,12 +144,12 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                     return ''
                 }
             },
-            payment_accepted: {
+            payment: {
                 title: 'Oplata',
-                type: 'html',
-                valuePrepareFunction: ( value ) => {
-                    if ( value === 'Y' ) return 'Tak';
-                    return 'Nie'
+                type: 'custom',
+                renderComponent: ActionAdminPaymentComponent,
+                valuePrepareFunction: ( cell, row ) => {
+                    return row 
                 }
             },
             confirmation: {

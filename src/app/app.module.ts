@@ -111,6 +111,7 @@ import { AdminEnrolmentHistoryComponent } from './admin-enrolment-history/admin-
 import { LinksComponent } from './links/links.component';
 import { PatronageComponent } from './patronage/patronage.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
+import { ActionAdminPaymentComponent } from './action-admin-payment/action-admin-payment.component';
 
 
 
@@ -170,7 +171,8 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         AdminEnrolmentHistoryComponent,
         LinksComponent,
         PatronageComponent,
-        PaymentInfoComponent
+        PaymentInfoComponent,
+        ActionAdminPaymentComponent
     ],
     imports: [
         BrowserModule,
@@ -206,7 +208,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         ConfirmationService, ImageService, NewsService,
         NewsResolver, NewsNewResolver,
         ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver],
-    entryComponents: [ActionAdminEnrolmentComponent],
+    entryComponents: [ActionAdminEnrolmentComponent, ActionAdminPaymentComponent],
     bootstrap: [AppComponent],
 } )
 export class AppModule { }

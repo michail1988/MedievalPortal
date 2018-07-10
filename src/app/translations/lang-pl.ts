@@ -186,5 +186,6 @@ export const LANG_PL_TRANS = {
     'wantInvoice':'Potrzebna faktura',
     'footerUniversity':'Uniwersystet Wrocławski',
     'footerInstitute':'Instytut historyczny',
-    'ShowWorkhopEnrolments' : 'Udział w warsztatach'
+    'ShowWorkhopEnrolments' : 'Udział w warsztatach',
+    'noPayment':'Brak opłaty'
 };

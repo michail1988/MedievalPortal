@@ -159,6 +159,8 @@ export const LANG_EN_TRANS = {
     'Conference':'Conference',
     'wantInvoice':'The invoice is needed',
     'footerUniversity':'Uniwersystet Wrocławski',
-    'footerInstitute':'Instytut historyczny'
+    'footerInstitute':'Instytut historyczny',
+    'ShowWorkhopEnrolments' : 'Workshops',
+    'noPayment':'No'
 
 };
