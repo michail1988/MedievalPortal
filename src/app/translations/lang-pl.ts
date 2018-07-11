@@ -199,5 +199,8 @@ export const LANG_PL_TRANS = {
     'workshop2-date':'Planowany termin: 22 września br., godz. 9.00',
     'workshop2-contact': 'Kontakt w sprawach organizacyjnych: <a href="mailto:stanislaw.rosik@uwr.edu.pl"><u>stanislaw.rosik@uwr.edu.pl</u></a>',
     'gotoFacebook' : 'Odwiedź nas na facebooku',
-    'PersonsCount' : 'Ilość osób'
+    'PersonsCount' : 'Ilość osób',
+    'InvoiceData' : 'Dane do faktury',
+    'Accomodation' : 'Nocleg',
+    'AccomodationDate' : 'W dniach'
 };

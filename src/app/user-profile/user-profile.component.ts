@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
@@ -45,6 +45,13 @@ export class UserProfileComponent implements OnInit {
     requiredFieldsAlert: boolean;
     saveSuccessAlert: boolean;
     passwordChangedAlert: boolean;
+    
+    rangeDates: Date[];
+    
+    minDate = new Date(2018, 8, 21, 0, 0, 0, 0);
+    maxDate = new Date(2018, 8, 23, 0, 0, 0, 0);
+    
+    defaultDate = new Date(2018, 8, 21, 0, 0, 0, 0);
 
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -97,6 +104,10 @@ export class UserProfileComponent implements OnInit {
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                     this.selectParticipation();
+                    
+                    
+                    console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
+                    console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
                 }
             }, //Bind to view
             err => {
@@ -288,11 +299,20 @@ export class UserProfileComponent implements OnInit {
         }
        
     }
-
+    
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
 
+    showInvoiceData() {
+        return this.user.invoice === '1' || this.user.invoice
+    }
+    
+    showAccomodation() {
+        console.log( 'this.user.accommodation=' + this.user.accommodation );
+        return this.user.accommodation === '1' || this.user.accommodation
+    }
+    
     showStudentOptions() {
         return this.selectedAcademicStatus === '1'
     }

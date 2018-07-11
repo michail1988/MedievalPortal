@@ -23,7 +23,11 @@ export class User {
         public master: string, 
         public engineer: string,
         public participation: string,
-        public invoice: string
+        public invoice: string,
+        public invoice_data: string,
+        public accommodation: string,
+        public accommodation_from: Date,
+        public accommodation_to: Date
     ) { }
     
     public fk_editor: string
