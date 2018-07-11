@@ -198,5 +198,6 @@ export const LANG_PL_TRANS = {
     'workshop2-content':'Szanowni Państwo, <br/> <br/> serdecznie zapraszamy do zgłaszania udziału w warsztacie <b>„Historyk przed kamerą”</b> prowadzonym przez Pana Zdzisława Cozaca, scenarzystę i reżysera, twórcę m.in. cyklu „Tajemnice początków Polski” realizowanego od 2010 r. w koprodukcji z TVP Historia ',
     'workshop2-date':'Planowany termin: 22 września br., godz. 9.00',
     'workshop2-contact': 'Kontakt w sprawach organizacyjnych: <a href="mailto:stanislaw.rosik@uwr.edu.pl"><u>stanislaw.rosik@uwr.edu.pl</u></a>',
-    'gotoFacebook' : 'Odwiedź nas na facebooku'
+    'gotoFacebook' : 'Odwiedź nas na facebooku',
+    'PersonsCount' : 'Ilość osób'
 };

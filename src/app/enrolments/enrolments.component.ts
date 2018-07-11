@@ -8,6 +8,8 @@ import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";
 import { ActionAdminEnrolmentComponent } from "app/action-admin-enrolment/action-admin-enrolment.component";
 import { ActionAdminPaymentComponent } from "app/action-admin-payment/action-admin-payment.component";
+import { UserInfoService } from "app/services/user-info.service";
+import { UserInfo } from "app/models/user-info";
 
 
 @Component( {
@@ -23,7 +25,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     @Input() editId: string;
 
     source: LocalDataSource;
-    
+
     showAllEnabled: boolean;
     showAcceptedEnabled: boolean;
     showPendingEnabled: boolean;
@@ -33,8 +35,11 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     showPaymentAcceptedEnabled: boolean;
     showWorkhopEnabled: boolean;
 
+    enrolmentsCount: string;
+    userInfo: UserInfo;
+
     // Constructor with injected service
-    constructor( private userService: UserService ) { }
+    constructor( private userService: UserService, private userInfoService: UserInfoService ) { }
 
     ngOnInit() {
         // Load enrolments
@@ -44,12 +49,23 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
+        this.userInfoService.getUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+
         this.showAllEnabled = true;
-        
-        window.scrollTo(0, 0)
+
+        window.scrollTo( 0, 0 )
     }
 
+    
     loadAllEnrolments() {
         // Get all enrolments
         this.userService.getUsers()
@@ -86,8 +102,8 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 title: 'Data zgloszenia',
                 type: 'html',
                 valuePrepareFunction: ( value ) => {
-                    var datePipe = new DatePipe('pl-PL');
-                    return datePipe.transform(value, 'dd.MM.yyyy');
+                    var datePipe = new DatePipe( 'pl-PL' );
+                    return datePipe.transform( value, 'dd.MM.yyyy' );
                 }
             },
             congressrole: {
@@ -99,40 +115,40 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                     if ( value === 'O' ) return 'Organizator';
                     return ''
                 },
-                filterFunction(cell?: any, search?: string): boolean {
-                    if (search != null) {
-                        if ("uczestnik".search(search) > 0) {
+                filterFunction( cell?: any, search?: string ): boolean {
+                    if ( search != null ) {
+                        if ( "uczestnik".search( search ) > 0 ) {
                             if ( cell === 'U' ) {
                                 return true;
                             }
-                            
+
                             return false;
                         }
-                        
-                        if ("referent".search(search) > 0) {
+
+                        if ( "referent".search( search ) > 0 ) {
                             if ( cell === 'R' ) {
                                 return true;
                             }
-                            
+
                             return false;
                         }
-                        
-                        if ("organizator".search(search) > 0) {
+
+                        if ( "organizator".search( search ) > 0 ) {
                             if ( cell === 'U' ) {
                                 return true;
                             }
-                            
+
                             return false;
                         }
                     }
-                    if (search === '') {
-                      return true;
+                    if ( search === '' ) {
+                        return true;
                     } else {
-                      return false;
-                    }          
-                  }
+                        return false;
+                    }
+                }
             },
-            academic_title:{
+            academic_title: {
                 title: 'Tytul',
                 type: 'html',
                 valuePrepareFunction: ( value ) => {
@@ -149,7 +165,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 type: 'custom',
                 renderComponent: ActionAdminPaymentComponent,
                 valuePrepareFunction: ( cell, row ) => {
-                    return row 
+                    return row
                 }
             },
             confirmation: {
@@ -166,18 +182,18 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                 type: 'custom',
                 renderComponent: ActionAdminEnrolmentComponent,
                 valuePrepareFunction: ( cell, row ) => {
-                    return row 
+                    return row
                 }
             }
         },
         actions: false
     };
 
-    showAll() {        
+    showAll() {
         this.userService.getUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showAllEnabled = true;
     }
@@ -186,7 +202,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getAcceptedUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showAcceptedEnabled = true;
     }
@@ -195,16 +211,16 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getPendingUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showPendingEnabled = true;
     }
-    
+
     showRejected() {
         this.userService.getRejectedUsers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showRejectedEnabled = true;
     }
@@ -213,38 +229,38 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.userService.getSpeakers().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showSpeakersEnabled = true;
     }
-    
+
     showPaymentAccepted() {
         this.userService.getAcceptedPayment().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showPaymentAcceptedEnabled = true;
     }
-    
+
     showPaymentPending() {
         this.userService.getPendingPayment().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showPaymentPendingEnabled = true;
     }
-    
+
     showWorkshop() {
         this.userService.getWorkshop().toPromise().then(( data ) => {
             this.source.load( data );
         } );
-        
+
         this.resetButtons();
         this.showWorkhopEnabled = true;
     }
-    
+
     resetButtons() {
         this.showAllEnabled = false;
         this.showAcceptedEnabled = false;

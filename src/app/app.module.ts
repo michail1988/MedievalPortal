@@ -37,6 +37,7 @@ import { ContactService } from "app/services/contact.service";
 import { CommentService } from './services/comment.service';
 import { ImageService } from './services/image.service';
 import { NewsService } from './services/news.service';
+import {UserInfoService} from './services/user-info.service';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -209,7 +210,7 @@ import { WorkshopsComponent } from './workshops/workshops.component';
         EventNewResolver,
         ConfirmationService, ImageService, NewsService,
         NewsResolver, NewsNewResolver,
-        ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver],
+        ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver, UserInfoService],
     entryComponents: [ActionAdminEnrolmentComponent, ActionAdminPaymentComponent],
     bootstrap: [AppComponent],
 } )
