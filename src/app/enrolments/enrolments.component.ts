@@ -34,6 +34,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
     showPaymentPendingEnabled: boolean;
     showPaymentAcceptedEnabled: boolean;
     showWorkhopEnabled: boolean;
+    showInvoiceEnabled: boolean;
 
     enrolmentsCount: string;
     userInfo: UserInfo;
@@ -261,6 +262,15 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showWorkhopEnabled = true;
     }
 
+    showInvoice() {
+        this.userService.getInvoice().toPromise().then(( data ) => {
+            this.source.load( data );
+        } );
+
+        this.resetButtons();
+        this.showInvoiceEnabled = true;
+    }
+    
     resetButtons() {
         this.showAllEnabled = false;
         this.showAcceptedEnabled = false;
@@ -270,5 +280,6 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         this.showPaymentPendingEnabled = false;
         this.showPaymentAcceptedEnabled = false;
         this.showWorkhopEnabled = false;
+        this.showInvoiceEnabled = false;
     }
 }

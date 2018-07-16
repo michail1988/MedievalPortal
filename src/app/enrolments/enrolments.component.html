@@ -30,10 +30,14 @@
 <button pButton type="button" (click)="showWorkshop()"
 	label="{{ 'ShowWorkhopEnrolments' | translate}}"
 	[ngClass]="showWorkhopEnabled?'ui-button-success':'btn btn-primary'"></button>
-	
+
+<button pButton type="button" (click)="showInvoice()"
+	label="{{ 'Invoice' | translate}}"
+	[ngClass]="showInvoiceEnabled?'ui-button-success':'btn btn-primary'"></button>
+
 <br />
 
-{{ 'PersonsCount' | translate }} : 
+{{ 'PersonsCount' | translate }} :
 
 
 

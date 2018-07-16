@@ -16,6 +16,8 @@ export class ArticlesComponent implements OnInit {
     ngOnInit() {
         // Load articles
         this.loadArticles()
+        
+        window.scrollTo( 0, 0 )
     }
 
     loadArticles() {

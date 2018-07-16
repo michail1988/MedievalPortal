@@ -25,7 +25,10 @@ export class UserService {
     private rejectPaymentUrl = Config.serverAddress + '/rejectPayment';
     private acceptedPaymentUrl = Config.serverAddress + '/acceptedPayment';
     private pendingPaymentUrl = Config.serverAddress + '/pendingPayment';
-    private workshopUrl = Config.serverAddress + '/workshop';
+    private workshopUrl = Config.serverAddress + '/workshopUsers';
+    private invoiceUrl = Config.serverAddress + '/invoiceUsers';
+    
+    
     
     private userPasswordUrl = Config.serverAddress + '/userPassword';
     
@@ -191,6 +194,17 @@ export class UserService {
 
         // ...using get request
         return this.http.get( this.workshopUrl )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
+
+    }
+    
+    getInvoice(): Observable<User[]> {
+
+        // ...using get request
+        return this.http.get( this.invoiceUrl )
             // ...and calling .json() on the response to return data
             .map(( res: Response ) => res.json() )
             //...errors if any

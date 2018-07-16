@@ -24,4 +24,8 @@ export class AdminMenuComponent implements OnInit {
   isShowSchedules() {
       return Config.isShowSchedule();
   }
+  
+  isShowWorkshops() {
+      return Config.isShowWorkshops();
+  }
 }

@@ -202,5 +202,10 @@ export const LANG_PL_TRANS = {
     'PersonsCount' : 'Ilość osób',
     'InvoiceData' : 'Dane do faktury',
     'Accomodation' : 'Nocleg',
-    'AccomodationDate' : 'W dniach'
+    'AccomodationDate' : 'W dniach',
+    'Invoice' : 'Faktura',
+    'Show deleted workshops' : 'Pokaż usunięte',
+    'Show workshops' : 'Pokaż aktywne',
+    'Place' : 'Miejsce',
+    'Date' : 'Data'
 };

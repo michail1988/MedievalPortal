@@ -25,4 +25,8 @@ export class Config {
     public static isShowLinks() {
         return false;
     }
+    
+    public static isShowWorkshops() {
+        return true;
+    }
 }

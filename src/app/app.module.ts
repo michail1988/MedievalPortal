@@ -37,6 +37,7 @@ import { ContactService } from "app/services/contact.service";
 import { CommentService } from './services/comment.service';
 import { ImageService } from './services/image.service';
 import { NewsService } from './services/news.service';
+import { WorkshopService } from './services/workshop.service';
 import {UserInfoService} from './services/user-info.service';
 
 //internationalization
@@ -114,6 +115,11 @@ import { PatronageComponent } from './patronage/patronage.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import { ActionAdminPaymentComponent } from './action-admin-payment/action-admin-payment.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
+import { AdminWorkshopsComponent } from './admin-workshops/admin-workshops.component';
+import { WorkshopResolver } from "app/services/workshop-resolver.service";
+import { WorkshopNewResolver } from "app/services/workshop-new-resolver.service";
+import { AdminWorkshopComponent } from './admin-workshop/admin-workshop.component';
+import { WorkshopComponent } from './workshop/workshop.component';
 
 
 
@@ -175,7 +181,10 @@ import { WorkshopsComponent } from './workshops/workshops.component';
         PatronageComponent,
         PaymentInfoComponent,
         ActionAdminPaymentComponent,
-        WorkshopsComponent
+        WorkshopsComponent,
+        AdminWorkshopsComponent,
+        AdminWorkshopComponent,
+        WorkshopComponent
     ],
     imports: [
         BrowserModule,
@@ -207,8 +216,8 @@ import { WorkshopsComponent } from './workshops/workshops.component';
     providers: [EnrolmentService, ArticleService, AuthenticationService, UniversityService, UserService,
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,
         ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
-        EventNewResolver,
-        ConfirmationService, ImageService, NewsService,
+        EventNewResolver, WorkshopResolver, WorkshopNewResolver,
+        ConfirmationService, ImageService, NewsService, WorkshopService,
         NewsResolver, NewsNewResolver,
         ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver, UserInfoService],
     entryComponents: [ActionAdminEnrolmentComponent, ActionAdminPaymentComponent],

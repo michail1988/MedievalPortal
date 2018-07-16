@@ -162,6 +162,10 @@ export const LANG_EN_TRANS = {
     'footerInstitute':'Instytut historyczny',
     'ShowWorkhopEnrolments' : 'Workshops',
     'noPayment':'No',
-    'Workshops':'Workshops'
+    'Workshops':'Workshops',
+    'Invoice' : 'Invoice',
+    'Show deleted workshops' : 'Show deleted workshops',
+    'Show workshops' : 'Show workshops',
+    'Place' : 'Place'
 
 };

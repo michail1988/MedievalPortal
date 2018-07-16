@@ -48,6 +48,10 @@ import { LinksComponent } from "app/links/links.component";
 import { PatronageComponent } from "app/patronage/patronage.component";
 import { PaymentInfoComponent } from "app/payment-info/payment-info.component";
 import { WorkshopsComponent } from "app/workshops/workshops.component";
+import { AdminWorkshopsComponent } from "app/admin-workshops/admin-workshops.component";
+import { AdminWorkshopComponent } from "app/admin-workshop/admin-workshop.component";
+import { WorkshopNewResolver } from "app/services/workshop-new-resolver.service";
+import { WorkshopResolver } from "app/services/workshop-resolver.service";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -73,8 +77,8 @@ export const router: Routes = [
                 outlet: 'adminRouting'
             },
             {
-                path: 'admin-articles',
-                component: AdminArticlesComponent,
+                path: 'admin-workshops',
+                component: AdminWorkshopsComponent,
                 outlet: 'adminRouting'
             },
             {
@@ -232,6 +236,29 @@ export const router: Routes = [
             CanActivateUserGuard
         ],
     },
+    {
+        path: 'admin-workshop-new',
+        component: AdminWorkshopComponent,
+        resolve: {
+            workshop: WorkshopNewResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+    
+    
+    
+    {
+                path: 'admin-workshop/:id',
+                component: AdminWorkshopComponent,
+                resolve: {
+                    workshop: WorkshopResolver
+                }, canActivate: [
+                    CanActivateAdminGuard
+                ],
+                
+            },
+            
     { path: 'articles', component: ArticlesComponent },
     { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent },

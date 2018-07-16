@@ -15,46 +15,9 @@
 	<hr />
 
 	<div class="container">
-		<div class="wow fadeInLeft animated text-center">
-			<h3 [innerHTML]="'workshop1-title' | translate"></h3>
 
-		</div>
-<br/>
-		<div class="wow fadeInRight animated text-center">
-			<h4 [innerHTML]="'workshop1-content' | translate"></h4>
-		</div>
-		<br />
-		<div class="wow fadeInLeft animated text-center">
-			<h4 [innerHTML]="'workshop1-date' | translate"></h4>
-		</div>
-		<br />
-		<div class="wow fadeInRight animated text-center">
-			<h4 [innerHTML]="'workshop1-place' | translate"></h4>
-		</div>
-		<br />
-		<div class="wow fadeInLeft animated text-center">
-			<h4 [innerHTML]="'workshop1-contact' | translate"></h4>
-		</div>
-		
-		<hr />
+		<workshop *ngFor="let workshop of workshops" [workshop]="workshop">	</workshop>
 
-		<div class="wow fadeInRight animated text-center">
-			<h3 [innerHTML]="'workshop2-title' | translate"></h3>
 
-		</div>
-<br/>
-		<div class="wow fadeInLeft animated text-center">
-			<h4 [innerHTML]="'workshop2-content' | translate"></h4>
-		</div>
-		<br />
-		<div class="wow fadeInRight animated text-center">
-			<h4 [innerHTML]="'workshop2-date' | translate"></h4>
-		</div>
-		<br />
-		<div class="wow fadeInLeft animated text-center">
-			<h4 [innerHTML]="'workshop2-contact' | translate"></h4>
-		</div>
-
-		<hr />
 		<br /> <br /> <br /> <br /> <br /> <br />
 	</div>

@@ -45,13 +45,13 @@ export class UserProfileComponent implements OnInit {
     requiredFieldsAlert: boolean;
     saveSuccessAlert: boolean;
     passwordChangedAlert: boolean;
-    
+
     rangeDates: Date[];
-    
-    minDate = new Date(2018, 8, 21, 0, 0, 0, 0);
-    maxDate = new Date(2018, 8, 23, 0, 0, 0, 0);
-    
-    defaultDate = new Date(2018, 8, 21, 0, 0, 0, 0);
+
+    minDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
+    maxDate = new Date( 2018, 8, 23, 0, 10, 0, 0 );
+
+    defaultDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
 
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -104,10 +104,19 @@ export class UserProfileComponent implements OnInit {
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                     this.selectParticipation();
-                    
-                    
+
+
                     console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
                     console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
+
+                    if ( this.user.accommodation_from ) {
+                        this.user.accommodation_from = new Date( this.user.accommodation_from )
+                    }
+
+                    if ( this.user.accommodation_to ) {
+                        this.user.accommodation_to = new Date( this.user.accommodation_to )
+                    }
+
                 }
             }, //Bind to view
             err => {
@@ -181,6 +190,19 @@ export class UserProfileComponent implements OnInit {
             this.setAcademicStatus();
             this.setCongressRole();
             this.setParticipation();
+
+
+
+            if ( this.user.accommodation_from ) {
+                this.user.accommodation_from = new Date( this.user.accommodation_from.getTime() + ( 3 * 3600 * 1000 ) )
+            }
+
+            if ( this.user.accommodation_to ) {
+                this.user.accommodation_to = new Date( this.user.accommodation_to.getTime() + ( 3 * 3600 * 1000 ) )
+            }
+
+            console.log( 'saving this.user.accommodation_from=' + this.user.accommodation_from );
+            console.log( 'saving this.user.accommodation_to=' + this.user.accommodation_to );
 
             this.userService.updateUser( this.user ).subscribe(
                 users => {
@@ -282,24 +304,24 @@ export class UserProfileComponent implements OnInit {
             this.user.academic_status = '2'
         }
     }
-    
+
     setParticipation() {
-        if (this.selectedParticipation ) {
+        if ( this.selectedParticipation ) {
             if ( this.selectedParticipation.length === 2 ) {
                 this.user.participation = '3';
             } else {
-                if (this.selectedParticipation[0] === '1') {
+                if ( this.selectedParticipation[0] === '1' ) {
                     this.user.participation = '1';
                 }
-                
-                if (this.selectedParticipation[0] === '2') {
+
+                if ( this.selectedParticipation[0] === '2' ) {
                     this.user.participation = '2';
                 }
             }
         }
-       
+
     }
-    
+
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
@@ -307,12 +329,12 @@ export class UserProfileComponent implements OnInit {
     showInvoiceData() {
         return this.user.invoice === '1' || this.user.invoice
     }
-    
+
     showAccomodation() {
         console.log( 'this.user.accommodation=' + this.user.accommodation );
         return this.user.accommodation === '1' || this.user.accommodation
     }
-    
+
     showStudentOptions() {
         return this.selectedAcademicStatus === '1'
     }
@@ -365,7 +387,7 @@ export class UserProfileComponent implements OnInit {
 
         this.password1 = null;
         this.password2 = null;
-        
+
         this.userForm.participation = 'col-md-11';
     }
 
@@ -392,8 +414,8 @@ export class UserProfileComponent implements OnInit {
         } else {
             this.userForm.email = 'form-control';
         }
-        
-        
+
+
         if ( this.isEmpty( this.selectedParticipation ) ) {
             result = false;
             this.userForm.participation = 'col-md-11 validationError';
@@ -483,4 +505,6 @@ export class UserProfileComponent implements OnInit {
     isEmpty( str ) {
         return ( !str || 0 === str.length );
     }
+
+
 }
