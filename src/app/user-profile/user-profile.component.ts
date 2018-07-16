@@ -22,17 +22,19 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, '', '' );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
     selectedAcademicStatus: string;
     selectedParticipation: string[] = [];
+    selectedMeal: string;
 
     types: SelectItem[];
     academicTitles: SelectItem[];
     academicStatuses: SelectItem[];
     participationOptions: SelectItem[];
+    mealOptions: SelectItem[];
 
     universities: University[];
     results: string[];
@@ -77,6 +79,11 @@ export class UserProfileComponent implements OnInit {
         this.participationOptions.push( { label: 'Konferencja', value: '1' } );
         this.participationOptions.push( { label: 'Warsztaty', value: '2' } );
 
+        this.mealOptions = [];
+        this.mealOptions.push( { label: 'Standard', value: '1' } );
+        this.mealOptions.push( { label: 'Wegetariańskie', value: '2' } );
+        this.mealOptions.push( { label: 'Wegańskie', value: '3' } );
+        
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
@@ -104,6 +111,7 @@ export class UserProfileComponent implements OnInit {
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
                     this.selectParticipation();
+                    this.selectMeal();
 
 
                     console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
@@ -190,6 +198,7 @@ export class UserProfileComponent implements OnInit {
             this.setAcademicStatus();
             this.setCongressRole();
             this.setParticipation();
+            this.setMeal();
 
 
 
@@ -272,6 +281,10 @@ export class UserProfileComponent implements OnInit {
             this.selectedParticipation[1] = '2'
         }
     }
+    
+    selectMeal() {
+        this.selectedMeal = this.user.meal;
+    }
 
     setAcademicTitle() {
         if ( this.selectedAcademicTitle === '1' ) {
@@ -320,6 +333,24 @@ export class UserProfileComponent implements OnInit {
             }
         }
 
+    }
+    
+    setMeal() {
+        if ( this.selectedMeal ) {
+            
+            if ( this.selectedMeal === '1' ) {
+                this.user.academic_status = '1'
+            }
+
+            if ( this.selectedMeal === '2' ) {
+                this.user.meal = '2'
+            }
+            
+            if ( this.selectedMeal === '3' ) {
+                this.user.academic_status = '1'
+            }
+            
+        }
     }
 
     showAcademicTitle() {

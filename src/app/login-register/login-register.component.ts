@@ -34,7 +34,7 @@ export class LoginRegisterComponent implements OnInit {
 
     passwordType: string;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, '', '' );
 
     repeatPassword: string; //TODO dodac walidacje
     termsAcceptation: boolean;

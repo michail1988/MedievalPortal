@@ -271,13 +271,11 @@
 							<div class="col-md-11">
 								<p-calendar [(ngModel)]=user.accommodation_from
 									[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
-									[defaultDate]="defaultDate"
-									name="accomodationFrom"></p-calendar>
-									-
+									[defaultDate]="defaultDate" name="accomodationFrom"></p-calendar>
+								-
 								<p-calendar [(ngModel)]=user.accommodation_to
 									[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
-									[defaultDate]="defaultDate"
-									name="accomodationTo"></p-calendar>
+									[defaultDate]="defaultDate" name="accomodationTo"></p-calendar>
 
 							</div>
 
@@ -287,6 +285,32 @@
 				</div>
 
 
+				<div class="form-group">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="camealpacity">{{ 'meal' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-selectButton [options]="mealOptions"
+									[(ngModel)]="selectedMeal" id="meal"
+									name="meal"></p-selectButton>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="lactose_intolerance">{{ 'lactose_intolerance' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.lactose_intolerance" name="lactose_intolerance"
+									binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 			</div>

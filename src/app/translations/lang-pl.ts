@@ -207,5 +207,7 @@ export const LANG_PL_TRANS = {
     'Show deleted workshops' : 'Pokaż usunięte',
     'Show workshops' : 'Pokaż aktywne',
     'Place' : 'Miejsce',
-    'Date' : 'Data'
+    'Date' : 'Data',
+    'meal' : 'Posiłki',
+    'lactose_intolerance' : 'Nietolerancja laktozy'
 };
