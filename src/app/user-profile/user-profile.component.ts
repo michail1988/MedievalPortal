@@ -112,18 +112,9 @@ export class UserProfileComponent implements OnInit {
                     this.selectCongressRole( this.user );
                     this.selectParticipation();
                     this.selectMeal();
+                    this.selectAccommodation()
 
-
-                    console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
-                    console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
-
-                    if ( this.user.accommodation_from ) {
-                        this.user.accommodation_from = new Date( this.user.accommodation_from )
-                    }
-
-                    if ( this.user.accommodation_to ) {
-                        this.user.accommodation_to = new Date( this.user.accommodation_to )
-                    }
+                   
 
                 }
             }, //Bind to view
@@ -284,6 +275,19 @@ export class UserProfileComponent implements OnInit {
     
     selectMeal() {
         this.selectedMeal = this.user.meal;
+    }
+    
+    selectAccommodation() {
+        console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
+        console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
+
+        if ( this.user.accommodation_from ) {
+            this.user.accommodation_from = new Date( this.user.accommodation_from )
+        }
+
+        if ( this.user.accommodation_to ) {
+            this.user.accommodation_to = new Date( this.user.accommodation_to )
+        }
     }
 
     setAcademicTitle() {

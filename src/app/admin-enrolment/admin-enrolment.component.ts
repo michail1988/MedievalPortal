@@ -29,10 +29,14 @@ export class AdminEnrolmentComponent implements OnInit {
     selectedCongressRole: string;
     selectedAcademicTitle: string;
     selectedAcademicStatus: string;
+    selectedParticipation: string[] = [];
+    selectedMeal: string;
 
     types: SelectItem[];
     academicTitles: SelectItem[];
     academicStatuses: SelectItem[];
+    participationOptions: SelectItem[];
+    mealOptions: SelectItem[];
 
     universities: University[];
     results: string[];
@@ -45,6 +49,11 @@ export class AdminEnrolmentComponent implements OnInit {
     requiredFieldsAlert: boolean;
     saveSuccessAlert: boolean;
     passwordChangedAlert: boolean;
+    
+    minDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
+    maxDate = new Date( 2018, 8, 23, 0, 10, 0, 0 );
+
+    defaultDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
 
     constructor( private route: ActivatedRoute,
         private router: Router, private userService: UserService, private confirmationService: ConfirmationService, private universityService: UniversityService,
@@ -67,6 +76,15 @@ export class AdminEnrolmentComponent implements OnInit {
         this.academicStatuses.push( { label: 'Student/Doktorant', value: '1' } );
         this.academicStatuses.push( { label: 'Pracownik naukowy', value: '2' } );
 
+        this.participationOptions = [];
+        this.participationOptions.push( { label: 'Konferencja', value: '1' } );
+        this.participationOptions.push( { label: 'Warsztaty', value: '2' } );
+
+        this.mealOptions = [];
+        this.mealOptions.push( { label: 'Standard', value: '1' } );
+        this.mealOptions.push( { label: 'Wegetariańskie', value: '2' } );
+        this.mealOptions.push( { label: 'Wegańskie', value: '3' } );
+        
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
@@ -87,6 +105,10 @@ export class AdminEnrolmentComponent implements OnInit {
                     this.selectAcademicStatus( this.user );
                     this.selectAcademicTitle( this.user );
                     this.selectCongressRole( this.user );
+                    this.selectParticipation();
+                    this.selectMeal();
+                    this.selectAccommodation()
+                    
                 } else {
                     //TODO Michal error and redirect
 
@@ -208,6 +230,8 @@ export class AdminEnrolmentComponent implements OnInit {
             this.setAcademicTitle();
             this.setAcademicStatus();
             this.setCongressRole();
+            this.setParticipation();
+            this.setMeal();
 
             this.userService.updateUser( this.user ).subscribe(
                 users => {
@@ -262,6 +286,41 @@ export class AdminEnrolmentComponent implements OnInit {
         }
     }
 
+    setParticipation() {
+        if ( this.selectedParticipation ) {
+            if ( this.selectedParticipation.length === 2 ) {
+                this.user.participation = '3';
+            } else {
+                if ( this.selectedParticipation[0] === '1' ) {
+                    this.user.participation = '1';
+                }
+
+                if ( this.selectedParticipation[0] === '2' ) {
+                    this.user.participation = '2';
+                }
+            }
+        }
+
+    }
+    
+    setMeal() {
+        if ( this.selectedMeal ) {
+            
+            if ( this.selectedMeal === '1' ) {
+                this.user.academic_status = '1'
+            }
+
+            if ( this.selectedMeal === '2' ) {
+                this.user.meal = '2'
+            }
+            
+            if ( this.selectedMeal === '3' ) {
+                this.user.academic_status = '1'
+            }
+            
+        }
+    }
+    
     setAcademicTitle() {
         if ( this.selectedAcademicTitle === '1' ) {
             this.user.academic_title = '1'
@@ -295,6 +354,38 @@ export class AdminEnrolmentComponent implements OnInit {
 
         if ( this.user.congressrole === 'O' ) {
             this.selectedCongressRole = 'Organizator'
+        }
+    }
+
+    selectParticipation() {
+        if ( this.user.participation === '1' ) {
+            this.selectedParticipation[0] = '1'
+        }
+
+        if ( this.user.participation === '2' ) {
+            this.selectedParticipation[0] = '2'
+        }
+
+        if ( this.user.participation === '3' ) {
+            this.selectedParticipation[0] = '1'
+            this.selectedParticipation[1] = '2'
+        }
+    }
+
+    selectMeal() {
+        this.selectedMeal = this.user.meal;
+    }
+
+    selectAccommodation() {
+        console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
+        console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
+
+        if ( this.user.accommodation_from ) {
+            this.user.accommodation_from = new Date( this.user.accommodation_from )
+        }
+
+        if ( this.user.accommodation_to ) {
+            this.user.accommodation_to = new Date( this.user.accommodation_to )
         }
     }
 
@@ -492,7 +583,7 @@ export class AdminEnrolmentComponent implements OnInit {
         return false;
 
     }
-    
+
     isPaymentAcceptationPending() {
         if ( 'Y' == this.user.payment_accepted ) {
             return false;
@@ -518,7 +609,7 @@ export class AdminEnrolmentComponent implements OnInit {
                 console.log( err );
             } );
     }
-    
+
     acceptPayment() {
         //TODO refresh lub dymek
         this.userService.acceptPayment( this.user ).subscribe(
@@ -536,7 +627,7 @@ export class AdminEnrolmentComponent implements OnInit {
                 console.log( err );
             } );
     }
-    
+
     confirmPaymentReject() {
         this.confirmationService.confirm( {
             message: 'Czy na pewno chcesz anulowac status platnosci?',
@@ -587,7 +678,7 @@ export class AdminEnrolmentComponent implements OnInit {
                 console.log( err );
             } );
     }
-    
+
     rejectPayment() {
         //TODO refresh lub dymek
         this.userService.rejectPayment( this.user ).subscribe(
@@ -605,5 +696,10 @@ export class AdminEnrolmentComponent implements OnInit {
                 // Log errors if any
                 console.log( err );
             } );
+    }
+
+    showAccomodation() {
+        console.log( 'this.user.accommodation=' + this.user.accommodation );
+        return this.user.accommodation === '1' || this.user.accommodation
     }
 }
