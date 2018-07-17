@@ -37,195 +37,195 @@
 
 		<div class="panel-body">
 			<div class="form-horizontal">
-			<div class="form-group">
-
-				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
-					'Enrolment' | translate }}</label>
-
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-md-11">
-
-							<label class="control-label" *ngIf="isAccepted()" for="capacity">{{
-								'EnrolmentAccepted' | translate }}</label> <label class="control-label"
-								*ngIf="isRejected()" for="capacity">{{
-								'EnrolmentRejected' | translate }}</label> <label class="control-label"
-								*ngIf="isAcceptationPending()" for="capacity">{{
-								'EnrolmentWaiting' | translate }}</label>
-
-							<button pButton type="button" (click)="accept()" icon="fa-check"
-								*ngIf="isAcceptationPending()" style="margin-top: 5px;"
-								class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
-
-							<button pButton type="button" (click)="confirmReject()"
-								icon="fa-close" *ngIf="isAcceptationPending()"
-								style="margin-top: 5px;" class="ui-button-danger"
-								label="{{ 'Reject' | translate}}"></button>
-
-
-							<button pButton type="button" (click)="confirmReject()"
-								icon="fa-close" *ngIf="isAccepted()" style="margin-top: 5px;"
-								class="ui-button-danger"
-								label="{{ 'cancelConfirmation' | translate}}"></button>
-
-
-							<button pButton type="button" (click)="accept()" icon="fa-check"
-								*ngIf="isRejected()" style="margin-top: 5px;"
-								class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
-					'Paid' | translate }}</label>
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-md-11">
-
-							<input type="text" pInputText [(ngModel)]="user.payment" />
-						</div>
-					</div>
-				</div>
-
-
-				<label class="control-label col-md-2 col-md-offset-2" for="capacity">{{
-					'Payment Status' | translate }}</label>
-
-
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-md-11">
-							<label class="control-label" *ngIf="isPaymentAccepted()"
-								for="capacity">{{ 'PaymentAccepted' | translate }}</label> <label
-								class="control-label" *ngIf="isPaymentAcceptationPending()"
-								for="capacity">{{ 'PaymentWaiting' | translate }}</label>
-
-							<button pButton type="button" (click)="acceptPayment()"
-								icon="fa-check" *ngIf="isPaymentAcceptationPending()"
-								style="margin-top: 5px;" class="ui-button-success"
-								label="{{ 'Accept' | translate}}"></button>
-
-
-							<button pButton type="button" (click)="confirmPaymentReject()"
-								icon="fa-close" *ngIf="isPaymentAccepted()"
-								style="margin-top: 5px;" class="ui-button-danger"
-								label="{{ 'cancelConfirmation' | translate}}"></button>
-
-
-						</div>
-					</div>
-				</div>
-
-
-				<br />
-
-				<div class="col-md-11">
-					<div class="form-group">
-						<label class="control-label col-md-2 col-md-offset-2"
-							for="invoice">{{ 'wantInvoice' | translate }}</label>
-						<div class="col-md-6">
-							<div class="form-group">
-								<div class="col-md-11">
-									<p-checkbox [(ngModel)]="user.invoice" name="invoice"
-										binary="true"></p-checkbox>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br />
-				<div class="col-md-11">
-					<div class="form-group">
-						<label class="control-label col-md-2 col-md-offset-2"
-							for="invoiceData">{{ 'InvoiceData' | translate }}</label>
-						<div class="form-group">
-							<div class="col-md-6">
-								<textarea class="form-control" id="invoiceData"
-									[(ngModel)]="user.invoice_data" name="invoiceData"
-									placeholder="{{ 'InvoiceData' | translate }}" rows="3"></textarea>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				<br />
 				<div class="form-group">
+
 					<label class="control-label col-md-2 col-md-offset-2"
-						for="capacity">{{ 'Accomodation' | translate }}</label>
+						for="capacity">{{ 'Enrolment' | translate }}</label>
+
 					<div class="col-md-6">
 						<div class="form-group">
 							<div class="col-md-11">
-								<p-checkbox [(ngModel)]="user.accommodation" name="accomodation"
-									binary="true"></p-checkbox>
+
+								<label class="control-label" *ngIf="isAccepted()" for="capacity">{{
+									'EnrolmentAccepted' | translate }}</label> <label class="control-label"
+									*ngIf="isRejected()" for="capacity">{{
+									'EnrolmentRejected' | translate }}</label> <label class="control-label"
+									*ngIf="isAcceptationPending()" for="capacity">{{
+									'EnrolmentWaiting' | translate }}</label>
+
+								<button pButton type="button" (click)="accept()" icon="fa-check"
+									*ngIf="isAcceptationPending()" style="margin-top: 5px;"
+									class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
+
+								<button pButton type="button" (click)="confirmReject()"
+									icon="fa-close" *ngIf="isAcceptationPending()"
+									style="margin-top: 5px;" class="ui-button-danger"
+									label="{{ 'Reject' | translate}}"></button>
+
+
+								<button pButton type="button" (click)="confirmReject()"
+									icon="fa-close" *ngIf="isAccepted()" style="margin-top: 5px;"
+									class="ui-button-danger"
+									label="{{ 'cancelConfirmation' | translate}}"></button>
+
+
+								<button pButton type="button" (click)="accept()" icon="fa-check"
+									*ngIf="isRejected()" style="margin-top: 5px;"
+									class="ui-button-success" label="{{ 'Accept' | translate}}"></button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br />
-				<div class="col-md-11">
-					<div class="form-group" *ngIf="showAccomodation()">
-						<label class="control-label col-md-2 col-md-offset-2"
-							for="capacity">{{ 'AccomodationDate' | translate }}</label>
-						<div class="col-md-6">
-							<div class="form-group">
-								<div class="col-md-11">
-									<p-calendar [(ngModel)]=user.accommodation_from
-										[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
-										[defaultDate]="defaultDate" name="accomodationFrom"></p-calendar>
-									-
-									<p-calendar [(ngModel)]=user.accommodation_to
-										[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
-										[defaultDate]="defaultDate" name="accomodationTo"></p-calendar>
+				<div class="form-group">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'Paid' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
 
+								<input type="text" pInputText [(ngModel)]="user.payment" />
+							</div>
+						</div>
+					</div>
+
+
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="capacity">{{ 'Payment Status' | translate }}</label>
+
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<label class="control-label" *ngIf="isPaymentAccepted()"
+									for="capacity">{{ 'PaymentAccepted' | translate }}</label> <label
+									class="control-label" *ngIf="isPaymentAcceptationPending()"
+									for="capacity">{{ 'PaymentWaiting' | translate }}</label>
+
+								<button pButton type="button" (click)="acceptPayment()"
+									icon="fa-check" *ngIf="isPaymentAcceptationPending()"
+									style="margin-top: 5px;" class="ui-button-success"
+									label="{{ 'Accept' | translate}}"></button>
+
+
+								<button pButton type="button" (click)="confirmPaymentReject()"
+									icon="fa-close" *ngIf="isPaymentAccepted()"
+									style="margin-top: 5px;" class="ui-button-danger"
+									label="{{ 'cancelConfirmation' | translate}}"></button>
+
+
+							</div>
+						</div>
+					</div>
+
+
+					<br />
+
+					<div class="col-md-11">
+						<div class="form-group">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="invoice">{{ 'wantInvoice' | translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-checkbox [(ngModel)]="user.invoice" name="invoice"
+											binary="true"></p-checkbox>
+									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-				</div>
-				<br />
-				<div class="col-md-11">
+
+					<br />
+					<div class="col-md-11">
+						<div class="form-group">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="invoiceData">{{ 'InvoiceData' | translate }}</label>
+							<div class="form-group">
+								<div class="col-md-6">
+									<textarea class="form-control" id="invoiceData"
+										[(ngModel)]="user.invoice_data" name="invoiceData"
+										placeholder="{{ 'InvoiceData' | translate }}" rows="3"></textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<br />
 					<div class="form-group">
 						<label class="control-label col-md-2 col-md-offset-2"
-							for="camealpacity">{{ 'meal' | translate }}</label>
+							for="capacity">{{ 'Accomodation' | translate }}</label>
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="col-md-11">
-									<p-selectButton [options]="mealOptions"
-										[(ngModel)]="selectedMeal" id="meal" name="meal"></p-selectButton>
+									<p-checkbox [(ngModel)]="user.accommodation"
+										name="accomodation" binary="true"></p-checkbox>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="col-md-11">
-					<div class="form-group">
-						<label class="control-label col-md-2 col-md-offset-2"
-							for="lactose_intolerance">{{ 'lactose_intolerance' |
-							translate }}</label>
-						<div class="col-md-6">
-							<div class="form-group">
-								<div class="col-md-11">
-									<p-checkbox [(ngModel)]="user.lactose_intolerance"
-										name="lactose_intolerance" binary="true"></p-checkbox>
+					<br />
+					<div class="col-md-11">
+						<div class="form-group" *ngIf="showAccomodation()">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="capacity">{{ 'AccomodationDate' | translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-calendar [(ngModel)]=user.accommodation_from [locale]="pl"
+											[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
+											[defaultDate]="defaultDate" name="accomodationFrom"></p-calendar>
+										-
+										<p-calendar [(ngModel)]=user.accommodation_to [locale]="pl"
+											[minDate]="minDate" [maxDate]="maxDate" readonlyInput="true"
+											[defaultDate]="defaultDate" name="accomodationTo"></p-calendar>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<br />
+					<div class="col-md-11">
+						<div class="form-group">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="camealpacity">{{ 'meal' | translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-selectButton [options]="mealOptions"
+											[(ngModel)]="selectedMeal" id="meal" name="meal"></p-selectButton>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
+					<div class="col-md-11">
+						<div class="form-group">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="lactose_intolerance">{{ 'lactose_intolerance' |
+								translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-checkbox [(ngModel)]="user.lactose_intolerance"
+											name="lactose_intolerance" binary="true"></p-checkbox>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
 
 				</div>
+
+
+
 
 			</div>
-
-
-
-
 		</div>
-	</div>
 	</div>
 
 	<div class="panel panel-primary dialog-panel">

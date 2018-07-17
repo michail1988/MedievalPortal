@@ -51,21 +51,12 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
             this.source.load( data );
         } );
 
-        this.userInfoService.getUsersInfo().subscribe(
-                data => {this.userInfo = data
-                    console.log ('data= ' + data)
-                console.log ('Ilosc= ' + data.count)    
-                }, //Bind to view
-                err => {
-                    // Log errors if any
-                    console.log( err );
-                } );
+        this.getAllInfo();
 
         this.showAllEnabled = true;
 
         window.scrollTo( 0, 0 )
     }
-
     
     loadAllEnrolments() {
         // Get all enrolments
@@ -190,6 +181,41 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
         actions: false
     };
 
+    
+    settingsInvoice = {
+            columns: {
+                name: {
+                    title: 'Imie'
+                },
+                surname: {
+                    title: 'Nazwisko'
+                },
+                email: {
+                    title: 'Email'
+                },
+                payment: {
+                    title: 'Oplata',
+                    type: 'custom',
+                    renderComponent: ActionAdminPaymentComponent,
+                    valuePrepareFunction: ( cell, row ) => {
+                        return row
+                    }
+                },
+                invoice_data: {
+                    title: 'Dane do faktury'
+                },
+                action: {
+                    title: 'Akcja',
+                    type: 'custom',
+                    renderComponent: ActionAdminEnrolmentComponent,
+                    valuePrepareFunction: ( cell, row ) => {
+                        return row
+                    }
+                }
+            },
+            actions: false
+        };
+    
     showAll() {
         this.userService.getUsers().toPromise().then(( data ) => {
             this.source.load( data );
@@ -197,8 +223,23 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showAllEnabled = true;
+        
+        this.getAllInfo();
     }
 
+    getAllInfo() {
+        this.userInfoService.getAllUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+    }
+    
     showAcepted() {
         this.userService.getAcceptedUsers().toPromise().then(( data ) => {
             this.source.load( data );
@@ -206,6 +247,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showAcceptedEnabled = true;
+        
+        this.getAcceptedInfo();
+    }
+    
+    getAcceptedInfo() {
+        this.userInfoService.getAcceptedUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showPending() {
@@ -215,6 +271,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showPendingEnabled = true;
+        
+        this.getPendingInfo();
+    }
+    
+    getPendingInfo() {
+        this.userInfoService.getPendingUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showRejected() {
@@ -224,8 +295,23 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showRejectedEnabled = true;
+        
+        this.getRejectedInfo();
     }
 
+    getRejectedInfo() {
+        this.userInfoService.getRejectedUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+    }
+    
     showSpeakers() {
         this.userService.getSpeakers().toPromise().then(( data ) => {
             this.source.load( data );
@@ -233,6 +319,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showSpeakersEnabled = true;
+        
+        this.getSpeakersInfo();
+    }
+    
+    getSpeakersInfo() {
+        this.userInfoService.getSpeakersUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showPaymentAccepted() {
@@ -242,6 +343,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showPaymentAcceptedEnabled = true;
+        
+        this.getPaymentAcceptedInfo();
+    }
+    
+    getPaymentAcceptedInfo() {
+        this.userInfoService.getPaymentAcceptedUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showPaymentPending() {
@@ -251,6 +367,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showPaymentPendingEnabled = true;
+        
+        this.getPaymentPendingInfo();
+    }
+    
+    getPaymentPendingInfo() {
+        this.userInfoService.getPaymentPendingUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showWorkshop() {
@@ -260,6 +391,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showWorkhopEnabled = true;
+        
+        this.getWorkshopInfo();
+    }
+    
+    getWorkshopInfo() {
+        this.userInfoService.getWorkshopUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data.count)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
 
     showInvoice() {
@@ -269,6 +415,21 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
 
         this.resetButtons();
         this.showInvoiceEnabled = true;
+        
+        this.getInvoiceInfo();
+    }
+    
+    getInvoiceInfo() {
+        this.userInfoService.getInvoiceUsersInfo().subscribe(
+                data => {this.userInfo = data
+                    console.log ('data= ' + data)
+                console.log ('Ilosc= ' + data.count)    
+                
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
     }
     
     resetButtons() {

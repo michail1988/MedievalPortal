@@ -139,6 +139,8 @@ export class AdminWorkshopComponent implements OnInit {
                     // Log errors if any
                     console.log( err );
                 } );
+        
+        this.navigateBack();
     }
     
     

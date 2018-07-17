@@ -37,9 +37,11 @@
 
 <br />
 
-{{ 'PersonsCount' | translate }} :
+{{ 'PersonsCount' | translate }} : {{userInfo | json}} 
 
 
 
 
-<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+<ng2-smart-table [settings]="settings" [source]="source" *ngIf="!showInvoiceEnabled"></ng2-smart-table>
+
+<ng2-smart-table [settings]="settingsInvoice" [source]="source" *ngIf="showInvoiceEnabled"></ng2-smart-table>

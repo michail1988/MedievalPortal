@@ -50,10 +50,12 @@ export class UserProfileComponent implements OnInit {
 
     rangeDates: Date[];
 
-    minDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
+    minDate = new Date( 2018, 8, 19, 0, 10, 0, 0 );
     maxDate = new Date( 2018, 8, 23, 0, 10, 0, 0 );
 
-    defaultDate = new Date( 2018, 8, 20, 0, 10, 0, 0 );
+    defaultDate = new Date( 2018, 8, 19, 0, 10, 0, 0 );
+    
+    pl: any;
 
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, public router: Router ) {
@@ -93,6 +95,18 @@ export class UserProfileComponent implements OnInit {
         this.userForm.password2 = 'form-control';
 
         this.userForm.participation = 'col-md-11';
+        
+        this.pl = {
+                firstDayOfWeek: 1,
+                dayNames: [ "Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota" ],
+                dayNamesShort: [ "Nie","Pn","Wt","Śr","Czw","Pi","So" ],
+                dayNamesMin: [ "Nie","Pn","Wt","Śr","Czw","Pi","So" ],
+                monthNames: [ "styczeń","luty","marzec","kwiecień","maj","czerwiec","lipiec","sierpień","wrzesień","październik","listopad","grudzień" ],
+                monthNamesShort: [ "sty","lu","mar","kw","maj","cze","lip","sie","wrz","paź","lis","gru" ],
+                today: 'Dzisiaj',
+                clear: 'Reset'
+            }
+        
     }
 
     ngOnInit() {
@@ -190,16 +204,11 @@ export class UserProfileComponent implements OnInit {
             this.setCongressRole();
             this.setParticipation();
             this.setMeal();
+            this.setAccommodation();
 
 
 
-            if ( this.user.accommodation_from ) {
-                this.user.accommodation_from = new Date( this.user.accommodation_from.getTime() + ( 3 * 3600 * 1000 ) )
-            }
-
-            if ( this.user.accommodation_to ) {
-                this.user.accommodation_to = new Date( this.user.accommodation_to.getTime() + ( 3 * 3600 * 1000 ) )
-            }
+            
 
             console.log( 'saving this.user.accommodation_from=' + this.user.accommodation_from );
             console.log( 'saving this.user.accommodation_to=' + this.user.accommodation_to );
@@ -343,7 +352,7 @@ export class UserProfileComponent implements OnInit {
         if ( this.selectedMeal ) {
             
             if ( this.selectedMeal === '1' ) {
-                this.user.academic_status = '1'
+                this.user.meal = '1'
             }
 
             if ( this.selectedMeal === '2' ) {
@@ -351,12 +360,22 @@ export class UserProfileComponent implements OnInit {
             }
             
             if ( this.selectedMeal === '3' ) {
-                this.user.academic_status = '1'
+                this.user.meal = '3'
             }
             
         }
     }
 
+    setAccommodation() {
+        if ( this.user.accommodation_from ) {
+            this.user.accommodation_from = new Date( this.user.accommodation_from.getTime() + ( 2 * 3600 * 1000 ) )
+        }
+
+        if ( this.user.accommodation_to ) {
+            this.user.accommodation_to = new Date( this.user.accommodation_to.getTime() + ( 2 * 3600 * 1000 ) )
+        }
+    }
+    
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
