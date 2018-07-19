@@ -39,6 +39,7 @@ import { ImageService } from './services/image.service';
 import { NewsService } from './services/news.service';
 import { WorkshopService } from './services/workshop.service';
 import {UserInfoService} from './services/user-info.service';
+import {WorkshopsUserService} from './services/workshops-user.service';
 
 //internationalization
 import { TranslateService } from "app/translations/translate.service";
@@ -217,8 +218,8 @@ import { WorkshopComponent } from './workshop/workshop.component';
         CanActivateAdminGuard, CanActivateUserGuard, TRANSLATION_PROVIDERS, TranslateService,
         ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
         EventNewResolver, WorkshopResolver, WorkshopNewResolver,
-        ConfirmationService, ImageService, NewsService, WorkshopService,
-        NewsResolver, NewsNewResolver,
+        ConfirmationService, ImageService, NewsService, WorkshopService, WorkshopsUserService,
+        NewsResolver, NewsNewResolver, 
         ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver, UserInfoService],
     entryComponents: [ActionAdminEnrolmentComponent, ActionAdminPaymentComponent],
     bootstrap: [AppComponent],

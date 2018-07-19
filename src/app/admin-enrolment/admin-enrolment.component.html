@@ -219,6 +219,26 @@
 
 					</div>
 
+					<div class="col-md-11">
+						<div class="form-group" *ngIf="showWorkshops()">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="workshopOptions">{{ 'WorkshopChoice' | translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-multiSelect [options]="workshopsOptions"
+											[(ngModel)]="selectedWorkshops" name="workshopOptions"
+											id="workshopOptions"
+											defaultLabel="{{ 'SelectedWorkshops' | translate }}"></p-multiSelect>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
 				</div>
 
 

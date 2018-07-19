@@ -209,5 +209,7 @@ export const LANG_PL_TRANS = {
     'Place' : 'Miejsce',
     'Date' : 'Data',
     'meal' : 'Posiłki',
-    'lactose_intolerance' : 'Nietolerancja laktozy'
+    'lactose_intolerance' : 'Nietolerancja laktozy',
+    'WorkshopChoice' : 'Wybór warsztatu',
+    'SelectedWorkshops' : 'Wybierz warsztaty'
 };

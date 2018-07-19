@@ -8,6 +8,10 @@ import { University } from "app/models/university";
 import { UniversityService } from "app/services/university.service";
 import { ImageService } from "app/services/image.service";
 import { UserHistory } from "app/models/user-history";
+import { WorkshopUser } from "app/models/workshop-user";
+import { Workshop } from "app/models/workshop";
+import { WorkshopService } from "app/services/workshop.service";
+import { WorkshopsUserService } from "app/services/workshops-user.service";
 
 @Component( {
     selector: 'admin-enrolment',
@@ -57,9 +61,17 @@ export class AdminEnrolmentComponent implements OnInit {
 
     pl: any;
     
+    workshopsUsers: WorkshopUser[];
+
+    workshops: Workshop[];
+
+    selectedWorkshops: WorkshopUser[];
+    workshopsOptions: SelectItem[];
+    
     constructor( private route: ActivatedRoute,
         private router: Router, private userService: UserService, private confirmationService: ConfirmationService, private universityService: UniversityService,
-        private imageService: ImageService ) {
+        private imageService: ImageService, private workshopsUserService: WorkshopsUserService,
+        private workshopService: WorkshopService ) {
 
 
         this.types = [];
@@ -130,10 +142,74 @@ export class AdminEnrolmentComponent implements OnInit {
             }
         );
 
+        this.loadWorkshops()
+
+
+        this.loadWorkshopsUser();
+        
         window.scrollTo( 0, 0 )
     }
 
+    loadWorkshops() {
+        this.workshopService.getWorkshops()
+            .subscribe(
+            workshops => {
+                this.workshops = workshops
 
+                this.setWorkshopItems()
+            }, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+
+    setWorkshopItems() {
+        this.workshopsOptions = [];
+        this.selectedWorkshops = [];
+        console.log( 'Adding workshop items' )
+        if ( this.workshops ) {
+            for ( var i = 0; i < this.workshops.length; i++ ) {
+
+                console.log( 'Adding workshop item=' + this.workshops[i].title )
+
+                let name = this.workshops[i].title;
+                let id = this.workshops[i].id;
+                this.workshopsOptions.push( { label: this.workshops[i].title, value: { fk_user: this.user.id, fk_workshop: this.workshops[i].id } } );
+
+            }
+        }
+    }
+
+    loadWorkshopsUser() {
+
+        if ( this.user ) {
+            this.workshopsUserService.getWorkshopsForUser( this.user.id )
+                .subscribe(
+                results => {
+                    this.workshopsUsers = results
+                    
+                    this.workshopsOptions.map((item) => {
+                        
+                        for ( var i = 0; i < this.workshopsUsers.length; i++ ) {
+                            
+                            if (this.workshopsUsers[i].fk_workshop == item.value.fk_workshop) {
+                                
+                                this.selectedWorkshops.push(item.value)
+                            }
+                        }
+                    });
+                    
+
+                    //this.selectWorkshops()
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+        }
+    }
+    
     cancel() {
         this.navigateBack();
     }
@@ -247,6 +323,27 @@ export class AdminEnrolmentComponent implements OnInit {
             this.setMeal();
             this.setAccommodation();
 
+            this.workshopsUserService.deleteWorkshopUser( new WorkshopUser( this.user.id, '' ) ).subscribe(
+                    users => {
+                        console.log( users );
+                    },
+                    err => {
+                        // Log errors if any
+                        console.log( err );
+                    } );
+
+                for ( var i = 0; i < this.selectedWorkshops.length; i++ ) {
+                    console.log( 'addWorkshopUser=' + this.selectedWorkshops[i].fk_workshop );
+                    this.workshopsUserService.addWorkshopUser( new WorkshopUser( this.user.id, this.selectedWorkshops[i].fk_workshop ) ).subscribe(
+                        users => {
+                            console.log( users );
+                        },
+                        err => {
+                            // Log errors if any
+                            console.log( err );
+                        } );
+                }
+                
             this.userService.updateUser( this.user ).subscribe(
                 users => {
                     // Emit list event
@@ -429,6 +526,19 @@ export class AdminEnrolmentComponent implements OnInit {
 
     showStudentOptions() {
         return this.selectedAcademicStatus === '1'
+    }
+    
+    showWorkshops() {
+        if ( this.user ) {
+            if ( this.selectedParticipation.length === 2 ) {
+                return true;
+            }
+
+            if ( this.selectedParticipation[0] === '2' ) {
+                return true;
+            }
+
+        }
     }
 
     resetChanges() {

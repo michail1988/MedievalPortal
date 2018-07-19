@@ -9,6 +9,10 @@ import { Router } from "@angular/router";
 import { AuthenticationService } from "app/services/authentication.service";
 import { UniversityService } from "app/services/university.service";
 import { University } from "app/models/university";
+import { WorkshopsUserService } from "app/services/workshops-user.service";
+import { WorkshopUser } from "app/models/workshop-user";
+import { WorkshopService } from "app/services/workshop.service";
+import { Workshop } from "app/models/workshop";
 
 @Component( {
     selector: 'user-profile',
@@ -54,11 +58,19 @@ export class UserProfileComponent implements OnInit {
     maxDate = new Date( 2018, 8, 23, 0, 10, 0, 0 );
 
     defaultDate = new Date( 2018, 8, 19, 0, 10, 0, 0 );
-    
+
     pl: any;
 
+    workshopsUsers: WorkshopUser[];
+
+    workshops: Workshop[];
+
+    selectedWorkshops: WorkshopUser[];
+    workshopsOptions: SelectItem[];
+
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
-        private authenticationService: AuthenticationService, public router: Router ) {
+        private authenticationService: AuthenticationService, private workshopsUserService: WorkshopsUserService,
+        private workshopService: WorkshopService, public router: Router ) {
         this.userId = this.userService.getLoggedUserId();
 
         this.types = [];
@@ -85,7 +97,7 @@ export class UserProfileComponent implements OnInit {
         this.mealOptions.push( { label: 'Standard', value: '1' } );
         this.mealOptions.push( { label: 'Wegetariańskie', value: '2' } );
         this.mealOptions.push( { label: 'Wegańskie', value: '3' } );
-        
+
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
@@ -95,18 +107,18 @@ export class UserProfileComponent implements OnInit {
         this.userForm.password2 = 'form-control';
 
         this.userForm.participation = 'col-md-11';
-        
+
         this.pl = {
-                firstDayOfWeek: 1,
-                dayNames: [ "Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota" ],
-                dayNamesShort: [ "Nie","Pn","Wt","Śr","Czw","Pi","So" ],
-                dayNamesMin: [ "Nie","Pn","Wt","Śr","Czw","Pi","So" ],
-                monthNames: [ "styczeń","luty","marzec","kwiecień","maj","czerwiec","lipiec","sierpień","wrzesień","październik","listopad","grudzień" ],
-                monthNamesShort: [ "sty","lu","mar","kw","maj","cze","lip","sie","wrz","paź","lis","gru" ],
-                today: 'Dzisiaj',
-                clear: 'Reset'
-            }
-        
+            firstDayOfWeek: 1,
+            dayNames: ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
+            dayNamesShort: ["Nie", "Pn", "Wt", "Śr", "Czw", "Pi", "So"],
+            dayNamesMin: ["Nie", "Pn", "Wt", "Śr", "Czw", "Pi", "So"],
+            monthNames: ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"],
+            monthNamesShort: ["sty", "lu", "mar", "kw", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"],
+            today: 'Dzisiaj',
+            clear: 'Reset'
+        }
+
     }
 
     ngOnInit() {
@@ -128,7 +140,8 @@ export class UserProfileComponent implements OnInit {
                     this.selectMeal();
                     this.selectAccommodation()
 
-                   
+
+
 
                 }
             }, //Bind to view
@@ -137,8 +150,79 @@ export class UserProfileComponent implements OnInit {
                 console.log( err );
             } );
 
+        this.loadWorkshops()
+
+
+        this.loadWorkshopsUser();
+
+
+
         window.scrollTo( 0, 0 )
 
+    }
+
+    loadWorkshops() {
+        this.workshopService.getWorkshops()
+            .subscribe(
+            workshops => {
+                this.workshops = workshops
+
+                this.setWorkshopItems()
+            }, //Bind to view
+            err => {
+                // Log errors if any
+                console.log( err );
+            } );
+    }
+
+    setWorkshopItems() {
+        this.workshopsOptions = [];
+        this.selectedWorkshops = [];
+        console.log( 'Adding workshop items' )
+        if ( this.workshops ) {
+            for ( var i = 0; i < this.workshops.length; i++ ) {
+
+                console.log( 'Adding workshop item=' + this.workshops[i].title )
+
+                let name = this.workshops[i].title;
+                let id = this.workshops[i].id;
+                this.workshopsOptions.push( { label: this.workshops[i].title, value: { fk_user: this.userId, fk_workshop: this.workshops[i].id } } );
+
+            }
+        }
+
+        
+        
+        //        this.addressees.sort();
+    }
+
+    loadWorkshopsUser() {
+
+        if ( this.userId ) {
+            this.workshopsUserService.getWorkshopsForUser( this.userId )
+                .subscribe(
+                results => {
+                    this.workshopsUsers = results
+                    
+                    this.workshopsOptions.map((item) => {
+                        
+                        for ( var i = 0; i < this.workshopsUsers.length; i++ ) {
+                            
+                            if (this.workshopsUsers[i].fk_workshop == item.value.fk_workshop) {
+                                
+                                this.selectedWorkshops.push(item.value)
+                            }
+                        }
+                    });
+                    
+
+                    //this.selectWorkshops()
+                }, //Bind to view
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
+        }
     }
 
     msgs: Message[];
@@ -199,6 +283,7 @@ export class UserProfileComponent implements OnInit {
         if ( this.validateUserForm() ) {
             //TODO
             this.user.fk_editor = this.user.id;
+            
             this.setAcademicTitle();
             this.setAcademicStatus();
             this.setCongressRole();
@@ -207,8 +292,27 @@ export class UserProfileComponent implements OnInit {
             this.setAccommodation();
 
 
+            this.workshopsUserService.deleteWorkshopUser( new WorkshopUser( this.userId, '' ) ).subscribe(
+                users => {
+                    console.log( users );
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                } );
 
-            
+            for ( var i = 0; i < this.selectedWorkshops.length; i++ ) {
+                console.log( 'addWorkshopUser=' + this.selectedWorkshops[i].fk_workshop );
+                this.workshopsUserService.addWorkshopUser( new WorkshopUser( this.userId, this.selectedWorkshops[i].fk_workshop ) ).subscribe(
+                    users => {
+                        console.log( users );
+                    },
+                    err => {
+                        // Log errors if any
+                        console.log( err );
+                    } );
+            }
+
 
             console.log( 'saving this.user.accommodation_from=' + this.user.accommodation_from );
             console.log( 'saving this.user.accommodation_to=' + this.user.accommodation_to );
@@ -241,6 +345,8 @@ export class UserProfileComponent implements OnInit {
             this.msgs = [];
             this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
         }
+
+
 
     }
 
@@ -281,11 +387,11 @@ export class UserProfileComponent implements OnInit {
             this.selectedParticipation[1] = '2'
         }
     }
-    
+
     selectMeal() {
         this.selectedMeal = this.user.meal;
     }
-    
+
     selectAccommodation() {
         console.log( 'this.user.accommodation_from=' + this.user.accommodation_from );
         console.log( 'this.user.accommodation_to=' + this.user.accommodation_to );
@@ -347,10 +453,10 @@ export class UserProfileComponent implements OnInit {
         }
 
     }
-    
+
     setMeal() {
         if ( this.selectedMeal ) {
-            
+
             if ( this.selectedMeal === '1' ) {
                 this.user.meal = '1'
             }
@@ -358,11 +464,11 @@ export class UserProfileComponent implements OnInit {
             if ( this.selectedMeal === '2' ) {
                 this.user.meal = '2'
             }
-            
+
             if ( this.selectedMeal === '3' ) {
                 this.user.meal = '3'
             }
-            
+
         }
     }
 
@@ -375,7 +481,7 @@ export class UserProfileComponent implements OnInit {
             this.user.accommodation_to = new Date( this.user.accommodation_to.getTime() + ( 2 * 3600 * 1000 ) )
         }
     }
-    
+
     showAcademicTitle() {
         return this.selectedAcademicStatus === '2'
     }
@@ -391,6 +497,19 @@ export class UserProfileComponent implements OnInit {
 
     showStudentOptions() {
         return this.selectedAcademicStatus === '1'
+    }
+
+    showWorkshops() {
+        if ( this.user ) {
+            if ( this.selectedParticipation.length === 2 ) {
+                return true;
+            }
+
+            if ( this.selectedParticipation[0] === '2' ) {
+                return true;
+            }
+
+        }
     }
 
     setCongressRole() {
