@@ -212,5 +212,9 @@ export const LANG_PL_TRANS = {
     'lactose_intolerance' : 'Nietolerancja laktozy',
     'WorkshopChoice' : 'Wybór warsztatu',
     'SelectedWorkshops' : 'Wybierz warsztaty',
-    'TitleHeadline' : 'Nagłówek tytułowy'
+    'TitleHeadline' : 'Nagłówek tytułowy',
+    'GlutenIntolerance' : 'Nietolerancja glutenu',
+    'AccomodationInfo1' : 'Organizator zapewnia trzy noclegi (19-22.09) w ramach opłaty konferencyjnej.',
+    'AccomodationInfo2' : 'Możliwy jest dodatkowy nocleg 22-23.09, w tej sprawie prosimy o kontakt z <a href="mailto:rejestracja@vikmp.pl"><u>rejestracja@vikmp.pl</u></a>',
+    'AccomodationInfo3' : 'Preferencje dot. zakwaterowania w dwuosobowych pokojach prosimy wpisywać w polu "Uwagi".'
 };

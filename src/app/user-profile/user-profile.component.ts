@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
 
     private imageLoaded: boolean;
 
-    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, '', '' );
+    user = new User( '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, '', '', '' );
 
     selectedCongressRole: string;
     selectedAcademicTitle: string;
@@ -407,6 +407,10 @@ export class UserProfileComponent implements OnInit {
         
         if ( this.user.master === '0' ) {
             this.user.master = null
+        }
+        
+        if ( this.user.gluten_intolerance === '0' ) {
+            this.user.gluten_intolerance = null
         }
     }
 

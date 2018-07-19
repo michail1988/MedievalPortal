@@ -531,6 +531,10 @@ export class AdminEnrolmentComponent implements OnInit {
         if ( this.user.master === '0' ) {
             this.user.master = null
         }
+        
+        if ( this.user.gluten_intolerance === '0' ) {
+            this.user.gluten_intolerance = null
+        }
     }
 
     setAcademicStatus() {

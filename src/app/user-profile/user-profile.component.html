@@ -264,8 +264,26 @@
 				</div>
 
 				<div class="form-group" *ngIf="showAccomodation()">
+					<div>
+						<div>
+							<div class="col-md-11">
+
+
+								<label [innerHTML]="'AccomodationInfo1' | translate"></label> <label
+									[innerHTML]="'AccomodationInfo2' | translate"></label> <label
+									[innerHTML]="'AccomodationInfo3' | translate"></label>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" *ngIf="showAccomodation()">
 					<label class="control-label col-md-2 col-md-offset-2"
 						for="capacity">{{ 'AccomodationDate' | translate }}</label>
+
+
+
 					<div class="col-md-6">
 						<div class="form-group">
 							<div class="col-md-11">
@@ -298,7 +316,7 @@
 					</div>
 				</div>
 
-				<div class="form-group" >
+				<div class="form-group">
 					<label class="control-label col-md-2 col-md-offset-2"
 						for="lactose_intolerance">{{ 'lactose_intolerance' |
 						translate }}</label>
@@ -312,16 +330,30 @@
 					</div>
 				</div>
 
-
-				<div class="form-group" *ngIf="showWorkshops()">
+				<div class="form-group">
 					<label class="control-label col-md-2 col-md-offset-2"
-						for="workshopOptions">{{ 'WorkshopChoice' |
+						for="gluten_intolerance">{{ 'GlutenIntolerance' |
 						translate }}</label>
 					<div class="col-md-6">
 						<div class="form-group">
 							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.gluten_intolerance"
+									name="gluten_intolerance" binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group" *ngIf="showWorkshops()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="workshopOptions">{{ 'WorkshopChoice' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
 								<p-multiSelect [options]="workshopsOptions"
-									[(ngModel)]="selectedWorkshops" name="workshopOptions" id="workshopOptions"
+									[(ngModel)]="selectedWorkshops" name="workshopOptions"
+									id="workshopOptions"
 									defaultLabel="{{ 'SelectedWorkshops' | translate }}"></p-multiSelect>
 							</div>
 						</div>

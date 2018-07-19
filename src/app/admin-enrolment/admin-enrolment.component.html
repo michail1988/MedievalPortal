@@ -215,8 +215,24 @@
 								</div>
 							</div>
 						</div>
+					</div>
 
 
+
+					<div class="col-md-11">
+						<div class="form-group">
+							<label class="control-label col-md-2 col-md-offset-2"
+								for="gluten_intolerance">{{ 'GlutenIntolerance' |
+								translate }}</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="col-md-11">
+										<p-checkbox [(ngModel)]="user.gluten_intolerance"
+											name="gluten_intolerance" binary="true"></p-checkbox>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div class="col-md-11">
