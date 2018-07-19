@@ -139,9 +139,13 @@ export const LANG_PL_TRANS = {
     'CommiteeNames5': 'Prof. dr hab. Marta Młynarska-Kaletynowa, Prof. UWr dr.hab. Gościwit Malinowski,',
     'CommiteeNames6': 'Prof. dr hab. Borys Paszkiewicz',
     'OrganizersCommitee': 'Komitet organizacyjny',
-    'OrganizersCommiteeNames1': 'Prof. dr hab. Mateusz Goliński, Dr hab. Prof. UWr Romuald Kaczmarek,',
-    'OrganizersCommiteeNames2': 'Prof. dr hab. Sławomir Moździoch, Dr hab. Prof. UWr Wojciech Mrozowicz,',
+    'OrganizersCommiteeNames1': 'Prof. dr hab. Mateusz Goliński, dr hab. Prof. UWr Romuald Kaczmarek, Prof. dr hab. Sławomir Moździoch,',
+    'OrganizersCommiteeNames2': 'dr hab. Prof. UWr Wojciech Mrozowicz, dr hab. Aleksander Paroń, dr Mirosław Piwowarczyk,',
     'OrganizersCommiteeNames3': 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
+    'OrganizersTechnical': 'Zespół ds. Informacji i rejestracji uczestników',
+    'OrganizersTechnicalNames1': 'mgr Piotr Piętkowski - koordynator ds. Informacji i rejestracji',
+    'OrganizersTechnicalNames2': 'mgr Konrad Szymański - administrator strony fb kongresu',
+    'OrganizersTechnicalNames3': 'mgr inż. Michał Łabuda - portal internetowy',
     'emailRegisteredAlert': 'Istnieje już użytkownik o podanym adresie email. Rejestracja nie powiodła się.',
     'requiredFieldsAlert': 'Proszę uzupełnić wszystkie obowiązkowe (*) pola.',
     'saveSuccess': 'Zapis zakończony powodzeniem.',
@@ -216,5 +220,6 @@ export const LANG_PL_TRANS = {
     'GlutenIntolerance' : 'Nietolerancja glutenu',
     'AccomodationInfo1' : 'Organizator zapewnia trzy noclegi (19-22.09) w ramach opłaty konferencyjnej.',
     'AccomodationInfo2' : 'Możliwy jest dodatkowy nocleg 22-23.09, w tej sprawie prosimy o kontakt z <a href="mailto:rejestracja@vikmp.pl"><u>rejestracja@vikmp.pl</u></a>',
-    'AccomodationInfo3' : 'Preferencje dot. zakwaterowania w dwuosobowych pokojach prosimy wpisywać w polu "Uwagi".'
+    'AccomodationInfo3' : 'Preferencje dot. zakwaterowania w dwuosobowych pokojach prosimy wpisywać w polu "Uwagi".',
+    'SmookingRoom': 'Pokój dla palących'
 };

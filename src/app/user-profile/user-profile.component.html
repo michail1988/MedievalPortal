@@ -301,7 +301,19 @@
 						</div>
 					</div>
 				</div>
-
+				
+				<div class="form-group" *ngIf="showAccomodation()">
+					<label class="control-label col-md-2 col-md-offset-2"
+						for="smooking_room">{{ 'SmookingRoom' | translate }}</label>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-11">
+								<p-checkbox [(ngModel)]="user.smooking_room" name="smooking_room"
+									binary="true"></p-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="form-group">
 					<label class="control-label col-md-2 col-md-offset-2"

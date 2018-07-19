@@ -30,7 +30,8 @@ export class User {
         public accommodation_to: Date,
         public meal: string,
         public lactose_intolerance: string,
-        public gluten_intolerance: string
+        public gluten_intolerance: string,
+        public smooking_room: string
     ) { }
     
     public fk_editor: string
