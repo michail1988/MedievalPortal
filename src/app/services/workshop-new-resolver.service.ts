@@ -16,7 +16,7 @@ export class WorkshopNewResolver implements Resolve<Workshop> {
         ): Observable<Workshop> {
 
             return Observable.create( observer => {
-                observer.next( new Workshop( '', '', '', '', '', '', '', 'A' ) );
+                observer.next( new Workshop( '', '', '', '', '', '', '', '', 'A' ) );
                 observer.complete();
             } );
 

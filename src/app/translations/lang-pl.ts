@@ -211,5 +211,6 @@ export const LANG_PL_TRANS = {
     'meal' : 'Posiłki',
     'lactose_intolerance' : 'Nietolerancja laktozy',
     'WorkshopChoice' : 'Wybór warsztatu',
-    'SelectedWorkshops' : 'Wybierz warsztaty'
+    'SelectedWorkshops' : 'Wybierz warsztaty',
+    'TitleHeadline' : 'Nagłówek tytułowy'
 };

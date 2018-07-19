@@ -1,6 +1,7 @@
 export class Workshop {
     constructor(
             public id: string,
+            public headline: string,
             public title: string,
             public author: string,
             public content: string,
