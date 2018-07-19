@@ -1,50 +1,66 @@
-<p-confirmDialog></p-confirmDialog>
+<div class="contentUnderNewHeader">
+
+	<p-confirmDialog></p-confirmDialog>
 
 
-<br />
-<br />
+	<br /> <br />
 
-<button pButton type="button"  (click)="saveNew()" icon="fa-check" *ngIf="isNew()"
-	class="ui-button-success" label="{{ 'Save' | translate}}"></button>
 
-<button pButton type="button" (click)="save()" icon="fa-check" *ngIf="!isNew()"
-	class="ui-button-success" label="{{ 'Save' | translate}}"></button>
-	
-<button pButton type="button" (click)="cancel()" icon="fa-close"
-	class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
+	<button pButton type="button" (click)="saveNew()" icon="fa-check"
+		*ngIf="isNew()" class="ui-button-success"
+		label="{{ 'Save' | translate}}"></button>
 
-<button pButton type="button" (click)="confirmDelete()" *ngIf="!isDeleted()"
-	icon="fa-trash-o" class="ui-button-danger"
-	label="{{ 'Delete' | translate}}"></button>
+	<button pButton type="button" (click)="save()" icon="fa-check"
+		*ngIf="!isNew()" class="ui-button-success"
+		label="{{ 'Save' | translate}}"></button>
 
-<button pButton type="button" (click)="activateWorkshop()" *ngIf="isDeleted()"
-	icon="fa-trash-o" class="ui-button-danger"
-	label="{{ 'Recover' | translate}}"></button>
-	
-<br />
-<br />
+	<button pButton type="button" (click)="cancel()" icon="fa-close"
+		class="ui-button-warning" label="{{ 'Cancel' | translate}}"></button>
 
-<p-tabView> <p-tabPanel header="Info"
-	leftIcon="fa-drivers-license-o">
-	
-	<label for="author">{{ 'Author' | translate}}</label> <br />
-	<input  type="text" size="30" pInputText name="author" required [(ngModel)]="workshop.author">
-	<br/>
+	<button pButton type="button" (click)="confirmDelete()"
+		*ngIf="!isDeleted()" icon="fa-trash-o" class="ui-button-danger"
+		label="{{ 'Delete' | translate}}"></button>
+
+	<button pButton type="button" (click)="activateWorkshop()"
+		*ngIf="isDeleted()" icon="fa-trash-o" class="ui-button-danger"
+		label="{{ 'Recover' | translate}}"></button>
+
+	<br /> <br />
+
+	<div class="redAlert" *ngIf="requiredFieldsAlertVisible()">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> {{
+		'requiredFieldsAlert' | translate }}
+	</div>
+
+	<div class="greenAlert" *ngIf="saveSuccessAlertVisible()">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> {{
+		'saveSuccess' | translate }}
+	</div>
+
+	<br /> <br />
+	<p-tabView> <p-tabPanel header="Info"
+		leftIcon="fa-drivers-license-o"> <label for="author">{{
+		'Author' | translate}}</label> <br />
+	<input type="text" size="30" pInputText name="author" required
+		[(ngModel)]="workshop.author"> <br />
 	<label for="title">{{ 'Title' | translate}}</label> <br />
-	<input  type="text" size="100" pInputText name="title" required [(ngModel)]="workshop.title">
-	<br/>
+	<input type="text" size="100" pInputText name="title" required
+		[(ngModel)]="workshop.title"> <br />
 	<label for="title">{{ 'TitleHeadline' | translate}}</label> <br />
-	<input  type="text" size="100" pInputText name="title" required [(ngModel)]="workshop.headline">
-	<br />
+	<input type="text" size="100" pInputText name="title" required
+		[(ngModel)]="workshop.headline"> <br />
 	<label for="place">{{ 'Place' | translate}}</label> <br />
-	<input  type="text" size="100" pInputText name="place" required [(ngModel)]="workshop.place">
-	<br />
+	<input type="text" size="100" pInputText name="place" required
+		[(ngModel)]="workshop.place"> <br />
 	<label for="contact">{{ 'Contact' | translate}}</label> <br />
-	<input  type="text" size="100" pInputText name="contact" required [(ngModel)]="workshop.contact">
-	<br />
+	<input type="text" size="100" pInputText name="contact" required
+		[(ngModel)]="workshop.contact"> <br />
 	<label for="date">{{ 'Date' | translate}}</label> <br />
-	<input  type="text" size="100" pInputText name="date" required [(ngModel)]="workshop.date">
-	<br />
-	 </p-tabPanel> <p-tabPanel header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o">
-<p-editor [(ngModel)]="workshop.content" [style]="{'height':'320px'}">
-</p-editor> </p-tabPanel> </p-tabView>
+	<input type="text" size="100" pInputText name="date" required
+		[(ngModel)]="workshop.date"> <br />
+	</p-tabPanel> <p-tabPanel header="{{ 'Text' | translate}}" leftIcon="fa-file-word-o">
+	<p-editor [(ngModel)]="workshop.content" [style]="{'height':'320px'}">
+	</p-editor> </p-tabPanel> </p-tabView>
+</div>

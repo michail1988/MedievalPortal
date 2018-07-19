@@ -22,6 +22,9 @@ export class AdminWorkshopComponent implements OnInit {
     msgs: Message[] = [];
     navigationItems: MenuItem[];
 
+requiredFieldsAlert: boolean;
+saveSuccessAlert: boolean;
+
     constructor(private route: ActivatedRoute,
             private router: Router, private workshopService: WorkshopService, private confirmationService: ConfirmationService) { }
 
@@ -64,25 +67,40 @@ export class AdminWorkshopComponent implements OnInit {
 
     save() {
         //TODO get from localStorage.getItem( 'token' )
-        this.workshop.fk_editor = '1';
-
-        this.workshopService.updateWorkshop( this.workshop ).subscribe(
-                workshops => {
-                // Emit list event
-                //                //navigate
-                //                EmitterService.get( this.listId ).emit( enrolments );
-                // Empty model
-
-                this.navigateBack();
-
-            },
-            err => {
-                // Log errors if any
-                console.log( err );
-            } );
         
-        //TODO Michal tymczasowo bo nie ma odpowiedzi
-        this.navigateBack();
+        this.requiredFieldsAlert = false;
+        this.saveSuccessAlert = false;
+        
+        if (this.validate()) {
+            this.workshop.fk_editor = localStorage.getItem( 'userid' )
+
+            this.workshopService.updateWorkshop( this.workshop ).subscribe(
+                    workshops => {
+                    // Emit list event
+                    //                //navigate
+                    //                EmitterService.get( this.listId ).emit( enrolments );
+                    // Empty model
+
+                        this.msgs = [];
+                        this.msgs.push( { severity: 'success', summary: 'Zapis zakonczony powodzeniem.', detail: '' } );
+
+                        this.saveSuccessAlert = true;
+                        window.scrollTo( 0, 0 )
+
+                },
+                err => {
+                    // Log errors if any
+                    console.log( err );
+                    this.requiredFieldsAlert = false;
+                } );
+            
+        } else {
+            this.requiredFieldsAlert = true;
+
+            this.msgs = [];
+            this.msgs.push( { severity: 'error', summary: 'Proszę uzupełnic wszystkie obowiązkowe (*) pola.', detail: '' } );
+        }
+        
 
     }
 
@@ -164,6 +182,31 @@ export class AdminWorkshopComponent implements OnInit {
     
     navigateBack() {
         this.router.navigate(['/admin', {outlets: {adminRouting: ['admin-workshops']}}])
+    }
+    
+    validate() {
+        var result = true;
+
+        if ( this.isEmpty( this.workshop.title ) ) {
+            result = false;
+//            this.userForm..password1 = 'form-control validationError';
+        } else {
+//            this.userForm.password1 = 'form-control';
+        }
+        
+        return result;
+    }
+    
+    isEmpty( str ) {
+        return ( !str || 0 === str.length );
+    }
+    
+    requiredFieldsAlertVisible() {
+        return this.requiredFieldsAlert
+    }
+
+    saveSuccessAlertVisible() {
+        return this.saveSuccessAlert
     }
 
 }
