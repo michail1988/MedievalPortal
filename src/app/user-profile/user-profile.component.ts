@@ -139,10 +139,9 @@ export class UserProfileComponent implements OnInit {
                     this.selectParticipation();
                     this.selectMeal();
                     this.selectAccommodation()
+                    this.selectBooleans()
 
-
-
-
+                    
                 }
             }, //Bind to view
             err => {
@@ -151,11 +150,7 @@ export class UserProfileComponent implements OnInit {
             } );
 
         this.loadWorkshops()
-
-
         this.loadWorkshopsUser();
-
-
 
         window.scrollTo( 0, 0 )
 
@@ -178,11 +173,8 @@ export class UserProfileComponent implements OnInit {
     setWorkshopItems() {
         this.workshopsOptions = [];
         this.selectedWorkshops = [];
-        console.log( 'Adding workshop items' )
         if ( this.workshops ) {
             for ( var i = 0; i < this.workshops.length; i++ ) {
-
-                console.log( 'Adding workshop item=' + this.workshops[i].title )
 
                 let name = this.workshops[i].title;
                 let id = this.workshops[i].id;
@@ -190,10 +182,6 @@ export class UserProfileComponent implements OnInit {
 
             }
         }
-
-        
-        
-        //        this.addressees.sort();
     }
 
     loadWorkshopsUser() {
@@ -203,18 +191,18 @@ export class UserProfileComponent implements OnInit {
                 .subscribe(
                 results => {
                     this.workshopsUsers = results
-                    
-                    this.workshopsOptions.map((item) => {
-                        
+
+                    this.workshopsOptions.map(( item ) => {
+
                         for ( var i = 0; i < this.workshopsUsers.length; i++ ) {
-                            
-                            if (this.workshopsUsers[i].fk_workshop == item.value.fk_workshop) {
-                                
-                                this.selectedWorkshops.push(item.value)
+
+                            if ( this.workshopsUsers[i].fk_workshop == item.value.fk_workshop ) {
+
+                                this.selectedWorkshops.push( item.value )
                             }
                         }
-                    });
-                    
+                    } );
+
 
                     //this.selectWorkshops()
                 }, //Bind to view
@@ -281,9 +269,8 @@ export class UserProfileComponent implements OnInit {
         this.passwordChangedAlert = false;
 
         if ( this.validateUserForm() ) {
-            //TODO
             this.user.fk_editor = this.user.id;
-            
+
             this.setAcademicTitle();
             this.setAcademicStatus();
             this.setCongressRole();
@@ -291,10 +278,8 @@ export class UserProfileComponent implements OnInit {
             this.setMeal();
             this.setAccommodation();
 
-
             this.workshopsUserService.deleteWorkshopUser( new WorkshopUser( this.userId, '' ) ).subscribe(
                 users => {
-                    console.log( users );
                 },
                 err => {
                     // Log errors if any
@@ -302,10 +287,8 @@ export class UserProfileComponent implements OnInit {
                 } );
 
             for ( var i = 0; i < this.selectedWorkshops.length; i++ ) {
-                console.log( 'addWorkshopUser=' + this.selectedWorkshops[i].fk_workshop );
                 this.workshopsUserService.addWorkshopUser( new WorkshopUser( this.userId, this.selectedWorkshops[i].fk_workshop ) ).subscribe(
                     users => {
-                        console.log( users );
                     },
                     err => {
                         // Log errors if any
@@ -404,6 +387,28 @@ export class UserProfileComponent implements OnInit {
             this.user.accommodation_to = new Date( this.user.accommodation_to )
         }
     }
+    
+    selectBooleans() {
+        if ( this.user.accommodation === '0' ) {
+            this.user.accommodation = null
+        }
+        
+        if ( this.user.engineer === '0' ) {
+            this.user.engineer = null
+        }
+        
+        if ( this.user.invoice === '0' ) {
+            this.user.invoice = null
+        }
+        
+        if ( this.user.lactose_intolerance === '0' ) {
+            this.user.lactose_intolerance = null
+        }
+        
+        if ( this.user.master === '0' ) {
+            this.user.master = null
+        }
+    }
 
     setAcademicTitle() {
         if ( this.selectedAcademicTitle === '1' ) {
@@ -491,7 +496,6 @@ export class UserProfileComponent implements OnInit {
     }
 
     showAccomodation() {
-        console.log( 'this.user.accommodation=' + this.user.accommodation );
         return this.user.accommodation === '1' || this.user.accommodation
     }
 

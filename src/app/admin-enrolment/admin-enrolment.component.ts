@@ -133,6 +133,7 @@ export class AdminEnrolmentComponent implements OnInit {
                     this.selectParticipation();
                     this.selectMeal();
                     this.selectAccommodation()
+                    this.selectBooleans
                     
                 } else {
                     //TODO Michal error and redirect
@@ -507,6 +508,28 @@ export class AdminEnrolmentComponent implements OnInit {
 
         if ( this.user.accommodation_to ) {
             this.user.accommodation_to = new Date( this.user.accommodation_to )
+        }
+    }
+    
+    selectBooleans() {
+        if ( this.user.accommodation === '0' ) {
+            this.user.accommodation = null
+        }
+        
+        if ( this.user.engineer === '0' ) {
+            this.user.engineer = null
+        }
+        
+        if ( this.user.invoice === '0' ) {
+            this.user.invoice = null
+        }
+        
+        if ( this.user.lactose_intolerance === '0' ) {
+            this.user.lactose_intolerance = null
+        }
+        
+        if ( this.user.master === '0' ) {
+            this.user.master = null
         }
     }
 
