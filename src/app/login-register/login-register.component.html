@@ -193,18 +193,6 @@
 				</div>
 			</div>
 
-
-			<div class="sminputs">
-				<div [class]="registerForm.participation">
-					<label class="string optional" for="participation">{{
-						'registerParticipation' | translate }}</label>
-					<p-selectButton [options]="participationOptions"
-						multiple="multiple" [(ngModel)]="selectedParticipation"
-						id="participation" name="participation"></p-selectButton>
-				</div>
-			</div>
-
-
 			<div class="simform__actions">
 				<input class="submit" name="commit" type="submit"
 					value="{{ 'Create account' | translate }}" /> <span

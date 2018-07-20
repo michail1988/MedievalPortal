@@ -244,12 +244,12 @@ export class LoginRegisterComponent implements OnInit {
 
         }
 
-        if ( this.isEmpty( this.selectedParticipation ) ) {
-            result = false;
-            this.registerForm.participation = 'input full validationError';
-        } else {
-            this.registerForm.participation = 'input full';
-        }
+//        if ( this.isEmpty( this.selectedParticipation ) ) {
+//            result = false;
+//            this.registerForm.participation = 'input full validationError';
+//        } else {
+//            this.registerForm.participation = 'input full';
+//        }
 
 
         return result;

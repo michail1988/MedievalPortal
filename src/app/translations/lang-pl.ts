@@ -142,7 +142,7 @@ export const LANG_PL_TRANS = {
     'OrganizersCommiteeNames1': 'Prof. dr hab. Mateusz Goliński, dr hab. Prof. UWr Romuald Kaczmarek, Prof. dr hab. Sławomir Moździoch,',
     'OrganizersCommiteeNames2': 'dr hab. Prof. UWr Wojciech Mrozowicz, dr hab. Aleksander Paroń, dr Mirosław Piwowarczyk,',
     'OrganizersCommiteeNames3': 'Prof. dr hab. Stanisław Rosik (przewodniczący)',
-    'OrganizersTechnical': 'Zespół ds. Informacji i rejestracji uczestników',
+    'OrganizersTechnical': 'Zespół ds. informacji i rejestracji uczestników',
     'OrganizersTechnicalNames1': 'mgr Piotr Piętkowski - koordynator ds. Informacji i rejestracji',
     'OrganizersTechnicalNames2': 'mgr Konrad Szymański - administrator strony fb kongresu',
     'OrganizersTechnicalNames3': 'mgr inż. Michał Łabuda - portal internetowy',
