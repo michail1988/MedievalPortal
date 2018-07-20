@@ -557,11 +557,18 @@ export class UserProfileComponent implements OnInit {
             } );
 
         if ( this.user ) {
+            this.selectAcademicStatus( this.user );
             this.selectAcademicTitle( this.user );
             this.selectCongressRole( this.user );
             this.selectParticipation();
+            this.selectMeal();
+            this.selectAccommodation()
+            this.selectBooleans()
         }
 
+        this.loadWorkshops()
+        this.loadWorkshopsUser();
+        
         this.userForm = [];
         this.userForm.name = 'form-control';
         this.userForm.surname = 'form-control';
