@@ -26,4 +26,8 @@ export class HeaderComponent implements OnInit {
   isShowLinks() {
       return Config.isShowLinks();
   }
+  
+  isShowNews() {
+      return Config.isShowNews();
+  }
 }

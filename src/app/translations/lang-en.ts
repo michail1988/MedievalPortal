@@ -166,6 +166,8 @@ export const LANG_EN_TRANS = {
     'Invoice' : 'Invoice',
     'Show deleted workshops' : 'Show deleted workshops',
     'Show workshops' : 'Show workshops',
-    'Place' : 'Place'
+    'Place' : 'Place',
+    'LeaveComment' : 'Leave a comment:'
+    
 
 };

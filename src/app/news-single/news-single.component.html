@@ -1,25 +1,26 @@
+<div class="contentUnderNewHeader">
 
-<print [section]="printSection">Print</print>
 
-<!-- Page Content -->
-<div class="container">
+	<!-- Page Content -->
+	<div class="container">
 
-	<div class="row">
+		<print [section]="printSection">Print</print>
+		<div class="row">
 
-		<!-- Blog Post Content Column -->
-		<div class="col-lg-8">
+			<!-- Blog Post Content Column -->
+			<div class="col-lg-8">
 
-			<div id="printSection">
-				<h1>{{article.title}}</h1>
+				<div id="printSection">
+					<h1>{{article.title}}</h1>
 
-				<!-- Author -->
-				<p class="lead">
-					{{ 'Author' | translate }} <a href="#">{{article.author}}</a>
-				</p>
-
+					<!-- Author -->
+					<p class="lead">
+						{{ 'Author' | translate }}: {{article.author}}
+					</p>
+					<!-- 
 				<hr>
 
-				<!-- Date/Time -->
+				
 				<p>
 					<span class="glyphicon glyphicon-time"></span> Posted on August 24,
 					2013 at 9:00 PM
@@ -28,43 +29,45 @@
 				<hr>
 
 				<!-- Preview Image -->
-				<img class="img-responsive" src="/assets/img/900x300.png" alt="">
+					<img class="img-responsive" width="900"
+						src="https://www.ap.wroc.pl/sites/default/files/images/2013/05/dsc_1062.jpg"
+						alt=""> 
+					<hr>
+
+					<!-- Post Content -->
+					<div class="lead">
+						<div [innerHTML]="article.headline"></div>
+					</div>
+
+					<div [innerHTML]="article.content"></div>
+
+				</div>
 
 				<hr>
 
-				<!-- Post Content -->
-				<div class="lead">
-					<div [innerHTML]="article.headline"></div>
+				<!-- Blog Comments -->
+
+				<!-- Comments Form -->
+				<div class="well" *ngIf="isLogged()">
+					<h4>{{ 'LeaveComment' | translate }}</h4>
+					<form role="form">
+						<div class="form-group">
+							<textarea class="form-control" name="comment"
+								[(ngModel)]="comment.comment" rows="3"></textarea>
+						</div>
+						<button (click)="addNewComment()" type="submit"
+							class="btn btn-primary">{{ 'Submit' | translate }}</button>
+					</form>
 				</div>
 
-				<div [innerHTML]="article.content"></div>
+				<hr *ngIf="isLogged()">
+
+
+
+				<comment-box *ngFor="let comment of comments" [comment]="comment">
+				</comment-box>
+
+
 
 			</div>
-
-			<hr>
-
-			<!-- Blog Comments -->
-
-			<!-- Comments Form -->
-			<div class="well" *ngIf="isLogged()">
-				<h4>{{ 'Leave a comment:' | translate }}</h4>
-				<form role="form">
-					<div class="form-group">
-						<textarea class="form-control" name="comment"
-							[(ngModel)]="comment.comment" rows="3"></textarea>
-					</div>
-					<button (click)="addNewComment()" type="submit"
-						class="btn btn-primary">{{ 'Submit' | translate }}</button>
-				</form>
-			</div>
-
-			<hr *ngIf="isLogged()">
-
-
-
-			<comment-box *ngFor="let comment of comments" [comment]="comment">
-			</comment-box>
-
-
-
 		</div>

@@ -149,6 +149,7 @@ export class EnrolmentsComponent implements OnInit, OnChanges {
                     if ( value === '3' ) return 'dr hab.';
                     if ( value === '4' ) return 'Prof. (stan.)';
                     if ( value === '5' ) return 'Prof.';
+                    
                     return ''
                 }
             },

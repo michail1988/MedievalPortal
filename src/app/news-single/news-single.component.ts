@@ -39,6 +39,7 @@ export class NewsSingleComponent implements OnInit {
         }
 
 
+        window.scrollTo( 0, 0 )
     }
 
     loadAllComments() {

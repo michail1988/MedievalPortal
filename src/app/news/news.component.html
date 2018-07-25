@@ -1,5 +1,19 @@
-<div></div>
+<div class="contentUnderNewHeader">
 
+<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="about_title">
+					<h2>{{ 'News' | translate }}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+<hr/>
+<!-- 
 <div class="row">
 	<div class="col-md-12">
 		<carousel [interval]="NextPhotoInterval" [noWrap]="noLoopSlides" >
@@ -17,7 +31,9 @@
 
 <br />
 <br />
-
-
+ -->
+<div align="center">
 <news-box *ngFor="let article of news" [article]="article">
 </news-box>
+</div>
+</div>
