@@ -121,6 +121,13 @@ import { WorkshopResolver } from "app/services/workshop-resolver.service";
 import { WorkshopNewResolver } from "app/services/workshop-new-resolver.service";
 import { AdminWorkshopComponent } from './admin-workshop/admin-workshop.component';
 import { WorkshopComponent } from './workshop/workshop.component';
+import { AdminLecturesComponent } from './admin-lectures/admin-lectures.component';
+import { AdminLectureComponent } from './admin-lecture/admin-lecture.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LectureComponent } from './lecture/lecture.component';
+import { LectureService } from "app/services/lecture.service";
+import { LectureResolver } from "app/services/lecture-resolver.service";
+import { LectureNewResolver } from "app/services/lecture-new-resolver.service";
 
 
 
@@ -185,7 +192,11 @@ import { WorkshopComponent } from './workshop/workshop.component';
         WorkshopsComponent,
         AdminWorkshopsComponent,
         AdminWorkshopComponent,
-        WorkshopComponent
+        WorkshopComponent,
+        AdminLecturesComponent,
+        AdminLectureComponent,
+        LecturesComponent,
+        LectureComponent
     ],
     imports: [
         BrowserModule,
@@ -219,7 +230,7 @@ import { WorkshopComponent } from './workshop/workshop.component';
         ArticleResolver, ArticleNewResolver, ScheduleResolver, ScheduleNewResolver, EventResolver,
         EventNewResolver, WorkshopResolver, WorkshopNewResolver,
         ConfirmationService, ImageService, NewsService, WorkshopService, WorkshopsUserService,
-        NewsResolver, NewsNewResolver, 
+        NewsResolver, NewsNewResolver, LectureService, LectureResolver, LectureNewResolver,
         ContactService, CommentService, CommentNewsService, ScheduleService, EventService, UserResolver, UserInfoService],
     entryComponents: [ActionAdminEnrolmentComponent, ActionAdminPaymentComponent],
     bootstrap: [AppComponent],

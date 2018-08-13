@@ -30,4 +30,8 @@ export class HeaderComponent implements OnInit {
   isShowNews() {
       return Config.isShowNews();
   }
+  
+  isShowArticles() {
+      return Config.isShowArticles();
+  }
 }

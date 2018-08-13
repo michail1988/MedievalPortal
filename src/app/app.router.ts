@@ -52,6 +52,11 @@ import { AdminWorkshopsComponent } from "app/admin-workshops/admin-workshops.com
 import { AdminWorkshopComponent } from "app/admin-workshop/admin-workshop.component";
 import { WorkshopNewResolver } from "app/services/workshop-new-resolver.service";
 import { WorkshopResolver } from "app/services/workshop-resolver.service";
+import { AdminLecturesComponent } from "app/admin-lectures/admin-lectures.component";
+import { LectureNewResolver } from "app/services/lecture-new-resolver.service";
+import { AdminLectureComponent } from "app/admin-lecture/admin-lecture.component";
+import { LectureResolver } from "app/services/lecture-resolver.service";
+import { LecturesComponent } from "app/lectures/lectures.component";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -82,6 +87,11 @@ export const router: Routes = [
                 outlet: 'adminRouting'
             },
             {
+                path: 'admin-lectures',
+                component: AdminLecturesComponent,
+                outlet: 'adminRouting'
+            },
+            {
                 path: 'admin-mailbox',
                 component: AdminMailboxComponent,
                 outlet: 'adminRouting'
@@ -109,7 +119,7 @@ export const router: Routes = [
                 }, canActivate: [
                     CanActivateAdminGuard
                 ],
-                
+
             },
             {
                 path: 'admin-schedule/:id',
@@ -137,7 +147,7 @@ export const router: Routes = [
         component: ArticleComponent,
         resolve: {
             article: ArticleResolver
-        }, 
+        },
     },
     {
         path: 'admin-user/:id',
@@ -153,7 +163,7 @@ export const router: Routes = [
         component: NewsSingleComponent,
         resolve: {
             news: NewsResolver
-        }, 
+        },
     },
     {
         path: 'admin-article/:id',
@@ -245,24 +255,43 @@ export const router: Routes = [
             CanActivateAdminGuard
         ],
     },
-    
-    
-    
     {
-                path: 'admin-workshop/:id',
-                component: AdminWorkshopComponent,
-                resolve: {
-                    workshop: WorkshopResolver
-                }, canActivate: [
-                    CanActivateAdminGuard
-                ],
-                
-            },
-            
+        path: 'admin-lecture-new',
+        component: AdminLectureComponent,
+        resolve: {
+            lecture: LectureNewResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+    },
+
+
+
+    {
+        path: 'admin-workshop/:id',
+        component: AdminWorkshopComponent,
+        resolve: {
+            workshop: WorkshopResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+
+    },
+    {
+        path: 'admin-lecture/:id',
+        component: AdminLectureComponent,
+        resolve: {
+            lecture: LectureResolver
+        }, canActivate: [
+            CanActivateAdminGuard
+        ],
+
+    },
+
     { path: 'articles', component: ArticlesComponent },
     { path: 'schedules', component: ScheduleComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'links', component: LinksComponent },    
+    { path: 'links', component: LinksComponent },
     { path: 'login-register/forgot-password', component: ForgotPasswordComponent },
     { path: 'welcome/forgot-password', component: ForgotPasswordComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
@@ -270,11 +299,12 @@ export const router: Routes = [
     { path: 'login-register/enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'enrolment-created', component: EnrolmentCreatedComponent },
     { path: 'letter-of-intent', component: LetterOfIntentComponent },
-    { path: 'workshops', component: WorkshopsComponent },    
+    { path: 'workshops', component: WorkshopsComponent },
+    { path: 'lectures', component: LecturesComponent },
     { path: 'patronage', component: PatronageComponent },
     { path: 'paymentInfo', component: PaymentInfoComponent }
-    
-    
+
+
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot( router );

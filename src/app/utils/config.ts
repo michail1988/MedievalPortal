@@ -7,7 +7,7 @@ export class Config {
     }
     
     public static isShowArticles() {
-        return false;
+        return true;
     }
     
     public static isShowNews() {
@@ -27,6 +27,10 @@ export class Config {
     }
     
     public static isShowWorkshops() {
+        return true;
+    }
+    
+    public static isShowLectures() {
         return true;
     }
 }
