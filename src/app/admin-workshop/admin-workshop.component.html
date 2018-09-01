@@ -64,3 +64,14 @@
 	<p-editor [(ngModel)]="workshop.content" [style]="{'height':'320px'}">
 	</p-editor> </p-tabPanel> </p-tabView>
 </div>
+
+<hr />
+<div class="row">
+	<div class="col-md-12 text-center">
+		<div class="about_title">
+			<h2>{{ 'UsersEnrolments' | translate }}</h2>
+		</div>
+	</div>
+</div>
+
+<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

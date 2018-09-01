@@ -67,6 +67,8 @@ export class UserProfileComponent implements OnInit {
 
     selectedWorkshops: WorkshopUser[];
     workshopsOptions: SelectItem[];
+    
+    kodykologiczny: boolean;
 
     constructor( private imageService: ImageService, private userService: UserService, private universityService: UniversityService,
         private authenticationService: AuthenticationService, private workshopsUserService: WorkshopsUserService,
@@ -149,14 +151,40 @@ export class UserProfileComponent implements OnInit {
                 console.log( err );
             } );
 
-        this.loadWorkshops()
-        this.loadWorkshopsUser();
-
+        this.preloadWorkshopsForUser();
+        
+        
+        
         window.scrollTo( 0, 0 )
 
     }
 
+    preloadWorkshopsForUser() {
+    
+        console.log('preload');
+        
+        if ( this.userId ) {
+            this.workshopsUserService.getWorkshopsForUser( this.userId )
+                .subscribe(
+                results => {
+                    this.workshopsUsers = results;
+                    
+                    for ( var i = 0; i < this.workshopsUsers.length; i++ ) {
+
+                        if ('3' === this.workshopsUsers[i].fk_workshop) {
+                            this.kodykologiczny = true;
+                        }
+                    }
+                    
+                    this.loadWorkshops()
+                    this.loadWorkshopsUser();
+
+                })
+        }
+    }
+    
     loadWorkshops() {
+
         this.workshopService.getWorkshops()
             .subscribe(
             workshops => {
@@ -178,7 +206,16 @@ export class UserProfileComponent implements OnInit {
 
                 let name = this.workshops[i].title;
                 let id = this.workshops[i].id;
-                this.workshopsOptions.push( { label: this.workshops[i].title, value: { fk_user: this.userId, fk_workshop: this.workshops[i].id } } );
+                
+                if (this.workshops && '3' == this.workshops[i].id) {
+                    if (this.kodykologiczny === true) {
+                        this.workshopsOptions.push( { label: this.workshops[i].title, value: { fk_user: this.userId, fk_workshop: this.workshops[i].id } } );
+                    }
+                } else {
+                    this.workshopsOptions.push( { label: this.workshops[i].title, value: { fk_user: this.userId, fk_workshop: this.workshops[i].id } } );
+                }
+                
+                
 
             }
         }

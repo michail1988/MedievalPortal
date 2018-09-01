@@ -116,12 +116,12 @@ export const LANG_PL_TRANS = {
     'Change password': 'Zmień hasło',
     'FooterWelcome': 'Zapraszamy!',
     'RegistrationOpen': 'Rejestracja już otwarta!',
-    'RegistrationTime': 'Na zgłoszenia czekamy do 30 sierpnia.',
+    'RegistrationTime': 'Na zgłoszenia czekamy do 5 września.',
     'enrolment-created-title': 'Dziękujemy za przesłanie zgłoszenia.',
     'enrolment-created1': 'O akceptacji Państwa wniosku poinformujemy drogą mailową. Po jej otrzymaniu będzie możliwe zalogowanie się za pomocą zdefiniowanego przez Państwa hasła.',
     'TermsTitle': 'Regulamin korzystania z portalu:',
     'Terms0-1': 'Akceptacja regulaminu oznacza wyrażenie zgody na przetwarzanie danych osobowych na potrzeby zjazdu i działań organizacyjnych związanych z wydarzeniem.',
-    'Terms0-2': 'Rejestracja trwa od 9 kwietnia 2018 r. do 30 sierpnia 2018 r.',
+    'Terms0-2': 'Rejestracja trwa od 9 kwietnia 2018 r. do 5 września 2018 r.',
     'Terms0': 'W celu uczestnictwa w zjeździe należy:',
     'Terms1': 'Utworzyć konto na stronie <a href="www.vikmp.pl">www.vikmp.pl</a>',
     'Terms2': 'Po otrzymaniu maila aktywującego uzupełnić wszelkie brakujące dane.',
@@ -233,5 +233,6 @@ export const LANG_PL_TRANS = {
     'MediaPatronage' : 'Patronat medialny',
     'MediaPatronage1' : 'TVP Historia',
     'LecturesInfo' : 'Informacja',
-    'LecturesInfo1' : 'Program Kongresu obejmie również: 1) wykłady plenarne; 2) zaplanowaną na sobotę 22 września br. dyskusję panelową nt. stanu i perspektyw mediewistyki polskiej (moderator: Prof. Dr hab. Wojciech Iwańczak); 3) warsztat otwarty, z czynnym udziałem uczniów szkół podstawowych, nt. zabaw i zabawek średniowiecznych w edukacji i terapii współczesnej (moderatorka: Prof. Dr hab. Dorota Żołądź-Strzelczyk); 4) warsztaty „na zapisy”: kodykologiczny (moderator: Dr hab. Wojciech Mrozowicz Prof. UWr), filmoznawczy (moderator: Reż. Zdzisław Cozac); archeologiczny nt. nowoczesnych metod badań (moderatorzy: Dr hab. Andrzej Janowski Prof. IAE PAN, Dr Jerzy Sikora, Dr hab. Piotr Kittel Prof. UŁ, mgr Piotr Wroniecki).'
+    'LecturesInfo1' : 'Program Kongresu obejmie również: 1) wykłady plenarne; 2) zaplanowaną na sobotę 22 września br. dyskusję panelową nt. stanu i perspektyw mediewistyki polskiej (moderator: Prof. Dr hab. Wojciech Iwańczak); 3) warsztat otwarty, z czynnym udziałem uczniów szkół podstawowych, nt. zabaw i zabawek średniowiecznych w edukacji i terapii współczesnej (moderatorka: Prof. Dr hab. Dorota Żołądź-Strzelczyk); 4) warsztaty „na zapisy”: kodykologiczny (moderator: Dr hab. Wojciech Mrozowicz Prof. UWr), filmoznawczy (moderator: Reż. Zdzisław Cozac); archeologiczny nt. nowoczesnych metod badań (moderatorzy: Dr hab. Andrzej Janowski Prof. IAE PAN, Dr Jerzy Sikora, Dr hab. Piotr Kittel Prof. UŁ, mgr Piotr Wroniecki).',
+    'UsersEnrolments' : 'Zapisani'
 };

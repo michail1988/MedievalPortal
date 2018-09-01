@@ -7,6 +7,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Config } from "app/utils/config";
 import { WorkshopUser } from "app/models/workshop-user";
+import { User } from "app/models/user";
 
 @Injectable()
 export class WorkshopsUserService {
@@ -61,6 +62,22 @@ export class WorkshopsUserService {
         return this.http.post( this.deleteWorkshops, JSON.stringify( body ), options )
             .map(( res: Response ) => res.json() ) // ...and calling .json() on the response to return data
             .catch(( error: any ) => Observable.throw( error || 'Server error' ) ); //...errors if any
+    }
+    
+    getUsersForWorkshop( id: string ): Observable<User[]> {
+
+        let params: URLSearchParams = new URLSearchParams();
+        params.set( 'fk_workshop', id );
+
+        var options = new RequestOptions( { headers: new Headers( { 'Content-Type': 'application/json' } ) } );
+        options.search = params;
+
+     // ...using get request
+        return this.http.get( this.forWorkshop, options )
+            // ...and calling .json() on the response to return data
+            .map(( res: Response ) => res.json() )
+            //...errors if any
+            .catch(( error: any ) => Observable.throw( error.json().error || 'Server error' ) );
     }
 
 }
