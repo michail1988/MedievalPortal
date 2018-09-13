@@ -1,23 +1,27 @@
 
 
-<nav class="navbar navbar-default navbar-fixed-top" style="z-index: 500; display: grid; display: -ms-grid;">
+<nav class="navbar navbar-default navbar-fixed-top"
+	style="z-index: 500; display: grid; display: -ms-grid;">
 
 
 
-<img src="../../assets/img/logo2.png" alt="{{ 'Medieval congress' | translate }}" style="height: 100px; margin-left: 50px; width: 329px; background-position: center; grid-column: 1; -ms-grid-row: 1; -ms-grid-column: 1;">
+	<img src="../../assets/img/logo2.png"
+		alt="{{ 'Medieval congress' | translate }}"
+		style="height: 100px; margin-left: 50px; width: 329px; background-position: center; grid-column: 1; -ms-grid-row: 1; -ms-grid-column: 1;">
 
-	<div class="container" style="grid-column: 2; -ms-grid-row: 1; -ms-grid-column: 2; ">
+	<div class="container"
+		style="grid-column: 2; -ms-grid-row: 1; -ms-grid-column: 2;">
 		<!-- Brand and toggle get grouped for better mobile display -->
 
-			
-			
 
-			
+
+
+
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" 
+		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			
+
 			<ul class="nav navbar-nav">
 				<li><a routerLink="admin" *ngIf="isAdmin()"><span>{{
 							'Admin panel' | translate }}</span></a></li>
@@ -42,13 +46,13 @@
 							|translate}}</span></a></li>
 				<li *ngIf="isShowLinks()"><a routerLink="links"><span>{{
 							'Links' | translate}}</span></a></li>
-							
+
 			</ul>
 			<ul class="nav navbar-nav">
-			<user-logged></user-logged>
+				<user-logged></user-logged>
 				<languages>Loading...</languages>
 			</ul>
-			
+
 		</div>
 
 		<!-- /.navbar-collapse -->

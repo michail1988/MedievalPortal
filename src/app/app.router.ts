@@ -57,6 +57,7 @@ import { LectureNewResolver } from "app/services/lecture-new-resolver.service";
 import { AdminLectureComponent } from "app/admin-lecture/admin-lecture.component";
 import { LectureResolver } from "app/services/lecture-resolver.service";
 import { LecturesComponent } from "app/lectures/lectures.component";
+import { SectionsComponent } from "app/sections/sections.component";
 
 export const router: Routes = [
     { path: '', component: WelcomePageComponent },
@@ -301,6 +302,7 @@ export const router: Routes = [
     { path: 'letter-of-intent', component: LetterOfIntentComponent },
     { path: 'workshops', component: WorkshopsComponent },
     { path: 'lectures', component: LecturesComponent },
+    { path: 'sections', component: SectionsComponent },
     { path: 'patronage', component: PatronageComponent },
     { path: 'paymentInfo', component: PaymentInfoComponent }
 

@@ -59,6 +59,7 @@ export class LoginRegisterComponent implements OnInit {
         this.loginTabVisible = false;
         this.speakerPartsVisible = false;
 
+        
         this.types = [];
         this.types.push( { label: 'Uczestnik', value: 'Uczestnik' } );
         this.types.push( { label: 'Referent', value: 'Referent' } );
@@ -106,6 +107,11 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.isAdmin()) {
+            this.loginTabVisible = false
+        } else {
+            this.loginTabVisible = true
+        }
     }
 
     changeToLogin() {
@@ -116,6 +122,11 @@ export class LoginRegisterComponent implements OnInit {
         this.loginTabVisible = false;
     }
 
+    isAdmin() {
+        let admintoken = localStorage.getItem( 'admintoken' );
+        return ( admintoken );
+    }
+    
     isSpeakerPartsVisible() {
         return false;
         //return this.selectedType === 'Referent';

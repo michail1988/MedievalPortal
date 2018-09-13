@@ -128,6 +128,7 @@ import { LectureComponent } from './lecture/lecture.component';
 import { LectureService } from "app/services/lecture.service";
 import { LectureResolver } from "app/services/lecture-resolver.service";
 import { LectureNewResolver } from "app/services/lecture-new-resolver.service";
+import { SectionsComponent } from './sections/sections.component';
 
 
 
@@ -196,7 +197,8 @@ import { LectureNewResolver } from "app/services/lecture-new-resolver.service";
         AdminLecturesComponent,
         AdminLectureComponent,
         LecturesComponent,
-        LectureComponent
+        LectureComponent,
+        SectionsComponent
     ],
     imports: [
         BrowserModule,

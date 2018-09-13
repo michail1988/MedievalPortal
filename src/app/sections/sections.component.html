@@ -1,0 +1,54 @@
+<div class="contentUnderNewHeader">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="about_title">
+					<h1>{{ 'LecturesS' | translate }}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="about_title">
+					<h3>
+						<a href="../../assets/files/Program.docx" download>{{
+							'DownloadProgram' | translate }} </a>
+					</h3>
+					<h3>
+						<a href="../../assets/files/Ramowy plan obrad.docx" download>{{
+							'DownloadLecturesPlan' | translate }} </a>
+					</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+
+		<lecture *ngFor="let lecture of lectures" [lecture]="lecture">
+		</lecture>
+
+
+		<br /> <br /> <br /> <br /> <br /> <br />
+	</div>
+
+	<div class="container">
+		<div class="wow fadeInLeft animated text-center">
+			<h3 [innerHTML]="'LecturesInfo' | translate"></h3>
+
+		</div>
+		<div class="wow fadeInRight animated text-center">
+			<p class="about_us_p" [innerHTML]="'LecturesInfo1' | translate"></p>
+
+		</div>
+	</div>
+</div>
